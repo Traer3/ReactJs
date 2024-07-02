@@ -1,5 +1,5 @@
 import React from 'react';
-import UserCard from './components/UserCard';
+import UserCard from './components/UserCardModules';
 import logo from './images/me.png'
 
 function App() {
