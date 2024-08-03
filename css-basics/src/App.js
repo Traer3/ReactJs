@@ -7,11 +7,12 @@ function App() {
   return (
     <div >
     
-    <UserCard 
+    
+      <UserCard 
       name="Балбес"
       email="ivan@balbesov"
       avatarUrl={logo}
-    /> 
+    />
     
      <ToggleButton />
 
