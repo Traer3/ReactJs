@@ -5,6 +5,7 @@ import ToggleButton from './components/ToggleButton';
 import Button from './components/Button';
 import Card from './components/Card';
 import Alert from './components/Alert';
+import ProfileCard from './components/ProfileCard';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
     
      <ToggleButton />
 
+
     
       <Card>
             <h2>Card Title</h2>
@@ -30,6 +32,9 @@ function App() {
           <Alert type="success" message="This is a success message!"/>
           <Alert type="error" message="This is a error message!"/>
     </div>
+
+    <ProfileCard />
+
     </div>
   );
 }
