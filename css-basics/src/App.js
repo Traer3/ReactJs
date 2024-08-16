@@ -6,6 +6,8 @@ import Button from './components/Button';
 import Card from './components/Card';
 import Alert from './components/Alert';
 import ProfileCard from './components/ProfileCard';
+import GlobalStyleButton from './components/GlobalStyleButton';
+import GlobalStyleCard from './components/GlobalStyleCard';
 
 function App() {
   return (
@@ -34,6 +36,9 @@ function App() {
     </div>
 
     <ProfileCard />
+
+    <GlobalStyleButton>Global Styles for React is a bad practice </GlobalStyleButton>
+    <GlobalStyleCard>You cant use gloabal styles like " import './styles.css'; " You need to import it in your project and call it className= style.button</GlobalStyleCard>
 
     </div>
   );
