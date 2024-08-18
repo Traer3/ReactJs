@@ -9,6 +9,7 @@ import ProfileCard from './components/ProfileCard';
 import GlobalStyleButton from './components/GlobalStyleButton';
 import GlobalStyleCard from './components/GlobalStyleCard';
 import StyledButton from './components/StyledButton';
+import SassStyleButton from './components/SassStyleButton';
 
 function App() {
   return (
@@ -42,6 +43,8 @@ function App() {
     <GlobalStyleCard>You cant use gloabal styles like " import './styles.css'; " You need to import it in your project and call it className= style.button</GlobalStyleCard>
 
     <StyledButton>Submit</StyledButton>
+
+    <SassStyleButton>SAS</SassStyleButton>
 
 
     </div>
