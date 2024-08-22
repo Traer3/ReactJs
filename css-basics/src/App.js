@@ -10,6 +10,7 @@ import GlobalStyleButton from './components/GlobalStyleButton';
 import GlobalStyleCard from './components/GlobalStyleCard';
 import StyledButton from './components/StyledButton';
 import SassStyleButton from './components/SassStyleButton';
+import TestingStyledButton from './components/TestingStyledButton';
 
 
 
@@ -49,8 +50,9 @@ function App() {
     <StyledButton>Submit</StyledButton>
 
     <SassStyleButton>SAS</SassStyleButton>
-
     
+
+    <TestingStyledButton/>
 
 
 
