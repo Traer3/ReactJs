@@ -11,13 +11,14 @@ import GlobalStyleCard from './components/GlobalStyleCard';
 import StyledButton from './components/StyledButton';
 import SassStyleButton from './components/SassStyleButton';
 import TestingStyledButton from './components/TestingStyledButton';
-
-
+import { ThemeProvider } from './components/ThemeContext';
+import ThemedButton from './components/ThemedButton';
 
 
 
 function App() {
   return (
+    
     <div >
     
     
@@ -54,9 +55,13 @@ function App() {
 
     <TestingStyledButton/>
 
+    <ThemeProvider>
+         <ThemedButton/>
+    </ThemeProvider>
 
-
+    
     </div>
+    
   );
 }
 
