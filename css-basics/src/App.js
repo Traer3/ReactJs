@@ -13,6 +13,7 @@ import SassStyleButton from './components/SassStyleButton';
 import TestingStyledButton from './components/TestingStyledButton';
 import { ThemeProvider } from './components/ThemeContext';
 import ThemedButton from './components/ThemedButton';
+import AnimatedBox from './components/AnimatedBox';
 
 
 
@@ -59,7 +60,18 @@ function App() {
          <ThemedButton/>
     </ThemeProvider>
 
-    
+    <div
+    style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '20vh',
+    }}
+    >
+        <AnimatedBox/>
+    </div>
+
+
     </div>
     
   );
