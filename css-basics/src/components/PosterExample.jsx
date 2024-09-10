@@ -1,5 +1,5 @@
 import React from "react";
-
+import Box from "./Box"
 
 const PosterExample = () =>{
 
@@ -12,119 +12,33 @@ const PosterExample = () =>{
             backgroundColor: 'lightblue',
             justifyContent: 'flex-start',
             alignItems: 'normal',
-            width: '500px',
-            height: '500px',
+            maxWidth: '510px',
+            maxHeight: '510px',
             marginBottom: '30px',
             padding:'20px',
-            columnGap: '0px'
+            
             
         }}
         >
 
-            <div
-            style={{
-                border:'1px solid',
-                display: 'flex',
-                padding:'10px',
-                color: 'white',
-                backgroundColor: 'black',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '50px',
-                height: '50px',
-                textAlign : 'center', 
-                marginBottom: '0px',
-                marginTop: '0px',
-            }}
-            >BOX</div>
-           <div
-            style={{
-                border:'1px solid',
-                display: 'flex',
-                padding:'10px',
-                color: 'white',
-                backgroundColor: 'black',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '50px',
-                height: '50px',
-                textAlign : 'center', 
-                marginBottom: '0px',
-            }}
-            >BOX</div><div
-            style={{
-                border:'1px solid',
-                display: 'flex',
-                padding:'10px',
-                color: 'white',
-                backgroundColor: 'black',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '50px',
-                height: '50px',
-                textAlign : 'center', 
-                marginBottom: '0px',
-            }}
-            >BOX</div><div
-            style={{
-                border:'1px solid',
-                display: 'flex',
-                padding:'10px',
-                color: 'white',
-                backgroundColor: 'black',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '50px',
-                height: '50px',
-                textAlign : 'center', 
-                marginBottom: '0px',
-            }}
-            >BOX</div><div
-            style={{
-                border:'1px solid',
-                display: 'flex',
-                padding:'10px',
-                color: 'white',
-                backgroundColor: 'black',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '50px',
-                height: '50px',
-                textAlign : 'center', 
-                marginBottom: '0px',
-            }}
-            >BOX</div><div
-            style={{
-                border:'1px solid',
-                display: 'flex',
-                padding:'10px',
-                color: 'white',
-                backgroundColor: 'black',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '50px',
-                height: '50px',
-                textAlign : 'center', 
-                marginBottom: '0px',
-            }}
-            >BOX</div><div
-            style={{
-                border:'1px solid',
-                display: 'flex',
-                padding:'10px',
-                color: 'white',
-                backgroundColor: 'black',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '50px',
-                height: '50px',
-                textAlign : 'center', 
-                marginBottom: '0px',
-            }}
-            >BOX</div>
-           
-           
-          
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            
+            
            
         </div>
     )
