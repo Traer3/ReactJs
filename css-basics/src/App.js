@@ -14,6 +14,7 @@ import TestingStyledButton from './components/TestingStyledButton';
 import { ThemeProvider } from './components/ThemeContext';
 import ThemedButton from './components/ThemedButton';
 import AnimatedBox from './components/AnimatedBox';
+import PosterExample from './components/PosterExample';
 
 
 
@@ -71,6 +72,16 @@ function App() {
         <AnimatedBox/>
     </div>
 
+
+    <div
+         style={{
+         display: 'flex',
+         justifyContent: 'center',
+         alignItems: 'center',
+    }}
+    >
+        <PosterExample/>
+    </div>
 
     </div>
     
