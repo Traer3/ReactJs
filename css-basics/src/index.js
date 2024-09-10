@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+//import App from './App';
 //import AppForCodeSplitting from './AppForCodeSplitting';
+import StyledComponentsSSR from './components/StyledComponentsSSR'
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App/>
+    <StyledComponentsSSR/>
   </React.StrictMode>
 );
 
