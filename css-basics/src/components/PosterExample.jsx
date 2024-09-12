@@ -7,6 +7,7 @@ const PosterExample = () =>{
         <div
         style={{
             borderRadius: '10px',
+            padding:'20px',
             display: 'flex',
             flexWrap: 'wrap',
             backgroundColor: 'lightblue',
@@ -14,13 +15,9 @@ const PosterExample = () =>{
             alignItems: 'normal',
             maxWidth: '510px',
             maxHeight: '510px',
-            marginBottom: '30px',
-            padding:'20px',
-            
-            
+            marginBottom: '30px', 
         }}
         >
-
             <Box/>
             <Box/>
             <Box/>
@@ -37,6 +34,38 @@ const PosterExample = () =>{
             <Box/>
             <Box/>
             <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            <Box/>
+            
+            
             
             
            

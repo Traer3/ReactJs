@@ -77,13 +77,13 @@ function App() {
     <div
          style={{
          display: 'flex',
-         justifyContent: 'center',
-         alignItems: 'center',
-         flexWrap: 'wrap',
+         justifyContent: 'center', 
     }}
     >
+
         <PosterExample/>
-         </div>
+
+    </div>
 
     </div>
     
