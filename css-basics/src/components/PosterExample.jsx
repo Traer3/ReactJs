@@ -19,55 +19,6 @@ const PosterExample = () =>{
         }}
         >
             <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            <Box/>
-            
-            
-            
-            
            
         </div>
     )

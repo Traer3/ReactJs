@@ -15,6 +15,10 @@ import { ThemeProvider } from './components/ThemeContext';
 import ThemedButton from './components/ThemedButton';
 import AnimatedBox from './components/AnimatedBox';
 import PosterExample from './components/PosterExample';
+import IniButton from './components/initializingStyles/Button';
+import InlineButton from './components/initializingStyles/InlineButton';
+import ModuleButton from './components/initializingStyles/ModuleButton';
+import CSSinJSButton from './components/initializingStyles/CSSinJSButton';
 
 
 
@@ -83,6 +87,13 @@ function App() {
 
         <PosterExample/>
 
+    </div>
+
+    <div>
+         <IniButton/>
+         <InlineButton/>   
+         <ModuleButton/>   
+         <CSSinJSButton>css in js button</CSSinJSButton>   
     </div>
 
     </div>
