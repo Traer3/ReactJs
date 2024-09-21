@@ -1,12 +1,15 @@
 import React from "react";
-import Syntaxs from "./components/Syntax";
+import JavaScriptRoadmap from '../src/components/JavaScriptRoadmap'
+
+
+
 
 function App() {
   return (
     <div >
-     
-      <h1>Privetik</h1>
-      <Syntaxs/>
+        
+      <JavaScriptRoadmap/>
+
     </div>
   );
 }
