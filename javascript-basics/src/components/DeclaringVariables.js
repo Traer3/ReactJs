@@ -1,37 +1,35 @@
 import React from "react";
 import ImitationTerminal from "./ImitationTerminal";
+import style from "./VariablesStyle.module.css";
 
 const DeclaringVariables = () => {
 
 
-    let age = 25;
-    console.log(age);
-
-    const country = "USA";
-    console.log(country);
-
-
    
-
     return(
-    <>
-        
-        <div style={{
-            border:'1px solid gray',
-            padding:'20px',
-            borderRadius: '8px',
-            boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-            fontFamily: 'monospace',
-            fontSize: '20px',
-            
-        }}>
+    <>  
+        <div className={style.variablesStyle}>
             <span style={{color:'#2d7ad6'}}>var </span>
             <span style={{color:'#7cdcf0'}}> name </span> = 
             <span style={{color:'#c3602d'}} > "John" </span> ;
              <br/>
-            <ImitationTerminal incomingText="John"/>
-            
-            
+            <ImitationTerminal incomingText="John"/>   
+        </div>
+
+        <div className={style.variablesStyle}>
+            <span style={{color:'#2d7ad6'}}>let </span>
+            <span style={{color:'#7cdcf0'}}> age </span> = 
+            <span style={{color:'#c3602d'}} > 25 </span> ;
+             <br/>
+            <ImitationTerminal incomingText="25"/>    
+        </div>
+
+        <div className={style.variablesStyle}>
+            <span style={{color:'#2d7ad6'}}>const </span>
+            <span style={{color:'#7cdcf0'}}> country </span> = 
+            <span style={{color:'#c3602d'}} > USA </span> ;
+             <br/>
+            <ImitationTerminal incomingText="USA"/>
         </div>
     </>
     );
