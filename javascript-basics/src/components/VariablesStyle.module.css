@@ -7,3 +7,12 @@
     font-family: monospace;
     font-size: 20px;
 }
+.variableColor{
+    color: #2d7ad6;
+}
+.variableName{
+    color: #7cdcf0;
+}
+.variableData{
+    color: #c3602d;
+}

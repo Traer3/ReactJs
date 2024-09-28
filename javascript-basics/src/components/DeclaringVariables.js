@@ -9,25 +9,25 @@ const DeclaringVariables = () => {
     return(
     <>  
         <div className={style.variablesStyle}>
-            <span style={{color:'#2d7ad6'}}>var </span>
-            <span style={{color:'#7cdcf0'}}> name </span> = 
-            <span style={{color:'#c3602d'}} > "John" </span> ;
+            <span className={style.variableColor}>var </span>
+            <span className={style.variableName}> name </span> = 
+            <span className={style.variableData}> "John" </span> ;
              <br/>
             <ImitationTerminal incomingText="John"/>   
         </div>
 
         <div className={style.variablesStyle}>
-            <span style={{color:'#2d7ad6'}}>let </span>
-            <span style={{color:'#7cdcf0'}}> age </span> = 
-            <span style={{color:'#c3602d'}} > 25 </span> ;
+            <span className={style.variableColor}>let </span>
+            <span className={style.variableName}> age </span> = 
+            <span className={style.variableData}> 25 </span> ;
              <br/>
             <ImitationTerminal incomingText="25"/>    
         </div>
 
         <div className={style.variablesStyle}>
-            <span style={{color:'#2d7ad6'}}>const </span>
-            <span style={{color:'#7cdcf0'}}> country </span> = 
-            <span style={{color:'#c3602d'}} > USA </span> ;
+            <span className={style.variableColor}>const </span>
+            <span className={style.variableName}> country </span> = 
+            <span className={style.variableData}> USA </span> ;
              <br/>
             <ImitationTerminal incomingText="USA"/>
         </div>

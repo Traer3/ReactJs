@@ -9,51 +9,51 @@ const DataType = () => {
         <>
              
             <div className={style.variablesStyle}>
-                <span style={{color:'#2d7ad6'}}>let</span>
-                <span style={{color:'#7cdcf0'}}> greeting </span> =
-                <span style={{color:'#c3602d'}}> "Hello, world!"</span>;
+                <span className={style.variableColor}>let</span>
+                <span className={style.variableName}> greeting </span> =
+                <span className={style.variableData}> "Hello, world!"</span>;
                 <ImitationTerminal incomingText="Hello, world!"/>
              </div>
 
              <div className={style.variablesStyle}>
-                <span style={{color:'#2d7ad6'}}>let</span>
-                <span style={{color:'#7cdcf0'}}> year </span> =
-                <span style={{color:'#c3602d'}}> 2024</span>;
+                <span className={style.variableColor}>let</span>
+                <span className={style.variableName}> year </span> =
+                <span className={style.variableData}> 2024</span>;
                 <ImitationTerminal incomingText="2024"/>
              </div>
 
              <div className={style.variablesStyle}>
-                <span style={{color:'#2d7ad6'}}>let</span>
-                <span style={{color:'#7cdcf0'}}> pi </span> =
-                <span style={{color:'#c3602d'}}> 3.14</span>;
+                <span className={style.variableColor}>let</span>
+                <span className={style.variableName}> pi </span> =
+                <span className={style.variableData}> 3.14</span>;
                 <ImitationTerminal incomingText="3.14"/>
              </div>
 
              <div className={style.variablesStyle}>
-                <span style={{color:'#2d7ad6'}}>let</span>
-                <span style={{color:'#7cdcf0'}}> isActive </span> =
-                <span style={{color:'#c3602d'}}> true</span>;
+                <span className={style.variableColor}>let</span>
+                <span className={style.variableName}> isActive </span> =
+                <span className={style.variableData}> true</span>;
                 <ImitationTerminal incomingText="true"/>
              </div>
             
              <div className={style.variablesStyle}>
-                <span style={{color:'#2d7ad6'}}>let</span>
-                <span style={{color:'#7cdcf0'}}> emptyValue </span> =
-                <span style={{color:'#c3602d'}}> null</span>;
+                <span className={style.variableColor}>let</span>
+                <span className={style.variableName}> emptyValue </span> =
+                <span className={style.variableData}> null</span>;
                 <ImitationTerminal incomingText="null"/>
              </div>
 
              <div className={style.variablesStyle}>
-                <span style={{color:'#2d7ad6'}}>let</span>
-                <span style={{color:'#7cdcf0'}}> notAssigned </span> =
-                <span style={{color:'#c3602d'}}> undefined</span>;
+                <span className={style.variableColor}>let</span>
+                <span className={style.variableName}> notAssigned </span> =
+                <span className={style.variableData}> undefined</span>;
                 <ImitationTerminal incomingText="undefined"/>
              </div>
 
              <div className={style.variablesStyle}>
-                <span style={{color:'#2d7ad6'}}>let</span>
-                <span style={{color:'#7cdcf0'}}> bigNumber </span> =
-                <span style={{color:'#c3602d'}}> 123456789012345678901234567890n</span>;
+                <span className={style.variableColor}>let</span>
+                <span className={style.variableName}> bigNumber </span> =
+                <span className={style.variableData}> 123456789012345678901234567890n</span>;
                 <ImitationTerminal incomingText="123456789012345678901234567890n"/>
              </div>
 
