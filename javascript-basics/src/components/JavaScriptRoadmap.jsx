@@ -11,13 +11,13 @@ const Roadmap = () => {
 
     return(
         <div style={{
-            backgroundColor:'D8D3CE',
             display:'flex',
+            flexDirection: 'column',
+            backgroundColor:'D8D3CE',
             alignItems: 'center',
-            justifyContent:'center'
         }}>
-            
-            <DeclaringVariables/>
+            <div style={{ display: 'flex', justifyContent: 'center' }}> <DeclaringVariables/></div>
+            <div style={{ display: 'flex', justifyContent: 'center' }}> <DeclaringVariables/></div>
         </div>
     );
 };

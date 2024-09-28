@@ -30,9 +30,9 @@ const ImitationTerminal = ({incomingText}) =>{
 
     const style = `
     .blinking-cursor{
+        color: #2d7ad6;
         font-weight: bold;
         font-size: 20px;
-        color: #2d7ad6;
         animation: blink 1s step-start infinite;
     }
         @keyframes blink {
