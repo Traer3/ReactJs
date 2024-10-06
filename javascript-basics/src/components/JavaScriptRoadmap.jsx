@@ -2,6 +2,7 @@ import React from "react";
 import DeclaringVariables from "./DeclaringVariables";
 import DataType from "./DataTypes";
 import style from "./VariablesStyle.module.css";
+import Conditionals from "./Conditionals";
 
 
 
@@ -21,6 +22,9 @@ const Roadmap = () => {
             <div style={{ display: 'flex', justifyContent: 'center' }}> <DeclaringVariables/></div>
             <h1 className={style.variableData}>Data Types</h1>
             <div style={{ display: 'flex', justifyContent: 'center' , flexWrap: 'wrap'}}> <DataType/></div>
+            <h1 className={style.variableData}>Conditionals</h1>
+            <div style={{ display: 'flex', justifyContent: 'center' , flexWrap: 'wrap'}}> <Conditionals/></div>
+       
         </div>
     );
 };
