@@ -1,86 +1,61 @@
 import React from "react";
-import ImitationTerminal from "./ImitationTerminal";
-import style from "./VariablesStyle.module.css";
-import TerminalText from "./TerminalText";
+import TerminalWindow from "./TerminalWindow";
+
 
 
 const Conditionals = () => {
 
+    const IfElceCodeText =`
     let age = 17;
 
     if(age >= 100) {
+
         console.log( "You too dead to vote");
+
     } else if (age >= 18) {
+
         console.log ("You can vote");
+
     } else {
+
         console.log("Too young to vote");
+
     }
-
-
-
-
+    `
+    const TernaryConditionalText=`
     let isMember = true; 
     let fee = isMember ? 2:10; 
     console.log(fee);
+    `
 
-
+    const SwitchCaseText=`
     let state = 3;
     switch (state){
         case 1:
             console.log("Hungry");
             break;
+
         case 2:
             console.log("Full");
             break;
+            
         case 3: 
             console.log("Starving");
             break;
+
         default:
             console.log("Tired");
     }
+    `
 
-
-
-    /////////////
-
-    //let age = 17;
-
-    if(age >= 100) {
-        console.log( "You too dead to vote");
-    } else if (age >= 18) {
-        console.log ("You can vote");
-    } else {
-        console.log("Too young to vote");
-    }
-
-    const code = ""
-    
     return(
         <>
-            <div className={style.variablesStyle}>
-                <span className={style.variableColor}>let</span>
-                <span className={style.variableName}> age </span> =
-                <span className={style.variableData}> 17</span>;
-                <br/>
-                <span className={style.variableIf}>if</span>
-                <span className={style.variableO}>{'('}</span>
-                <span className={style.variableName}>age</span>
-                <span >{'>'}</span>=
-                <span className={style.variableData}> 100</span>
-                <span className={style.variableO}>{')'}</span>
-                <span className={style.variableO}> {'{'}</span>
-                <br/>
-                <span className={style.variableName}>console</span>
-                <span className={style.variableData}>.log</span>
-                <span className={style.variableO}>{'('}</span>
-                <span className={style.variableData}>"You too dead to vote"</span>
-                <span className={style.variableData}> 100</span>
-                <span className={style.variableO}>{')'}</span>;
-                <br/>
-                <span className={style.variableO}> {'}'}</span>
-                <ImitationTerminal incomingText="Too young to vote"/>
-             </div>
-
+             <div style={{ display: 'flex', justifyContent: 'center' , flexWrap: 'wrap' , }}>
+                <TerminalWindow incomingText={IfElceCodeText} answer={"Too young to vote"}/>
+                <TerminalWindow incomingText={TernaryConditionalText} answer={"2"}/>
+                <TerminalWindow incomingText={SwitchCaseText} answer={"Starving"}/>
+            </div>
+            
         </>
     );
 };
