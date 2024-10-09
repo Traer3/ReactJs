@@ -3,6 +3,7 @@ import DeclaringVariables from "./DeclaringVariables";
 import DataType from "./DataTypes";
 import style from "./VariablesStyle.module.css";
 import Conditionals from "./Conditionals";
+import Cycles from "./Cycles";
 
 
 
@@ -24,6 +25,8 @@ const Roadmap = () => {
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <DataType/></div>
             <h1 className={style.variableData}>Conditionals</h1>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <Conditionals/></div>
+            <h1 className={style.variableData}>Cycles</h1>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <Cycles/> </div>
        
         </div>
     );
