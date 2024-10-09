@@ -9,16 +9,16 @@ const TerminalWindow = ({incomingText,answer}) => {
 
     return(
         <div style={{
-             display: 'flex', 
-             justifyContent: 'center',
-             border: '2px solid #8D8D8F', 
              padding: '20px', 
-             margin:'20px',
+             border: '2px solid #8D8D8F', 
+             display: 'flex', 
+             //overflowY: 'scroll', 
+             justifyContent: 'center',
              backgroundColor: 'black',
              color:'white', 
-              fontWeight:'bold',
-             //initiate width & height if visual error 
-             //overflowY: 'scroll', 
+             margin:'20px',
+             //initiate width & height if visual error
+             fontWeight:'bold',
             }}
         > 
           

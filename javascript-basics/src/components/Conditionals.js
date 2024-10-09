@@ -38,7 +38,7 @@ const Conditionals = () => {
         case 2:
             console.log("Full");
             break;
-            
+
         case 3: 
             console.log("Starving");
             break;
@@ -50,7 +50,7 @@ const Conditionals = () => {
 
     return(
         <>
-             <div style={{ display: 'flex', justifyContent: 'center' , flexWrap: 'wrap' , }}>
+             <div style={{ display: 'flex', flexWrap: 'wrap' , justifyContent: 'center' ,  }}>
                 <TerminalWindow incomingText={IfElceCodeText} answer={"Too young to vote"}/>
                 <TerminalWindow incomingText={TernaryConditionalText} answer={"2"}/>
                 <TerminalWindow incomingText={SwitchCaseText} answer={"Starving"}/>

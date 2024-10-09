@@ -21,9 +21,9 @@ const Roadmap = () => {
             <h1 className={style.variableData}>Declaration of variables</h1>
             <div style={{ display: 'flex', justifyContent: 'center' }}> <DeclaringVariables/></div>
             <h1 className={style.variableData}>Data Types</h1>
-            <div style={{ display: 'flex', justifyContent: 'center' , flexWrap: 'wrap'}}> <DataType/></div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <DataType/></div>
             <h1 className={style.variableData}>Conditionals</h1>
-            <div style={{ display: 'flex', justifyContent: 'center' , flexWrap: 'wrap'}}> <Conditionals/></div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <Conditionals/></div>
        
         </div>
     );
