@@ -5,6 +5,7 @@ import style from "./VariablesStyle.module.css";
 import Conditionals from "./Conditionals";
 import Cycles from "./Cycles";
 import Functions from "./Functions";
+import Scopes from "./Scopes";
 
 
 
@@ -30,6 +31,8 @@ const Roadmap = () => {
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <Cycles/> </div>
             <h1 className={style.variableData}>Functions</h1>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <Functions/> </div>
+            <h1 className={style.variableData}>Scopes</h1>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <Scopes/> </div>
        
         </div>
     );
