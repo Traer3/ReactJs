@@ -1,5 +1,8 @@
 import React from "react";
+import TerminalWindow from "./TerminalWindow";
 
+const globalVar =`
+//Global scope variable 
 
 let globalVar = "It's global scope"
 
@@ -9,7 +12,10 @@ function showGlobal(){
 
 showGlobal();
 console.log(globalVar)
+`
 
+const functionScope=`
+// Functional variable 
 
 const myArrowFunc=()=>{
     var functionVar= "It's  function scope";
@@ -17,12 +23,20 @@ const myArrowFunc=()=>{
 }
 myArrowFunc();
 
+//console.log(functionVar) ERROR!
+`
+const blockScope=`
+//Bloc variabl
 
 if(true){
     let blockVar = "It's variable for block scope"
     console.log(blockVar);
 }
 
+//console.log(blockVar) ERROR!
+`
+const outerVariable=`
+// How Outer Variable works 
 
 let outerVar = "Outer Variable"
 function outerFunction() {
@@ -35,16 +49,28 @@ function outerFunction() {
 }
 outerFunction();
 
-
+`
 
 const Scopes = () =>{
     return(
-        <div>
-            <h1>Hello scopes!</h1>
-        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap' , justifyContent: 'center' ,  }}>
+               <TerminalWindow incomingText={globalVar} answer="It's global scope"/>
+               <TerminalWindow incomingText={functionScope} answer="It's  function scope"/>
+               <TerminalWindow incomingText={blockScope} answer="It's variable for block scope"/>
+               <TerminalWindow incomingText={outerVariable} answer="Outer Variable & Inner Variable"/>
+            </div>
     );
 };
 
 export default Scopes
+
+
+
+
+
+
+
+
+
 
 
