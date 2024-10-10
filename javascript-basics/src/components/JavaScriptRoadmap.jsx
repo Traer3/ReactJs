@@ -7,6 +7,7 @@ import Cycles from "./Cycles";
 import Functions from "./Functions";
 import Scopes from "./Scopes";
 import Arrays from "./Arrays";
+import Objects from "./Objects";
 
 
 
@@ -36,6 +37,8 @@ const Roadmap = () => {
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <Scopes/> </div>
             <h1 className={style.variableData}>Arrays</h1>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <Arrays/> </div>
+            <h1 className={style.variableData}>Objects</h1>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <Objects/> </div>
        
         </div>
     );
