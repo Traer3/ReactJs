@@ -46,10 +46,31 @@ addItemBtn.addEventListener("click", function(){
     list.appendChild(newItem);
 })
 
+let chengeTexBtn = document.getElementById("changeTextBtn");
+let text = document.getElementById("text");
+
+chengeTexBtn.addEventListener("click", ()=>{
+    text.textContent = "The text has been DEcunts";
+})
+
+let pervetTag = document.getElementById("mouseOver");
+let clounTag = document.getElementById("clounTag");
+pervetTag.addEventListener("mouseover", ()=>{
+    clounTag.style.backgroundColor = "red";
+    clounTag.textContent = "DONT TOUCH HIM PERV";
+});
+
+pervetTag.addEventListener("mouseout", function(){
+    clounTag.style.backgroundColor = "green";
+    clounTag.textContent = "good";
+});
+
+
+
 const DomTester = () => {
     return(
         <div>
-
+               
         </div>
     );
 };
