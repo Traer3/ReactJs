@@ -9,6 +9,7 @@ import Scopes from "./Scopes";
 import Arrays from "./Arrays";
 import Objects from "./Objects";
 import DomTester from "./DomTester";
+import Callback from "./Callback";
 
 
 
@@ -42,6 +43,8 @@ const Roadmap = () => {
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <Objects/> </div>
             <h1 className={style.variableData}>DOM</h1>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <DomTester/> </div>
+            <h1 className={style.variableData}>Callback</h1>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <Callback/> </div>
        
         </div>
     );
