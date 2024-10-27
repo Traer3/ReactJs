@@ -10,6 +10,7 @@ import Arrays from "./Arrays";
 import Objects from "./Objects";
 import DomTester from "./DomTester";
 import AsynchronousProgramming from "./AsynchronousProgramming";
+import ES6ability from "./ES6ability";
 
 
 
@@ -45,6 +46,8 @@ const Roadmap = () => {
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <DomTester/> </div>
             <h1 className={style.variableData}>Asynchronous Programming</h1>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <AsynchronousProgramming/> </div>
+            <h1 className={style.variableData}>ES6+ ability</h1>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' , }}> <ES6ability/> </div>
        
         </div>
     );
