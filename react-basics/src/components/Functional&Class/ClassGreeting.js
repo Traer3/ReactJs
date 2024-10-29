@@ -7,3 +7,4 @@ class ClassGreeting extends Component{
 }
 
 export default ClassGreeting;
+
