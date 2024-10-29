@@ -6,8 +6,8 @@ const TestField = () => {
 
     return(
         <div>
-            <FunctionalGreeting name="cunt"/>
-            <ClassGreeting name= "boo"/>
+            <FunctionalGreeting name="Bob"/>
+            <ClassGreeting name= "Jack"/>
         </div>
     );
 };
