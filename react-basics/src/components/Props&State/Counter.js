@@ -6,6 +6,7 @@ const Counter = () => {
     const handleIncrement = ()=>{
         setCount(count + 1);
     };
+    
 
     return(
         <div>

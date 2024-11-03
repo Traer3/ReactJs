@@ -3,7 +3,9 @@ import FunctionalGreeting from "./Functional&Class/FunctionalGreeting";
 import ClassGreeting from "./Functional&Class/ClassGreeting";
 import UserCard from "./Props&State/UserCard";
 import Counter from "./Props&State/Counter";
-
+import ExampleComponent from "./LifeCycle&Hooks/ExampleComponent";
+import UseStateUsage from "./LifeCycle&Hooks/UseStateUsage";
+import UseEffectUsage from "./LifeCycle&Hooks/UseEffectUsage";
 const TestField = () => {
 
     return(
@@ -12,6 +14,10 @@ const TestField = () => {
             <ClassGreeting name= "Jack"/>
             <UserCard name="Slav" age={23} country="East Europe"/>
             <Counter/>
+            <ExampleComponent/>
+            <UseStateUsage/>
+            <UseEffectUsage/>
+            
         </div>
     );
 };
