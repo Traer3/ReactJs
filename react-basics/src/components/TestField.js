@@ -6,6 +6,8 @@ import Counter from "./Props&State/Counter";
 import ExampleComponent from "./LifeCycle&Hooks/ExampleComponent";
 import UseStateUsage from "./LifeCycle&Hooks/UseStateUsage";
 import UseEffectUsage from "./LifeCycle&Hooks/UseEffectUsage";
+import UsingOnClick from "./EventHandler/UsingOnClick";
+import MouseTracker from "./EventHandler/MouseTracker";
 const TestField = () => {
 
     return(
@@ -17,6 +19,8 @@ const TestField = () => {
             <ExampleComponent/>
             <UseStateUsage/>
             <UseEffectUsage/>
+            <UsingOnClick/>
+            <MouseTracker/>
             
         </div>
     );
