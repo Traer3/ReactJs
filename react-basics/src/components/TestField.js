@@ -8,6 +8,8 @@ import UseStateUsage from "./LifeCycle&Hooks/UseStateUsage";
 import UseEffectUsage from "./LifeCycle&Hooks/UseEffectUsage";
 import UsingOnClick from "./EventHandler/UsingOnClick";
 import MouseTracker from "./EventHandler/MouseTracker";
+import Greeting from "./ConditionalRendering/Greeting";
+import TodoList from "./ConditionalRendering/TodoList";
 const TestField = () => {
 
     return(
@@ -21,6 +23,8 @@ const TestField = () => {
             <UseEffectUsage/>
             <UsingOnClick/>
             <MouseTracker/>
+            <Greeting/>
+            <TodoList/>
             
         </div>
     );
