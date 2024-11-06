@@ -10,6 +10,8 @@ import UsingOnClick from "./EventHandler/UsingOnClick";
 import MouseTracker from "./EventHandler/MouseTracker";
 import Greeting from "./ConditionalRendering/Greeting";
 import TodoList from "./ConditionalRendering/TodoList";
+import ControlledComponents from "./FormsInReact/ControlledComponents";
+import UncontrolledForm from "./FormsInReact/UncontrolledForm";
 const TestField = () => {
 
     return(
@@ -25,6 +27,8 @@ const TestField = () => {
             <MouseTracker/>
             <Greeting/>
             <TodoList/>
+            <ControlledComponents/>
+            <UncontrolledForm/>
             
         </div>
     );
