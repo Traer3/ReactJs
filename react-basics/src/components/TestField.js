@@ -12,6 +12,7 @@ import Greeting from "./ConditionalRendering/Greeting";
 import TodoList from "./ConditionalRendering/TodoList";
 import ControlledComponents from "./FormsInReact/ControlledComponents";
 import UncontrolledForm from "./FormsInReact/UncontrolledForm";
+import MainPage from "./ReactRouter/MainPage";
 const TestField = () => {
 
     return(
@@ -29,6 +30,7 @@ const TestField = () => {
             <TodoList/>
             <ControlledComponents/>
             <UncontrolledForm/>
+            <MainPage/>
             
         </div>
     );
