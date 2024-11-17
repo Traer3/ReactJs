@@ -1,18 +1,20 @@
 import React from "react";
-import MenuScren from "./components/MenuScreen";
-import ScrolTest from "./components/ScrolTest";
+import Stars from "./components/Stars.module.css"
 
 const App = () => {
   return (
-    <div >
-          <MenuScren/>
-          <div style={{
-            
-            marginLeft:'100px'
-        }}>
-          <ScrolTest/>
-          </div>
-          
+    <div className={Stars.body}>
+          <div class={Stars.shooting_star}></div>
+          <div class={Stars.shooting_star}></div>
+          <div class={Stars.shooting_star}></div>
+          <div class={Stars.shooting_star}></div>
+          <div class={Stars.shooting_star}></div>
+          <div class={Stars.shooting_star}></div>
+          <div class={Stars.shooting_star}></div>
+          <div class={Stars.shooting_star}></div>
+          <div class={Stars.shooting_star}></div>
+          <div class={Stars.shooting_star}></div>
+          <div class={Stars.shooting_star}></div>
     </div>
   );
 }
