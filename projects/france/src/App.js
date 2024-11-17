@@ -1,6 +1,7 @@
 import React from "react";
 import Stars from "./components/Stars.module.css"
 import MenuScren from "./components/MenuScreen";
+import ScrolTest from "./components/ScrolTest";
 
 const App = () => {
   const shootingStars = Array(10).fill(null).map((_, index)=>(
@@ -8,7 +9,7 @@ const App = () => {
   ))
 
   return (
-    <div>
+    <div >
       <div className={Stars.body} >
          <div 
            style={{ transform: 'rotateZ(45deg)',
@@ -19,6 +20,7 @@ const App = () => {
       </div>
       
       <MenuScren/>
+      <ScrolTest/>
     </div>
   );
 }

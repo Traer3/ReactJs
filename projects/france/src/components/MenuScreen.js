@@ -12,7 +12,7 @@ const MenuScren = ()=>{
             height:'100px'
 
         }}>
-
+            
         </div>
     );
 };
