@@ -10,8 +10,10 @@ const MenuScren = ()=>{
     
 
     return (
-        <div className={menuButton ? MenuStyle.menuPanel : MenuStyle.hideMenuPanel}>
-            <button 
+        <div>
+        <div className={`${MenuStyle.menuPanel} ${menuButton ? MenuStyle.menuPanelOpen : ""}`}>
+        </div>
+        <button 
                 className={menuButton ? MenuStyle.menuButton : MenuStyle.lonelyButton}
                 onClick={toggleMenu}
                 >
