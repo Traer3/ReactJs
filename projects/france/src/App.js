@@ -1,7 +1,6 @@
 import React from "react";
 import Stars from "./components/Stars.module.css"
 import MenuScren from "./components/MenuScreen";
-import ScrolTest from "./components/ScrolTest";
 import ScrolStyleTest from "./components/ScrollBar.module.css"
 const App = () => {
   const shootingStars = Array(10).fill(null).map((_, index)=>(
