@@ -1,12 +1,11 @@
 import React from "react";
-import style from "./ScrollBar.module.css"
+
 const ScrolTest = () =>{
     return (
         <div
-            className={style.scrollbar} 
             style={{
-            backgroundColor:'red',
             marginLeft:'100px',
+            width:'90vw'
         }}>
             {[...Array(50)].map((_, index)=>(
                 <h1 key={index}>Test</h1>
