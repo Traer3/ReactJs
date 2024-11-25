@@ -1,7 +1,8 @@
 import React, { useState }  from "react";
 import MenuIcon from "../icons/menuIcon.png"
 import MenuStyle from "./css/MenuScreen.module.css"
-const MenuScren = ()=>{
+import Creatura from "./Creatura";
+const MenuScreen = ()=>{
     const [menuButton,setMenuButton] = useState(false);
 
     const toggleMenu = () =>{
@@ -12,6 +13,11 @@ const MenuScren = ()=>{
     return (
         <div>
         <div className={`${MenuStyle.menuPanel} ${menuButton ? MenuStyle.menuPanelOpen : ""}`}>
+            <div onClick={()=>setMenuButton(!menuButton)}>
+                 <Creatura/> 
+            </div>
+            
+
         </div>
         <button 
                 className={menuButton ? MenuStyle.menuButton : MenuStyle.lonelyButton}
@@ -22,10 +28,12 @@ const MenuScren = ()=>{
                 alt="dontHaveOne"
                 src={MenuIcon} 
                 ></img>
-                
-            </button>
+        </button>
+          
+       
+            
         </div>
     );
 };
 
-export default MenuScren;
+export default MenuScreen;

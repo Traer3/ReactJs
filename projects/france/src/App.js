@@ -1,12 +1,14 @@
 import React from "react";
 import Stars from "./components/Stars.module.css"
-import MenuScren from "./components/MenuScreen";
+import MenuScreen from "./components/MenuScreen";
 import ScrolStyleTest from "./components/ScrollBar.module.css"
 const App = () => {
+
   const shootingStars = Array(10).fill(null).map((_, index)=>(
     <div key={index} className={Stars.shooting_star}  />
   ))
 
+ 
   return (
     <div className={ScrolStyleTest.scrollbar}>
       <div className={Stars.body} >
@@ -18,7 +20,7 @@ const App = () => {
          </div> 
       </div>
       
-      <MenuScren/>
+      <MenuScreen/>
      
     </div>
   );
