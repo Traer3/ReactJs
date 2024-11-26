@@ -2,6 +2,7 @@ import React, { useState }  from "react";
 import MenuIcon from "../icons/menuIcon.png"
 import MenuStyle from "./css/MenuScreen.module.css"
 import Creatura from "./Creatura";
+import GraphicBasics from "./css-basics/GraphicBasics";
 const MenuScreen = ()=>{
     const [menuButton,setMenuButton] = useState(false);
 
@@ -13,10 +14,11 @@ const MenuScreen = ()=>{
     return (
         <div>
         <div className={`${MenuStyle.menuPanel} ${menuButton ? MenuStyle.menuPanelOpen : ""}`}>
+            <h1/>
             <div onClick={()=>setMenuButton(!menuButton)}>
                  <Creatura/> 
             </div>
-            
+            <GraphicBasics/>           
 
         </div>
         <button 

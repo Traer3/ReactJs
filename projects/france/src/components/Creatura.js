@@ -21,7 +21,7 @@ const Creatura = () => {
     return(
         <div>
             <button 
-                className={style.creatureButton}
+                className={style.buttonsOnMenu}
                 onClick={deployment}
                 > deploy the creature
                  
