@@ -4,6 +4,7 @@ import MenuStyle from "./css/MenuScreen.module.css"
 import Creatura from "./Creatura";
 import GraphicBasics from "./css-basics/GraphicBasics";
 import JavaScriptBasics from "./JavaScript/JavaScriptBasics";
+
 const MenuScreen = ()=>{
     const [menuButton,setMenuButton] = useState(false);
 
@@ -21,6 +22,7 @@ const MenuScreen = ()=>{
             </div>
             <GraphicBasics/>        
             <JavaScriptBasics/>   
+            
 
         </div>
         <button 
@@ -33,8 +35,8 @@ const MenuScreen = ()=>{
                 src={MenuIcon} 
                 ></img>
         </button>
-          
-       
+        
+        
             
         </div>
     );
