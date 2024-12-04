@@ -86,7 +86,14 @@
     font-size: 16px;
     text-align: center;
     font-weight: bolder;
-    
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.listOfTopicsVisible{
+    opacity: 1;
+    transform: translateY(0);
 }
 
 

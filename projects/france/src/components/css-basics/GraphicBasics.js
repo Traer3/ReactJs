@@ -13,16 +13,10 @@ const GraphicBasics = () => {
                  css-basics
             </button>
 
-            {
-                items ?  (
-                            <div className={style.listOfTopics} title="true">
-                               <button className={style.buttonsOnList}>Компонентный подход</button>
-                               <button className={style.buttonsOnList}>Динамические стили</button>
-                            </div> 
-                     ) : (
-                            <div className={style.listOfTopics} title="false"/> 
-                         )
-            }
+            <div className={`${style.listOfTopics} ${items ? style.listOfTopicsVisible : ""}`}>
+                <button className={style.buttonsOnList}>Компонентный подход</button>
+                <button className={style.buttonsOnList}>Динамические стили</button>
+            </div>
 
         </div>
     );
