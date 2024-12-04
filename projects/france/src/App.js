@@ -1,6 +1,6 @@
 import React from "react";
-import Stars from "./components/Stars.module.css"
-import MenuScreen from "./components/MenuScreen";
+import Stars from "./components/css/Stars.module.css"
+import MenuScreen from "./components/MenuScreen.js";
 import ScrolStyleTest from "./components/ScrollBar.module.css"
 const App = () => {
 

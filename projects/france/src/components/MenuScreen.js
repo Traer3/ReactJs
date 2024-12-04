@@ -15,29 +15,28 @@ const MenuScreen = ()=>{
 
     return (
         <div>
+        
         <div className={`${MenuStyle.menuPanel} ${menuButton ? MenuStyle.menuPanelOpen : ""}`}>
-            <h1/>
-            <div onClick={()=>setMenuButton(!menuButton)}>
-                 <Creatura/> 
-            </div>
+
+            <div className={MenuStyle.menuFlex}>
+            <div onClick={()=>setMenuButton(!menuButton)}> <Creatura/> </div>
             <GraphicBasics/>        
-            <JavaScriptBasics/>   
-            
+            <JavaScriptBasics />   
+            </div>
 
         </div>
+
         <button 
                 className={menuButton ? MenuStyle.menuButton : MenuStyle.lonelyButton}
                 onClick={toggleMenu}
-                >
-                <img 
-                className={MenuStyle.menuIcon}
-                alt="dontHaveOne"
-                src={MenuIcon} 
-                ></img>
+               >
+                    <img 
+                     className={MenuStyle.menuIcon}
+                     alt="dontHaveOne"
+                     src={MenuIcon} 
+                    />
         </button>
-        
-        
-            
+
         </div>
     );
 };

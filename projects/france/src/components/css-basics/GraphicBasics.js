@@ -12,14 +12,21 @@ const GraphicBasics = () => {
             <button className={style.buttonsOnMenu} onClick={showItemList}>
                  css-basics
             </button>
-
-            <div className={`${style.listOfTopics} ${items ? style.listOfTopicsVisible : ""}`}>
+        {
+            items ? (
+                <div className={`${style.listOfTopics} ${items ? style.listOfTopicsVisible : ""}`}>
                 <button className={style.buttonsOnList}>Компонентный подход</button>
                 <button className={style.buttonsOnList}>Динамические стили</button>
             </div>
+            ) : (
+            <></>)
+        }
 
         </div>
     );
 };
 
+
+
 export default GraphicBasics;
+
