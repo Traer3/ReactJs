@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import style from "../css/MenuScreen.module.css"
 const TerminalWindow = () => {
 
     const [position, setPosition] = useState({x:0, y:0});
@@ -28,20 +28,12 @@ const TerminalWindow = () => {
 
 
     return(
-        <div style={{
+        <div className={style.TerminalWindow}
+        style={{
             position:'absolute',
             top:`${position.y}px`,
             left:`${position.x}px`,
-            border:'2px solid white',
-            width:'300px',
-            height:'300px',
             cursor: isDragging ? 'grabbing' : 'grab',
-
-            background:'rgba(0,0,0, 0.5)',
-            backdropFilter:'blur(5px)',
-
-            color:'white',
-            padding:'4px'
         }}
         
         onMouseDown={handleMouseDown}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import style from "../css/MenuScreen.module.css"
 
 const SummaryWindow  = () => {
     const [position, setPosition] = useState({x:0, y:0});
@@ -27,27 +28,12 @@ const SummaryWindow  = () => {
 
 
     return(
-        <div style={{
+        <div className={style.SummaryWindow}
+        style={{
             position:'absolute',
             top:`${position.y}px`,
             left:`${position.x}px`,
-            width:'300px',
-            height:'450px',
             cursor: isDragging ? 'grabbing' : 'grab',
-
-            
-            background:'rgba(230,90,232, 0.8)',
-            backdropFilter:'blur(5px)',
-            boxShadow:`
-                0 0 15px rgba(230, 90, 232, 0.8), 
-                0 0 30px rgba(230, 90, 232, 0.6),
-                0 0 45px rgba(230, 90, 232, 0.4)`,
-
-            color:'rgb(116, 26, 143)',
-            fontSize:'14px',
-            fontWeight:'bold',
-            padding:'4px',
-            
         }}
         
         onMouseDown={handleMouseDown}
