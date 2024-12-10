@@ -1,7 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "../css/MenuScreen.module.css"
 
-const SummaryWindow  = () => {
+const SummaryWindow  = ({filePath}) => {
+
+    const [content, setContent] = useState("");
+
+    useEffect(()=>{
+        const fetchContent = async () =>{
+            try{
+                const response = await fetch(filePath);
+                const text = await response.text();
+                setContent(text);
+            }catch (error){
+                console.log(error);
+            }
+        };
+        fetchContent();
+    },[filePath]);
+
     const [position, setPosition] = useState({x:0, y:0});
     const [isDragging, setIsDragging] = useState(false);
     const [offset, setOffset] = useState({x:0, y:0});
@@ -41,7 +57,7 @@ const SummaryWindow  = () => {
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
         >
-        working summary
+            {content}
         </div>
     );
 };

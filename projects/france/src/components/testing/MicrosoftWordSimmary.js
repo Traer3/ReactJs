@@ -35,8 +35,6 @@ const MicrosoftWordSimmary = () =>{
             dangerouslySetInnerHTML={{ __html: content}}
             >
             
-            
-
             </div>
         </div>
     );
