@@ -50,6 +50,7 @@ const SummaryWindow  = ({filePath}) => {
             top:`${position.y}px`,
             left:`${position.x}px`,
             cursor: isDragging ? 'grabbing' : 'grab',
+            marginLeft:'50vw'
         }}
         
         onMouseDown={handleMouseDown}

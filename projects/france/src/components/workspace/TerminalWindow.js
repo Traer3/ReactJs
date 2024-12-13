@@ -34,6 +34,7 @@ const TerminalWindow = () => {
             top:`${position.y}px`,
             left:`${position.x}px`,
             cursor: isDragging ? 'grabbing' : 'grab',
+            marginLeft:'30vw'
         }}
         
         onMouseDown={handleMouseDown}
