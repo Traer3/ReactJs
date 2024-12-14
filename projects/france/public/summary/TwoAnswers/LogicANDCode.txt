@@ -1,0 +1,21 @@
+<div>
+{items && (
+            <div className={`${style.listOfTopics} ${items ? style.listOfTopicsVisible : ""}`}>
+                <button
+                    className={style.buttonsOnList}
+                    onClick={() => toggleTopic("componentApproach")}
+                >
+                    Компонентный подход
+                </button>
+                    {topicsState.componentApproach && <ComponentApproach />}
+
+                <button
+                    className={style.buttonsOnList}
+                    onClick={() => toggleTopic("dynamicStyles")}
+                >
+                    Динамические стили
+                </button>
+                    {topicsState.dynamicStyles && <DynamicStyles />}
+            </div>
+)}
+</div>

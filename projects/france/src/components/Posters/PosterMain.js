@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import style from "../css/MenuScreen.module.css"
-import ComponentApproach from "./base/ComponentApproach";
-import DynamicStyles from "./base/DynamicStyles";
+import TwoAnswers from "./TwoAnswers";
 
-const GraphicBasics = () => {
+const PosterMain = () =>{
+
     const [items, setItems] = useState(false);
 
     const showItemList = () => {
@@ -14,6 +14,7 @@ const GraphicBasics = () => {
     const [topicsState, setTopicsState] = useState({
         componentApproach: false,
         dynamicStyles: false,
+        twoAnswers: false,
     });
 
     const toggleTopic = (topic) => {
@@ -23,38 +24,24 @@ const GraphicBasics = () => {
         }));
     };
 
-
-
     return(
-        
-
-        
-        <div >
+        <div>
             <button className={style.buttonsOnMenu} onClick={showItemList}>
-                 css-basics
+                 Posters
             </button>
-        {items && (
+
+            {items && (
                 <div className={`${style.listOfTopics} ${items ? style.listOfTopicsVisible : ""}`}>
                     
                     <button className={style.buttonsOnList} 
-                            onClick={()=> toggleTopic("componentApproach")}
-                        > Компонентный подход
+                            onClick={()=>toggleTopic("twoAnswers")}
+                        > Два ответа
                     </button>
-                    {topicsState.componentApproach && <ComponentApproach/>}
-
-                    <button className={style.buttonsOnList} 
-                            onClick={()=>toggleTopic("dynamicStyles")}
-                        > Динамические стили
-                    </button>
-                    {topicsState.dynamicStyles && <DynamicStyles/>}
+                    {topicsState.twoAnswers && <TwoAnswers/>}
                 </div>
-        )}
+            )}
+
         </div>
-        
     );
 };
-
-
-
-export default GraphicBasics;
-
+export default PosterMain;

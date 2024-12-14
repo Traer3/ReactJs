@@ -2,8 +2,7 @@ import React, { useState }  from "react";
 import MenuIcon from "../icons/menuIcon.png"
 import MenuStyle from "./css/MenuScreen.module.css"
 import Creatura from "./Creatura";
-import GraphicBasics from "./css-basics/GraphicBasics";
-import JavaScriptBasics from "./JavaScript/JavaScriptBasics";
+import PosterMain from "./Posters/PosterMain";
 
 const MenuScreen = ()=>{
     const [menuButton,setMenuButton] = useState(false);
@@ -20,8 +19,9 @@ const MenuScreen = ()=>{
 
             <div className={MenuStyle.menuFlex}>
             <div onClick={()=>setMenuButton(!menuButton)}> <Creatura/> </div>
-            <GraphicBasics/>        
-            <JavaScriptBasics />   
+             
+            
+            <PosterMain/>
             </div>
 
         </div>

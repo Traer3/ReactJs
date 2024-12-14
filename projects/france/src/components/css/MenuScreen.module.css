@@ -76,7 +76,7 @@
     margin: 5px;
     font-family: Arial, sans-serif;
     font-size: 16px;
-    text-align: center;
+    
     font-weight: bolder;
 }
 
@@ -90,7 +90,7 @@
     width: 140px;
     font-family: Arial, sans-serif;
     font-size: 16px;
-    text-align: center;
+    
     font-weight: bolder;
     opacity: 0;
     transform: translateY(-10px);
@@ -116,7 +116,6 @@
     width: 120px;
     font-family: Arial, sans-serif;
     font-size: 12px;
-    text-align: center;
     font-weight: bolder;
 }
 
@@ -133,6 +132,10 @@
     font-family: Arial, sans-serif;
     font-size: 14px;
     font-weight: bold;
+    
+    white-space: pre-wrap;
+    overflow-y: auto;
+    text-align: left;
 }
 
 .TerminalWindow{

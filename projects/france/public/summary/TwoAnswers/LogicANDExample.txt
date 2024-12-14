@@ -1,0 +1,11 @@
+console.log(true && "Hello"); // "Hello"
+console.log(false && "Hello"); // false
+
+Точно так же в JSX
+
+const isVisible = true;
+return (
+    <div>
+        {isVisible && <p>Я видим!</p>} {/* Рендерится <p>Я видим!</p> */}
+    </div>
+);
