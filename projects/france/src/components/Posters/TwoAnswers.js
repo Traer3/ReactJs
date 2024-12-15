@@ -14,15 +14,6 @@ const TwoAnswers = () => {
     
     return(
         <div>
-            <div style={{
-                marginBotom:'',
-                marginTop:"",
-                bottom:"",
-                border:'1px rgba(255,80,80,0.3)',
-                background:'rgba(255,80,80,0.2)',
-            }}>
-
-            </div>
             <SummaryWindow customStyle={{
                 marginTop:'-146px',
                 marginLeft:'200px',
