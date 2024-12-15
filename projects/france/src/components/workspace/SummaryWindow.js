@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "../css/MenuScreen.module.css"
 
-const SummaryWindow  = ({filePath}) => {
+const SummaryWindow  = ({filePath , customStyle}) => {
 
     const [content, setContent] = useState("");
 
@@ -50,7 +50,7 @@ const SummaryWindow  = ({filePath}) => {
             top:`${position.y}px`,
             left:`${position.x}px`,
             cursor: isDragging ? 'grabbing' : 'grab',
-            marginLeft:'50vw'
+            ...customStyle,
         }}
         
         onMouseDown={handleMouseDown}

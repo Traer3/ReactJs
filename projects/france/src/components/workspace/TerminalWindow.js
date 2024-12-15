@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "../css/MenuScreen.module.css"
-const TerminalWindow = ({filePath}) => {
+const TerminalWindow = ({filePath, customStyle}) => {
 
     const [content, setContent] = useState("");
 
@@ -49,7 +49,7 @@ const TerminalWindow = ({filePath}) => {
             top:`${position.y}px`,
             left:`${position.x}px`,
             cursor: isDragging ? 'grabbing' : 'grab',
-            marginLeft:'30vw'
+            ...customStyle,
         }}
         
         onMouseDown={handleMouseDown}
