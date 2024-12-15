@@ -13,9 +13,14 @@ const TwoAnswers = () => {
     
     return(
         <div>
-            <TerminalWindow filePath={ternaryCode}/>
-            <SummaryWindow filePath={ternaryOperatorData}/>
+            <div>
             <SummaryWindow filePath={logicAND}/>
+            <TerminalWindow filePath={ternaryCode}/>
+            </div>
+            
+            <SummaryWindow filePath={ternaryOperatorData}/>
+           
+
             <TerminalWindow filePath={logicANDExample}/>
             <TerminalWindow filePath={logicANDCode}/>
         </div>
