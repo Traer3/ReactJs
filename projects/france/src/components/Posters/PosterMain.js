@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import style from "../css/MenuScreen.module.css"
 import TwoAnswers from "./TwoAnswers";
+import DisplayElements from "./DisplayElements";
 
 const PosterMain = () =>{
 
@@ -12,9 +13,10 @@ const PosterMain = () =>{
 
 
     const [topicsState, setTopicsState] = useState({
-        componentApproach: false,
-        dynamicStyles: false,
+        
+        
         twoAnswers: false,
+        displayElements: false,
     });
 
     const toggleTopic = (topic) => {
@@ -38,6 +40,12 @@ const PosterMain = () =>{
                         > Два ответа
                     </button>
                     {topicsState.twoAnswers && <TwoAnswers/>}
+
+                    <button className={style.buttonsOnList} 
+                            onClick={()=>toggleTopic("displayElements")}
+                        > Отображение элементов
+                    </button>
+                    {topicsState.displayElements && <DisplayElements/>}
                 </div>
             )}
 

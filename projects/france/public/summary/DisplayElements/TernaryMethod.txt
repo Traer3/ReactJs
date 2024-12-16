@@ -1,0 +1,22 @@
+<div> 
+     {
+      menuButton ? (<TrueTag/>) : (<FalseTag/>)
+     }
+</div>
+
+
+<div>
+     {button className={TrueFalse ? styleTrue : styleFalse}}/>
+</div>
+
+
+
+<div className={style.SummaryWindow}
+        style={{
+            position:'absolute',
+            top:`${position.y}px`,
+            left:`${position.x}px`,
+            cursor: isDragging ? 'grabbing' : 'grab',
+            ...customStyle,
+        }}
+/>
