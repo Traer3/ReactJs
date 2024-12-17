@@ -5,6 +5,7 @@ import DisplayElements from "./DisplayElements";
 import FLEXBox from "./FLEXBox";
 import StyleUsage from "./StyleUsage";
 import ProblemsWithStyles from "./ProblemsWithStyles";
+import Position from "./Postion";
 
 const PosterMain = () =>{
 
@@ -23,6 +24,7 @@ const PosterMain = () =>{
         flexBox:false,
         styleUsage:false,
         problemsWithStyles:false,
+        position:false,
     });
 
     const toggleTopic = (topic) => {
@@ -70,6 +72,13 @@ const PosterMain = () =>{
                         > Проблема со стилями 
                     </button>
                     {topicsState.problemsWithStyles && <ProblemsWithStyles/>}
+
+                    <button className={style.buttonsOnList} 
+                            onClick={()=>toggleTopic("position")}
+                        > Positions
+                    </button>
+                    {topicsState.position && <Position/>}
+                    
                 </div>
             )}
 

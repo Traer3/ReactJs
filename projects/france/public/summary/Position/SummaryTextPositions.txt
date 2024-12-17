@@ -1,0 +1,2 @@
+textAlign применяются только к тексту 
+justifyContent к содержимому в flex елементах
