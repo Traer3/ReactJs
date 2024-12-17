@@ -1,0 +1,7 @@
+<div>
+     style={{
+     display: 'flex',
+     justifyContent:'center',
+}}>
+	<PosterExample/>
+</div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import style from "../css/MenuScreen.module.css"
 import TwoAnswers from "./TwoAnswers";
 import DisplayElements from "./DisplayElements";
+import FLEXBox from "./FLEXBox";
 
 const PosterMain = () =>{
 
@@ -17,6 +18,7 @@ const PosterMain = () =>{
         
         twoAnswers: false,
         displayElements: false,
+        flexBox:false,
     });
 
     const toggleTopic = (topic) => {
@@ -46,6 +48,12 @@ const PosterMain = () =>{
                         > Отображение элементов
                     </button>
                     {topicsState.displayElements && <DisplayElements/>}
+
+                    <button className={style.buttonsOnList} 
+                            onClick={()=>toggleTopic("flexBox")}
+                        > FLEX контейнеры
+                    </button>
+                    {topicsState.flexBox && <FLEXBox/>}
                 </div>
             )}
 
