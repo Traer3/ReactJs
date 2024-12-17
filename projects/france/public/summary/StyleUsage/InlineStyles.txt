@@ -1,0 +1,17 @@
+import React from "react";
+
+const InlineButton = () => {
+	return(
+		<button style={{
+			border: '1px solid red',
+			padding: '20px',
+			color: 'lightwite',
+			backgroundColor: 'lighpink',
+			width: '200px',
+			height: '200px',
+			textAlign: 'center',
+			fontSize: '20px',
+			}}> Push
+		</button>
+	);
+};

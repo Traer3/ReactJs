@@ -3,6 +3,7 @@ import style from "../css/MenuScreen.module.css"
 import TwoAnswers from "./TwoAnswers";
 import DisplayElements from "./DisplayElements";
 import FLEXBox from "./FLEXBox";
+import StyleUsage from "./StyleUsage";
 
 const PosterMain = () =>{
 
@@ -19,6 +20,7 @@ const PosterMain = () =>{
         twoAnswers: false,
         displayElements: false,
         flexBox:false,
+        styleUsage:false,
     });
 
     const toggleTopic = (topic) => {
@@ -54,6 +56,12 @@ const PosterMain = () =>{
                         > FLEX контейнеры
                     </button>
                     {topicsState.flexBox && <FLEXBox/>}
+
+                    <button className={style.buttonsOnList} 
+                            onClick={()=>toggleTopic("styleUsage")}
+                        > Использование стилей
+                    </button>
+                    {topicsState.styleUsage && <StyleUsage/>}
                 </div>
             )}
 

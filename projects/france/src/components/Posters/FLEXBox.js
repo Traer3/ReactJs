@@ -12,7 +12,7 @@ const divWithBoxes = "/summary/FlexBox/DivWithBoxes.txt"
 const summartDWB = "/summary/FlexBox/SummartDWB.txt"
 
 const boxes = "/summary/FlexBox/Boxes.txt"
-const SummaryB = "/summary/FlexBox/SummaryB.txt"
+const summaryB = "/summary/FlexBox/SummaryB.txt"
 
 
 
@@ -56,7 +56,7 @@ const FLEXBox = () => {
             <SummaryWindow customStyle={{
                 marginTop:'-146px',
                 marginLeft:'980px',
-            }} filePath={SummaryB}/>
+            }} filePath={summaryB}/>
             <TerminalWindow customStyle={{
                 marginTop:'-95px',
                 marginLeft:'980px',
