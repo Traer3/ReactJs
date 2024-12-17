@@ -4,6 +4,7 @@ import TwoAnswers from "./TwoAnswers";
 import DisplayElements from "./DisplayElements";
 import FLEXBox from "./FLEXBox";
 import StyleUsage from "./StyleUsage";
+import ProblemsWithStyles from "./ProblemsWithStyles";
 
 const PosterMain = () =>{
 
@@ -21,6 +22,7 @@ const PosterMain = () =>{
         displayElements: false,
         flexBox:false,
         styleUsage:false,
+        problemsWithStyles:false,
     });
 
     const toggleTopic = (topic) => {
@@ -62,6 +64,12 @@ const PosterMain = () =>{
                         > Использование стилей
                     </button>
                     {topicsState.styleUsage && <StyleUsage/>}
+
+                    <button className={style.buttonsOnList} 
+                            onClick={()=>toggleTopic("problemsWithStyles")}
+                        > Проблема со стилями 
+                    </button>
+                    {topicsState.problemsWithStyles && <ProblemsWithStyles/>}
                 </div>
             )}
 

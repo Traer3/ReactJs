@@ -1,0 +1,12 @@
+<div>
+<div className={MenuStyle.menuPanel}>
+	<div className={MenuStyle.menuFlex}>
+	<h1/>
+	<div onClick={()=>setMenuButton(!menuButton)}>
+		<Creatura/>
+	</div>
+	<GraphicBasics/>
+	<JavaScriptBasics/>
+	</div>
+</div>
+</div>
