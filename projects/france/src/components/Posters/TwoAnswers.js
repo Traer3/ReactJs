@@ -24,7 +24,7 @@ const TwoAnswers = () => {
             }} filePath={logicAND}/>
 
             <TerminalWindow customStyle={{
-                marginTop:'-50px',
+                marginTop:'-30px',
                 marginLeft:'200px',
                 border:'2px solid rgba(255,80,80,0.3)',
             }} filePath={logicANDExample}/>
@@ -38,13 +38,13 @@ const TwoAnswers = () => {
             }} filePath={ternaryOperatorData}/>
 
             <TerminalWindow customStyle={{
-                marginTop:'-60px',
+                marginTop:'-50px',
                 marginLeft:'800px',
                 border:'2px solid rgba(80,255,80,0.3)',
             }} filePath={ternaryCode}/>
 
             <TerminalWindow  customStyle={{
-                marginTop:'280px',
+                marginTop:'290px',
                 marginLeft:'800px',
                 border:'2px solid rgba(80,255,80,0.3)',
             }} filePath={logicANDCode}/>

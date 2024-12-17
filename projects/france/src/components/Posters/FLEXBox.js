@@ -19,11 +19,6 @@ const summaryB = "/summary/FlexBox/SummaryB.txt"
 const FLEXBox = () => {
     return(
         <div>
-            <img  style={{
-               marginTop:'-300px',
-               marginLeft:'1380px',  
-            }} src={example} alt=""/>
-
             <SummaryWindow customStyle={{
                 marginTop:'-146px',
                 marginLeft:'210px',

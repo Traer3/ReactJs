@@ -42,23 +42,43 @@ const SummaryWindow  = ({filePath , customStyle}) => {
         setIsDragging(false);
     };
 
+    const [closeButton, setCloseButton] = useState(true);
+
+    const closeWindow = () => {
+        setCloseButton(!closeButton);
+    }
+
 
     return(
-        <div className={style.SummaryWindow}
-        style={{
-            position:'absolute',
-            top:`${position.y}px`,
-            left:`${position.x}px`,
-            cursor: isDragging ? 'grabbing' : 'grab',
-            ...customStyle,
-        }}
-        
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
-        >
-            {content}
+        <div>
+            
+            {closeButton && (
+
+            <div className={style.SummaryWindow}
+            style={{
+                position:'absolute',
+                top:`${position.y}px`,
+                left:`${position.x}px`,
+                cursor: isDragging ? 'grabbing' : 'grab',
+                ...customStyle,
+            }}
+            
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            >
+                <button style={{
+                    color:'red',
+                    padding:'0px',
+                    border:'0px',
+                    backgroundColor:'transparent',
+                    fontWeight:'bolder',
+                    float:'right',
+                }} onClick={closeWindow}>X</button>
+                {content}
+            </div>
+            )}
         </div>
     );
 };
