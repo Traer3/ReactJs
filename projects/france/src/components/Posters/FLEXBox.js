@@ -2,9 +2,6 @@ import React from "react";
 import SummaryWindow from "../workspace/SummaryWindow";
 import TerminalWindow from "../workspace/TerminalWindow";
 
-
-const example = "summary/FlexBox/flexImage.png"
-
 const mainDivContainer = "/summary/FlexBox/MainDivContainer.txt"
 const summaryMDC = "/summary/FlexBox/SummaryMDC.txt"
 
