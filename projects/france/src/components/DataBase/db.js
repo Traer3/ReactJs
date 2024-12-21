@@ -1,5 +1,7 @@
 const express = require('express');
 const knex = require('knex');
+const cors = require('cors');
+const requestIp = require('request-ip');
 
 const db = knex({
     client:'sqlite3',
@@ -19,12 +21,15 @@ db.schema.hasTable('connections').then((exists)=>{
     }
 });
 
+
 const app = express();
 
+app.use(cors());
 app.use(express.json());
+app.use(requestIp.mw());
 
 app.post('/connect',(req,res)=>{
-    const ip = req.ip;
+    const ip = req.clientIp || req.ip;
     db('connections')
         .insert({ip})
         .then(()=> res.status(201).send('IP saved'))

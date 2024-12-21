@@ -10,14 +10,14 @@ const App = () => {
   const [connections, setConnections] = useState([]);
 
   useEffect(()=>{
-    fetch('/connections')
-      .then((res) = res.json())
+    fetch('http://localhost:3001/connections')
+      .then((res) => res.json())
       .then((data) => setConnections(data))
       .catch((err)=> console.log(err));
   },[]);
 
   const handleConnect = () =>{
-    fetch('/connect',{method:'POST'})
+    fetch('http://localhost:3001/connect',{method:'POST'})
       .then((res)=>res.text())
       .then((message)=>console.log(message))
       .catch((err)=> console.error(err));
@@ -39,12 +39,14 @@ const App = () => {
                 {shootingStars}
          </div> 
       </div>
+
       <button onClick={handleConnect}>Connect</button>
         <ul>{connections.map((conn)=>(
-            <li key={conn.id}>{conn.ip} - {new Date(conn.connected_at).toLocaleString()}</li>
+            <li style={{color:'white'}} key={conn.id}>{conn.ip} - {new Date(conn.connected_at).toLocaleString()}</li>
             ))}
         </ul>
       
+
       <MenuScreen/>
 
     </div>
