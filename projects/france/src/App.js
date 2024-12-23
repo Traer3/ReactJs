@@ -10,6 +10,7 @@ const App = () => {
   const [connections, setConnections] = useState([]);
 
   useEffect(()=>{
+    //fetch('http://192.168.0.11:3001/connections')
     fetch('http://localhost:3001/connections')
       .then((res) => res.json())
       .then((data) => setConnections(data))
@@ -17,6 +18,7 @@ const App = () => {
   },[]);
 
   const handleConnect = () =>{
+    //fetch('http://192.168.0.11:3001/connect',{method:'POST'})
     fetch('http://localhost:3001/connect',{method:'POST'})
       .then((res)=>res.text())
       .then((message)=>console.log(message))
