@@ -70,7 +70,7 @@
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 10px rgba(95,145,255,0.2);
     height: 40px;
-    width: calc(100%-20px);
+    
     max-width: 120px;
     margin: 5px;
     font-family: Arial, sans-serif;

@@ -8,7 +8,7 @@ const requireIp = require('request-ip');
 const DB = knex({
     client: 'sqlite3',
     connection: {
-        filename: path.join(__dirname,'..', 'data.db')
+        filename: path.join(__dirname, 'data.db')
     },
     useNullAsDefault: true,
 });
