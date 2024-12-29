@@ -8,14 +8,14 @@ const App = () => {
   const [connections, setConnections] = useState([]);
 
   useEffect(()=>{
-    fetch('http://192.168.0.254:3001/connections')
+    fetch('http://192.168.0.11:3001/connections')
       .then((res) => res.json())
       .then((data) => setConnections(data))
       .catch((err)=> console.log(err));
   },[]);
 
   const handleConnect = () =>{
-    fetch('http:///192.168.0.254:3001/connect',{method:'POST'})
+    fetch('http:///192.168.0.11:3001/connect',{method:'POST'})
       .then((res)=>res.text())
       .then((message)=>console.log(message))
       .catch((err)=> console.error(err));
