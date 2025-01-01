@@ -1,25 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Stars from "./components/css/Stars.module.css"
 import MenuScreen from "./components/MenuScreen.js";
-import ScrolStyleTest from "./components/ScrollBar.module.css"
+import Joining from "./components/Log In/Joining.js";
 
 const App = () => {
 
-  const [connections, setConnections] = useState([]);
-
-  useEffect(()=>{
-    fetch('http://192.168.0.11:3001/connections')
-      .then((res) => res.json())
-      .then((data) => setConnections(data))
-      .catch((err)=> console.log(err));
-  },[]);
-
-  const handleConnect = () =>{
-    fetch('http:///192.168.0.11:3001/connect',{method:'POST'})
-      .then((res)=>res.text())
-      .then((message)=>console.log(message))
-      .catch((err)=> console.error(err));
-  };
 
 
   const shootingStars = Array(10).fill(null).map((_, index)=>(
@@ -28,7 +13,7 @@ const App = () => {
 
  
   return (
-    <div className={ScrolStyleTest.scrollbar}>
+    <div>
       <div className={Stars.body} >
          <div 
            style={{ transform: 'rotateZ(45deg)',
@@ -38,14 +23,22 @@ const App = () => {
          </div> 
       </div>
 
-      <button onClick={handleConnect}>Connect</button>
-        <ul>{connections.map((conn)=>(
-            <li style={{color:'white'}} key={conn.id}>{conn.ip} - {new Date(conn.connected_at).toLocaleString()}</li>
-            ))}
-        </ul>
-      
+      <div>
+           <MenuScreen/>
+      </div>
 
-      <MenuScreen/>
+      <div style={{
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center',
+        height:'80vh',
+        width:'100vw',
+      }}>
+           <Joining/>
+      </div>
+
+      
+      
 
     </div>
   );
