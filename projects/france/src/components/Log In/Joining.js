@@ -6,24 +6,31 @@ const Joining = () => {
     const [login, setLogin] = useState("");
     const [password,setPassword] = useState("");
 
-    const [tableData, setTableData] = useState(null);
-    const [showTable, setShowTable] = useState(false);
+    const [users, setUsers] = useState([]);
+
+
    
-
-   const loginChange = (event) => {
-        setLogin(event.target.value);
+   const handleLoginChange = (event) => {
+    setLogin(event.target.value);
    };
 
-   const passChange = (event) =>{
-        setPassword(event.target.value);
+   const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
    };
 
-   const handleSubmit = (event) =>{
-        event.preventDefault();
-        setTableData({login, password});
-        setShowTable(true)
-   }
-
+   const handleAddUser = (event) => {
+    event.preventDefault();
+        if(login && password){
+            setUsers((prevUsers)=>[
+                ...prevUsers,
+                { id: prevUsers.length + 1, login, password},
+            ]);
+            setLogin("");
+            setPassword("");
+        }else{
+            alert("Fill the filds")
+        }
+   };
 
     
     return(
@@ -36,36 +43,61 @@ const Joining = () => {
                 alignItems:'center'
             }}
         >
-            <form onSubmit={handleSubmit} >
+            <form style={{
+                display:'flex',
+                flexDirection:'column',
+                alignItems:'center'
+            }} onSubmit={handleAddUser} >
                 <input 
                     type="text" 
                     value={login} 
-                    onChange={loginChange} 
+                    onChange={handleLoginChange} 
                     placeholder="login"
                 />
                 <input 
                     type="password" 
                     value={password} 
-                    onChange={passChange}
+                    onChange={handlePasswordChange}
                     placeholder="password"
                 />
                 <button type="submit">join</button>
             </form>
 
-            {showTable && tableData &&(
-                <div style={{
-                    border:'1px solid red',
-                    width:'250px',
-                    height:'450px',
-                    padding:'0px',
-                    fontSize:'12px',
+            {users.length > 0  &&(
+                <table style={{
+                    marginTop:'20px',
+                    borderCollapse:'collapse',
+                    width:'300px',
                     textAlign:'left',
-                 }}
-                >
-                    <p>ID: 1</p>
-                    <p>User: {tableData.login}</p>
-                    <p>Password:{tableData.password}</p>
-                </div>
+                 }}> 
+                <thead>
+                        <tr>
+                            <th style={{border:'1px solid rgba(62, 94, 157)', padding:'5px'}}>
+                                ID
+                            </th>
+                            <th style={{border:'1px solid rgba(62, 94, 157)', padding:'5px'}}>
+                                Login
+                            </th><th style={{border:'1px solid rgba(62, 94, 157)', padding:'5px'}}>
+                                Password
+                            </th>
+                        </tr>
+                </thead>
+                 <tbody>
+                    {users.map((user)=>(
+                        <tr key={user.id}>
+                            <td style={{border:'1px solid rgba(62, 94, 157)', padding:'5px'}}>
+                                {user.id}
+                            </td>
+                            <td style={{border:'1px solid rgba(62, 94, 157)', padding:'5px'}}>
+                                {user.login}
+                            </td>
+                            <td style={{border:'1px solid rgba(62, 94, 157)', padding:'5px'}}>
+                                {user.password}
+                            </td>
+                        </tr>
+                    ))}
+                 </tbody>
+                </table>
             )}
         </div>
     );
