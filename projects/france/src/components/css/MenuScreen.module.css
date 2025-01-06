@@ -159,6 +159,25 @@
     font-size: 16px;
     text-align: center;   
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    table{
+        margin-top: 20px;
+        border-collapse: collapse;
+        width: 300px;
+        text-align: left;
+    }
+
     input{
         margin: 5px;
         border: 1px rgba(95,145,255,0.3);
@@ -185,5 +204,15 @@
         font-size: 16px;
         text-align: center;   
     }
+    th{
+        border: 1px solid rgba(62, 94, 157);
+        padding: 5px;
+    }
+    td{
+        border: 1px solid rgba(62, 94, 157);
+        padding: 5px;
+    }
+    
+    
   
 }

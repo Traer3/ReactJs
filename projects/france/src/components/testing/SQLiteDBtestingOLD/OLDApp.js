@@ -15,7 +15,7 @@ const App = () => {
   },[]);
 
   const handleConnect = () =>{
-    fetch('http:///192.168.0.11:3001/connect',{method:'POST'})
+    fetch('http://192.168.0.11:3001/connect',{method:'POST'})
       .then((res)=>res.text())
       .then((message)=>console.log(message))
       .catch((err)=> console.error(err));
@@ -41,7 +41,12 @@ const App = () => {
 
       <button onClick={handleConnect}>Connect</button>
         <ul>{connections.map((conn)=>(
-            <li style={{color:'white'}} key={conn.id}>{conn.ip} - {new Date(conn.connected_at).toLocaleString()}</li>
+            <li 
+              style={{color:'white'}} 
+              key={conn.id}
+            >
+                {conn.ip} - {new Date(conn.connected_at).toLocaleString()}
+            </li>
             ))}
         </ul>
       
