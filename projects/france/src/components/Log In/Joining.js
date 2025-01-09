@@ -6,17 +6,15 @@ const Joining = () => {
     const [login, setLogin] = useState("");
     const [password,setPassword] = useState("");
     const [users, setUsers] = useState([]);
-    const [joined, setJoined] = useState([]);
-
-
+    
     useEffect(()=>{
         fetch('http://localhost:3001/registered')
            .then((res)=> res.json())
-           .then((data)=> setJoined(data))
+           .then((data)=> setUsers(data))
            .catch((err)=> console.log(err));
     },[]);
 
-   
+     
    const handleLoginChange = (event) => {
     setLogin(event.target.value);
    };
@@ -82,7 +80,7 @@ const Joining = () => {
             </form>
 
 
-            {joined.length > 0  &&(
+            {users.length > 0  &&(
                 <table> 
                 <thead>
                         <tr>
@@ -92,7 +90,7 @@ const Joining = () => {
                         </tr>
                 </thead>
                  <tbody>
-                    {joined.map((conn)=>(
+                    {users.map((conn)=>(
                         <tr key={conn.id}>
                             <td >{conn.id}</td>
                             <td >{conn.login}</td>
