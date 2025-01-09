@@ -1,7 +1,7 @@
 import React from "react";
 import Stars from "./components/css/Stars.module.css"
 import MenuScreen from "./components/MenuScreen.js";
-import Joining from "./components/Log In/Joining.js";
+import Authorization from "./components/Log In/Authorization.js";
 
 const App = () => {
 
@@ -27,15 +27,13 @@ const App = () => {
            <MenuScreen/>
       </div>
 
-      <div style={{
-        display:'flex',
-        alignItems:'center',
-        justifyContent:'center',
-        height:'80vh',
-        width:'100vw',
-      }}>
-           <Joining/>
-      </div>
+      
+          <div style={{
+            border:'3px solid white',
+            background:'red',
+          }}>
+            <Authorization/>
+          </div>
 
       
       

@@ -146,6 +146,7 @@
 }
 
 .LogIn{
+    
     border: 1px rgba(95,145,255,0.3);
     border-radius: 4px;
     background: rgba(95,145,255,0.2);
@@ -153,8 +154,8 @@
     box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 15px rgba(105,155,255,0.4);
     color: #ffffff;
     
-    min-height: 180px;
-    min-width: 250px;
+    height: min-content;
+    width: min-content;
     font-family: Arial, sans-serif;
     font-size: 16px;
     text-align: center;   
