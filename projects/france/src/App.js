@@ -1,7 +1,7 @@
 import React from "react";
 import Stars from "./components/css/Stars.module.css"
 import MenuScreen from "./components/MenuScreen.js";
-import Authorization from "./components/Log In/Authorization.js";
+import Authorization from "./components/LogIn/Authorization.js";
 
 const App = () => {
 
@@ -28,10 +28,7 @@ const App = () => {
       </div>
 
       
-          <div style={{
-            border:'3px solid white',
-            background:'red',
-          }}>
+          <div>
             <Authorization/>
           </div>
 
