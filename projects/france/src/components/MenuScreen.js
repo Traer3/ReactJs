@@ -6,36 +6,46 @@ import PosterMain from "./Posters/PosterMain";
 
 const MenuScreen = ()=>{
     const [menuButton,setMenuButton] = useState(false);
-
+    const [enableMenu, setEnableOpen] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
+ 
     const toggleMenu = () =>{
         setMenuButton(!menuButton);
+
+        setTimeout(() => {
+            setShowMenu(!showMenu)
+        }, 10);
+
+
+        setEnableOpen(!enableMenu);
+        
     }
+
     
 
     return (
         <div>
-        
-        <div className={`${MenuStyle.menuPanel} ${menuButton ? MenuStyle.menuPanelOpen : ""}`}>
-
-            <div className={MenuStyle.menuFlex}>
-            <div onClick={()=>setMenuButton(!menuButton)}> <Creatura/> </div>
-             
+            {enableMenu&&(
+                <div className={`${MenuStyle.menuPanel} ${showMenu && MenuStyle.menuPanelOpen }`}>
+                    <div >
+                        <div className={MenuStyle.menuFlex}>
+                            <Creatura/>
+                            <PosterMain/>
+                        </div>
+                    </div>
+                 </div>
+            )}
             
-            <PosterMain/>
-            </div>
-
-        </div>
-
-        <button 
-                className={menuButton ? MenuStyle.menuButton : MenuStyle.lonelyButton}
-                onClick={toggleMenu}
-               >
-                    <img 
-                     className={MenuStyle.menuIcon}
-                     alt="dontHaveOne"
-                     src={MenuIcon} 
-                    />
-        </button>
+            <button 
+                    className={menuButton ? MenuStyle.menuButton : MenuStyle.lonelyButton}
+                    onClick={toggleMenu}
+                >
+                        <img 
+                        className={MenuStyle.menuIcon}
+                        alt="dontHaveOne"
+                        src={MenuIcon} 
+                        />
+            </button>
 
         </div>
     );

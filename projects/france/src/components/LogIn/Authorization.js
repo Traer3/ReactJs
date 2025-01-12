@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import Joining from "./Joining";
+import React from "react";
+
 import Profile from "./Profile";
 
 const Authorization = () =>{
  
     return(
         <div style={{
-            border:'1px solid white',
+
             height:'100vh',
             width:'99vw',
         }}>

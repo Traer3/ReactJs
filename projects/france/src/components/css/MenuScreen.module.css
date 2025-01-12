@@ -43,8 +43,6 @@
     background-color: transparent;
     cursor: pointer;
     position: absolute;
-    left: 1%;
-    top: 1.5%;
     height: 30px;
     width: 30px;      
 }
@@ -57,8 +55,6 @@
     box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 10px rgba(105,155,255,0.4);
     cursor: pointer;
     position: absolute;
-    left: 0.9%;
-    top: 1.5%;
     height: 30px;
     width: 30px;   
 }
