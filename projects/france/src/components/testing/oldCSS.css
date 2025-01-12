@@ -1,0 +1,84 @@
+.LogIn{
+    
+    border: 1px rgba(95,145,255,0.3);
+    border-radius: 4px;
+    background: rgba(95,145,255,0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 15px rgba(105,155,255,0.4);
+    color: #ffffff;
+    
+    height: min-content;
+    width: min-content;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;   
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    table{
+        margin-top: 20px;
+        border-collapse: collapse;
+        width: 300px;
+        text-align: left;
+    }
+
+    input{
+        margin: 5px;
+        border: 1px rgba(95,145,255,0.3);
+        border-radius: 4px;
+        background: rgba(95,145,255,0.2);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 15px rgba(105,155,255,0.4);
+        background-color: rgb(62, 94, 157);
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        text-align: center;   
+        width: 15vh;
+    }
+    button{
+        margin: 8px;
+        border: 1px rgba(95,145,255,0.3);
+        border-radius: 4px;
+        background: rgba(95,145,255,0.2);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 15px rgba(105,155,255,0.4);
+        background-color: rgb(93, 141, 247);
+        width: 80px;
+        height: 30px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        text-align: center;   
+    }
+    th{
+        border: 1px solid rgba(62, 94, 157);
+        padding: 5px;
+    }
+    td{
+        border: 1px solid rgba(62, 94, 157);
+        padding: 5px;
+    }
+    
+}
+.userButton{
+    border: 1px rgba(95,145,255,0.3);
+    border-radius: 4px;
+    background: rgba(95,145,255,0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 10px rgba(105,155,255,0.4);
+    cursor: pointer;
+    
+    
+    height: 30px;
+    width: 30px;   
+    
+}

@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import creature from "../abominations/alice-aris.gif"
 import style from "./css/MenuScreen.module.css"
 import demands from "../abominations/aris-pum-paka-pam.mp3"
-const Creatura = () => {
+const Creatura = ({customStyle}) => {
     const [cratureState, setCreatureState] = useState(false);
 
     const deployment = ()=>{
@@ -35,7 +35,7 @@ const Creatura = () => {
                     alt="creature"
                     style={{
                         position:"absolute",
-                        transform: "translateX(600%) translateY(100%)",
+                        ...customStyle,
                         
                     }}
                 />

@@ -6,8 +6,9 @@ import PosterMain from "./Posters/PosterMain";
 
 const MenuScreen = ()=>{
     const [menuButton,setMenuButton] = useState(false);
-    const [enableMenu, setEnableOpen] = useState(false);
+    const [enableMenu, setEnableMenu] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
+
  
     const toggleMenu = () =>{
         setMenuButton(!menuButton);
@@ -16,26 +17,33 @@ const MenuScreen = ()=>{
             setShowMenu(!showMenu)
         }, 10);
 
-
-        setEnableOpen(!enableMenu);
+        setEnableMenu(true);   
         
     }
 
-    
+
 
     return (
         <div>
             {enableMenu&&(
-                <div className={`${MenuStyle.menuPanel} ${showMenu && MenuStyle.menuPanelOpen }`}>
-                    <div >
-                        <div className={MenuStyle.menuFlex}>
-                            <Creatura/>
-                            <PosterMain/>
+                <div>
+                    
+                    <div className={`${MenuStyle.menuPanel} ${showMenu && MenuStyle.menuPanelOpen }`}>
+                        
+
+                        <div>
+                            <div className={MenuStyle.menuFlex}>
+                                <Creatura  customStyle={{ transform: "translateX(600%) translateY(100%)",}}/>
+                                <PosterMain/>
+                                
+                            </div>
                         </div>
                     </div>
+
                  </div>
             )}
-            
+
+            <div>
             <button 
                     className={menuButton ? MenuStyle.menuButton : MenuStyle.lonelyButton}
                     onClick={toggleMenu}
@@ -46,6 +54,11 @@ const MenuScreen = ()=>{
                         src={MenuIcon} 
                         />
             </button>
+
+            
+            </div>
+            
+            
 
         </div>
     );

@@ -8,11 +8,11 @@ const Authorization = () =>{
         <div style={{
 
             height:'100vh',
-            width:'99vw',
+            width:'100vw',
         }}>
             <div style={{
                 float:'right',
-                marginRight:'5px',
+                marginRight:'2.3%',
             }}>
                
                 <div>
