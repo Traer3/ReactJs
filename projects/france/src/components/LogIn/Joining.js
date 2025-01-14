@@ -1,61 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import style from "../css/MenuScreen.module.css"
 
 const Joining = () => {
 
-    const [login, setLogin] = useState("");
-    const [password,setPassword] = useState("");
-    const [users, setUsers] = useState([]);
-    
-    useEffect(()=>{
-        fetch('http://localhost:3001/registered')
-           .then((res)=> res.json())
-           .then((data)=> setUsers(data))
-           .catch((err)=> console.log(err));
-    },[]);
+    const [login, setLogin] = useState('');
+    const [password,setPassword] = useState('');
 
-     
-   const handleLoginChange = (event) => {
-    setLogin(event.target.value);
-   };
+    const handleRegister = (event) =>{
+        event.preventDefault();
 
-   const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-   };
-
-   const handleConnect = () =>{
-    fetch('http://localhost:3001/joining',{
-         method:'POST',
-         headers:{'Content-Type': 'application/json'},
-         body: JSON.stringify({login,password}),
-    })
-        .then((res)=>{
-            if(res.ok){
-                return res.text();
-            }else{
-                throw new Error('Failed to connect');
-            }
-        })
-        .then((message) => console.log(message))
-        .catch((err) => console.error(err));
-    };
-
-   const handleAddUser = (event) => {
-    event.preventDefault();
-        if(login && password){
-            setUsers((prevUsers)=>[
-                ...prevUsers,
-                { id: prevUsers.length + 1, login, password},
-            ]);
-            handleConnect();
-            setLogin("");
-            setPassword("");
-        }else{
-            alert("Fill the filds")
+        if(!login || !password){
+            alert('Please fill out all fields')
+            return;
         }
-   };
 
-   
+        fetch('http://localhost:3001/register',{
+            method:'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({login, password}),
+        })
+            .then((res)=>res.json())
+            .then((data)=> alert(data.message))
+            .catch((err)=> console.error(err));
+    };
 
     
     return(
@@ -63,43 +30,22 @@ const Joining = () => {
             className={style.LogIn} 
             
         >
-            <form  onSubmit={handleAddUser} >
+            <form  onSubmit={handleRegister} >
                 <input 
                     type="text" 
                     value={login} 
-                    onChange={handleLoginChange} 
+                    onChange={(e) => setLogin(e.target.value)} 
                     placeholder="login"
                 />
                 <input 
                     type="password" 
                     value={password} 
-                    onChange={handlePasswordChange}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="password"
                 />
                 <button type="submit">join</button>
             </form>
 
-
-            {users.length > 0  &&(
-                <table> 
-                <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Login</th>
-                            <th>Password</th>
-                        </tr>
-                </thead>
-                 <tbody>
-                    {users.map((conn)=>(
-                        <tr key={conn.id}>
-                            <td >{conn.id}</td>
-                            <td >{conn.login}</td>
-                            <td >{conn.password}</td>
-                        </tr>
-                    ))}
-                 </tbody>
-                </table>
-            )}
         </div>
     );
 };
