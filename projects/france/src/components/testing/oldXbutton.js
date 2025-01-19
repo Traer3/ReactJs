@@ -1,14 +1,9 @@
+//Old button on terminal
 import React, { useEffect, useState } from "react";
 import style from "../css/MenuScreen.module.css"
 const TerminalWindow = ({filePath, customStyle}) => {
 
-    const [position, setPosition] = useState({x:0, y:0});
-    const [isDragging, setIsDragging] = useState(false);
-    const [offset, setOffset] = useState({x:0, y:0});
     const [content, setContent] = useState("");
-    const [closeButton, setCloseButton] = useState(true);
-
-    const [zIndex, setZIndex] = useState(0);
 
     useEffect(()=>{
         const fetchContent = async ()=> {
@@ -23,14 +18,16 @@ const TerminalWindow = ({filePath, customStyle}) => {
         fetchContent();
     },[filePath]);
 
+    const [position, setPosition] = useState({x:0, y:0});
+    const [isDragging, setIsDragging] = useState(false);
+    const [offset, setOffset] = useState({x:0, y:0});
+
     const handleMouseDown = (e) =>{
-        e.preventDefault();
         setIsDragging(true);
         setOffset({
             x: e.clientX - position.x,
             y: e.clientY - position.y,
         });
-        setZIndex(100)
     };
 
     const handleMouseMove = (e) =>{
@@ -43,18 +40,16 @@ const TerminalWindow = ({filePath, customStyle}) => {
 
     const handleMouseUp = () =>{
         setIsDragging(false);
-        setZIndex(0);
     };
 
-    const closeWindow = (event) =>{
-        if(event.button === 1){
-            setCloseButton(!closeButton);
-        }
-        
+    const [closeButton, setCloseButton] = useState(true);
+
+    const closeWindow = () => {
+        setCloseButton(!closeButton);
     }
 
     return(
-        <div onMouseDown={closeWindow}>
+        <div>
             {closeButton && (
             <div className={style.TerminalWindow}
             style={{
@@ -62,7 +57,6 @@ const TerminalWindow = ({filePath, customStyle}) => {
                 top:`${position.y}px`,
                 left:`${position.x}px`,
                 cursor: isDragging ? 'grabbing' : 'grab',
-                zIndex:zIndex,
                 ...customStyle,
             }}
             
@@ -71,6 +65,14 @@ const TerminalWindow = ({filePath, customStyle}) => {
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
             >
+                <button style={{
+                        color:'red',
+                        padding:'0px',
+                        border:'0px',
+                        backgroundColor:'transparent',
+                        fontWeight:'bolder',
+                        float:'right',
+                    }} onClick={closeWindow}>X</button>
                 {content}
             </div>
             )}

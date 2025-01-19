@@ -18,7 +18,6 @@ const PosterMain = () =>{
 
     const [topicsState, setTopicsState] = useState({
         
-        
         twoAnswers: false,
         displayElements: false,
         flexBox:false,

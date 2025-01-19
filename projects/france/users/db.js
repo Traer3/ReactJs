@@ -69,10 +69,10 @@ app.post('/register',async (req, res)=>{
     if(!login || !password){
         return res.status(400).json({message: 'Login and password are required'});
     }
-
     try{
         const hashedPassword = await bcrypt.hash(password, saltRounds);
-        await db('users').insert({login, password:hashedPassword});
+        await db('users')
+        .insert({login, password:hashedPassword});
         res.status(201).json({message:'User registered successfully'});
     } catch(err){
         res.status(500).json({error: err.message});
