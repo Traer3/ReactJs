@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Stars from "./components/css/Stars.module.css"
 import MenuScreen from "./components/MenuScreen.js";
 import Authorization from "./components/LogIn/Authorization.js";
@@ -11,7 +11,9 @@ const App = () => {
     <div key={index} className={Stars.shooting_star}  />
   ))
 
- 
+  const [userCheck, setUserCheck] = useState(false);
+  
+  
   return (
     <div>
       <div className={Stars.body} >
@@ -27,11 +29,17 @@ const App = () => {
            <MenuScreen/>
       </div>
 
-      
-          <div>
-            <Authorization/>
-          </div>
+      <div style={{
+            backgroundColor: userCheck ? 'green': 'red', 
+            display:'flex', 
+            alignItems:'center', 
+            justifyContent:'center'  }}>Test </div>
 
+      <div>
+          <Authorization setUserCheck={setUserCheck} />
+      </div>
+      
+      
       
       
 

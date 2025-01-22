@@ -94,6 +94,7 @@ app.post('/login',(req, res)=>{
             if(!user){
                 return res.status(404).json({message : 'User not found'});
             }
+           
             
             bcrypt.compare(password, user.password).then((isMatch)=>{
                 if(isMatch){

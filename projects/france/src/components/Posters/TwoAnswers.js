@@ -23,7 +23,7 @@ const TwoAnswers = () => {
                 boxShadow:'0 4px 10px rgba(250,80,80,0.2), 0 0 15px rgba(255,60,60,0.4)',
             }} filePath={logicAND}/>
 
-            <TerminalWindow customStyle={{
+            <TerminalWindow customStyle={{ 
                 marginTop:'-30px',
                 marginLeft:'200px',
                 border:'2px solid rgba(255,80,80,0.3)',

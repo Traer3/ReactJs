@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import style from "../css/MenuScreen.module.css"
 
-const Login = () =>{
+const Login = ({setUserCheck}) =>{
 
     const [login, setLogin] = useState('');
     const [password,setPassword] = useState('');
@@ -20,9 +20,15 @@ const Login = () =>{
             body: JSON.stringify({login, password}),
         })
             .then((res)=>res.json())
-            .then((data)=> alert(data.message))
+            .then((data) => {
+                    alert(data.message);
+                    if(data.message === "Login successful"){
+                        setUserCheck(true);
+                    }
+            })                
             .catch((err)=> console.error(err));
     }
+
 
     return(
         <div 

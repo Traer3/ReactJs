@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "../css/MenuScreen.module.css"
-const TerminalWindow = ({filePath, customStyle}) => {
+const TerminalWindow = ({filePath, customStyle}) => { 
 
     const [position, setPosition] = useState({x:0, y:0});
     const [isDragging, setIsDragging] = useState(false);

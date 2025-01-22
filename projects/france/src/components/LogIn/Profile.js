@@ -4,7 +4,7 @@ import MenuStyle from "../css/MenuScreen.module.css"
 import Creatura from "../Creatura";
 import Joining from "../LogIn/Joining"
 import Login from "./Login";
-const Profile = () => {
+const Profile = ({setUserCheck}) => {
     const [profileButton, setProfileButton] = useState(false)
     const [enableProfile, setEnableProfile] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
@@ -29,7 +29,7 @@ const Profile = () => {
                             <div className={MenuStyle.menuFlex}>
                             <Joining/>
                             <Creatura customStyle={{ transform: "translateX(-800%) translateY(100%)", }}/>
-                            <Login/>
+                            <Login setUserCheck={setUserCheck}/>
                             </div>
                     </div>
                 </div>
