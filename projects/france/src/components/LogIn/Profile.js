@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import UserIcon from "./userIcon.png"
 import MenuStyle from "../css/MenuScreen.module.css"
-import Creatura from "../Creatura";
+import Creatura from "../../abominations/Creatura";
 import Joining from "../LogIn/Joining"
 import Login from "./Login";
 const Profile = ({setUserCheck}) => {

@@ -116,6 +116,12 @@
     font-size: 12px;
     font-weight: bolder;
 }
+.checkMenu{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 2px;
+}
 
 .SummaryWindow{
     border: 1px rgba(95,145,255,0.3);
@@ -145,6 +151,7 @@
     text-align: left;
     white-space: pre-wrap;
 }
+
 
 .LogIn{
     

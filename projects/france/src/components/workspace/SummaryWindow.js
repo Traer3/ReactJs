@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import style from "../css/MenuScreen.module.css"
 
-const SummaryWindow  = ({filePath , customStyle}) => {
+const SummaryWindow  = ({filePath , customStyle,showSummaryWindow, setShowSummaryWindow}) => {
 
     const [position, setPosition] = useState({x:0, y:0});
     const [isDragging, setIsDragging] = useState(false);
     const [offset, setOffset] = useState({x:0, y:0});
-    const [closeButton, setCloseButton] = useState(true);
     const [content, setContent] = useState("");
     const [zIndex, setZIndex] = useState(0);
    
@@ -50,7 +49,7 @@ const SummaryWindow  = ({filePath , customStyle}) => {
    
     const closeWindow = (event) =>{
         if(event.button === 1){
-            setCloseButton(!closeButton);
+            setShowSummaryWindow(false)
         }
         
     }
@@ -58,7 +57,7 @@ const SummaryWindow  = ({filePath , customStyle}) => {
     return(
         <div onMouseDown={closeWindow}>
             
-            {closeButton && (
+            {showSummaryWindow && (
 
             <div className={style.SummaryWindow}
             style={{

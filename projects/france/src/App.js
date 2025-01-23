@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Stars from "./components/css/Stars.module.css"
 import MenuScreen from "./components/MenuScreen.js";
 import Authorization from "./components/LogIn/Authorization.js";
+import MenuScreenGuest from "./components/MenuScreenGuest.js";
 
 const App = () => {
 
@@ -26,15 +27,9 @@ const App = () => {
       </div>
 
       <div>
-           <MenuScreen/>
+        {userCheck ? <MenuScreen/> : <MenuScreenGuest/>}
       </div>
-
-      <div style={{
-            backgroundColor: userCheck ? 'green': 'red', 
-            display:'flex', 
-            alignItems:'center', 
-            justifyContent:'center'  }}>Test </div>
-
+      
       <div>
           <Authorization setUserCheck={setUserCheck} />
       </div>
