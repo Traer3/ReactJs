@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import style from "../css/MenuScreen.module.css"
 
-const SummaryWindow  = ({filePath , customStyle,showSummaryWindow, setShowSummaryWindow}) => {
+
+const SummaryWindow  = ({filePath ,style, customStyle,showSummaryWindow, setShowSummaryWindow}) => {
 
     const [position, setPosition] = useState({x:0, y:0});
     const [isDragging, setIsDragging] = useState(false);
@@ -59,7 +59,7 @@ const SummaryWindow  = ({filePath , customStyle,showSummaryWindow, setShowSummar
             
             {showSummaryWindow && (
 
-            <div className={style.SummaryWindow}
+            <div className={style}
             style={{
                 position:'absolute',
                 top:`${position.y}px`,

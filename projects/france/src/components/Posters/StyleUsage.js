@@ -1,88 +1,171 @@
-import React from "react";
+import React, { useState } from "react";
 import SummaryWindow from "../workspace/SummaryWindow";
 import TerminalWindow from "../workspace/TerminalWindow";
-
-
-const summaryIS = "/summary/StyleUsage/SummaryIS.txt"
-const inlineStyles = "/summary/StyleUsage/InlineStyles.txt"
-
-const summaryCSSInJS = "/summary/StyleUsage/SummaryCSSinJS.txt"
-const cssInJS = "/summary/StyleUsage/CSSinJS.txt"
-
-const summaryCSSModules = "/summary/StyleUsage/SummaryCSSmodules.txt"
-const cssModules = "/summary/StyleUsage/CSSmodules.txt"
-const cssModulesUsage = "/summary/StyleUsage/CSSmodulesUsage.txt"
-
-const summarySF = "/summary/StyleUsage/SummarySF.txt"
-const separateFile = "/summary/StyleUsage/SeparateFile.txt"
-const separateFileUsage = "/summary/StyleUsage/SeparateFileUsage.txt"
-
-
-
+import style from "../workspace/WindowStyle.module.css"
+import ButtonBoxCheck from "../workspace/ButtonBoxCheck";
 
 const StyleUsage = () => {
+    const summaryIS = "/summary/StyleUsage/SummaryIS.txt"
+    const inlineStyles = "/summary/StyleUsage/InlineStyles.txt"
+    const [showSummaryIS, setShowSummaryIS] = useState(true);
+    const [showInlineStyles, setShowInlineStyles] = useState(true);
+
+    const summaryCSSInJS = "/summary/StyleUsage/SummaryCSSinJS.txt"
+    const cssInJS = "/summary/StyleUsage/CSSinJS.txt"
+    const [showSummaryCSSInJS, setShowSummaryCSSInJS] = useState(true);
+    const [showCssInJS, setShowCssInJS] = useState(true);
+
+    const summaryCSSModules = "/summary/StyleUsage/SummaryCSSmodules.txt"
+    const cssModules = "/summary/StyleUsage/CSSmodules.txt"
+    const cssModulesUsage = "/summary/StyleUsage/CSSmodulesUsage.txt"
+    const [showSummaryCSSModules, setShowSummaryCSSModules] = useState(true);
+    const [showCssModules, setShowCssModules] = useState(true);
+    const [showCssModulesUsage, setShowCssModulesUsage] = useState(true);
+
+    const summarySF = "/summary/StyleUsage/SummarySF.txt"
+    const separateFile = "/summary/StyleUsage/SeparateFile.txt"
+    const separateFileUsage = "/summary/StyleUsage/SeparateFileUsage.txt"
+    const [showSummarySF, setShowSummarySF] = useState(true);
+    const [showSeparateFile, setShowSeparateFile] = useState(true);
+    const [showSeparateFileUsage, setShowSeparateFileUsage] = useState(true);
+
     return(
-        <div>
-            <SummaryWindow customStyle={{
-                marginTop:'-146px',
-                marginLeft:'210px',
+       <div>
+             <div style={{
+                display:'flex',
+                justifyContent:'center',
+                }}>
+                <div className={style.columnSquare}>
+                    <ButtonBoxCheck color={'red'} state={showSummaryIS} setState={setShowSummaryIS}/>
+                    <ButtonBoxCheck color={'red'} state={showInlineStyles} setState={setShowInlineStyles}/>
+                    
+                </div>
+                <div className={style.columnSquare}>
+                    <ButtonBoxCheck color={'green'} state={showSummaryCSSInJS} setState={setShowSummaryCSSInJS}/>
+                    <ButtonBoxCheck color={'green'} state={showCssInJS} setState={setShowCssInJS}/>
+                    
+                </div>
+                <div className={style.columnSquare}>
+                    <ButtonBoxCheck color={'blue'} state={showSummaryCSSModules} setState={setShowSummaryCSSModules}/>
+                    <ButtonBoxCheck color={'blue'} state={showCssModules} setState={setShowCssModules}/>
+                    <ButtonBoxCheck color={'blue'} state={showCssModulesUsage} setState={setShowCssModulesUsage}/>
+                </div>
+                <div className={style.columnSquare}>
+                    <ButtonBoxCheck color={'yellow'} state={showSummarySF} setState={setShowSummarySF}/>
+                    <ButtonBoxCheck color={'yellow'} state={showSeparateFile} setState={setShowSeparateFile}/>
+                    <ButtonBoxCheck color={'yellow'} state={showSeparateFileUsage} setState={setShowSeparateFileUsage}/>
+                </div>
+            </div>
+
+             <div>
+
+             <SummaryWindow 
+                    style={style.redSummWindow}
+                    customStyle={{
+                        marginTop:'-90px',
+                        marginLeft:'200px',
+                    }} 
+                    filePath={summaryIS} 
+                    showSummaryWindow={showSummaryIS} 
+                    setShowSummaryWindow ={setShowSummaryIS}
+                />
+                <TerminalWindow 
+                    style={style.redTermWindow}
+                    customStyle={{ 
+                        marginTop:'-60px',
+                        marginLeft:'200px',
+                    }} 
+                    filePath={inlineStyles} 
+                    showTerminalWindow={showInlineStyles} 
+                    setShowTerminalWindow={setShowInlineStyles}
+                />
+
                 
-                border:'1px rgba(255,80,80,0.3)',
-                background:'rgba(255,80,80,0.2)',
-                boxShadow:'0 4px 10px rgba(250,80,80,0.2), 0 0 15px rgba(255,60,60,0.4)',
-            }} filePath={summaryIS}/>
-            <TerminalWindow customStyle={{
-                marginTop:'-90px',
-                marginLeft:'210px',
-                border:'2px solid rgba(255,80,80,0.3)',
-            }} filePath={inlineStyles}/>
-
-            <SummaryWindow customStyle={{
-                marginTop:'-146px',
-                marginLeft:'600px',
-                border:'1px rgba(80,255,80,0.3)',
-                background:'rgba(80,255,80,0.2)',
-                boxShadow:'0 4px 10px rgba(80,255,80,0.2), 0 0 15px rgba(60,255,60,0.4)',
-            }} filePath={summaryCSSInJS}/>
-            <TerminalWindow customStyle={{
-                marginTop:'-30px',
-                marginLeft:'600px',
-                border:'2px solid rgba(80,255,80,0.3)',
-            }} filePath={cssInJS}/>
-
-            <SummaryWindow customStyle={{
-                marginTop:'-146px',
-                marginLeft:'1030px',
-            }} filePath={summaryCSSModules}/>
-            <TerminalWindow customStyle={{
-                marginTop:'-100px',
-                marginLeft:'1030px',
-            }} filePath={cssModules}/>
-            <TerminalWindow customStyle={{
-                marginTop:'50px',
-                marginLeft:'1030px',
-            }} filePath={cssModulesUsage}/>
-
-            <SummaryWindow customStyle={{
-                marginTop:'-146px',
-                marginLeft:'1410px',
-                border:'1px rgba(255,223,80,0.3)',
-                background:'rgba(255,223,80,0.2)',
-                boxShadow:'0 4px 10px rgba(255,223,80,0.2), 0 0 15px rgba(255,213,60,0.4)',
-            }} filePath={summarySF}/>
-            <TerminalWindow customStyle={{
-                marginTop:'-100px',
-                marginLeft:'1410px',
-                border:'2px solid rgba(255,223,80,0.3)',
-            }} filePath={separateFile}/>
-            <TerminalWindow customStyle={{
-                marginTop:'150px',
-                marginLeft:'1410px',
-                border:'2px solid rgba(255,223,80,0.3)',
-            }} filePath={separateFileUsage}/>
+                <SummaryWindow 
+                    style={style.greenSummWindow}
+                    customStyle={{
+                        marginTop:'-90px',
+                        marginLeft:'600px',
+                    }} 
+                    filePath={summaryCSSInJS} 
+                    showSummaryWindow={showSummaryCSSInJS} 
+                    setShowSummaryWindow ={setShowSummaryCSSInJS}
+                />
+                <TerminalWindow 
+                    style={style.greenTermWindow}
+                    customStyle={{ 
+                        marginTop:'20px',
+                        marginLeft:'600px',
+                    }} 
+                    filePath={cssInJS} 
+                    showTerminalWindow={showCssInJS} 
+                    setShowTerminalWindow={setShowCssInJS}
+                />
+                
+                <SummaryWindow 
+                    style={style.summaryWindow}
+                    customStyle={{
+                        marginTop:'-90px',
+                        marginLeft:'1030px',
+                    }} 
+                    filePath={summaryCSSModules} 
+                    showSummaryWindow={showSummaryCSSModules} 
+                    setShowSummaryWindow ={setShowSummaryCSSModules}
+                />
+                <TerminalWindow 
+                    style={style.terminalWindow}
+                    customStyle={{ 
+                        marginTop:'-60px',
+                        marginLeft:'1030px',
+                    }} 
+                    filePath={cssModules} 
+                    showTerminalWindow={showCssModules} 
+                    setShowTerminalWindow={setShowCssModules}
+                />
+                <TerminalWindow 
+                    style={style.terminalWindow}
+                    customStyle={{ 
+                        marginTop:'80px',
+                        marginLeft:'1030px',
+                    }} 
+                    filePath={cssModulesUsage} 
+                    showTerminalWindow={showCssModulesUsage} 
+                    setShowTerminalWindow={setShowCssModulesUsage}
+                />
 
 
-        </div>
+                <SummaryWindow 
+                    style={style.yellowSummWindow}
+                    customStyle={{
+                        marginTop:'-90px',
+                        marginLeft:'1410px',
+                    }} 
+                    filePath={summarySF} 
+                    showSummaryWindow={showSummarySF} 
+                    setShowSummaryWindow ={setShowSummarySF}
+                />
+                <TerminalWindow 
+                    style={style.yellowTermWindow}
+                    customStyle={{ 
+                        marginTop:'-60px',
+                        marginLeft:'1410px',
+                    }} 
+                    filePath={separateFile} 
+                    showTerminalWindow={showSeparateFile} 
+                    setShowTerminalWindow={setShowSeparateFile}
+                />
+                <TerminalWindow 
+                    style={style.yellowTermWindow}
+                    customStyle={{ 
+                        marginTop:'170px',
+                        marginLeft:'1410px',
+                    }} 
+                    filePath={separateFileUsage} 
+                    showTerminalWindow={showSeparateFileUsage} 
+                    setShowTerminalWindow={setShowSeparateFileUsage}
+                />
+            </div>
+       </div>
     );
 };
 

@@ -1,39 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
 import SummaryWindow from "../workspace/SummaryWindow";
 import TerminalWindow from "../workspace/TerminalWindow";
-
-const ternaryMethod = "/summary/DisplayElements/TernaryMethod.txt"
-const summaryTM = "/summary/DisplayElements/TM.txt"
-
-const AND = "/summary/DisplayElements/AND.txt"
-const logicANDSummary = "/summary/DisplayElements/LogicANDSummary.txt"
-
+import style from "../workspace/WindowStyle.module.css"
+import ButtonBoxCheck from "../workspace/ButtonBoxCheck";
 const DisplayElements = () => {
+      const ternaryMethod = "/summary/DisplayElements/TernaryMethod.txt"
+      const summaryTM = "/summary/DisplayElements/TM.txt"
+      const [showTernaryMethod, setShowTernaryMethod] = useState(true);
+      const [showSummaryTM, setShowSummaryTM] = useState(true);
+
+      const AND = "/summary/DisplayElements/AND.txt"
+      const logicANDSummary = "/summary/DisplayElements/LogicANDSummary.txt"
+      const [showAND, setShowAND] = useState(true);
+      const [showLogicANDSummary, setShowLogicANDSummary] = useState(true);
+
     return(
         <div>
-            <SummaryWindow customStyle={{
-                  marginTop:'-146px',
-                  marginLeft:'200px',
-            }} filePath={summaryTM}/>
-            <TerminalWindow customStyle={{
-                  marginTop:'-110px',
-                  marginLeft:'200px',
-            }} filePath={ternaryMethod}/>
+            <div style={{
+                display:'flex',
+                justifyContent:'center',
+                }}>
+                <div className={style.columnSquare}>
+                    <ButtonBoxCheck color={'red'} state={showTernaryMethod} setState={setShowTernaryMethod}/>
+                    <ButtonBoxCheck color={'red'} state={showSummaryTM} setState={setShowSummaryTM}/>
+                </div>
+                <div className={style.columnSquare}>
+                    <ButtonBoxCheck color={'green'} state={showLogicANDSummary} setState={setShowLogicANDSummary}/>
+                    <ButtonBoxCheck color={'green'} state={showAND} setState={setShowAND}/>
+                    
+                </div>
+            </div>
 
-            <SummaryWindow customStyle={{
-                  marginTop:'-146px',
-                  marginLeft:'700px',
-                  border:'1px rgba(80,255,80,0.3)',
-                  background:'rgba(80,255,80,0.2)',
-                  boxShadow:'0 4px 10px rgba(80,255,80,0.2), 0 0 15px rgba(60,255,60,0.4)',
-            }} filePath={logicANDSummary}/>
-            <TerminalWindow customStyle={{
-                  marginTop:'-110px',
-                  marginLeft:'700px',
-                  border:'2px solid rgba(80,255,80,0.3)',
-            }} filePath={AND}/>
+            <div>
+                  <SummaryWindow 
+                    style={style.redSummWindow}
+                    customStyle={{
+                        marginTop:'-90px',
+                        marginLeft:'200px',
+                    }} 
+                    filePath={summaryTM} 
+                    showSummaryWindow={showTernaryMethod} 
+                    setShowSummaryWindow ={setShowTernaryMethod}
+                />
+                <TerminalWindow 
+                    style={style.redTermWindow}
+                    customStyle={{ 
+                        marginTop:'-55px',
+                        marginLeft:'200px',
+                    }} 
+                    filePath={ternaryMethod} 
+                    showTerminalWindow={showSummaryTM} 
+                    setShowTerminalWindow={setShowSummaryTM}
+                />
 
-
+                  <SummaryWindow 
+                    style={style.greenSummWindow}
+                    customStyle={{
+                        marginTop:'-90px',
+                        marginLeft:'700px',
+                    }} 
+                    filePath={logicANDSummary} 
+                    showSummaryWindow={showLogicANDSummary} 
+                    setShowSummaryWindow ={setShowLogicANDSummary}
+                />
+                <TerminalWindow 
+                    style={style.greenSummWindow}
+                    customStyle={{ 
+                        marginTop:'-55px',
+                        marginLeft:'700px',
+                    }} 
+                    filePath={AND} 
+                    showTerminalWindow={showAND} 
+                    setShowTerminalWindow={setShowAND}
+                />
+            </div>
         </div>
     );
 };

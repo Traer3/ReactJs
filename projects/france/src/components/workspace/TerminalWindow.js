@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import style from "../css/MenuScreen.module.css"
-const TerminalWindow = ({filePath, customStyle, showTerminalWindow, setShowTerminalWindow}) => { 
+
+const TerminalWindow = ({filePath,style, customStyle, showTerminalWindow, setShowTerminalWindow}) => { 
 
     const [position, setPosition] = useState({x:0, y:0});
     const [isDragging, setIsDragging] = useState(false);
@@ -55,7 +55,7 @@ const TerminalWindow = ({filePath, customStyle, showTerminalWindow, setShowTermi
     return(
         <div onMouseDown={closeWindow}>
             {showTerminalWindow && (
-            <div className={style.TerminalWindow}
+            <div className={style}
             style={{
                 position:'absolute',
                 top:`${position.y}px`,

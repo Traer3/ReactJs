@@ -34,9 +34,8 @@ const MenuScreen = ()=>{
 
                         <div>
                             <div className={MenuStyle.menuFlex}>
-                                <Creatura  customStyle={{ transform: "translateX(600%) translateY(100%)",}}/>
-
                                 <PosterMain/>
+                                <Creatura  customStyle={{ transform: "translateX(600%) translateY(100%)",}}/>
                                 
                             </div>
                         </div>
