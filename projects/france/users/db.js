@@ -31,6 +31,7 @@ db.schema.hasTable('users').then((exists)=>{
             table.increments('id').primary();
             table.string('login').notNullable();
             table.string('password').notNullable();
+            table.text('poster_states');
             table.timestamp('created_at').defaultTo(db.fn.now());
         });
     }
@@ -106,6 +107,42 @@ app.post('/login',(req, res)=>{
         })
         .catch((err)=> res.status(500).json({error: err.message}));
 });
+
+app.post('/savePosterStates', (req, res)=>{
+    const {userId, posterStateArray} = req.body;
+
+    if(!userId || posterStateArray){
+        return res.status(400).json({message:'User ID or poster states are required'});
+    }
+
+    const posterStatesJSON = JSON.stringify(posterStateArray);
+
+    db('users'
+        .where({id: userId})
+        .update({poster_states: posterStatesJSON})
+        .then(()=> res.status(200).json({message: 'Poster states saved successfully'}))
+        .catch((err)=> res.status(500).json({message: err.message}))
+    );
+})
+
+app.get('/getPosterStates/:userId', (req, res)=>{
+    const {userId} = req.params;
+
+    db('users'
+        .where({id: userId})
+        .select('poster_states')
+        .first()
+        .then((data)=>{
+            if(data && data.poster_states){
+                const posterStateArray = JSON.parse(data.poster_states);
+                res.status(200).json({posterStateArray});
+            }else{
+                res.status(404).json({message: 'Poster states not found'});
+            }
+        })
+        .catch((err)=> res.status(500).json({err: err.message}))
+    )
+})
 
 const PORT  = 3001
 app.listen(PORT, '0.0.0.0', ()=> console.log(`database running on port ${PORT}`));

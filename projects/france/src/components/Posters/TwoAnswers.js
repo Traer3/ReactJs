@@ -4,7 +4,7 @@ import SummaryWindow from "../workspace/SummaryWindow";
 import style from "../workspace/WindowStyle.module.css"
 import ButtonBoxCheck from "../workspace/ButtonBoxCheck";
 
-const TwoAnswers = () => {
+const TwoAnswers = ({updatePosterState}) => {
 
    
     const logicAND = "/summary/TwoAnswers/LogicAND.txt"
@@ -24,6 +24,13 @@ const TwoAnswers = () => {
         ternaryOperatorData: true,
     })
 
+    const handleStateChange = (key) =>{
+        setPosterStates((prevState)=>{
+            const updatedState = {...prevState, [key]: !prevState[key]};
+            updatePosterState("TowAnswers", updatedState);
+            return updatedState;
+        });
+    };
     
     
     return(
@@ -33,13 +40,13 @@ const TwoAnswers = () => {
                 justifyContent:'center',
                 }}>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'red'} state={posterStates.logicAND} setState={setPosterStates} keyName={"logicAND"}/>
-                    <ButtonBoxCheck color={'red'} state={posterStates.logicANDExample} setState={setPosterStates} keyName={"logicANDExample"}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.logicAND} setState={()=> handleStateChange("logicAND")} keyName={"logicAND"}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.logicANDExample} setState={()=> handleStateChange("logicANDExample")} keyName={"logicANDExample"}/>
                 </div>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'green'} state={posterStates.logicANDCode} setState={setPosterStates} keyName={"logicANDCode"}/>
-                    <ButtonBoxCheck color={'green'} state={posterStates.ternaryCode} setState={setPosterStates} keyName={"ternaryCode"}/>
-                    <ButtonBoxCheck color={'green'} state={posterStates.ternaryOperatorData} setState={setPosterStates} keyName={"ternaryOperatorData"}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.logicANDCode} setState={()=> handleStateChange("logicANDCode")} keyName={"logicANDCode"}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.ternaryCode} setState={()=> handleStateChange("ternaryCode")} keyName={"ternaryCode"}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.ternaryOperatorData} setState={()=> handleStateChange("ternaryOperatorData")} keyName={"ternaryOperatorData"}/>
                 </div>
             </div>
 
@@ -52,7 +59,7 @@ const TwoAnswers = () => {
                     }} 
                     filePath={logicAND} 
                     showSummaryWindow={posterStates.logicAND} 
-                    setShowSummaryWindow ={setPosterStates}
+                    setShowSummaryWindow ={()=> handleStateChange("logicAND")}
                     keyName={"logicAND"}
                 />
                 <TerminalWindow 
@@ -63,7 +70,7 @@ const TwoAnswers = () => {
                     }} 
                     filePath={logicANDExample} 
                     showTerminalWindow={posterStates.logicANDExample} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("logicANDExample")}
                     keyName={"logicANDExample"}
                 />
 
@@ -75,7 +82,7 @@ const TwoAnswers = () => {
                     }} 
                     filePath={ternaryOperatorData} 
                     showSummaryWindow={posterStates.logicANDCode} 
-                    setShowSummaryWindow ={setPosterStates}
+                    setShowSummaryWindow ={()=> handleStateChange("logicANDCode")}
                     keyName={"logicANDCode"}
                 />
                 <TerminalWindow 
@@ -86,7 +93,7 @@ const TwoAnswers = () => {
                     }} 
                     filePath={ternaryCode} 
                     showTerminalWindow={posterStates.ternaryCode} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("ternaryCode")}
                     keyName={"ternaryCode"}
                 />
                 <TerminalWindow  
@@ -97,7 +104,7 @@ const TwoAnswers = () => {
                     }} 
                     filePath={logicANDCode} 
                     showTerminalWindow={posterStates.ternaryOperatorData} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("ternaryOperatorData")}
                     keyName={"ternaryOperatorData"}
                 />  
             </div>
