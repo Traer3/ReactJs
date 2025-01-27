@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 
-const SummaryWindow  = ({filePath ,style, customStyle,showSummaryWindow, setShowSummaryWindow}) => {
+const SummaryWindow  = ({filePath ,style, customStyle,showSummaryWindow, setShowSummaryWindow, keyName}) => {
 
     const [position, setPosition] = useState({x:0, y:0});
     const [isDragging, setIsDragging] = useState(false);
@@ -49,8 +49,11 @@ const SummaryWindow  = ({filePath ,style, customStyle,showSummaryWindow, setShow
    
     const closeWindow = (event) =>{
         if(event.button === 1){
-            setShowSummaryWindow(false)
-        }
+            setShowSummaryWindow((prevStates)=>({
+                ...prevStates,
+                [keyName] : !prevStates[keyName],
+            }));
+        };
         
     }
 

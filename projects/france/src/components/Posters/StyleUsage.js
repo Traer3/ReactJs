@@ -7,27 +7,33 @@ import ButtonBoxCheck from "../workspace/ButtonBoxCheck";
 const StyleUsage = () => {
     const summaryIS = "/summary/StyleUsage/SummaryIS.txt"
     const inlineStyles = "/summary/StyleUsage/InlineStyles.txt"
-    const [showSummaryIS, setShowSummaryIS] = useState(true);
-    const [showInlineStyles, setShowInlineStyles] = useState(true);
 
     const summaryCSSInJS = "/summary/StyleUsage/SummaryCSSinJS.txt"
     const cssInJS = "/summary/StyleUsage/CSSinJS.txt"
-    const [showSummaryCSSInJS, setShowSummaryCSSInJS] = useState(true);
-    const [showCssInJS, setShowCssInJS] = useState(true);
+
 
     const summaryCSSModules = "/summary/StyleUsage/SummaryCSSmodules.txt"
     const cssModules = "/summary/StyleUsage/CSSmodules.txt"
     const cssModulesUsage = "/summary/StyleUsage/CSSmodulesUsage.txt"
-    const [showSummaryCSSModules, setShowSummaryCSSModules] = useState(true);
-    const [showCssModules, setShowCssModules] = useState(true);
-    const [showCssModulesUsage, setShowCssModulesUsage] = useState(true);
+
 
     const summarySF = "/summary/StyleUsage/SummarySF.txt"
     const separateFile = "/summary/StyleUsage/SeparateFile.txt"
     const separateFileUsage = "/summary/StyleUsage/SeparateFileUsage.txt"
-    const [showSummarySF, setShowSummarySF] = useState(true);
-    const [showSeparateFile, setShowSeparateFile] = useState(true);
-    const [showSeparateFileUsage, setShowSeparateFileUsage] = useState(true);
+   
+
+    const [posterStates, setPosterStates] = useState({
+        summaryIS: true,
+        inlineStyles: true,
+        summaryCSSInJS: true,
+        cssInJS: true,
+        summaryCSSModules: true,
+        cssModules: true,
+        cssModulesUsage: true,
+        summarySF: true,
+        separateFile: true,
+        separateFileUsage: true,
+    });
 
     return(
        <div>
@@ -36,24 +42,24 @@ const StyleUsage = () => {
                 justifyContent:'center',
                 }}>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'red'} state={showSummaryIS} setState={setShowSummaryIS}/>
-                    <ButtonBoxCheck color={'red'} state={showInlineStyles} setState={setShowInlineStyles}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.summaryIS} setState={setPosterStates} keyName={"summaryIS"}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.inlineStyles} setState={setPosterStates} keyName={"inlineStyles"}/>
                     
                 </div>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'green'} state={showSummaryCSSInJS} setState={setShowSummaryCSSInJS}/>
-                    <ButtonBoxCheck color={'green'} state={showCssInJS} setState={setShowCssInJS}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.summaryCSSInJS} setState={setPosterStates} keyName={"summaryCSSInJS"}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.cssInJS} setState={setPosterStates} keyName={"cssInJS"}/>
                     
                 </div>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'blue'} state={showSummaryCSSModules} setState={setShowSummaryCSSModules}/>
-                    <ButtonBoxCheck color={'blue'} state={showCssModules} setState={setShowCssModules}/>
-                    <ButtonBoxCheck color={'blue'} state={showCssModulesUsage} setState={setShowCssModulesUsage}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.summaryCSSModules} setState={setPosterStates} keyName={"summaryCSSModules"}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.cssModules} setState={setPosterStates} keyName={"cssModules"}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.cssModulesUsage} setState={setPosterStates} keyName={"cssModulesUsage"}/>
                 </div>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'yellow'} state={showSummarySF} setState={setShowSummarySF}/>
-                    <ButtonBoxCheck color={'yellow'} state={showSeparateFile} setState={setShowSeparateFile}/>
-                    <ButtonBoxCheck color={'yellow'} state={showSeparateFileUsage} setState={setShowSeparateFileUsage}/>
+                    <ButtonBoxCheck color={'yellow'} state={posterStates.summarySF} setState={setPosterStates} keyName={"summarySF"}/>
+                    <ButtonBoxCheck color={'yellow'} state={posterStates.separateFile} setState={setPosterStates} keyName={"separateFile"}/>
+                    <ButtonBoxCheck color={'yellow'} state={posterStates.separateFileUsage} setState={setPosterStates} keyName={"separateFileUsage"}/>
                 </div>
             </div>
 
@@ -66,8 +72,9 @@ const StyleUsage = () => {
                         marginLeft:'200px',
                     }} 
                     filePath={summaryIS} 
-                    showSummaryWindow={showSummaryIS} 
-                    setShowSummaryWindow ={setShowSummaryIS}
+                    showSummaryWindow={posterStates.summaryIS} 
+                    setShowSummaryWindow ={setPosterStates}
+                    keyName={"summaryIS"}
                 />
                 <TerminalWindow 
                     style={style.redTermWindow}
@@ -76,8 +83,9 @@ const StyleUsage = () => {
                         marginLeft:'200px',
                     }} 
                     filePath={inlineStyles} 
-                    showTerminalWindow={showInlineStyles} 
-                    setShowTerminalWindow={setShowInlineStyles}
+                    showTerminalWindow={posterStates.inlineStyles} 
+                    setShowTerminalWindow={setPosterStates}
+                    keyName={"inlineStyles"}
                 />
 
                 
@@ -88,8 +96,9 @@ const StyleUsage = () => {
                         marginLeft:'600px',
                     }} 
                     filePath={summaryCSSInJS} 
-                    showSummaryWindow={showSummaryCSSInJS} 
-                    setShowSummaryWindow ={setShowSummaryCSSInJS}
+                    showSummaryWindow={posterStates.summaryCSSInJS} 
+                    setShowSummaryWindow ={setPosterStates}
+                    keyName={"summaryCSSInJS"}
                 />
                 <TerminalWindow 
                     style={style.greenTermWindow}
@@ -98,8 +107,9 @@ const StyleUsage = () => {
                         marginLeft:'600px',
                     }} 
                     filePath={cssInJS} 
-                    showTerminalWindow={showCssInJS} 
-                    setShowTerminalWindow={setShowCssInJS}
+                    showTerminalWindow={posterStates.cssInJS} 
+                    setShowTerminalWindow={setPosterStates}
+                    keyName={"cssInJS"}
                 />
                 
                 <SummaryWindow 
@@ -109,8 +119,9 @@ const StyleUsage = () => {
                         marginLeft:'1030px',
                     }} 
                     filePath={summaryCSSModules} 
-                    showSummaryWindow={showSummaryCSSModules} 
-                    setShowSummaryWindow ={setShowSummaryCSSModules}
+                    showSummaryWindow={posterStates.summaryCSSModules} 
+                    setShowSummaryWindow ={setPosterStates}
+                    keyName={"summaryCSSModules"}
                 />
                 <TerminalWindow 
                     style={style.terminalWindow}
@@ -119,8 +130,9 @@ const StyleUsage = () => {
                         marginLeft:'1030px',
                     }} 
                     filePath={cssModules} 
-                    showTerminalWindow={showCssModules} 
-                    setShowTerminalWindow={setShowCssModules}
+                    showTerminalWindow={posterStates.cssModules} 
+                    setShowTerminalWindow={setPosterStates}
+                    keyName={"cssModules"}
                 />
                 <TerminalWindow 
                     style={style.terminalWindow}
@@ -129,8 +141,9 @@ const StyleUsage = () => {
                         marginLeft:'1030px',
                     }} 
                     filePath={cssModulesUsage} 
-                    showTerminalWindow={showCssModulesUsage} 
-                    setShowTerminalWindow={setShowCssModulesUsage}
+                    showTerminalWindow={posterStates.cssModulesUsage} 
+                    setShowTerminalWindow={setPosterStates}
+                    keyName={"cssModulesUsage"}
                 />
 
 
@@ -141,8 +154,9 @@ const StyleUsage = () => {
                         marginLeft:'1410px',
                     }} 
                     filePath={summarySF} 
-                    showSummaryWindow={showSummarySF} 
-                    setShowSummaryWindow ={setShowSummarySF}
+                    showSummaryWindow={posterStates.summarySF} 
+                    setShowSummaryWindow ={setPosterStates}
+                    keyName={"summarySF"}
                 />
                 <TerminalWindow 
                     style={style.yellowTermWindow}
@@ -151,8 +165,9 @@ const StyleUsage = () => {
                         marginLeft:'1410px',
                     }} 
                     filePath={separateFile} 
-                    showTerminalWindow={showSeparateFile} 
-                    setShowTerminalWindow={setShowSeparateFile}
+                    showTerminalWindow={posterStates.separateFile} 
+                    setShowTerminalWindow={setPosterStates}
+                    keyName={"separateFile"}
                 />
                 <TerminalWindow 
                     style={style.yellowTermWindow}
@@ -161,8 +176,9 @@ const StyleUsage = () => {
                         marginLeft:'1410px',
                     }} 
                     filePath={separateFileUsage} 
-                    showTerminalWindow={showSeparateFileUsage} 
-                    setShowTerminalWindow={setShowSeparateFileUsage}
+                    showTerminalWindow={posterStates.separateFileUsage} 
+                    setShowTerminalWindow={setPosterStates}
+                    keyName={"separateFileUsage"}
                 />
             </div>
        </div>

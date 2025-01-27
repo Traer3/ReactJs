@@ -1,14 +1,17 @@
 import React from "react";
 
-const ButtonBoxCheck = ({color, state, setState}) =>{
+const ButtonBoxCheck = ({color, state, setState, keyName}) =>{ 
 
-    const inverState = (state , setState)=>{
-        setState(!state)
-    }
+    const inverState = ()=>{
+        setState((prevStates)=>({
+            ...prevStates,
+            [keyName] : !prevStates[keyName],
+        }));
+    };
 
     return(
         <button 
-                    onClick={()=>inverState(state, setState)}
+                    onClick={inverState}
                     style={{
                         border:`2px solid ${color}`,
                         backgroundColor: state ?  `${color}` : 'transparent' ,

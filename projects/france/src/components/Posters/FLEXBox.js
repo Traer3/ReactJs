@@ -7,20 +7,22 @@ import ButtonBoxCheck from "../workspace/ButtonBoxCheck";
 const FLEXBox = () => {
     const summaryMDC = "/summary/FlexBox/SummaryMDC.txt"
     const mainDivContainer = "/summary/FlexBox/MainDivContainer.txt"
-    const [showSummaryMDC, setShowSummaryMDC] = useState(true);
-    const [showMainDivContainer, setShowMainDivContainer] = useState(true);
     
     const summaryDWB = "/summary/FlexBox/SummaryDWB.txt"
     const divWithBoxes = "/summary/FlexBox/DivWithBoxes.txt"
-    const [showsummaryDWB, setShowsummaryDWB] = useState(true);
-    const [showDivWithBoxes, setShowDivWithBoxes] = useState(true);
     
     const summaryB = "/summary/FlexBox/SummaryB.txt"
     const boxes = "/summary/FlexBox/Boxes.txt"
-    const [showSummaryB, setShowSummaryB] = useState(true);
-    const [showBoxes, setShowBoxes] = useState(true);
+  
    
-
+    const [posterStates, setPosterStates] = useState({
+        summaryMDC: true,
+        mainDivContainer: true,
+        summaryDWB: true,
+        divWithBoxes: true,
+        summaryB: true,
+        boxes: true,
+    });
 
     return(
         <div>
@@ -29,18 +31,18 @@ const FLEXBox = () => {
                 justifyContent:'center',
                 }}>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'red'} state={showSummaryMDC} setState={setShowSummaryMDC}/>
-                    <ButtonBoxCheck color={'red'} state={showMainDivContainer} setState={setShowMainDivContainer}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.summaryMDC} setState={setPosterStates} keyName={"summaryMDC"}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.mainDivContainer} setState={setPosterStates} keyName={"mainDivContainer"}/>
                     
                 </div>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'green'} state={showsummaryDWB} setState={setShowsummaryDWB}/>
-                    <ButtonBoxCheck color={'green'} state={showDivWithBoxes} setState={setShowDivWithBoxes}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.summaryDWB} setState={setPosterStates} keyName={"summaryDWB"}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.divWithBoxes} setState={setPosterStates} keyName={"divWithBoxes"}/>
                     
                 </div>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'blue'} state={showSummaryB} setState={setShowSummaryB}/>
-                    <ButtonBoxCheck color={'blue'} state={showBoxes} setState={setShowBoxes}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.summaryB} setState={setPosterStates} keyName={"summaryB"}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.boxes} setState={setPosterStates} keyName={"boxes"}/>
                 </div>
             </div>
             <div>
@@ -51,8 +53,9 @@ const FLEXBox = () => {
                         marginLeft:'200px',
                     }} 
                     filePath={summaryMDC} 
-                    showSummaryWindow={showSummaryMDC} 
-                    setShowSummaryWindow ={setShowSummaryMDC}
+                    showSummaryWindow={posterStates.summaryMDC} 
+                    setShowSummaryWindow ={setPosterStates}
+                    keyName={"summaryMDC"}
                 />
                 <TerminalWindow 
                     style={style.redTermWindow}
@@ -61,8 +64,9 @@ const FLEXBox = () => {
                         marginLeft:'200px',
                     }} 
                     filePath={mainDivContainer} 
-                    showTerminalWindow={showMainDivContainer} 
-                    setShowTerminalWindow={setShowMainDivContainer}
+                    showTerminalWindow={posterStates.mainDivContainer} 
+                    setShowTerminalWindow={setPosterStates}
+                    keyName={"mainDivContainer"}
                 />
 
                 <SummaryWindow 
@@ -72,8 +76,9 @@ const FLEXBox = () => {
                         marginLeft:'580px',
                     }} 
                     filePath={summaryDWB} 
-                    showSummaryWindow={showsummaryDWB} 
-                    setShowSummaryWindow ={setShowsummaryDWB}
+                    showSummaryWindow={posterStates.summaryDWB} 
+                    setShowSummaryWindow ={setPosterStates}
+                    keyName={"summaryDWB"}
                 />
                 <TerminalWindow 
                     style={style.greenSummWindow}
@@ -82,8 +87,9 @@ const FLEXBox = () => {
                         marginLeft:'580px',
                     }} 
                     filePath={divWithBoxes} 
-                    showTerminalWindow={showDivWithBoxes} 
-                    setShowTerminalWindow={setShowDivWithBoxes}
+                    showTerminalWindow={posterStates.divWithBoxes} 
+                    setShowTerminalWindow={setPosterStates}
+                    keyName={"divWithBoxes"}
                 />
 
                 <SummaryWindow 
@@ -93,8 +99,9 @@ const FLEXBox = () => {
                         marginLeft:'980px',
                     }} 
                     filePath={summaryB} 
-                    showSummaryWindow={showSummaryB} 
-                    setShowSummaryWindow ={setShowSummaryB}
+                    showSummaryWindow={posterStates.summaryB} 
+                    setShowSummaryWindow ={setPosterStates}
+                    keyName={"summaryB"}
                 />
                 <TerminalWindow 
                     style={style.terminalWindow}
@@ -103,8 +110,9 @@ const FLEXBox = () => {
                         marginLeft:'980px',
                     }} 
                     filePath={boxes} 
-                    showTerminalWindow={showBoxes} 
-                    setShowTerminalWindow={setShowBoxes}
+                    showTerminalWindow={posterStates.boxes} 
+                    setShowTerminalWindow={setPosterStates}
+                    keyName={"boxes"}
                 />
             </div>
         </div>

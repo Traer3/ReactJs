@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const TerminalWindow = ({filePath,style, customStyle, showTerminalWindow, setShowTerminalWindow}) => { 
+const TerminalWindow = ({filePath,style, customStyle, showTerminalWindow, setShowTerminalWindow , keyName}) => { 
 
     const [position, setPosition] = useState({x:0, y:0});
     const [isDragging, setIsDragging] = useState(false);
@@ -47,8 +47,11 @@ const TerminalWindow = ({filePath,style, customStyle, showTerminalWindow, setSho
 
     const closeWindow = (event) =>{
         if(event.button === 1){
-            setShowTerminalWindow(false)
-        }
+            setShowTerminalWindow((prevStates)=>({
+                ...prevStates,
+                [keyName] : !prevStates[keyName],
+            }));
+        };
         
     }
 

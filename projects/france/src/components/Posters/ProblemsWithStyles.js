@@ -9,10 +9,14 @@ const ProblemsWithStyles = () => {
     const summary = "/summary/ProblemsWithStyles/Summary.txt"
     const menuPanel = "/summary/ProblemsWithStyles/MenuPanel.txt"
     const menuPanelStyles = "/summary/ProblemsWithStyles/MenuPanelStyles.txt"
-    const [showSummary, setShowSummary] = useState(true);
-    const [showMenuPanel, setShowMenuPanel] = useState(true);
-    const [showMenuPanelStyles, setShowMenuPanelStyles] = useState(true);
 
+
+    const [posterStates, setPosterStates] = useState({
+        summary: true,
+        menuPanel: true,
+        menuPanelStyles: true,
+     
+    })
     return(
        <div>
              <div style={{
@@ -20,9 +24,9 @@ const ProblemsWithStyles = () => {
                 justifyContent:'center',
                 }}>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'blue'} state={showSummary} setState={setShowSummary}/>
-                    <ButtonBoxCheck color={'blue'} state={showMenuPanel} setState={setShowMenuPanel}/>
-                    <ButtonBoxCheck color={'blue'} state={showMenuPanelStyles} setState={setShowMenuPanelStyles}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.summary} setState={setPosterStates} keyName={"summary"}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.menuPanel} setState={setPosterStates} keyName={"menuPanel"}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.menuPanelStyles} setState={setPosterStates} keyName={"menuPanelStyles"}/>
                 </div>
             </div>
              <div>
@@ -33,8 +37,9 @@ const ProblemsWithStyles = () => {
                         marginLeft:'200px',
                     }} 
                     filePath={summary} 
-                    showSummaryWindow={showSummary} 
-                    setShowSummaryWindow ={setShowSummary}
+                    showSummaryWindow={posterStates.summary} 
+                    setShowSummaryWindow ={setPosterStates}
+                    keyName={"summary"}
                 />
                 <TerminalWindow 
                     style={style.terminalWindow}
@@ -43,8 +48,9 @@ const ProblemsWithStyles = () => {
                         marginLeft:'200px',
                     }} 
                     filePath={menuPanel} 
-                    showTerminalWindow={showMenuPanel} 
-                    setShowTerminalWindow={setShowMenuPanel}
+                    showTerminalWindow={posterStates.menuPanel} 
+                    setShowTerminalWindow={setPosterStates}
+                    keyName={"menuPanel"}
                 />
                 <TerminalWindow 
                     style={style.terminalWindow}
@@ -53,8 +59,9 @@ const ProblemsWithStyles = () => {
                         marginLeft:'200px',
                     }} 
                     filePath={menuPanelStyles} 
-                    showTerminalWindow={showMenuPanelStyles} 
-                    setShowTerminalWindow={setShowMenuPanelStyles}
+                    showTerminalWindow={posterStates.menuPanelStyles} 
+                    setShowTerminalWindow={setPosterStates}
+                    keyName={"menuPanelStyles"}
                 />
             </div>
        </div>

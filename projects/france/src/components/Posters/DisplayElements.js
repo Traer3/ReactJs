@@ -6,13 +6,16 @@ import ButtonBoxCheck from "../workspace/ButtonBoxCheck";
 const DisplayElements = () => {
       const ternaryMethod = "/summary/DisplayElements/TernaryMethod.txt"
       const summaryTM = "/summary/DisplayElements/TM.txt"
-      const [showTernaryMethod, setShowTernaryMethod] = useState(true);
-      const [showSummaryTM, setShowSummaryTM] = useState(true);
 
       const AND = "/summary/DisplayElements/AND.txt"
       const logicANDSummary = "/summary/DisplayElements/LogicANDSummary.txt"
-      const [showAND, setShowAND] = useState(true);
-      const [showLogicANDSummary, setShowLogicANDSummary] = useState(true);
+
+      const [posterStates, setPosterStates] = useState({
+        ternaryMethod: true,
+        summaryTM: true,
+        AND: true,
+        logicANDSummary: true,
+    })
 
     return(
         <div>
@@ -21,13 +24,12 @@ const DisplayElements = () => {
                 justifyContent:'center',
                 }}>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'red'} state={showTernaryMethod} setState={setShowTernaryMethod}/>
-                    <ButtonBoxCheck color={'red'} state={showSummaryTM} setState={setShowSummaryTM}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.summaryTM} setState={setPosterStates} keyName={"summaryTM"}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.ternaryMethod} setState={setPosterStates} keyName={"ternaryMethod"}/>
                 </div>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'green'} state={showLogicANDSummary} setState={setShowLogicANDSummary}/>
-                    <ButtonBoxCheck color={'green'} state={showAND} setState={setShowAND}/>
-                    
+                    <ButtonBoxCheck color={'green'} state={posterStates.logicANDSummary} setState={setPosterStates} keyName={"logicANDSummary"}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.AND} setState={setPosterStates} keyName={"AND"}/>
                 </div>
             </div>
 
@@ -39,8 +41,9 @@ const DisplayElements = () => {
                         marginLeft:'200px',
                     }} 
                     filePath={summaryTM} 
-                    showSummaryWindow={showTernaryMethod} 
-                    setShowSummaryWindow ={setShowTernaryMethod}
+                    showSummaryWindow={posterStates.summaryTM} 
+                    setShowSummaryWindow ={setPosterStates}
+                    keyName={"summaryTM"}
                 />
                 <TerminalWindow 
                     style={style.redTermWindow}
@@ -49,8 +52,9 @@ const DisplayElements = () => {
                         marginLeft:'200px',
                     }} 
                     filePath={ternaryMethod} 
-                    showTerminalWindow={showSummaryTM} 
-                    setShowTerminalWindow={setShowSummaryTM}
+                    showTerminalWindow={posterStates.ternaryMethod} 
+                    setShowTerminalWindow={setPosterStates}
+                    keyName={"ternaryMethod"}
                 />
 
                   <SummaryWindow 
@@ -60,8 +64,9 @@ const DisplayElements = () => {
                         marginLeft:'700px',
                     }} 
                     filePath={logicANDSummary} 
-                    showSummaryWindow={showLogicANDSummary} 
-                    setShowSummaryWindow ={setShowLogicANDSummary}
+                    showSummaryWindow={posterStates.logicANDSummary} 
+                    setShowSummaryWindow ={setPosterStates}
+                    keyName={"logicANDSummary"}
                 />
                 <TerminalWindow 
                     style={style.greenSummWindow}
@@ -70,8 +75,9 @@ const DisplayElements = () => {
                         marginLeft:'700px',
                     }} 
                     filePath={AND} 
-                    showTerminalWindow={showAND} 
-                    setShowTerminalWindow={setShowAND}
+                    showTerminalWindow={posterStates.AND} 
+                    setShowTerminalWindow={setPosterStates}
+                    keyName={"AND"}
                 />
             </div>
         </div>

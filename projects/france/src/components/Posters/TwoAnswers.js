@@ -9,16 +9,22 @@ const TwoAnswers = () => {
    
     const logicAND = "/summary/TwoAnswers/LogicAND.txt"
     const logicANDExample = "/summary/TwoAnswers/LogicANDExample.txt"
-    const [showLogicAND, setShowLogincAND] = useState(true);
-    const [showLogicANDExample, setShowLogicANDExample] = useState(true);
 
     const logicANDCode = "/summary/TwoAnswers/LogicANDCode.txt"
     const ternaryCode = "/summary/TwoAnswers/TernaryCode.txt"
     const ternaryOperatorData = "/summary/TwoAnswers/TernaryOperator.txt"    
-    const [showLogicANDCode, setShowLogicANDCode] = useState(true);
-    const [showTernaryCode, setShowTernaryCode] = useState(true);
-    const [showTernaryOperatorData, setShowTernaryOperatorData] = useState(true);
 
+
+
+    const [posterStates, setPosterStates] = useState({
+        logicAND: true,
+        logicANDExample: true,
+        logicANDCode: true,
+        ternaryCode: true,
+        ternaryOperatorData: true,
+    })
+
+    
     
     return(
         <div>
@@ -27,13 +33,13 @@ const TwoAnswers = () => {
                 justifyContent:'center',
                 }}>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'red'} state={showLogicAND} setState={setShowLogincAND}/>
-                    <ButtonBoxCheck color={'red'} state={showLogicANDExample} setState={setShowLogicANDExample}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.logicAND} setState={setPosterStates} keyName={"logicAND"}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.logicANDExample} setState={setPosterStates} keyName={"logicANDExample"}/>
                 </div>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'green'} state={showLogicANDCode} setState={setShowLogicANDCode}/>
-                    <ButtonBoxCheck color={'green'} state={showTernaryCode} setState={setShowTernaryCode}/>
-                    <ButtonBoxCheck color={'green'} state={showTernaryOperatorData} setState={setShowTernaryOperatorData}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.logicANDCode} setState={setPosterStates} keyName={"logicANDCode"}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.ternaryCode} setState={setPosterStates} keyName={"ternaryCode"}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.ternaryOperatorData} setState={setPosterStates} keyName={"ternaryOperatorData"}/>
                 </div>
             </div>
 
@@ -45,8 +51,9 @@ const TwoAnswers = () => {
                         marginLeft:'200px',
                     }} 
                     filePath={logicAND} 
-                    showSummaryWindow={showLogicAND} 
-                    setShowSummaryWindow ={setShowLogincAND}
+                    showSummaryWindow={posterStates.logicAND} 
+                    setShowSummaryWindow ={setPosterStates}
+                    keyName={"logicAND"}
                 />
                 <TerminalWindow 
                     style={style.redTermWindow}
@@ -55,8 +62,9 @@ const TwoAnswers = () => {
                         marginLeft:'200px',
                     }} 
                     filePath={logicANDExample} 
-                    showTerminalWindow={showLogicANDExample} 
-                    setShowTerminalWindow={setShowLogicANDExample}
+                    showTerminalWindow={posterStates.logicANDExample} 
+                    setShowTerminalWindow={setPosterStates}
+                    keyName={"logicANDExample"}
                 />
 
                 <SummaryWindow 
@@ -66,8 +74,9 @@ const TwoAnswers = () => {
                         marginLeft:'800px', 
                     }} 
                     filePath={ternaryOperatorData} 
-                    showSummaryWindow={showLogicANDCode} 
-                    setShowSummaryWindow={setShowLogicANDCode}
+                    showSummaryWindow={posterStates.logicANDCode} 
+                    setShowSummaryWindow ={setPosterStates}
+                    keyName={"logicANDCode"}
                 />
                 <TerminalWindow 
                     style={style.greenTermWindow}
@@ -76,8 +85,9 @@ const TwoAnswers = () => {
                         marginLeft:'800px',
                     }} 
                     filePath={ternaryCode} 
-                    showTerminalWindow={showTernaryCode} 
-                    setShowTerminalWindow={setShowTernaryCode}
+                    showTerminalWindow={posterStates.ternaryCode} 
+                    setShowTerminalWindow={setPosterStates}
+                    keyName={"ternaryCode"}
                 />
                 <TerminalWindow  
                     style={style.greenTermWindow}
@@ -86,8 +96,9 @@ const TwoAnswers = () => {
                         marginLeft:'800px',
                     }} 
                     filePath={logicANDCode} 
-                    showTerminalWindow={showTernaryOperatorData} 
-                    setShowTerminalWindow={setShowTernaryOperatorData}
+                    showTerminalWindow={posterStates.ternaryOperatorData} 
+                    setShowTerminalWindow={setPosterStates}
+                    keyName={"ternaryOperatorData"}
                 />  
             </div>
     </div>
