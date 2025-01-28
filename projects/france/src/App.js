@@ -13,6 +13,7 @@ const App = () => {
   ))
 
   const [userCheck, setUserCheck] = useState(false);
+  const [userId, setUserId] = useState(1);
   
   
   return (
@@ -27,11 +28,12 @@ const App = () => {
       </div>
 
       <div>
-        {userCheck ? <MenuScreen/> : <MenuScreenGuest/>}
+        
+        {userCheck ? <MenuScreen userId={userId}/> : <MenuScreenGuest/>}
       </div>
       
       <div>
-          <Authorization setUserCheck={setUserCheck} />
+          <Authorization setUserCheck={setUserCheck} setUserId={setUserId}/>
       </div>
       
       

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import style from "../css/MenuScreen.module.css"
 
-const Login = ({setUserCheck}) =>{
+const Login = ({setUserCheck, setUserId}) =>{
 
     const [login, setLogin] = useState('');
     const [password,setPassword] = useState('');
@@ -23,6 +23,7 @@ const Login = ({setUserCheck}) =>{
             .then((data) => {
                     alert(data.message);
                     if(data.message === "Login successful"){
+                        setUserId(data.userId)
                         setUserCheck(true);
                     }
             })                

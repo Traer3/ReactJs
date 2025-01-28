@@ -7,20 +7,22 @@ import StyleUsage from "./StyleUsage";
 import ProblemsWithStyles from "./ProblemsWithStyles";
 import Position from "./Postion";
 
-const PosterMain = () =>{
+const PosterMain = ({userId}) =>{
 
     const [items, setItems] = useState(false);
     const [posterStateArray, setPosterStateArray] = useState([]);
+    
 
     const showItemList = () => {
         setItems(!items);
     }
     useEffect(()=>{
-        fetch('http://localhost:3001/getPosterStates/3')
+        fetch(`http://localhost:3001/getPosterStates/${userId}`)
         .then((res)=>res.json())
         .then((data) => {
             if(data.posterStateArray){
                 setPosterStateArray(data.posterStateArray);
+                
             }
         })
         .catch((err)=> console.error(err));
@@ -29,15 +31,15 @@ const PosterMain = () =>{
     const savePosterStates =()=>{
         fetch('http://localhost:3001/savePosterStates',{
             method: 'POST',
-            headers: {'Content-Type': 'application'},
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                userId: 3, 
+                userId: userId,
                 posterStateArray,
             }),
         })
         .then((res)=> res.json())
         .then((data)=> alert(data.message))
-        .catch((err)=> console.err(err));
+        .catch((err)=> console.error(err));
     };
 
     
@@ -128,7 +130,8 @@ const PosterMain = () =>{
                             onClick={savePosterStates}
                         > Сохранить 
         </button>
-
+        
+            <h1 style={{backgroundColor:'red', width:'100px ' , height:'100px', color:'white'}  }>{userId}</h1>
         </div>
     );
 };

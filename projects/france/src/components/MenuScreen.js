@@ -4,7 +4,7 @@ import MenuStyle from "./css/MenuScreen.module.css"
 import Creatura from "../abominations/Creatura";
 import PosterMain from "./Posters/PosterMain";
 
-const MenuScreen = ()=>{
+const MenuScreen = ({userId})=>{
     const [menuButton,setMenuButton] = useState(false);
     const [enableMenu, setEnableMenu] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
@@ -34,7 +34,8 @@ const MenuScreen = ()=>{
 
                         <div>
                             <div className={MenuStyle.menuFlex}>
-                                <PosterMain/>
+                             
+                                <PosterMain userId={userId}/>
                                 <Creatura  customStyle={{ transform: "translateX(600%) translateY(100%)",}}/>
                                 
                             </div>

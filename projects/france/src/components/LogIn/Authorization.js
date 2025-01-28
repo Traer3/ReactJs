@@ -2,7 +2,7 @@ import React from "react";
 
 import Profile from "./Profile";
 
-const Authorization = ({ setUserCheck}) =>{
+const Authorization = ({ setUserCheck, setUserId}) =>{
  
     return(
         <div style={{
@@ -16,7 +16,7 @@ const Authorization = ({ setUserCheck}) =>{
             }}>
                
                 <div>
-                    <Profile setUserCheck={setUserCheck}/>
+                    <Profile setUserCheck={setUserCheck} setUserId={setUserId}/>
                 </div>
             </div>
             
