@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SummaryWindow from "../workspace/SummaryWindow";
 import TerminalWindow from "../workspace/TerminalWindow";
 import style from "../workspace/WindowStyle.module.css"

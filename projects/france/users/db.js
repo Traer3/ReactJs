@@ -81,7 +81,7 @@ app.post('/savePosterStates', (req, res)=>{
     if(!userId || !Array.isArray(posterStateArray)){
         return res.status(400).json({message:'User ID or poster states are required'});
     }
-    console.log('Received posterStateArray', posterStateArray)
+
     const posterStatesJSON = JSON.stringify(posterStateArray);
     db('users')
         .where({id: userId})

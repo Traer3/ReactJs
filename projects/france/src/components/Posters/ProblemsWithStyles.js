@@ -1,22 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import SummaryWindow from "../workspace/SummaryWindow";
 import TerminalWindow from "../workspace/TerminalWindow";
 import style from "../workspace/WindowStyle.module.css"
 import ButtonBoxCheck from "../workspace/ButtonBoxCheck";
 
-
-const ProblemsWithStyles = () => {
-    const summary = "/summary/ProblemsWithStyles/Summary.txt"
-    const menuPanel = "/summary/ProblemsWithStyles/MenuPanel.txt"
-    const menuPanelStyles = "/summary/ProblemsWithStyles/MenuPanelStyles.txt"
+const summary = "/summary/ProblemsWithStyles/Summary.txt"
+const menuPanel = "/summary/ProblemsWithStyles/MenuPanel.txt"
+const menuPanelStyles = "/summary/ProblemsWithStyles/MenuPanelStyles.txt"
 
 
-    const [posterStates, setPosterStates] = useState({
-        summary: true,
-        menuPanel: true,
-        menuPanelStyles: true,
-     
-    })
+const ProblemsWithStyles = ({posterStates, updatePosterState}) => {
+ 
+    const handleStateChange = (key) =>{
+        const updatedState = {...posterStates, [key]: !posterStates[key]};
+        updatePosterState("ProblemsWithStyles", updatedState)
+     };
+   
     return(
        <div>
              <div style={{
@@ -24,9 +23,9 @@ const ProblemsWithStyles = () => {
                 justifyContent:'center',
                 }}>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'blue'} state={posterStates.summary} setState={setPosterStates} keyName={"summary"}/>
-                    <ButtonBoxCheck color={'blue'} state={posterStates.menuPanel} setState={setPosterStates} keyName={"menuPanel"}/>
-                    <ButtonBoxCheck color={'blue'} state={posterStates.menuPanelStyles} setState={setPosterStates} keyName={"menuPanelStyles"}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.summary} setState={()=> handleStateChange("summary")} keyName={"summary"}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.menuPanel} setState={()=> handleStateChange("menuPanel")} keyName={"menuPanel"}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.menuPanelStyles} setState={()=> handleStateChange("menuPanelStyles")} keyName={"menuPanelStyles"}/>
                 </div>
             </div>
              <div>
@@ -38,7 +37,7 @@ const ProblemsWithStyles = () => {
                     }} 
                     filePath={summary} 
                     showSummaryWindow={posterStates.summary} 
-                    setShowSummaryWindow ={setPosterStates}
+                    setShowSummaryWindow ={()=> handleStateChange("summary")}
                     keyName={"summary"}
                 />
                 <TerminalWindow 
@@ -49,7 +48,7 @@ const ProblemsWithStyles = () => {
                     }} 
                     filePath={menuPanel} 
                     showTerminalWindow={posterStates.menuPanel} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("menuPanel")}
                     keyName={"menuPanel"}
                 />
                 <TerminalWindow 
@@ -60,7 +59,7 @@ const ProblemsWithStyles = () => {
                     }} 
                     filePath={menuPanelStyles} 
                     showTerminalWindow={posterStates.menuPanelStyles} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("menuPanelStyles")}
                     keyName={"menuPanelStyles"}
                 />
             </div>

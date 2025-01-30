@@ -1,31 +1,28 @@
-import React, { useState } from "react";
+import React  from "react";
 import SummaryWindow from "../workspace/SummaryWindow";
 import TerminalWindow from "../workspace/TerminalWindow";
 import style from "../workspace/WindowStyle.module.css"
 import ButtonBoxCheck from "../workspace/ButtonBoxCheck";
 
-const Position = () => {
-    const summaryPositions = "/summary/Position/SummaryPositions.txt"
-    const positions =  "/summary/Position/Positions.txt"
+const summaryPositions = "/summary/Position/SummaryPositions.txt"
+const positions =  "/summary/Position/Positions.txt"
 
 
-    const summaryTextPositions = "/summary/Position/SummaryTextPositions.txt"
-    const textPositions = "/summary/Position/TextPositions.txt"
+const summaryTextPositions = "/summary/Position/SummaryTextPositions.txt"
+const textPositions = "/summary/Position/TextPositions.txt"
 
 
-    const summaryWH = "/summary/Position/SummaryWidthHeight.txt"
-    const widthHeight = "/summary/Position/WidthHeight.txt"
+const summaryWH = "/summary/Position/SummaryWidthHeight.txt"
+const widthHeight = "/summary/Position/WidthHeight.txt"
+
+const Position = ({posterStates, updatePosterState}) => {
+   
 
 
-    const [posterStates, setPosterStates] = useState({
-        summaryPositions: true,
-        positions: true,
-        summaryTextPositions: true,
-        textPositions: true,
-        summaryWH: true,
-        widthHeight: true,
-       
-    });
+    const handleStateChange = (key) =>{
+        const updatedState = {...posterStates, [key]: !posterStates[key]};
+        updatePosterState("Position", updatedState)
+     };
 
     return(
         <div>
@@ -34,18 +31,18 @@ const Position = () => {
                 justifyContent:'center',
                 }}>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'red'} state={posterStates.summaryPositions} setState={setPosterStates} keyName={"summaryPositions"}/>
-                    <ButtonBoxCheck color={'red'} state={posterStates.positions} setState={setPosterStates} keyName={"positions"}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.summaryPositions} setState={()=> handleStateChange("summaryPositions")} keyName={"summaryPositions"}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.positions} setState={()=> handleStateChange("positions")} keyName={"positions"}/>
                     
                 </div>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'green'} state={posterStates.summaryTextPositions} setState={setPosterStates} keyName={"summaryTextPositions"}/>
-                    <ButtonBoxCheck color={'green'} state={posterStates.textPositions} setState={setPosterStates} keyName={"textPositions"}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.summaryTextPositions} setState={()=> handleStateChange("summaryTextPositions")} keyName={"summaryTextPositions"}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.textPositions} setState={()=> handleStateChange("textPositions")} keyName={"textPositions"}/>
                     
                 </div>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'blue'} state={posterStates.summaryWH} setState={setPosterStates} keyName={"summaryWH"}/>
-                    <ButtonBoxCheck color={'blue'} state={posterStates.widthHeight} setState={setPosterStates} keyName={"widthHeight"}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.summaryWH} setState={()=> handleStateChange("summaryWH")} keyName={"summaryWH"}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.widthHeight} setState={()=> handleStateChange("widthHeight")} keyName={"widthHeight"}/>
                 </div>
             </div>
             <div>
@@ -57,7 +54,7 @@ const Position = () => {
                     }} 
                     filePath={summaryPositions} 
                     showSummaryWindow={posterStates.summaryPositions} 
-                    setShowSummaryWindow ={setPosterStates}
+                    setShowSummaryWindow ={()=> handleStateChange("summaryPositions")}
                     keyName={"summaryPositions"}
                 />
                 <TerminalWindow 
@@ -68,7 +65,7 @@ const Position = () => {
                     }} 
                     filePath={positions} 
                     showTerminalWindow={posterStates.positions} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("positions")}
                     keyName={"positions"}
                 />
 
@@ -80,7 +77,7 @@ const Position = () => {
                     }} 
                     filePath={summaryTextPositions} 
                     showSummaryWindow={posterStates.summaryTextPositions} 
-                    setShowSummaryWindow ={setPosterStates}
+                    setShowSummaryWindow ={()=> handleStateChange("summaryTextPositions")}
                     keyName={"summaryTextPositions"}
                 />
                 <TerminalWindow 
@@ -91,7 +88,7 @@ const Position = () => {
                     }} 
                     filePath={textPositions} 
                     showTerminalWindow={posterStates.textPositions} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("textPositions")}
                     keyName={"textPositions"}
                 />
 
@@ -103,7 +100,7 @@ const Position = () => {
                     }} 
                     filePath={summaryWH} 
                     showSummaryWindow={posterStates.summaryWH} 
-                    setShowSummaryWindow ={setPosterStates}
+                    setShowSummaryWindow ={()=> handleStateChange("summaryWH")}
                     keyName={"summaryWH"}
                 />
                 <TerminalWindow 
@@ -114,7 +111,7 @@ const Position = () => {
                     }} 
                     filePath={widthHeight} 
                     showTerminalWindow={posterStates.widthHeight} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("widthHeight")}
                     keyName={"widthHeight"}
                 />
             </div>

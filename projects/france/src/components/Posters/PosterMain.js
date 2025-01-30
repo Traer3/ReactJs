@@ -44,6 +44,19 @@ const PosterMain = ({userId}) =>{
             separateFile: true,
             separateFileUsage: true,
         }},
+        {name: "ProblemsWithStyles", state:{
+            summary: true,
+            menuPanel: true,
+            menuPanelStyles: true,
+        }},
+        {name: "Position", state:{
+            summaryPositions: true,
+            positions: true,
+            summaryTextPositions: true,
+            textPositions: true,
+            summaryWH: true,
+            widthHeight: true,    
+        }},
     ]);
     
 
@@ -152,13 +165,13 @@ const PosterMain = ({userId}) =>{
                             onClick={()=>toggleTopic("problemsWithStyles")}
                         > Проблема со стилями 
                     </button>
-                    {topicsState.problemsWithStyles && <ProblemsWithStyles/>}
+                    {topicsState.problemsWithStyles && <ProblemsWithStyles posterStates={getPosterState("ProblemsWithStyles")} updatePosterState={updatePosterState}/>}
 
                     <button className={style.buttonsOnList} 
                             onClick={()=>toggleTopic("position")}
                         > Positions
                     </button>
-                    {topicsState.position && <Position/>}
+                    {topicsState.position && <Position posterStates={getPosterState("Position")} updatePosterState={updatePosterState}/>}
                     
                 </div>
             )}
