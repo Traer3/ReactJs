@@ -100,6 +100,7 @@ app.get('/getPosterStates/:userId', (req, res)=>{
         .select('poster_states')
         .first()
         .then((data)=>{
+            console.log('Data from DB', data)
             if(data && data.poster_states){
                 const posterStateArray = JSON.parse(data.poster_states);
                 res.status(200).json({posterStateArray});

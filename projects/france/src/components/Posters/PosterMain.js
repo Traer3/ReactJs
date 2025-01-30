@@ -18,6 +18,12 @@ const PosterMain = ({userId}) =>{
             ternaryCode: true,
             ternaryOperatorData: true,
         }},
+        {name: "DisplayElements", state:{
+            ternaryMethod: true,
+            summaryTM: true,
+            AND: true,
+            logicANDSummary: true,
+        }},
     ]);
     
 
@@ -72,12 +78,21 @@ const PosterMain = ({userId}) =>{
 
 
     const updatePosterState = (posterName, newState)=>{
+        
         setPosterStateArray((prevArray) =>{
-          return prevArray.map((poster) =>
+
+            console.log('Preious poster', prevArray) 
+            console.log('Updating poster', posterName, 'with new state', newState) 
+          
+         const updatedArray = prevArray.map((poster)=>
             poster.name === posterName 
-            ? { ...poster, state: newState}
+            ? { ...poster, state: {...poster.state, ...newState}}
             : poster
-          );
+          ); 
+          console.log('New poster', updatedArray);
+        
+          return updatedArray;
+            
         });
     };
 
@@ -112,7 +127,7 @@ const PosterMain = ({userId}) =>{
                             onClick={()=>toggleTopic("displayElements")}
                         > Отображение элементов
                     </button>
-                    {topicsState.displayElements && <DisplayElements/>}
+                    {topicsState.displayElements && <DisplayElements posterStates={getPosterState("DisplayElements")} updatePosterState={updatePosterState}/>}
 
                     <button className={style.buttonsOnList} 
                             onClick={()=>toggleTopic("flexBox")}

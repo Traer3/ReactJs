@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import SummaryWindow from "../workspace/SummaryWindow";
 import TerminalWindow from "../workspace/TerminalWindow";
 import style from "../workspace/WindowStyle.module.css"
 import ButtonBoxCheck from "../workspace/ButtonBoxCheck";
-const DisplayElements = () => {
+
       const ternaryMethod = "/summary/DisplayElements/TernaryMethod.txt"
       const summaryTM = "/summary/DisplayElements/TM.txt"
 
       const AND = "/summary/DisplayElements/AND.txt"
       const logicANDSummary = "/summary/DisplayElements/LogicANDSummary.txt"
 
-      const [posterStates, setPosterStates] = useState({
-        ternaryMethod: true,
-        summaryTM: true,
-        AND: true,
-        logicANDSummary: true,
-    })
+const DisplayElements = ({posterStates, updatePosterState}) => {
+      
+
+    const handleStateChange = (key) =>{
+       const updatedState = {...posterStates, [key]: !posterStates[key]};
+       updatePosterState("DisplayElements", updatedState)
+    };
 
     return(
         <div>
@@ -24,12 +25,12 @@ const DisplayElements = () => {
                 justifyContent:'center',
                 }}>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'red'} state={posterStates.summaryTM} setState={setPosterStates} keyName={"summaryTM"}/>
-                    <ButtonBoxCheck color={'red'} state={posterStates.ternaryMethod} setState={setPosterStates} keyName={"ternaryMethod"}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.summaryTM} setState={()=> handleStateChange("summaryTM")} keyName={"summaryTM"}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.ternaryMethod} setState={()=> handleStateChange("ternaryMethod")} keyName={"ternaryMethod"}/>
                 </div>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'green'} state={posterStates.logicANDSummary} setState={setPosterStates} keyName={"logicANDSummary"}/>
-                    <ButtonBoxCheck color={'green'} state={posterStates.AND} setState={setPosterStates} keyName={"AND"}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.logicANDSummary} setState={()=> handleStateChange("logicANDSummary")} keyName={"logicANDSummary"}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.AND} setState={()=> handleStateChange("AND")} keyName={"AND"}/>
                 </div>
             </div>
 
@@ -42,7 +43,7 @@ const DisplayElements = () => {
                     }} 
                     filePath={summaryTM} 
                     showSummaryWindow={posterStates.summaryTM} 
-                    setShowSummaryWindow ={setPosterStates}
+                    setShowSummaryWindow ={()=> handleStateChange("summaryTM")}
                     keyName={"summaryTM"}
                 />
                 <TerminalWindow 
@@ -53,7 +54,7 @@ const DisplayElements = () => {
                     }} 
                     filePath={ternaryMethod} 
                     showTerminalWindow={posterStates.ternaryMethod} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("ternaryMethod")}
                     keyName={"ternaryMethod"}
                 />
 
@@ -65,7 +66,7 @@ const DisplayElements = () => {
                     }} 
                     filePath={logicANDSummary} 
                     showSummaryWindow={posterStates.logicANDSummary} 
-                    setShowSummaryWindow ={setPosterStates}
+                    setShowSummaryWindow ={()=> handleStateChange("logicANDSummary")}
                     keyName={"logicANDSummary"}
                 />
                 <TerminalWindow 
@@ -76,7 +77,7 @@ const DisplayElements = () => {
                     }} 
                     filePath={AND} 
                     showTerminalWindow={posterStates.AND} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("AND")}
                     keyName={"AND"}
                 />
             </div>
