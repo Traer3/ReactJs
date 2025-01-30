@@ -93,14 +93,11 @@ app.post('/savePosterStates', (req, res)=>{
 
 app.get('/getPosterStates/:userId', (req, res)=>{
     const {userId} = req.params;
-    
-
     db('users')
         .where({id: userId})
         .select('poster_states')
         .first()
         .then((data)=>{
-            console.log('Data from DB', data)
             if(data && data.poster_states){
                 const posterStateArray = JSON.parse(data.poster_states);
                 res.status(200).json({posterStateArray});

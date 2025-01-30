@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import SummaryWindow from "../workspace/SummaryWindow";
 import TerminalWindow from "../workspace/TerminalWindow";
 import style from "../workspace/WindowStyle.module.css"
 import ButtonBoxCheck from "../workspace/ButtonBoxCheck";
 
-const FLEXBox = () => {
     const summaryMDC = "/summary/FlexBox/SummaryMDC.txt"
     const mainDivContainer = "/summary/FlexBox/MainDivContainer.txt"
     
@@ -13,16 +12,15 @@ const FLEXBox = () => {
     
     const summaryB = "/summary/FlexBox/SummaryB.txt"
     const boxes = "/summary/FlexBox/Boxes.txt"
+
+const FLEXBox = ({posterStates, updatePosterState}) => {
+    
   
-   
-    const [posterStates, setPosterStates] = useState({
-        summaryMDC: true,
-        mainDivContainer: true,
-        summaryDWB: true,
-        divWithBoxes: true,
-        summaryB: true,
-        boxes: true,
-    });
+    const handleStateChange = (key) =>{
+        const updatedState = {...posterStates, [key]: !posterStates[key]};
+        updatePosterState("FLEXBox", updatedState)
+     };
+
 
     return(
         <div>
@@ -31,18 +29,18 @@ const FLEXBox = () => {
                 justifyContent:'center',
                 }}>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'red'} state={posterStates.summaryMDC} setState={setPosterStates} keyName={"summaryMDC"}/>
-                    <ButtonBoxCheck color={'red'} state={posterStates.mainDivContainer} setState={setPosterStates} keyName={"mainDivContainer"}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.summaryMDC} setState={()=> handleStateChange("summaryMDC")} keyName={"summaryMDC"}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.mainDivContainer} setState={()=> handleStateChange("mainDivContainer")} keyName={"mainDivContainer"}/>
                     
                 </div>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'green'} state={posterStates.summaryDWB} setState={setPosterStates} keyName={"summaryDWB"}/>
-                    <ButtonBoxCheck color={'green'} state={posterStates.divWithBoxes} setState={setPosterStates} keyName={"divWithBoxes"}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.summaryDWB} setState={()=> handleStateChange("summaryDWB")} keyName={"summaryDWB"}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.divWithBoxes} setState={()=> handleStateChange("divWithBoxes")} keyName={"divWithBoxes"}/>
                     
                 </div>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'blue'} state={posterStates.summaryB} setState={setPosterStates} keyName={"summaryB"}/>
-                    <ButtonBoxCheck color={'blue'} state={posterStates.boxes} setState={setPosterStates} keyName={"boxes"}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.summaryB} setState={()=> handleStateChange("summaryB")} keyName={"summaryB"}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.boxes} setState={()=> handleStateChange("boxes")} keyName={"boxes"}/>
                 </div>
             </div>
             <div>
@@ -54,7 +52,7 @@ const FLEXBox = () => {
                     }} 
                     filePath={summaryMDC} 
                     showSummaryWindow={posterStates.summaryMDC} 
-                    setShowSummaryWindow ={setPosterStates}
+                    setShowSummaryWindow ={()=> handleStateChange("summaryMDC")}
                     keyName={"summaryMDC"}
                 />
                 <TerminalWindow 
@@ -65,7 +63,7 @@ const FLEXBox = () => {
                     }} 
                     filePath={mainDivContainer} 
                     showTerminalWindow={posterStates.mainDivContainer} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("mainDivContainer")}
                     keyName={"mainDivContainer"}
                 />
 
@@ -77,7 +75,7 @@ const FLEXBox = () => {
                     }} 
                     filePath={summaryDWB} 
                     showSummaryWindow={posterStates.summaryDWB} 
-                    setShowSummaryWindow ={setPosterStates}
+                    setShowSummaryWindow ={()=> handleStateChange("summaryDWB")}
                     keyName={"summaryDWB"}
                 />
                 <TerminalWindow 
@@ -88,7 +86,7 @@ const FLEXBox = () => {
                     }} 
                     filePath={divWithBoxes} 
                     showTerminalWindow={posterStates.divWithBoxes} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("divWithBoxes")}
                     keyName={"divWithBoxes"}
                 />
 
@@ -100,7 +98,7 @@ const FLEXBox = () => {
                     }} 
                     filePath={summaryB} 
                     showSummaryWindow={posterStates.summaryB} 
-                    setShowSummaryWindow ={setPosterStates}
+                    setShowSummaryWindow ={()=> handleStateChange("summaryB")}
                     keyName={"summaryB"}
                 />
                 <TerminalWindow 
@@ -111,7 +109,7 @@ const FLEXBox = () => {
                     }} 
                     filePath={boxes} 
                     showTerminalWindow={posterStates.boxes} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("boxes")}
                     keyName={"boxes"}
                 />
             </div>

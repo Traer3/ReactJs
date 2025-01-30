@@ -4,7 +4,6 @@ import TerminalWindow from "../workspace/TerminalWindow";
 import style from "../workspace/WindowStyle.module.css"
 import ButtonBoxCheck from "../workspace/ButtonBoxCheck";
 
-const StyleUsage = () => {
     const summaryIS = "/summary/StyleUsage/SummaryIS.txt"
     const inlineStyles = "/summary/StyleUsage/InlineStyles.txt"
 
@@ -20,20 +19,15 @@ const StyleUsage = () => {
     const summarySF = "/summary/StyleUsage/SummarySF.txt"
     const separateFile = "/summary/StyleUsage/SeparateFile.txt"
     const separateFileUsage = "/summary/StyleUsage/SeparateFileUsage.txt"
+
+const StyleUsage = ({posterStates, updatePosterState}) => {
+    
    
 
-    const [posterStates, setPosterStates] = useState({
-        summaryIS: true,
-        inlineStyles: true,
-        summaryCSSInJS: true,
-        cssInJS: true,
-        summaryCSSModules: true,
-        cssModules: true,
-        cssModulesUsage: true,
-        summarySF: true,
-        separateFile: true,
-        separateFileUsage: true,
-    });
+    const handleStateChange = (key) =>{
+        const updatedState = {...posterStates, [key]: !posterStates[key]};
+        updatePosterState("StyleUsage", updatedState)
+     };
 
     return(
        <div>
@@ -42,24 +36,24 @@ const StyleUsage = () => {
                 justifyContent:'center',
                 }}>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'red'} state={posterStates.summaryIS} setState={setPosterStates} keyName={"summaryIS"}/>
-                    <ButtonBoxCheck color={'red'} state={posterStates.inlineStyles} setState={setPosterStates} keyName={"inlineStyles"}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.summaryIS} setState={()=> handleStateChange("summaryIS")} keyName={"summaryIS"}/>
+                    <ButtonBoxCheck color={'red'} state={posterStates.inlineStyles} setState={()=> handleStateChange("inlineStyles")} keyName={"inlineStyles"}/>
                     
                 </div>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'green'} state={posterStates.summaryCSSInJS} setState={setPosterStates} keyName={"summaryCSSInJS"}/>
-                    <ButtonBoxCheck color={'green'} state={posterStates.cssInJS} setState={setPosterStates} keyName={"cssInJS"}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.summaryCSSInJS} setState={()=> handleStateChange("summaryCSSInJS")} keyName={"summaryCSSInJS"}/>
+                    <ButtonBoxCheck color={'green'} state={posterStates.cssInJS} setState={()=> handleStateChange("cssInJS")} keyName={"cssInJS"}/>
                     
                 </div>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'blue'} state={posterStates.summaryCSSModules} setState={setPosterStates} keyName={"summaryCSSModules"}/>
-                    <ButtonBoxCheck color={'blue'} state={posterStates.cssModules} setState={setPosterStates} keyName={"cssModules"}/>
-                    <ButtonBoxCheck color={'blue'} state={posterStates.cssModulesUsage} setState={setPosterStates} keyName={"cssModulesUsage"}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.summaryCSSModules} setState={()=> handleStateChange("summaryCSSModules")} keyName={"summaryCSSModules"}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.cssModules} setState={()=> handleStateChange("cssModules")} keyName={"cssModules"}/>
+                    <ButtonBoxCheck color={'blue'} state={posterStates.cssModulesUsage} setState={()=> handleStateChange("cssModulesUsage")} keyName={"cssModulesUsage"}/>
                 </div>
                 <div className={style.columnSquare}>
-                    <ButtonBoxCheck color={'yellow'} state={posterStates.summarySF} setState={setPosterStates} keyName={"summarySF"}/>
-                    <ButtonBoxCheck color={'yellow'} state={posterStates.separateFile} setState={setPosterStates} keyName={"separateFile"}/>
-                    <ButtonBoxCheck color={'yellow'} state={posterStates.separateFileUsage} setState={setPosterStates} keyName={"separateFileUsage"}/>
+                    <ButtonBoxCheck color={'yellow'} state={posterStates.summarySF} setState={()=> handleStateChange("summarySF")} keyName={"summarySF"}/>
+                    <ButtonBoxCheck color={'yellow'} state={posterStates.separateFile} setState={()=> handleStateChange("separateFile")} keyName={"separateFile"}/>
+                    <ButtonBoxCheck color={'yellow'} state={posterStates.separateFileUsage} setState={()=> handleStateChange("separateFileUsage")} keyName={"separateFileUsage"}/>
                 </div>
             </div>
 
@@ -73,7 +67,7 @@ const StyleUsage = () => {
                     }} 
                     filePath={summaryIS} 
                     showSummaryWindow={posterStates.summaryIS} 
-                    setShowSummaryWindow ={setPosterStates}
+                    setShowSummaryWindow ={()=> handleStateChange("summaryIS")}
                     keyName={"summaryIS"}
                 />
                 <TerminalWindow 
@@ -84,7 +78,7 @@ const StyleUsage = () => {
                     }} 
                     filePath={inlineStyles} 
                     showTerminalWindow={posterStates.inlineStyles} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("inlineStyles")}
                     keyName={"inlineStyles"}
                 />
 
@@ -97,7 +91,7 @@ const StyleUsage = () => {
                     }} 
                     filePath={summaryCSSInJS} 
                     showSummaryWindow={posterStates.summaryCSSInJS} 
-                    setShowSummaryWindow ={setPosterStates}
+                    setShowSummaryWindow ={()=> handleStateChange("summaryCSSInJS")}
                     keyName={"summaryCSSInJS"}
                 />
                 <TerminalWindow 
@@ -108,7 +102,7 @@ const StyleUsage = () => {
                     }} 
                     filePath={cssInJS} 
                     showTerminalWindow={posterStates.cssInJS} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("cssInJS")}
                     keyName={"cssInJS"}
                 />
                 
@@ -120,7 +114,7 @@ const StyleUsage = () => {
                     }} 
                     filePath={summaryCSSModules} 
                     showSummaryWindow={posterStates.summaryCSSModules} 
-                    setShowSummaryWindow ={setPosterStates}
+                    setShowSummaryWindow ={()=> handleStateChange("summaryCSSModules")}
                     keyName={"summaryCSSModules"}
                 />
                 <TerminalWindow 
@@ -131,7 +125,7 @@ const StyleUsage = () => {
                     }} 
                     filePath={cssModules} 
                     showTerminalWindow={posterStates.cssModules} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("cssModules")}
                     keyName={"cssModules"}
                 />
                 <TerminalWindow 
@@ -142,7 +136,7 @@ const StyleUsage = () => {
                     }} 
                     filePath={cssModulesUsage} 
                     showTerminalWindow={posterStates.cssModulesUsage} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("cssModulesUsage")}
                     keyName={"cssModulesUsage"}
                 />
 
@@ -155,7 +149,7 @@ const StyleUsage = () => {
                     }} 
                     filePath={summarySF} 
                     showSummaryWindow={posterStates.summarySF} 
-                    setShowSummaryWindow ={setPosterStates}
+                    setShowSummaryWindow ={()=> handleStateChange("summarySF")}
                     keyName={"summarySF"}
                 />
                 <TerminalWindow 
@@ -166,7 +160,7 @@ const StyleUsage = () => {
                     }} 
                     filePath={separateFile} 
                     showTerminalWindow={posterStates.separateFile} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("separateFile")}
                     keyName={"separateFile"}
                 />
                 <TerminalWindow 
@@ -177,7 +171,7 @@ const StyleUsage = () => {
                     }} 
                     filePath={separateFileUsage} 
                     showTerminalWindow={posterStates.separateFileUsage} 
-                    setShowTerminalWindow={setPosterStates}
+                    setShowTerminalWindow={()=> handleStateChange("separateFileUsage")}
                     keyName={"separateFileUsage"}
                 />
             </div>

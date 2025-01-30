@@ -24,6 +24,26 @@ const PosterMain = ({userId}) =>{
             AND: true,
             logicANDSummary: true,
         }},
+        {name: "FLEXBox", state:{
+            summaryMDC: true,
+            mainDivContainer: true,
+            summaryDWB: true,
+            divWithBoxes: true,
+            summaryB: true,
+            boxes: true,
+        }},
+        {name: "StyleUsage", state:{
+            summaryIS: true,
+            inlineStyles: true,
+            summaryCSSInJS: true,
+            cssInJS: true,
+            summaryCSSModules: true,
+            cssModules: true,
+            cssModulesUsage: true,
+            summarySF: true,
+            separateFile: true,
+            separateFileUsage: true,
+        }},
     ]);
     
 
@@ -53,8 +73,8 @@ const PosterMain = ({userId}) =>{
         .then((res)=>res.json())
         .then((data) => {
             if(data.posterStateArray){
-                console.log('Array from DB', data.posterStateArray)
-                setPosterStateArray(data.posterStateArray);
+
+                setPosterStateArray(data.posterStateArray);//Delete before updating array posterStateArray =)
                 
             }
         })
@@ -62,7 +82,6 @@ const PosterMain = ({userId}) =>{
     }, [userId]);
 
     const savePosterStates =()=>{  
-        console.log('Saving posters', posterStateArray) 
         fetch('http://localhost:3001/savePosterStates',{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -78,21 +97,13 @@ const PosterMain = ({userId}) =>{
 
 
     const updatePosterState = (posterName, newState)=>{
-        
         setPosterStateArray((prevArray) =>{
-
-            console.log('Preious poster', prevArray) 
-            console.log('Updating poster', posterName, 'with new state', newState) 
-          
-         const updatedArray = prevArray.map((poster)=>
-            poster.name === posterName 
-            ? { ...poster, state: {...poster.state, ...newState}}
-            : poster
-          ); 
-          console.log('New poster', updatedArray);
-        
-          return updatedArray;
-            
+            const updatedArray = prevArray.map((poster)=>
+                poster.name === posterName 
+                ? { ...poster, state: {...poster.state, ...newState}}
+                : poster
+            ); 
+            return updatedArray;
         });
     };
 
@@ -101,10 +112,6 @@ const PosterMain = ({userId}) =>{
         return poster ? poster.state : {};
     };
     
-
-    
-
-
 
     return(
         <div>
@@ -133,13 +140,13 @@ const PosterMain = ({userId}) =>{
                             onClick={()=>toggleTopic("flexBox")}
                         > FLEX контейнеры
                     </button>
-                    {topicsState.flexBox && <FLEXBox/>}
+                    {topicsState.flexBox && <FLEXBox posterStates={getPosterState("FLEXBox")} updatePosterState={updatePosterState}/>}
 
                     <button className={style.buttonsOnList} 
                             onClick={()=>toggleTopic("styleUsage")}
                         > Использование стилей
                     </button>
-                    {topicsState.styleUsage && <StyleUsage/>}
+                    {topicsState.styleUsage && <StyleUsage posterStates={getPosterState("StyleUsage")} updatePosterState={updatePosterState}/>}
 
                     <button className={style.buttonsOnList} 
                             onClick={()=>toggleTopic("problemsWithStyles")}
