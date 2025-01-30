@@ -14,22 +14,12 @@ const db = knex({
     useNullAsDefault: true,
 });
 
-db.schema.hasTable('registered').then((exists)=>{
-    if(!exists){
-        return db.schema.createTable('registered',(table)=>{
-            table.increments('id');
-            table.string('login');
-            table.string('password');
-            table.timestamp('joined_at').defaultTo(db.fn.now());
-        });
-    }
-});
 
 db.schema.hasTable('users').then((exists)=>{
     if(!exists){
         return db.schema.createTable('users',(table)=>{
             table.increments('id').primary();
-            table.string('login').notNullable();
+            table.string('login').notNullable().unique()
             table.string('password').notNullable();
             table.text('poster_states');
             table.timestamp('created_at').defaultTo(db.fn.now());
@@ -74,8 +64,6 @@ app.post('/login',(req, res)=>{
             if(!user){
                 return res.status(404).json({message : 'User not found'});
             }
-           
-            
             bcrypt.compare(password, user.password).then((isMatch)=>{
                 if(isMatch){
                     res.status(200).json({message:'Login successful', userId: user.id});
@@ -93,9 +81,8 @@ app.post('/savePosterStates', (req, res)=>{
     if(!userId || !Array.isArray(posterStateArray)){
         return res.status(400).json({message:'User ID or poster states are required'});
     }
-
+    console.log('Received posterStateArray', posterStateArray)
     const posterStatesJSON = JSON.stringify(posterStateArray);
-
     db('users')
         .where({id: userId})
         .update({poster_states: posterStatesJSON})
@@ -106,7 +93,7 @@ app.post('/savePosterStates', (req, res)=>{
 
 app.get('/getPosterStates/:userId', (req, res)=>{
     const {userId} = req.params;
-    console.log('Requested userId', userId)
+    
 
     db('users')
         .where({id: userId})

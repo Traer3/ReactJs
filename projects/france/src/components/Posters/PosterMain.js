@@ -10,39 +10,21 @@ import Position from "./Postion";
 const PosterMain = ({userId}) =>{
 
     const [items, setItems] = useState(false);
-    const [posterStateArray, setPosterStateArray] = useState([]);
+    const [posterStateArray, setPosterStateArray] = useState([
+        {name: "TwoAnswers", state:{
+            logicAND: true,
+            logicANDExample: true,
+            logicANDCode: true,
+            ternaryCode: true,
+            ternaryOperatorData: true,
+        }},
+    ]);
     
 
     const showItemList = () => {
         setItems(!items);
     }
-    useEffect(()=>{
-        fetch(`http://localhost:3001/getPosterStates/${userId}`)
-        .then((res)=>res.json())
-        .then((data) => {
-            if(data.posterStateArray){
-                setPosterStateArray(data.posterStateArray);
-                
-            }
-        })
-        .catch((err)=> console.error(err));
-    })
 
-    const savePosterStates =()=>{
-        fetch('http://localhost:3001/savePosterStates',{
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                userId: userId,
-                posterStateArray,
-            }),
-        })
-        .then((res)=> res.json())
-        .then((data)=> alert(data.message))
-        .catch((err)=> console.error(err));
-    };
-
-    
     const [topicsState, setTopicsState] = useState({
         
         twoAnswers: false,
@@ -60,18 +42,50 @@ const PosterMain = ({userId}) =>{
         }));
     };
 
-    const updatePosterState = (posterName, newState)=>{
-        setPosterStateArray((prevArray)=>{
-            const index = prevArray.findIndex((item)=> item.name === posterName);
-            if (index !==  -1){
-                const updatedArray = [...prevArray];
-                updatedArray[index].state = newState;
-                return updatedArray;
-            } else{
-                return[...prevArray, {name: posterName, state: newState}];
+    useEffect(()=>{
+        fetch(`http://localhost:3001/getPosterStates/${userId}`)
+        .then((res)=>res.json())
+        .then((data) => {
+            if(data.posterStateArray){
+                console.log('Array from DB', data.posterStateArray)
+                setPosterStateArray(data.posterStateArray);
+                
             }
+        })
+        .catch((err)=> console.error(err));
+    }, [userId]);
+
+    const savePosterStates =()=>{  
+        console.log('Saving posters', posterStateArray) 
+        fetch('http://localhost:3001/savePosterStates',{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                userId: userId,
+                posterStateArray,
+            }),
+        })
+        .then((res)=> res.json())
+        .then((data)=> alert(data.message))
+        .catch((err)=> console.error(err));
+    };
+
+
+    const updatePosterState = (posterName, newState)=>{
+        setPosterStateArray((prevArray) =>{
+          return prevArray.map((poster) =>
+            poster.name === posterName 
+            ? { ...poster, state: newState}
+            : poster
+          );
         });
     };
+
+    const getPosterState = (posterName) =>{
+        const poster = posterStateArray.find((p)=> p.name === posterName);
+        return poster ? poster.state : {};
+    };
+    
 
     
 
@@ -92,7 +106,7 @@ const PosterMain = ({userId}) =>{
                         > Два ответа
                     </button>
                     
-                    {topicsState.twoAnswers && <TwoAnswers updatePosterState={updatePosterState}/>} 
+                    {topicsState.twoAnswers && <TwoAnswers posterStates={getPosterState("TwoAnswers")} updatePosterState={updatePosterState}/>} 
 
                     <button className={style.buttonsOnList} 
                             onClick={()=>toggleTopic("displayElements")}

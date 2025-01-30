@@ -1,35 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import TerminalWindow from "../workspace/TerminalWindow";
 import SummaryWindow from "../workspace/SummaryWindow";
 import style from "../workspace/WindowStyle.module.css"
 import ButtonBoxCheck from "../workspace/ButtonBoxCheck";
 
-const TwoAnswers = ({updatePosterState}) => {
+const logicAND = "/summary/TwoAnswers/LogicAND.txt"
+const logicANDExample = "/summary/TwoAnswers/LogicANDExample.txt"
 
-   
-    const logicAND = "/summary/TwoAnswers/LogicAND.txt"
-    const logicANDExample = "/summary/TwoAnswers/LogicANDExample.txt"
+const logicANDCode = "/summary/TwoAnswers/LogicANDCode.txt"
+const ternaryCode = "/summary/TwoAnswers/TernaryCode.txt"
+const ternaryOperatorData = "/summary/TwoAnswers/TernaryOperator.txt"   
 
-    const logicANDCode = "/summary/TwoAnswers/LogicANDCode.txt"
-    const ternaryCode = "/summary/TwoAnswers/TernaryCode.txt"
-    const ternaryOperatorData = "/summary/TwoAnswers/TernaryOperator.txt"    
+const TwoAnswers = ({posterStates, updatePosterState}) => {  
+    
 
-
-
-    const [posterStates, setPosterStates] = useState({
-        logicAND: true,
-        logicANDExample: true,
-        logicANDCode: true,
-        ternaryCode: true,
-        ternaryOperatorData: true,
-    })
 
     const handleStateChange = (key) =>{
-        setPosterStates((prevState)=>{
-            const updatedState = {...prevState, [key]: !prevState[key]};
-            updatePosterState("TowAnswers", updatedState);
-            return updatedState;
-        });
+       const updatedState = {...posterStates, [key]: !posterStates[key]};
+       updatePosterState("TwoAnswers", updatedState)
     };
     
     
