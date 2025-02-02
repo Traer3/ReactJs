@@ -1,30 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Joining from "../LogIn/Joining"
+import Login from "./Login";
 
-import Profile from "./Profile";
+const Authorization = ({setRegistration, setUserCheck, setUserId}) =>{
 
-const Authorization = ({ setUserCheck, setUserId}) =>{
- 
+
+
+    const [registerUser, setRegisterUser] = useState(false); 
+
+    useEffect(()=>{
+        setRegisterUser(setRegistration)
+    },[setRegistration])
+    
+
+
+
     return(
-        <div style={{
-
-            height:'100vh',
-            width:'100vw',
-        }}>
-            <div style={{
-                float:'right',
-                marginRight:'2.3%',
-            }}>
-               
-                <div>
-                    <Profile setUserCheck={setUserCheck} setUserId={setUserId}/>
-                </div>
+        <div >
+            <div>
+                
+                    
             </div>
-            
-           
-            
 
-            
-            
+            <div>
+                {registerUser ? (<Login setUserCheck={setUserCheck} setUserId={setUserId}/>) : (<Joining/>) }
+                
+            </div>
+
         </div>
     );
 };

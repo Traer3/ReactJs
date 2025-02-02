@@ -227,7 +227,7 @@
 .userButton{
     border: 1px rgba(95,145,255,0.3);
     border-radius: 4px;
-    background: rgba(95,145,255,0.2);
+    background: rgba(95, 255, 194, 0.2);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 10px rgba(105,155,255,0.4);
     cursor: pointer;
@@ -281,6 +281,20 @@
     height: 30px;
     width: 30px;    
 }
+
+.addUserButton{
+    
+    border: none;
+    border-radius: 8px;
+    background-color: green;
+    cursor: pointer;
+    
+    height: 30px;
+    width: 30px;   
+    
+}
+
+
 
 .lonelyButton{
     border: 1px rgba(95,145,255,0.3);

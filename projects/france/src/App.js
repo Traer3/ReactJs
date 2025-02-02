@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Stars from "./components/css/Stars.module.css"
 import MenuScreen from "./components/MenuScreen.js";
-import Authorization from "./components/LogIn/Authorization.js";
 import MenuScreenGuest from "./components/MenuScreenGuest.js";
+import Profile from "./components/LogIn/Profile.js";
 
 const App = () => {
 
@@ -28,12 +28,14 @@ const App = () => {
       </div>
 
       <div>
-        
         {userCheck ? <MenuScreen userId={userId}/> : <MenuScreenGuest/>}
       </div>
       
-      <div>
-          <Authorization setUserCheck={setUserCheck} setUserId={setUserId}/>
+
+      <div style={{height:'100vh',width:'100vw',}}>
+        <div style={{float:'right',marginRight:'2.3%',}}>
+            <Profile userCheck={userCheck} userId={userId} setUserCheck={setUserCheck} setUserId={setUserId}/>
+        </div>
       </div>
       
       

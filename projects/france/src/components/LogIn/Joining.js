@@ -43,7 +43,7 @@ const Joining = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="password"
                 />
-                <button type="submit">join</button>
+                <button style={{backgroundColor:'green'}} type="submit">join</button>
             </form>
 
         </div>

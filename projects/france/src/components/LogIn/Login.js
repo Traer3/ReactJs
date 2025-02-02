@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import style from "../css/MenuScreen.module.css"
 
+
 const Login = ({setUserCheck, setUserId}) =>{
 
     const [login, setLogin] = useState('');
@@ -49,7 +50,7 @@ const Login = ({setUserCheck, setUserId}) =>{
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="password"
             />
-            <button type="submit">login</button>
+            <button  type="submit">login</button>
         </form>
 
     </div>
