@@ -1,0 +1,66 @@
+.panelIcon{
+    width: 20px;
+    height: 20px;
+}
+.menuPanel{
+    border: 1px rgba(95,145,255,0.3);
+    border-radius: 4px;
+    position: fixed;
+    background: rgba(95,145,255,0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 15px rgba(105,155,255,0.4);
+    color: #ffffff;
+    height: 98vh;
+    width: 17vh;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;   
+    transform: translateX(-105%);
+    transition: all 0.3s ease-in-out;
+    
+}
+
+.menuPanelOpen{
+    transform: translateX(0);
+}
+
+.menuButton{
+    position: fixed;
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;      
+}
+
+
+.lonelyButton{
+    border: 1px rgba(95,145,255,0.3);
+    border-radius: 4px;
+    background: rgba(95,145,255,0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 10px rgba(105,155,255,0.4);
+    cursor: pointer;
+    position: fixed;
+    height: 30px;
+    width: 30px;   
+}
+
+
+.profilePanel{
+    border: 1px rgba(95,145,255,0.3);
+    border-radius: 4px;
+    position: fixed;
+    background: rgba(95,145,255,0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 15px rgba(105,155,255,0.4);
+    color: #ffffff;
+    right: 0.3%;
+    height: 98vh;
+    width: 17vh;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;   
+    
+}
