@@ -10,7 +10,7 @@ const icons = {
     addUser: AddUserIcon,
 }
 
-const SideButton = ({buttonState, buttonStyle , newStyle ,iconsName, onClick}) => {
+const SideButton = ({buttonState, buttonStyle , newStyle ,iconsName, onClick, }) => {
     return(
 
         <button 

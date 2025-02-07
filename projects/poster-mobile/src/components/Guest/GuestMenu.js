@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import SidePanels from '../SidePanels.module.css'
 import SidePanel from "../SidePanelComponents/SidePanel";
 import SideButton from "../SidePanelComponents/SideButton";
 //независимая зона 
@@ -8,9 +7,17 @@ const GuestMenu = () => {
     const [menuButton,setMenuButton] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
-    const toggelSidePanel = ()=>{
+    const [userButton, setUserButton] = useState(false);
+    const [userMenuOpen, setUserMenuOpen] = useState(false);
+
+    const toggelMenuPanel = ()=>{
         setMenuButton(!menuButton);
         setMenuOpen(!menuOpen)
+    }
+
+    const toggelUserPanel = ()=>{
+        setUserButton(!userButton);
+        setUserMenuOpen(!userMenuOpen)
     }
     
     //
@@ -22,22 +29,47 @@ const GuestMenu = () => {
                 buttonStyle="menuButton" 
                 newStyle="lonelyButton"
                 iconsName="menu"
-                onClick={toggelSidePanel} />
+                onClick={toggelMenuPanel} />
 
-            <SidePanel panelStyle="menuPanel" panelState={menuOpen} newStyle="menuPanelOpen">
-                
+            <SidePanel 
+                panelStyle="menuPanel" 
+                panelState={menuOpen} 
+                newStyle="menuPanelOpen"
+                >
+
+                 <div style={{background:'red',}}>
+                        red
+                </div>
+                {
+                //кнопки будут включать постера и существ и т.д , а сами они уже загружены в GuestMenu ну или просто Menu
+                }
+
             </SidePanel>
-
             
+            { //state to ture poster on && 
+                //POSTERS
+            }
 
-      
-            <div className={SidePanels.profilePanel} >
+            <SideButton 
+                buttonState={userButton} 
+                buttonStyle="profileButton" 
+                newStyle="lonelyProfileButton"
+                iconsName="user"
+                onClick={toggelUserPanel} 
+                />
+            
+            <SidePanel 
+                panelStyle="profilePanel" 
+                panelState={userMenuOpen} 
+                newStyle="profilePanelOpen"
+                >
 
                 <div style={{background:'green',}}>
                         green
                 </div>
 
-            </div>
+            </SidePanel>
+      
        </div>
     );
 };

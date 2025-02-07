@@ -1,7 +1,7 @@
 import React from "react";
 import SidePanels from '../SidePanels.module.css'
 
-const SidePanel = ({panelStyle, panelState , newStyle, children}) =>{
+const SidePanel = ({panelStyle, panelState , newStyle, children }) =>{
     return(
         <div 
             style={{zIndex:0,}} 

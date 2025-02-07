@@ -62,5 +62,34 @@
     font-family: Arial, sans-serif;
     font-size: 16px;
     text-align: center;   
-    
+    transform: translateX(103%);
+    transition: all 0.3s ease-in-out;
+}
+
+.profilePanelOpen{
+    transform: translateX(0);
+}
+
+.profileButton{
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    cursor: pointer;
+    position: fixed;
+    right: 0.4%;
+    height: 30px;
+    width: 30px;    
+}
+
+.lonelyProfileButton{
+    border: 1px rgba(95,145,255,0.3);
+    border-radius: 4px;
+    background: rgba(95,145,255,0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 10px rgba(105,155,255,0.4);
+    cursor: pointer;
+    position: fixed;
+    right: 0.4%;
+    height: 30px;
+    width: 30px;   
 }
