@@ -5,13 +5,14 @@ import SidePanels from '../SidePanels.module.css'
 import Authorization from "../Authorization/Authorization";
 
 //независимая зона 
-const GuestMenu = () => {
+const GuestMenu = ({setUserCheck}) => {
 
     const [menuButton,setMenuButton] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
     const [userButton, setUserButton] = useState(false);
     const [userMenuOpen, setUserMenuOpen] = useState(false);
+    const [addUser, setAddUser] = useState(true)
 
     const toggelMenuPanel = ()=>{
         setMenuButton(!menuButton);
@@ -23,7 +24,9 @@ const GuestMenu = () => {
         setUserMenuOpen(!userMenuOpen)
     }
     
-    //
+    const toggleRegistration = ()=>{
+        setAddUser(!addUser)
+    }
     return(
        <div style={{padding:'5px' ,  width:'100%', height:'100vh'}}>
         
@@ -77,19 +80,16 @@ const GuestMenu = () => {
 
                 <div className={SidePanels.panelIconPlace}>
                         <SideButton 
-                            buttonState={userButton} //dont forget 
-                            buttonStyle="addUserButton" //{hadleSubmit,handleFirstInput,handleSecondInput, firstInput, secondInput , type}
-                            newStyle="addUserButton"
+                            buttonState={addUser} 
+                            buttonStyle="addUserButton" 
+                            newStyle="hideAddUserButton"
                             iconsName="addUser"
+                            onClick={toggleRegistration}
                             />
                 </div>
                 
-                {
-                //Authorization 
-                <Authorization/>
-                } 
-
-            
+                <Authorization setUserCheck={setUserCheck} addUser={addUser}/>
+                 
             </SidePanel>
       
        </div>

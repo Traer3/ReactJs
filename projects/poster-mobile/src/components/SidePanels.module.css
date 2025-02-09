@@ -111,6 +111,18 @@
     height: 30px;
     width: 30px;   
 }
+.hideAddUserButton{
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(95, 255, 145, 0.2);
+    box-shadow: 0 4px 10px rgba(95,255,145,0.2), 0 0 10px rgba(105,255,155,0.4);
+    cursor: pointer;
+    height: 30px;
+    width: 30px;  
+    transform: translateX(1000%);
+    transition: all 0.3s ease-in-out; 
+}
 
 
 .buttonsOnPanels{

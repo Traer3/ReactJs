@@ -1,10 +1,10 @@
 import React from "react";
 import style from "./Authorization.module.css"
 
-const AuthorizationFrom = ({hadleSubmit,handleFirstInput,handleSecondInput, firstInput, secondInput , type}) => {
+const AuthorizationFrom = ({handleSubmit,handleFirstInput,handleSecondInput, firstInput, secondInput , type}) => {
     return(
         <div className={style.LogIn}>
-            <form  onSubmit={hadleSubmit} >
+            <form  onSubmit={handleSubmit} >
                 <input 
                     type="text" 
                     value={firstInput} 

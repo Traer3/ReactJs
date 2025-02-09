@@ -1,45 +1,15 @@
-import React, { useState } from "react";
-import AuthorizationFrom from "../Authorization/AuthorizationFrom";
-const Authorization = () =>{
+import React from "react";
+import LogIn from "./LogIn";
+import Registration from "./Registration";
 
-    const [choice, setChoice] = useState(false);
-    const [firstInput, setFirstInput] = useState("");
-    const [secondInput, setSecondInput] = useState("");
-
-    const handleLogIn = () =>{
-        console.log("Login")
-    }
-
-    const handleRegistration = () =>{
-        console.log("handleRegistration")
-    }
-
+const Authorization = ({setUserCheck, addUser}) =>{
     return(
         <div>
-            
-
-
-            {choice?( 
-                <AuthorizationFrom
-                    hadleSubmit={handleLogIn} //Заменить
-                    handleFirstInput={firstInput} //Заменить
-                    handleSecondInput={secondInput} //Заменить
-                    firstInput={""} //Заменить
-                    secondInput={""} //Заменить
-                    type="logIn" 
-                />
+            {addUser ?( 
+                <LogIn setUserCheck={setUserCheck}/>
                 ):(
-                <AuthorizationFrom
-                    hadleSubmit={handleRegistration} //Заменить
-                    handleFirstInput={firstInput} //Заменить
-                    handleSecondInput={secondInput} //Заменить
-                    firstInput={""} //Заменить
-                    secondInput={""} //Заменить
-                    type="registration" 
-                />
+                <Registration/>
             )}
-
-
         </div>
     );
 };
