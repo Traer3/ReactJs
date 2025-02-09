@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import SidePanel from "../SidePanelComponents/SidePanel";
 import SideButton from "../SidePanelComponents/SideButton";
+import SidePanels from '../SidePanels.module.css'
 //независимая зона 
 const GuestMenu = () => {
 
@@ -36,10 +37,18 @@ const GuestMenu = () => {
                 panelState={menuOpen} 
                 newStyle="menuPanelOpen"
                 >
-
-                 <div style={{background:'red',}}>
-                        red
-                </div>
+                 <div className={SidePanels.panelIconPlace}/>
+                 <div>
+                    <SideButton
+                         buttonState={userButton}                 
+                         buttonStyle="buttonsOnPanels"
+                         newStyle="buttonsOnPanels"
+                         onClick={toggelUserPanel} 
+                    >
+                        Posters
+                    </SideButton>
+                    
+                 </div>
                 {
                 //кнопки будут включать постера и существ и т.д , а сами они уже загружены в GuestMenu ну или просто Menu
                 }
@@ -64,9 +73,15 @@ const GuestMenu = () => {
                 newStyle="profilePanelOpen"
                 >
 
-                <div style={{background:'green',}}>
-                        green
+                <div className={SidePanels.panelIconPlace}>
+                        <SideButton 
+                            buttonState={userButton} //dont forget 
+                            buttonStyle="addUserButton"
+                            newStyle="addUserButton"
+                            iconsName="addUser"
+                            />
                 </div>
+                
 
             </SidePanel>
       

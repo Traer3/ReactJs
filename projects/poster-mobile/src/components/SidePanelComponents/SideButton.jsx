@@ -10,7 +10,7 @@ const icons = {
     addUser: AddUserIcon,
 }
 
-const SideButton = ({buttonState, buttonStyle , newStyle ,iconsName, onClick, }) => {
+const SideButton = ({buttonState, buttonStyle , newStyle ,iconsName, onClick, children,}) => {
     return(
 
         <button 
@@ -18,11 +18,14 @@ const SideButton = ({buttonState, buttonStyle , newStyle ,iconsName, onClick, })
             className={buttonState ? SidePanels[buttonStyle] : SidePanels[newStyle]}
             onClick={onClick}
         >
-            <img 
-                className={SidePanels.panelIcon}
-                alt={iconsName}
-                src={icons[iconsName]} 
-                />
+            {iconsName &&
+                <img 
+                    className={SidePanels.panelIcon}
+                    alt={iconsName}
+                    src={icons[iconsName]} 
+                    />
+            }
+            {children}
         </button>
     );
 };
