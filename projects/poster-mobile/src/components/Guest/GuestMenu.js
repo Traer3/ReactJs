@@ -27,6 +27,12 @@ const GuestMenu = ({setUserCheck}) => {
     const toggleRegistration = ()=>{
         setAddUser(!addUser)
     }
+
+    const handleLogOut = () =>{
+        localStorage.removeItem("userCheck");
+        setUserCheck(false);
+        alert("Bye-bye 👋")
+    }
     return(
        <div style={{padding:'5px' ,  width:'100%', height:'100vh'}}>
         
@@ -80,12 +86,20 @@ const GuestMenu = ({setUserCheck}) => {
 
                 <div className={SidePanels.panelIconPlace}>
                         <SideButton 
+                            buttonState={true} 
+                            buttonStyle="logOutButton" 
+                            newStyle="logOutButton"
+                            iconsName="logOut"
+                            onClick={handleLogOut}
+                            />
+                        <SideButton 
                             buttonState={addUser} 
                             buttonStyle="addUserButton" 
                             newStyle="hideAddUserButton"
                             iconsName="addUser"
                             onClick={toggleRegistration}
                             />
+                        
                 </div>
                 
                 <Authorization setUserCheck={setUserCheck} addUser={addUser}/>

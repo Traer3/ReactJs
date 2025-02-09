@@ -3,11 +3,13 @@ import SidePanels from '../SidePanels.module.css'
 import MenuIcon from "./icons/menuIcon.png"
 import UserIcon from "./icons/userIcon.png"
 import AddUserIcon from "./icons/addUserIcon.png"
+import LogOut from "./icons/logOut.png"
 
 const icons = {
     menu: MenuIcon,
     user: UserIcon,
     addUser: AddUserIcon,
+    logOut: LogOut,
 }
 
 const SideButton = ({buttonState, buttonStyle , newStyle ,iconsName, onClick, children,}) => {

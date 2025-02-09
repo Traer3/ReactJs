@@ -23,6 +23,7 @@ const LogIn = ({setUserCheck, setUserId}) =>{
             .then((data) => {
                     alert(data.message);
                     if(data.message === "Login successful"){
+                        localStorage.setItem("userCheck", "true");
                         setUserCheck(true);
                         setUserId(data.userId) //dont forget to send id if needed
                     }

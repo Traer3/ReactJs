@@ -123,6 +123,15 @@
     transform: translateX(1000%);
     transition: all 0.3s ease-in-out; 
 }
+.logOutButton{
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    cursor: pointer;
+    height: 30px;
+    width: 30px; 
+    margin-right: 8px;
+}
 
 
 .buttonsOnPanels{
