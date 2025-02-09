@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import SidePanel from "../SidePanelComponents/SidePanel";
 import SideButton from "../SidePanelComponents/SideButton";
 import SidePanels from '../SidePanels.module.css'
+import Authorization from "../Authorization/Authorization";
+
 //независимая зона 
 const GuestMenu = () => {
 
@@ -76,13 +78,18 @@ const GuestMenu = () => {
                 <div className={SidePanels.panelIconPlace}>
                         <SideButton 
                             buttonState={userButton} //dont forget 
-                            buttonStyle="addUserButton"
+                            buttonStyle="addUserButton" //{hadleSubmit,handleFirstInput,handleSecondInput, firstInput, secondInput , type}
                             newStyle="addUserButton"
                             iconsName="addUser"
                             />
                 </div>
                 
+                {
+                //Authorization 
+                <Authorization/>
+                } 
 
+            
             </SidePanel>
       
        </div>
