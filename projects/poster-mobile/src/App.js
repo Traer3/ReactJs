@@ -26,7 +26,7 @@ const App = () =>{
         <div 
             style={{
               position:'relative',
-              zIndex: 1,
+              zIndex: 4,
             }}> 
                 <Workspace/>  
         </div>

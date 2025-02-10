@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import TwoAnswers from "./Posters/TowAnswers";
 import style from "../SidePanels.module.css"
+import ShowPoster from "./ShowPoster";
+import SideButton from "../SidePanelComponents/SideButton";
 
 const PosterMain = ({posterStateArray, setPosterStateArray, userId}) => {
     const [items, setItems] = useState(false);
@@ -39,7 +41,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId}) => {
         .catch((err)=> console.error(err));
     }, [userId ,setPosterStateArray]);
 
-    const savePosterStates =()=>{  
+    const savePosterStates =()=>{ 
         fetch('http://localhost:3001/savePosterStates',{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -71,31 +73,36 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId}) => {
     };
 
     return(
-        <div>
-        <button className={style.buttonsOnPanels} onClick={showItemList}>
-             Posters
-        </button>
+        <div className={style.panelFlex}>
+        
+            <SideButton 
+                newStyle="buttonsOnPanels"
+                onClick={showItemList}
+                >Posters
+            </SideButton>
 
-        {items && (
-            
-            <div className={`${style.listOfTopics} ${items ? style.listOfTopicsVisible : ""}`}>
-                
-                <button className={style.buttonsOnList} 
-                        onClick={()=>toggleTopic("twoAnswers")}
-                    > Два ответа
-                </button>
-                
-                {topicsState.twoAnswers && <TwoAnswers posterStates={getPosterState("TwoAnswers")} updatePosterState={updatePosterState}/>} 
+            {items && (
+                <div className={`${style.listOfTopics} ${items ? style.listOfTopicsVisible : ""}`}>
+                    
+                    <ShowPoster 
+                        toggleTopic={()=>toggleTopic("twoAnswers")}
+                        topicName="Tow Answers"
+                        topicsState={topicsState.twoAnswers}
+                        >
+                        <TwoAnswers posterStates={getPosterState("TwoAnswers")} updatePosterState={updatePosterState}/>  
+                    </ShowPoster>
+
+                </div>
+            )}
    
-                
-            </div>
-        )}
-    <button className={style.buttonsOnMenu} 
-                        onClick={savePosterStates}
-                    > Сохранить 
-    </button>
+            <SideButton 
+                newStyle="buttonsOnPanels"
+                onClick={savePosterStates}
+                //Удалить потом Save , он нужен ток в <MenuScreen>
+                >Save
+            </SideButton>
     
-        <h1 style={{backgroundColor:'red', width:'100px ' , height:'100px', color:'white'}  }>{userId}</h1>
+            <h1 style={{backgroundColor:'red', width:'100px ' , height:'100px', color:'white'}  }>{userId}</h1>
     </div>
     );
 };

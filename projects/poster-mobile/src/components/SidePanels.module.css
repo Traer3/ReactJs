@@ -8,6 +8,15 @@
     min-width: 30px;
 }
 
+.panelFlex{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: center;
+    box-sizing: border-box;
+    max-width: 300px;
+}
+
 
 .menuPanel{
     border: 1px rgba(95,145,255,0.3);
@@ -150,11 +159,12 @@
 .listOfTopics{
     border: 1px rgba(95,145,255,0.3);
     border-radius: 4px;
+    
     background: rgba(88, 139, 250, 0.2);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 10px rgba(95,145,255,0.2);
     cursor: pointer;
-    width: 140px;
+    min-width: max-content;
     font-family: Arial, sans-serif;
     font-size: 16px;
     font-weight: bolder;

@@ -52,15 +52,7 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                 >
                  <div className={SidePanels.panelIconPlace}/>
                  <div>
-                    <SideButton
-                         buttonState={userButton}                 
-                         buttonStyle="buttonsOnPanels"
-                         newStyle="buttonsOnPanels"
-                         onClick={toggelUserPanel} 
-                    >
-                        Posters
-                    </SideButton>
-                    
+                    <PostersData userId={userId}/>
                  </div>
                 {
                 //кнопки будут включать постера и существ и т.д , а сами они уже загружены в GuestMenu ну или просто Menu
@@ -70,7 +62,7 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
             
             { //state to ture poster on && 
                 //POSTERS
-                <PostersData userId={userId}/>
+                
             }
 
             <SideButton 
