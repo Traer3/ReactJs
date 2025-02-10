@@ -1,0 +1,20 @@
+<div
+     style={{
+             borderRadius:'10px',
+	     padding:'20px',
+             display:'flex',
+	     flexWrap:'wrap',
+	     backgrounColor:'lightblue',
+             justifyContent:'flex-start',
+	     alignItems:'normal',
+	     maxWidth:'510px',
+	     maxHeight:'510'px,
+	     marginBottom:'30px',
+}}>
+	<Box/>
+	<Box/>
+	<Box/>
+	<Box/>
+	<Box/>
+	<Box/>
+</div>

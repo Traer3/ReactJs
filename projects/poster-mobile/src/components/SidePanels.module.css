@@ -147,3 +147,40 @@
     font-size: 16px;
     font-weight: bolder;
 }
+.listOfTopics{
+    border: 1px rgba(95,145,255,0.3);
+    border-radius: 4px;
+    background: rgba(88, 139, 250, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(95,145,255,0.2);
+    cursor: pointer;
+    width: 140px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bolder;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.listOfTopicsVisible{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.buttonsOnList{
+    border: 1px rgba(95,145,255,0.3);
+    border-radius: 4px;
+    background: rgba(95,145,255,0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(95,145,255,0.2);
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 40px;
+    width: 120px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bolder;
+}
+

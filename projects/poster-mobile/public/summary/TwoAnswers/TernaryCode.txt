@@ -1,0 +1,18 @@
+<div >
+{items ? (
+         <div className={${style.listOfTopics} ${items ? style.listOfTopicsVisible : ""}}>
+
+         <button 
+                className={style.buttonsOnList} 
+                onClick={()=>{setDynamicStyles(!dynamicStyles)}}
+                >Динамические стили
+        </button>
+                {
+                    dynamicStyles ?(<DynamicStyles/>):(<></>)
+                }
+                
+            </div>
+            ) : (
+            <></>)
+}
+</div>

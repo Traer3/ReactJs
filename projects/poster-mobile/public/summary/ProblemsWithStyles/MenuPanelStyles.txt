@@ -1,0 +1,29 @@
+.menuPanel{
+    border: 1px rgba(95,145,255,0.3);
+    border-radius: 4px;
+    position: fixed;
+    background: rgba(95,145,255,0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 15px rgba(105,155,255,0.4);
+    color: #ffffff;
+    top: 0;
+    left: 0;
+    height: 98vh;
+    width: 17vh;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;   
+    transform: translateX(-103%);
+    transition: all 0.3s ease-in-out;
+}
+
+.menuFlex{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin-top: 40px;
+    justify-content: center;
+    box-sizing: border-box;
+    max-width: 300px;
+    
+}

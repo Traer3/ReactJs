@@ -3,9 +3,11 @@ import SidePanel from "../SidePanelComponents/SidePanel";
 import SideButton from "../SidePanelComponents/SideButton";
 import SidePanels from '../SidePanels.module.css'
 import Authorization from "../Authorization/Authorization";
+import PostersData from "../Poster/PostersData";
+
 
 //независимая зона 
-const GuestMenu = ({setUserCheck}) => {
+const GuestMenu = ({userId,setUserId,setUserCheck}) => {
 
     const [menuButton,setMenuButton] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -68,6 +70,7 @@ const GuestMenu = ({setUserCheck}) => {
             
             { //state to ture poster on && 
                 //POSTERS
+                <PostersData userId={userId}/>
             }
 
             <SideButton 
@@ -102,7 +105,7 @@ const GuestMenu = ({setUserCheck}) => {
                         
                 </div>
                 
-                <Authorization setUserCheck={setUserCheck} addUser={addUser}/>
+                <Authorization setUserCheck={setUserCheck} addUser={addUser} setUserId={setUserId}/>
                  
             </SidePanel>
       

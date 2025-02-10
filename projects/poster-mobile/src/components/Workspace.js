@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import GuestMenu from "./Guest/GuestMenu";
-import MenuScreen from "./User/MenuScreen";
-//зона авторизации и пропуска
+//import MenuScreen from "./User/MenuScreen";
+
+
 
 
 const Workspace = () => {
+    const [userId, setUserId] = useState(0);
     const [userCheck,setUserCheck] = useState(()=>{
         return localStorage.getItem("userCheck") === "true";
     });
@@ -17,8 +19,12 @@ const Workspace = () => {
     return(
         <div>
 
-            {userCheck ? <MenuScreen/> : <GuestMenu setUserCheck={setUserCheck}/>}
-
+            <GuestMenu userId={userId} setUserId={setUserId} setUserCheck={setUserCheck}/> 
+            {
+              //  userCheck ? <MenuScreen userId={userId} setUserId={setUserId}/> :  <GuestMenu userId={userId} setUserId={setUserId} setUserCheck={setUserCheck}/> //userId={userId} setUserId={setUserId} БУДЕТ ТОЛЬКО У <MenuScreen/> , а пока для тестов
+            }
+            
+            
         </div>
     );
 };
