@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PosterMain from "./PosterMain";
 
-const PostersData = ({userId , setPosterStates, setUpdatePosterState})=> {
+const PostersData = ({userId , portalDiv})=> {
     
     const [posterStateArray, setPosterStateArray] = useState([
         {name: "TwoAnswers", state:{
@@ -59,6 +59,7 @@ const PostersData = ({userId , setPosterStates, setUpdatePosterState})=> {
             posterStateArray={posterStateArray} 
             setPosterStateArray ={setPosterStateArray} 
             userId={userId} 
+            portalDiv={portalDiv}
             //setPosterStates={setPosterStates} 
             //setUpdatePosterState={setUpdatePosterState}
         /> 

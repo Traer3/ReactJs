@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import TwoAnswers from "./Posters/TowAnswers";
+//import TwoAnswers from "./Posters/TowAnswers";
 import style from "../SidePanels.module.css"
 import ShowPoster from "./ShowPoster";
 import SideButton from "../SidePanelComponents/SideButton";
+import TwoAnswers2 from "./Posters/TowAnswers2";
+import { createPortal } from "react-dom";
 //import TestPoster from "./Posters/TestPoster";
 
 
-const PosterMain = ({posterStateArray, setPosterStateArray, userId, setPosterStates, setUpdatePosterState}) => {
+const PosterMain = ({posterStateArray, setPosterStateArray, userId, portalDiv}) => {
     const [items, setItems] = useState(false);
 
     const showItemList = () => {
@@ -84,8 +86,10 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId, setPosterSta
                 >Posters
             </SideButton>
 
+           
             {items && (
                 <div className={`${style.listOfTopics} ${items ? style.listOfTopicsVisible : ""}`}>
+
                     
                     
 
@@ -94,8 +98,9 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId, setPosterSta
                         topicName="Tow Answers"
                         topicsState={topicsState.twoAnswers}
                         >
-                        <TwoAnswers posterStates={getPosterState("TwoAnswers")} updatePosterState={updatePosterState}/>  
+                        <TwoAnswers2 posterStates={getPosterState("TwoAnswers")} updatePosterState={updatePosterState} portalDiv={portalDiv}/>  
                     </ShowPoster>
+                    
 
                 </div>
             )}

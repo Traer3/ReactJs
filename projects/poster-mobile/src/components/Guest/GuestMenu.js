@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import SidePanel from "../SidePanelComponents/SidePanel";
 import SideButton from "../SidePanelComponents/SideButton";
 import SidePanels from '../SidePanels.module.css'
@@ -19,6 +19,18 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
 
     //const [posterStates, setPosterStates] = useState({});
     //const [updatePosterState, setUpdatePosterState] = useState(()=> ()=>{});
+    const [portalDiv, setPortalDiv] = useState(null);
+    useEffect(()=>{
+        const div = document.createElement("div");
+        div.id = "poster-root";
+        document.body.appendChild(div);
+        setPortalDiv(div);
+        
+        return () =>{
+            document.body.removeChild(div);
+        };
+    },[]);
+
 
     const toggelMenuPanel = ()=>{
         setMenuButton(!menuButton);
@@ -58,6 +70,7 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                  <div>
                     <PostersData 
                         userId={userId} 
+                        portalDiv={portalDiv}
                         //setPosterStates={setPosterStates} 
                         //setUpdatePosterState={setUpdatePosterState}
                     />
@@ -70,6 +83,7 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
             
             { 
             // posterStates&&updatePosterState && (<PosterInterface posterStates={posterStates} updatePosterState={updatePosterState}/>)
+            <div id="poster-container"></div>
             }
 
             <SideButton 
