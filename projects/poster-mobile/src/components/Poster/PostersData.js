@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PosterMain from "./PosterMain";
 
-const PostersData = ({userId})=> {
+const PostersData = ({userId , setPosterStates, setUpdatePosterState})=> {
     
     const [posterStateArray, setPosterStateArray] = useState([
         {name: "TwoAnswers", state:{
@@ -52,8 +52,16 @@ const PostersData = ({userId})=> {
         }},
     ]);
 
+    
+
     return(
-        <PosterMain posterStateArray={posterStateArray} setPosterStateArray ={setPosterStateArray} userId={userId}/> 
+        <PosterMain 
+            posterStateArray={posterStateArray} 
+            setPosterStateArray ={setPosterStateArray} 
+            userId={userId} 
+            //setPosterStates={setPosterStates} 
+            //setUpdatePosterState={setUpdatePosterState}
+        /> 
     );
 };
 

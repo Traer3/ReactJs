@@ -3,8 +3,10 @@ import TwoAnswers from "./Posters/TowAnswers";
 import style from "../SidePanels.module.css"
 import ShowPoster from "./ShowPoster";
 import SideButton from "../SidePanelComponents/SideButton";
+//import TestPoster from "./Posters/TestPoster";
 
-const PosterMain = ({posterStateArray, setPosterStateArray, userId}) => {
+
+const PosterMain = ({posterStateArray, setPosterStateArray, userId, setPosterStates, setUpdatePosterState}) => {
     const [items, setItems] = useState(false);
 
     const showItemList = () => {
@@ -72,6 +74,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId}) => {
         return poster ? poster.state : {};
     };
 
+  
     return(
         <div className={style.panelFlex}>
         
@@ -84,6 +87,8 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId}) => {
             {items && (
                 <div className={`${style.listOfTopics} ${items ? style.listOfTopicsVisible : ""}`}>
                     
+                    
+
                     <ShowPoster 
                         toggleTopic={()=>toggleTopic("twoAnswers")}
                         topicName="Tow Answers"
@@ -108,3 +113,4 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId}) => {
 };
 
 export default PosterMain;
+

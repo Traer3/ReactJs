@@ -3,10 +3,7 @@ import style from "../SidePanels.module.css"
 
 const ShowPoster = ({toggleTopic, topicName, topicsState,children}) => {
     return(
-        <div style={{
-            position:'relative',
-            zIndex: 3,
-          }}> 
+        <div> 
             <button className={style.buttonsOnList} 
                         onClick={toggleTopic}
                     > {topicName}

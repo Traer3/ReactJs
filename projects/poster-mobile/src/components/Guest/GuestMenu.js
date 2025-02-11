@@ -4,6 +4,7 @@ import SideButton from "../SidePanelComponents/SideButton";
 import SidePanels from '../SidePanels.module.css'
 import Authorization from "../Authorization/Authorization";
 import PostersData from "../Poster/PostersData";
+//import PosterInterface from "../Poster/PosterInterface";
 
 
 //независимая зона 
@@ -15,6 +16,9 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
     const [userButton, setUserButton] = useState(false);
     const [userMenuOpen, setUserMenuOpen] = useState(false);
     const [addUser, setAddUser] = useState(true)
+
+    //const [posterStates, setPosterStates] = useState({});
+    //const [updatePosterState, setUpdatePosterState] = useState(()=> ()=>{});
 
     const toggelMenuPanel = ()=>{
         setMenuButton(!menuButton);
@@ -52,7 +56,11 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                 >
                  <div className={SidePanels.panelIconPlace}/>
                  <div>
-                    <PostersData userId={userId}/>
+                    <PostersData 
+                        userId={userId} 
+                        //setPosterStates={setPosterStates} 
+                        //setUpdatePosterState={setUpdatePosterState}
+                    />
                  </div>
                 {
                 //кнопки будут включать постера и существ и т.д , а сами они уже загружены в GuestMenu ну или просто Menu
@@ -60,9 +68,8 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
 
             </SidePanel>
             
-            { //state to ture poster on && 
-                //POSTERS
-                
+            { 
+            // posterStates&&updatePosterState && (<PosterInterface posterStates={posterStates} updatePosterState={updatePosterState}/>)
             }
 
             <SideButton 
