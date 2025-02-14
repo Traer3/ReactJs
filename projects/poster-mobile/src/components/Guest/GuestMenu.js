@@ -5,9 +5,6 @@ import SidePanels from '../SidePanels.module.css'
 import Authorization from "../Authorization/Authorization";
 import PostersData from "../Poster/PostersData";
 
-
-
-//независимая зона 
 const GuestMenu = ({userId,setUserId,setUserCheck}) => {
 
     const [menuButton,setMenuButton] = useState(false);
@@ -38,6 +35,7 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
         setUserCheck(false);
         alert("Bye-bye 👋")
     }
+
     return(
        <div style={{padding:'5px' ,  width:'100%', height:'100vh'}}>
         
@@ -60,10 +58,6 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                     />
                  </div>
             </SidePanel>
-            
-           
-
-
 
 
             <SideButton 

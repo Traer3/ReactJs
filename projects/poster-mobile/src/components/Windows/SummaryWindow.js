@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 
-const SummaryWindow  = ({filePath ,style, customStyle,showSummaryWindow, setShowSummaryWindow, keyName}) => {
+const SummaryWindow  = ({filePath ,style, customStyle,showSummaryWindow, setShowSummaryWindow, keyName, getPosition}) => {
 
-    const [position, setPosition] = useState({x:0, y:0});
+    const [position, setPosition] = useState(getPosition || {x:0, y:0});
+    
     const [isDragging, setIsDragging] = useState(false);
     const [offset, setOffset] = useState({x:0, y:0});
     const [content, setContent] = useState("");
@@ -21,6 +22,13 @@ const SummaryWindow  = ({filePath ,style, customStyle,showSummaryWindow, setShow
         };
         fetchContent();
     },[filePath]);
+
+    useEffect(()=>{
+        if(getPosition){
+            setPosition(getPosition);
+        };
+    },[getPosition]);
+
 
     const handleMouseDown = (e) =>{
         e.preventDefault();
@@ -77,7 +85,7 @@ const SummaryWindow  = ({filePath ,style, customStyle,showSummaryWindow, setShow
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
             >
-                {content}
+                {content}  
             </div>
             )}
         </div>

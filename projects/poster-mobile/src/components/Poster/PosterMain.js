@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
-//import TwoAnswers from "./Posters/TowAnswers";
+import TwoAnswers from "./Posters/TowAnswers";
 import style from "../SidePanels.module.css"
 import ShowPoster from "./ShowPoster";
 import SideButton from "../SidePanelComponents/SideButton";
-import TwoAnswers2 from "./Posters/TowAnswers2";
+import DisplayElements from "./Posters/DisplayElements";
+import FLEXBox from "./Posters/FLEXBox";
+import StyleUsage from "./Posters/StyleUsage";
+import ProblemsWithStyles from "./Posters/ProblemsWithStyles";
+import Position from "./Posters/Postion";
+//import TwoAnswers2 from "./Posters/TowAnswers2";
 
 //import TestPoster from "./Posters/TestPoster";
 
@@ -98,10 +103,46 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
                         topicName="Tow Answers"
                         topicsState={topicsState.twoAnswers}
                         >
-                        
-                        <TwoAnswers2 posterStates={getPosterState("TwoAnswers")} updatePosterState={updatePosterState}/>  
-
+                        <TwoAnswers posterStates={getPosterState("TwoAnswers")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
+
+                    <ShowPoster 
+                        toggleTopic={()=>toggleTopic("displayElements")}
+                        topicName="Display Elements"
+                        topicsState={topicsState.displayElements}
+                        >
+                        <DisplayElements posterStates={getPosterState("DisplayElements")} updatePosterState={updatePosterState}/>  
+                    </ShowPoster>
+                    <ShowPoster 
+                        toggleTopic={()=>toggleTopic("flexBox")}
+                        topicName="FLEXBox"
+                        topicsState={topicsState.flexBox}
+                        >
+                        <FLEXBox posterStates={getPosterState("FLEXBox")} updatePosterState={updatePosterState}/>  
+                    </ShowPoster>
+                    <ShowPoster 
+                        toggleTopic={()=>toggleTopic("styleUsage")}
+                        topicName="Style Usage"
+                        topicsState={topicsState.styleUsage}
+                        >
+                        <StyleUsage posterStates={getPosterState("StyleUsage")} updatePosterState={updatePosterState}/>  
+                    </ShowPoster>
+                    <ShowPoster 
+                        toggleTopic={()=>toggleTopic("problemsWithStyles")}
+                        topicName="Problems with styles"
+                        topicsState={topicsState.problemsWithStyles}
+                        >
+                        <ProblemsWithStyles posterStates={getPosterState("ProblemsWithStyles")} updatePosterState={updatePosterState}/>  
+                    </ShowPoster>
+                    <ShowPoster 
+                        toggleTopic={()=>toggleTopic("position")}
+                        topicName="Position"
+                        topicsState={topicsState.position}
+                        >
+                        <Position posterStates={getPosterState("Position")} updatePosterState={updatePosterState}/>  
+                    </ShowPoster>
+                    
+                    
                     
 
                 </div>

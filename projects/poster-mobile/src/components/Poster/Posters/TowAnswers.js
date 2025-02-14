@@ -42,62 +42,48 @@ const TwoAnswers = ({posterStates, updatePosterState}) => {
                 </div>
             </div>
 
-            <div>
+            <div >
                 <SummaryWindow 
                     style={style.redSummWindow}
-                    customStyle={{
-                        marginTop:'-90px',
-                        marginLeft:'200px',
-                    }} 
                     filePath={logicAND} 
                     showSummaryWindow={posterStates.logicAND} 
                     setShowSummaryWindow ={()=> handleStateChange("logicAND")}
                     keyName={"logicAND"}
+                    getPosition={posterStates.positionLogicAND}
                 />
+                {}
                 <TerminalWindow 
                     style={style.redTermWindow}
-                    customStyle={{ 
-                        marginTop:'10px',
-                        marginLeft:'200px',
-                    }} 
                     filePath={logicANDExample} 
                     showTerminalWindow={posterStates.logicANDExample} 
                     setShowTerminalWindow={()=> handleStateChange("logicANDExample")}
                     keyName={"logicANDExample"}
+                    getPosition={posterStates.positionLogicANDExample}
                 />
 
                 <SummaryWindow 
                     style={style.greenSummWindow}
-                    customStyle={{
-                        marginTop:'-90px',
-                        marginLeft:'800px', 
-                    }} 
                     filePath={ternaryOperatorData} 
                     showSummaryWindow={posterStates.logicANDCode} 
                     setShowSummaryWindow ={()=> handleStateChange("logicANDCode")}
                     keyName={"logicANDCode"}
+                    getPosition={posterStates.positionLogicANDCode}
                 />
                 <TerminalWindow 
                     style={style.greenTermWindow}
-                    customStyle={{
-                        marginTop:'-10px',
-                        marginLeft:'800px',
-                    }} 
                     filePath={ternaryCode} 
                     showTerminalWindow={posterStates.ternaryCode} 
                     setShowTerminalWindow={()=> handleStateChange("ternaryCode")}
                     keyName={"ternaryCode"}
+                    getPosition={posterStates.positionTernaryCode}
                 />
                 <TerminalWindow  
                     style={style.greenTermWindow}
-                    customStyle={{
-                        marginTop:'330px',
-                        marginLeft:'800px',
-                    }} 
                     filePath={logicANDCode} 
                     showTerminalWindow={posterStates.ternaryOperatorData} 
                     setShowTerminalWindow={()=> handleStateChange("ternaryOperatorData")}
                     keyName={"ternaryOperatorData"}
+                    getPosition={posterStates.positionTernaryOperatorData}
                 />  
             </div>
     </div>
