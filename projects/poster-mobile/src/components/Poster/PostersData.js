@@ -59,9 +59,6 @@ const PostersData = ({userId , portalDiv})=> {
             posterStateArray={posterStateArray} 
             setPosterStateArray ={setPosterStateArray} 
             userId={userId} 
-            portalDiv={portalDiv}
-            //setPosterStates={setPosterStates} 
-            //setUpdatePosterState={setUpdatePosterState}
         /> 
     );
 };

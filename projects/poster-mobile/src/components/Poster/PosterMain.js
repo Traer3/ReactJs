@@ -4,11 +4,11 @@ import style from "../SidePanels.module.css"
 import ShowPoster from "./ShowPoster";
 import SideButton from "../SidePanelComponents/SideButton";
 import TwoAnswers2 from "./Posters/TowAnswers2";
-import { createPortal } from "react-dom";
+
 //import TestPoster from "./Posters/TestPoster";
 
 
-const PosterMain = ({posterStateArray, setPosterStateArray, userId, portalDiv}) => {
+const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
     const [items, setItems] = useState(false);
 
     const showItemList = () => {
@@ -98,7 +98,9 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId, portalDiv}) 
                         topicName="Tow Answers"
                         topicsState={topicsState.twoAnswers}
                         >
-                        <TwoAnswers2 posterStates={getPosterState("TwoAnswers")} updatePosterState={updatePosterState} portalDiv={portalDiv}/>  
+                        
+                        <TwoAnswers2 posterStates={getPosterState("TwoAnswers")} updatePosterState={updatePosterState}/>  
+
                     </ShowPoster>
                     
 

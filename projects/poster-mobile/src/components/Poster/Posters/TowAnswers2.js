@@ -3,7 +3,7 @@ import TerminalWindow from "../../Windows/TerminalWindow";
 import SummaryWindow from "../../Windows/SummaryWindow";
 import style from "../../Windows/WindowStyle.module.css"
 import ButtonBoxCheck from "../ButtonBoxCheck";
-import { createPortal } from "react-dom";
+
 
 
 
@@ -11,9 +11,9 @@ const logicAND = "/summary/TwoAnswers/LogicAND.txt"
 const logicANDExample = "/summary/TwoAnswers/LogicANDExample.txt"
   
 
-const TwoAnswers2 = ({posterStates, updatePosterState,portalDiv}) => {  
+const TwoAnswers2 = ({posterStates, updatePosterState}) => {  
     
-
+    
 
     const handleStateChange = (key) =>{
        const updatedState = {...posterStates, [key]: !posterStates[key]};
@@ -40,9 +40,7 @@ const TwoAnswers2 = ({posterStates, updatePosterState,portalDiv}) => {
                 </div>
             </div>
 
-            {portalDiv &&
-                createPortal(
-            <div >
+          
                     <div>
                     <SummaryWindow 
                         style={style.redSummWindow}
@@ -65,13 +63,7 @@ const TwoAnswers2 = ({posterStates, updatePosterState,portalDiv}) => {
                         setShowTerminalWindow={()=> handleStateChange("logicANDExample")}
                         keyName={"logicANDExample"}
                     />
-
-                
-                </div>
-            </div>, portalDiv
-            )}
-
-            
+                    </div> 
     </div>
     );
 };

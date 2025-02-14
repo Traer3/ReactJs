@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import SidePanel from "../SidePanelComponents/SidePanel";
 import SideButton from "../SidePanelComponents/SideButton";
 import SidePanels from '../SidePanels.module.css'
 import Authorization from "../Authorization/Authorization";
 import PostersData from "../Poster/PostersData";
-//import PosterInterface from "../Poster/PosterInterface";
+
 
 
 //независимая зона 
@@ -17,19 +17,6 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
     const [userMenuOpen, setUserMenuOpen] = useState(false);
     const [addUser, setAddUser] = useState(true)
 
-    //const [posterStates, setPosterStates] = useState({});
-    //const [updatePosterState, setUpdatePosterState] = useState(()=> ()=>{});
-    const [portalDiv, setPortalDiv] = useState(null);
-    useEffect(()=>{
-        const div = document.createElement("div");
-        div.id = "poster-root";
-        document.body.appendChild(div);
-        setPortalDiv(div);
-        
-        return () =>{
-            document.body.removeChild(div);
-        };
-    },[]);
 
 
     const toggelMenuPanel = ()=>{
@@ -59,8 +46,8 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                 buttonStyle="menuButton" 
                 newStyle="lonelyButton"
                 iconsName="menu"
-                onClick={toggelMenuPanel} />
-
+                onClick={toggelMenuPanel} 
+            />
             <SidePanel 
                 panelStyle="menuPanel" 
                 panelState={menuOpen} 
@@ -70,21 +57,14 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                  <div>
                     <PostersData 
                         userId={userId} 
-                        portalDiv={portalDiv}
-                        //setPosterStates={setPosterStates} 
-                        //setUpdatePosterState={setUpdatePosterState}
                     />
                  </div>
-                {
-                //кнопки будут включать постера и существ и т.д , а сами они уже загружены в GuestMenu ну или просто Menu
-                }
-
             </SidePanel>
             
-            { 
-            // posterStates&&updatePosterState && (<PosterInterface posterStates={posterStates} updatePosterState={updatePosterState}/>)
-            <div id="poster-container"></div>
-            }
+           
+
+
+
 
             <SideButton 
                 buttonState={userButton} 
@@ -93,7 +73,6 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                 iconsName="user"
                 onClick={toggelUserPanel} 
                 />
-            
             <SidePanel 
                 panelStyle="profilePanel" 
                 panelState={userMenuOpen} 
