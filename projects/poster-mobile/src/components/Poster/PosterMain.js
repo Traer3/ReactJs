@@ -8,9 +8,6 @@ import FLEXBox from "./Posters/FLEXBox";
 import StyleUsage from "./Posters/StyleUsage";
 import ProblemsWithStyles from "./Posters/ProblemsWithStyles";
 import Position from "./Posters/Postion";
-//import TwoAnswers2 from "./Posters/TowAnswers2";
-
-//import TestPoster from "./Posters/TestPoster";
 
 
 const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
@@ -38,6 +35,9 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
     };
 
     useEffect(()=>{
+        if(!userId || userId === 0){
+            return;
+        }
         fetch(`http://localhost:3001/getPosterStates/${userId}`)
         .then((res)=>res.json())
         .then((data) => {
@@ -65,15 +65,30 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
     };
 
 
-    const updatePosterState = (posterName, newState)=>{
+    const updatePosterState = async (posterName, newState)=>{
         setPosterStateArray((prevArray) =>{
-            const updatedArray = prevArray.map((poster)=>
+            return prevArray.map((poster)=>
                 poster.name === posterName 
                 ? { ...poster, state: {...poster.state, ...newState}}
                 : poster
             ); 
-            return updatedArray;
         });
+        try{
+            const response = await fetch('http://localhost:3001/savePosterStates',{
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    userId: userId,
+                    posterStateArray,
+                }),
+            });
+            if(!response.ok){
+                throw new Error('Error when saving')
+            }
+            
+        }catch (error){
+            console.log('Error', error);
+        }
     };
 
     const getPosterState = (posterName) =>{
@@ -96,8 +111,6 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
                 <div className={`${style.listOfTopics} ${items ? style.listOfTopicsVisible : ""}`}>
 
                     
-                    
-
                     <ShowPoster 
                         toggleTopic={()=>toggleTopic("twoAnswers")}
                         topicName="Tow Answers"

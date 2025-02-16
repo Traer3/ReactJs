@@ -1,7 +1,19 @@
 import React, { useEffect, useState } from "react";
 
 
-const SummaryWindow  = ({filePath ,style, customStyle,showSummaryWindow, setShowSummaryWindow, keyName, getPosition}) => {
+const SummaryWindow  = ({
+            filePath,
+            style, 
+            customStyle,
+            showSummaryWindow,
+            setShowSummaryWindow,
+            keyName,
+            getPosition,
+            posterStates,
+            updatePosterState,
+            positionName,
+            posterName,
+    }) => {
 
     const [position, setPosition] = useState(getPosition || {x:0, y:0});
     
@@ -52,8 +64,23 @@ const SummaryWindow  = ({filePath ,style, customStyle,showSummaryWindow, setShow
     const handleMouseUp = () =>{
         setIsDragging(false);
         setZIndex(0);
+        handlePositionChange(positionName, posterName, position);
     };
 
+  
+    const handlePositionChange = async (key,posterName,newPosition) => {
+        if(!updatePosterState){
+            console.error("give me updatePosterState");
+            return;
+        }
+
+        const updatedPosition = {
+            ...posterStates,
+            [key] : newPosition 
+        }; 
+        updatePosterState(posterName, updatedPosition)
+    }
+    
    
     const closeWindow = (event) =>{
         if(event.button === 1){

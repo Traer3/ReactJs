@@ -12,10 +12,11 @@ import ButtonBoxCheck from "../ButtonBoxCheck";
 
 const DisplayElements = ({posterStates, updatePosterState}) => {
       
+const posterName = "DisplayElements"
 
     const handleStateChange = (key) =>{
        const updatedState = {...posterStates, [key]: !posterStates[key]};
-       updatePosterState("DisplayElements", updatedState)
+       updatePosterState(posterName, updatedState)
     };
 
     return(
@@ -42,6 +43,11 @@ const DisplayElements = ({posterStates, updatePosterState}) => {
                     setShowSummaryWindow ={()=> handleStateChange("summaryTM")}
                     keyName={"summaryTM"}
                     getPosition={posterStates.positionTernaryMethod}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionTernaryMethod"}
+                    posterName={posterName}
+                    
                 />
                 <TerminalWindow 
                     style={style.redTermWindow}
@@ -50,6 +56,10 @@ const DisplayElements = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("ternaryMethod")}
                     keyName={"ternaryMethod"}
                     getPosition={posterStates.positionSummaryTM}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionSummaryTM"}
+                    posterName={posterName}
                 />
 
                   <SummaryWindow 
@@ -59,6 +69,10 @@ const DisplayElements = ({posterStates, updatePosterState}) => {
                     setShowSummaryWindow ={()=> handleStateChange("logicANDSummary")}
                     keyName={"logicANDSummary"}
                     getPosition={posterStates.positionAND}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionAND"}
+                    posterName={posterName}
                 />
                 <TerminalWindow 
                     style={style.greenSummWindow}
@@ -67,6 +81,10 @@ const DisplayElements = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("AND")}
                     keyName={"AND"}
                     getPosition={posterStates.positionLogicANDSummary}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionLogicANDSummary"}
+                    posterName={posterName}
                 />
             </div>
         </div>

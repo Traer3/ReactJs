@@ -17,11 +17,11 @@ const widthHeight = "/summary/Position/WidthHeight.txt"
 
 const Position = ({posterStates, updatePosterState}) => {
    
-
+    const posterName = "Position"
 
     const handleStateChange = (key) =>{
         const updatedState = {...posterStates, [key]: !posterStates[key]};
-        updatePosterState("Position", updatedState)
+        updatePosterState(posterName, updatedState)
      };
 
     return(
@@ -53,6 +53,10 @@ const Position = ({posterStates, updatePosterState}) => {
                     setShowSummaryWindow ={()=> handleStateChange("summaryPositions")}
                     keyName={"summaryPositions"}
                     getPosition={posterStates.positionSummaryPositions}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionSummaryPositions"}
+                    posterName={posterName}
                 />
                 <TerminalWindow 
                     style={style.redTermWindow}
@@ -61,6 +65,10 @@ const Position = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("positions")}
                     keyName={"positions"}
                     getPosition={posterStates.positionPositions}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionPositions"}
+                    posterName={posterName}
                 />
 
                 <SummaryWindow 
@@ -70,6 +78,10 @@ const Position = ({posterStates, updatePosterState}) => {
                     setShowSummaryWindow ={()=> handleStateChange("summaryTextPositions")}
                     keyName={"summaryTextPositions"}
                     getPosition={posterStates.positionSummaryTextPositions}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionSummaryTextPositions"}
+                    posterName={posterName}
                 />
                 <TerminalWindow 
                     style={style.greenTermWindow}
@@ -78,6 +90,10 @@ const Position = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("textPositions")}
                     keyName={"textPositions"}
                     getPosition={posterStates.positionTextPositions}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionTextPositions"}
+                    posterName={posterName}
                 />
 
                 <SummaryWindow 
@@ -87,6 +103,10 @@ const Position = ({posterStates, updatePosterState}) => {
                     setShowSummaryWindow ={()=> handleStateChange("summaryWH")}
                     keyName={"summaryWH"}
                     getPosition={posterStates.positionSummaryWH}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionSummaryWH"}
+                    posterName={posterName}
                 />
                 <TerminalWindow 
                     style={style.terminalWindow} 
@@ -95,6 +115,10 @@ const Position = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("widthHeight")}
                     keyName={"widthHeight"}
                     getPosition={posterStates.positionWidthHeight}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionWidthHeight"}
+                    posterName={posterName}
                 />
             </div>
         </div>

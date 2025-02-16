@@ -1,6 +1,18 @@
 import React, { useEffect, useState } from "react";
 
-const TerminalWindow = ({filePath,style, customStyle, showTerminalWindow, setShowTerminalWindow , keyName,getPosition}) => { 
+const TerminalWindow = ({
+        filePath,
+        style, 
+        customStyle, 
+        showTerminalWindow, 
+        setShowTerminalWindow, 
+        keyName,
+        getPosition,
+        posterStates,
+        updatePosterState,
+        positionName,
+        posterName,
+    }) => { 
 
     const [position, setPosition] = useState(getPosition || {x:0, y:0});
     const [isDragging, setIsDragging] = useState(false);
@@ -50,8 +62,22 @@ const TerminalWindow = ({filePath,style, customStyle, showTerminalWindow, setSho
     const handleMouseUp = () =>{
         setIsDragging(false);
         setZIndex(0);
+        handlePositionChange(positionName, posterName, position);
     };
 
+    const handlePositionChange = async (key,posterName,newPosition) => {
+        if(!updatePosterState){
+            console.error("give me updatePosterState");
+            return;
+        }
+
+        const updatedPosition = {
+            ...posterStates,
+            [key] : newPosition 
+        }; 
+        updatePosterState(posterName, updatedPosition)
+    }
+    
     const closeWindow = (event) =>{
         if(event.button === 1){
             setShowTerminalWindow((prevStates)=>({

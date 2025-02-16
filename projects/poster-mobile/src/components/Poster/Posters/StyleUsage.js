@@ -22,11 +22,11 @@ import ButtonBoxCheck from "../ButtonBoxCheck";
 
 const StyleUsage = ({posterStates, updatePosterState}) => {
     
-   
+   const posterName = "StyleUsage"
 
     const handleStateChange = (key) =>{
         const updatedState = {...posterStates, [key]: !posterStates[key]};
-        updatePosterState("StyleUsage", updatedState)
+        updatePosterState(posterName, updatedState)
      };
 
     return(
@@ -66,6 +66,10 @@ const StyleUsage = ({posterStates, updatePosterState}) => {
                     setShowSummaryWindow ={()=> handleStateChange("summaryIS")}
                     keyName={"summaryIS"}
                     getPosition={posterStates.positionSummaryIS}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionSummaryIS"}
+                    posterName={posterName}
                 />
                 <TerminalWindow 
                     style={style.redTermWindow}
@@ -74,6 +78,10 @@ const StyleUsage = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("inlineStyles")}
                     keyName={"inlineStyles"}
                     getPosition={posterStates.positionInlineStyles}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionInlineStyles"}
+                    posterName={posterName}
                 />
 
                 
@@ -84,6 +92,10 @@ const StyleUsage = ({posterStates, updatePosterState}) => {
                     setShowSummaryWindow ={()=> handleStateChange("summaryCSSInJS")}
                     keyName={"summaryCSSInJS"}
                     getPosition={posterStates.positionSummaryCSSInJS}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionSummaryCSSInJS"}
+                    posterName={posterName}
                 />
                 <TerminalWindow 
                     style={style.greenTermWindow}
@@ -92,6 +104,10 @@ const StyleUsage = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("cssInJS")}
                     keyName={"cssInJS"}
                     getPosition={posterStates.positionCSSInJS}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionCSSInJS"}
+                    posterName={posterName}
                 />
                 
                 <SummaryWindow 
@@ -101,6 +117,10 @@ const StyleUsage = ({posterStates, updatePosterState}) => {
                     setShowSummaryWindow ={()=> handleStateChange("summaryCSSModules")}
                     keyName={"summaryCSSModules"}
                     getPosition={posterStates.positionSummaryCSSModules}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionSummaryCSSModules"}
+                    posterName={posterName}
                 />
                 <TerminalWindow 
                     style={style.terminalWindow}
@@ -109,6 +129,10 @@ const StyleUsage = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("cssModules")}
                     keyName={"cssModules"}
                     getPosition={posterStates.positionCSSModules}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionCSSModules"}
+                    posterName={posterName}
                 />
                 <TerminalWindow 
                     style={style.terminalWindow}
@@ -117,6 +141,10 @@ const StyleUsage = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("cssModulesUsage")}
                     keyName={"cssModulesUsage"}
                     getPosition={posterStates.positionCSSModulesUsage}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionCSSModulesUsage"}
+                    posterName={posterName}
                 />
 
 
@@ -127,6 +155,10 @@ const StyleUsage = ({posterStates, updatePosterState}) => {
                     setShowSummaryWindow ={()=> handleStateChange("summarySF")}
                     keyName={"summarySF"}
                     getPosition={posterStates.positionSummarySF}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionSummarySF"}
+                    posterName={posterName}
                 />
                 <TerminalWindow 
                     style={style.yellowTermWindow} 
@@ -135,6 +167,10 @@ const StyleUsage = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("separateFile")}
                     keyName={"separateFile"}
                     getPosition={posterStates.positionSeparateFile}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionSeparateFile"}
+                    posterName={posterName}
                 />
                 <TerminalWindow 
                     style={style.yellowTermWindow}
@@ -143,6 +179,10 @@ const StyleUsage = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("separateFileUsage")}
                     keyName={"separateFileUsage"}
                     getPosition={posterStates.positionSeparateFileUsage}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionSeparateFileUsage"}
+                    posterName={posterName}
                 />
             </div>
        </div>

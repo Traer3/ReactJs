@@ -15,10 +15,11 @@ import ButtonBoxCheck from "../ButtonBoxCheck";
 
 const FLEXBox = ({posterStates, updatePosterState}) => {
     
+    const posterName = "FLEXBox"
   
     const handleStateChange = (key) =>{
         const updatedState = {...posterStates, [key]: !posterStates[key]};
-        updatePosterState("FLEXBox", updatedState)
+        updatePosterState(posterName, updatedState)
      };
 
 
@@ -51,6 +52,10 @@ const FLEXBox = ({posterStates, updatePosterState}) => {
                     setShowSummaryWindow ={()=> handleStateChange("summaryMDC")}
                     keyName={"summaryMDC"}
                     getPosition={posterStates.positionSummaryMDC}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionSummaryMDC"}
+                    posterName={posterName}
                 />
                 <TerminalWindow 
                     style={style.redTermWindow}
@@ -59,6 +64,10 @@ const FLEXBox = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("mainDivContainer")}
                     keyName={"mainDivContainer"}
                     getPosition={posterStates.positionMainDivContainer}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionMainDivContainer"}
+                    posterName={posterName}
                 />
 
                 <SummaryWindow 
@@ -68,6 +77,10 @@ const FLEXBox = ({posterStates, updatePosterState}) => {
                     setShowSummaryWindow ={()=> handleStateChange("summaryDWB")}
                     keyName={"summaryDWB"}
                     getPosition={posterStates.positionSummaryDWB}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionSummaryDWB"}
+                    posterName={posterName}
                 />
                 <TerminalWindow 
                     style={style.greenSummWindow} 
@@ -76,6 +89,10 @@ const FLEXBox = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("divWithBoxes")}
                     keyName={"divWithBoxes"}
                     getPosition={posterStates.positionDivWithBoxes}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionDivWithBoxes"}
+                    posterName={posterName}
                 />
 
                 <SummaryWindow 
@@ -85,6 +102,10 @@ const FLEXBox = ({posterStates, updatePosterState}) => {
                     setShowSummaryWindow ={()=> handleStateChange("summaryB")}
                     keyName={"summaryB"}
                     getPosition={posterStates.positionSummaryB}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionSummaryB"}
+                    posterName={posterName}
                 />
                 <TerminalWindow 
                     style={style.terminalWindow}
@@ -93,6 +114,10 @@ const FLEXBox = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("boxes")}
                     keyName={"boxes"}
                     getPosition={posterStates.positionBoxes}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionBoxes"}
+                    posterName={posterName}
                 />
             </div>
         </div>

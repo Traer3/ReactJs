@@ -10,10 +10,12 @@ const menuPanelStyles = "/summary/ProblemsWithStyles/MenuPanelStyles.txt"
 
 
 const ProblemsWithStyles = ({posterStates, updatePosterState}) => {
- 
+    
+    const posterName = "ProblemsWithStyles"
+
     const handleStateChange = (key) =>{
         const updatedState = {...posterStates, [key]: !posterStates[key]};
-        updatePosterState("ProblemsWithStyles", updatedState)
+        updatePosterState(posterName, updatedState)
      };
    
     return(
@@ -36,6 +38,10 @@ const ProblemsWithStyles = ({posterStates, updatePosterState}) => {
                     setShowSummaryWindow ={()=> handleStateChange("summary")}
                     keyName={"summary"}
                     getPosition={posterStates.positionSummary}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionSummary"}
+                    posterName={posterName}
                 />
                 <TerminalWindow 
                     style={style.terminalWindow}
@@ -44,6 +50,10 @@ const ProblemsWithStyles = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("menuPanel")}
                     keyName={"menuPanel"}
                     getPosition={posterStates.positionMenuPanel}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionMenuPanel"}
+                    posterName={posterName}
                 />
                 <TerminalWindow 
                     style={style.terminalWindow}
@@ -52,6 +62,10 @@ const ProblemsWithStyles = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("menuPanelStyles")}
                     keyName={"menuPanelStyles"}
                     getPosition={posterStates.positionMenuPanelStyles}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionMenuPanelStyles"}
+                    posterName={posterName}
                 />
             </div>
        </div>

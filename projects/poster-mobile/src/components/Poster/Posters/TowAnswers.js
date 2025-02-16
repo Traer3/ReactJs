@@ -16,12 +16,14 @@ const ternaryOperatorData = "/summary/TwoAnswers/TernaryOperator.txt"
 
 const TwoAnswers = ({posterStates, updatePosterState}) => {  
     
-
+const posterName = "TwoAnswers"
 
     const handleStateChange = (key) =>{
        const updatedState = {...posterStates, [key]: !posterStates[key]};
-       updatePosterState("TwoAnswers", updatedState)
+       updatePosterState(posterName, updatedState)
     };
+
+  
     
     
     return(
@@ -50,8 +52,12 @@ const TwoAnswers = ({posterStates, updatePosterState}) => {
                     setShowSummaryWindow ={()=> handleStateChange("logicAND")}
                     keyName={"logicAND"}
                     getPosition={posterStates.positionLogicAND}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionLogicAND"}
+                    posterName={posterName}
                 />
-                {}
+                
                 <TerminalWindow 
                     style={style.redTermWindow}
                     filePath={logicANDExample} 
@@ -59,6 +65,10 @@ const TwoAnswers = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("logicANDExample")}
                     keyName={"logicANDExample"}
                     getPosition={posterStates.positionLogicANDExample}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionLogicANDExample"}
+                    posterName={posterName}
                 />
 
                 <SummaryWindow 
@@ -68,6 +78,10 @@ const TwoAnswers = ({posterStates, updatePosterState}) => {
                     setShowSummaryWindow ={()=> handleStateChange("logicANDCode")}
                     keyName={"logicANDCode"}
                     getPosition={posterStates.positionLogicANDCode}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionLogicANDCode"}
+                    posterName={posterName}
                 />
                 <TerminalWindow 
                     style={style.greenTermWindow}
@@ -76,6 +90,10 @@ const TwoAnswers = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("ternaryCode")}
                     keyName={"ternaryCode"}
                     getPosition={posterStates.positionTernaryCode}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionTernaryCode"}
+                    posterName={posterName}
                 />
                 <TerminalWindow  
                     style={style.greenTermWindow}
@@ -84,6 +102,10 @@ const TwoAnswers = ({posterStates, updatePosterState}) => {
                     setShowTerminalWindow={()=> handleStateChange("ternaryOperatorData")}
                     keyName={"ternaryOperatorData"}
                     getPosition={posterStates.positionTernaryOperatorData}
+                    posterStates={posterStates}
+                    updatePosterState={updatePosterState}
+                    positionName={"positionTernaryOperatorData"}
+                    posterName={posterName}
                 />  
             </div>
     </div>
