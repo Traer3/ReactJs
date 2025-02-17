@@ -21,6 +21,7 @@ const SummaryWindow  = ({
     const [offset, setOffset] = useState({x:0, y:0});
     const [content, setContent] = useState("");
     const [zIndex, setZIndex] = useState(0);
+    const [tapCount ,setTapCount] = useState(0);
    
     useEffect(()=>{
         const fetchContent = async () =>{
@@ -42,26 +43,33 @@ const SummaryWindow  = ({
     },[getPosition]);
 
 
-    const handleMouseDown = (e) =>{
+    const handleStart = (e) =>{
         e.preventDefault();
+        e.stopPropagation();
         setIsDragging(true);
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
         setOffset({
-            x: e.clientX - position.x,
-            y: e.clientY - position.y,
+            x: clientX - position.x,
+            y: clientY - position.y,
         });
         setZIndex(100)
     };
 
-    const handleMouseMove = (e) =>{
+    const handleMove = (e) =>{
         if(!isDragging) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
         setPosition({
-            x: e.clientX - offset.x,
-            y: e.clientY - offset.y,
+            x: clientX - offset.x,
+            y: clientY - offset.y,
         });
         
     };
 
-    const handleMouseUp = () =>{
+    const handleEnd = () =>{
         setIsDragging(false);
         setZIndex(0);
         handlePositionChange(positionName, posterName, position);
@@ -92,6 +100,15 @@ const SummaryWindow  = ({
         
     }
 
+    const handleTripleTap =()=> {
+        setTapCount((prev)=> prev + 1);
+        setTimeout(()=> setTapCount(0), 500);
+
+        if(tapCount === 2){
+            setShowSummaryWindow(false);
+        }
+    };
+
     return(
         <div onMouseDown={closeWindow}>
             
@@ -104,13 +121,21 @@ const SummaryWindow  = ({
                 left:`${position.x}px`,
                 cursor: isDragging ? 'grabbing' : 'grab',
                 zIndex:zIndex,
+                touchAction: 'none',
                 ...customStyle,
             }}
             
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
+            onMouseDown={handleStart}
+            onMouseMove={handleMove}
+            onMouseUp={handleEnd}
+            onMouseLeave={handleEnd}
+            
+            onTouchStart={(e)=>{
+                handleStart(e);
+                handleTripleTap();
+            }}
+            onTouchMove={handleMove}
+            onTouchEnd={handleEnd}
             >
                 {content}  
             </div>

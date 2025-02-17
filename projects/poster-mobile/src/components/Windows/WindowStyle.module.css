@@ -14,6 +14,14 @@
     font-weight: bold;
     white-space: pre-wrap;
 }
+@media(max-width:768px) and (max-height:800px){
+    .summaryWindow{
+        border-radius: 0.5vw;
+        box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
+        min-width: 21em;
+        font-size: 0.6rem;
+    }
+}
 
 .terminalWindow{
     border: 2px solid white;
@@ -26,15 +34,22 @@
     text-align: left;
     white-space: pre-wrap;
 }
+@media(max-width:768px) and (max-height:800px){
+    .terminalWindow{
+        border-radius: 0.5vw;
+        padding: 0.2em;
+        min-width: 21em;
+        font-size: 0.6rem;
+
+    }
+}
+
 
 .redSummWindow{ 
-    
     border-radius: 4px;
     padding: 4px;
     overflow-y: auto;
-  
     backdrop-filter: blur(10px);
-   
     color: #ffffff;
     min-width: 350px;
     text-align: left;
@@ -47,6 +62,15 @@
     box-shadow: 0 4px 10px rgba(250,80,80,0.2), 0 0 15px rgba(255,60,60,0.4);
 }
 
+@media(max-width:768px) and (max-height:800px){
+    .redSummWindow{
+        border-radius: 0.5vw;
+        box-shadow: 0 0.5rem 1rem rgba(250,80,80,0.2), 0 0 0.5rem rgba(255,60,60,0.4);
+        min-width: 21em;
+        font-size: 0.6rem;
+    }
+}
+
 .redTermWindow{
     border: 2px solid rgba(255,80,80,0.3);
     padding: 4px;
@@ -57,6 +81,15 @@
     min-height: max-content;
     text-align: left;
     white-space: pre-wrap;
+}
+@media(max-width:768px) and (max-height:800px){
+    .redTermWindow{
+        border-radius: 0.5vw;
+        padding: 0.2em;
+        min-width: 21em;
+        font-size: 0.6rem;
+
+    }
 }
 
 .greenSummWindow{
@@ -75,6 +108,14 @@
     font-weight: bold;
     white-space: pre-wrap;
 }
+@media(max-width:768px) and (max-height:800px){
+    .greenSummWindow{
+        border-radius: 0.5vw;
+        box-shadow: 0 0.5rem 1rem rgba(80,255,80,0.2), 0 0 0.5rem rgba(60,255,60,0.4);
+        min-width: 21em;
+        font-size: 0.6rem;
+    }
+}
 .greenTermWindow{
     border: 2px solid rgba(80,255,80,0.3);
     padding: 4px;
@@ -85,6 +126,15 @@
     min-height: max-content;
     text-align: left;
     white-space: pre-wrap;
+}
+@media(max-width:768px) and (max-height:800px){
+    .greenTermWindow{
+        border-radius: 0.5vw;
+        padding: 0.2em;
+        min-width: 21em;
+        font-size: 0.6rem;
+
+    }
 }
 
 .yellowSummWindow{
@@ -103,6 +153,14 @@
     font-weight: bold;
     white-space: pre-wrap;
 }
+@media(max-width:768px) and (max-height:800px){
+    .yellowSummWindow{
+        border-radius: 0.5vw;
+        box-shadow: 0 0.5rem 1rem rgba(255,223,80,0.2), 0 0 0.5rem rgba(255,213,60,0.4);
+        min-width: 21em;
+        font-size: 0.6rem;
+    }
+}
 
 .yellowTermWindow{
     border: 2px solid rgba(255,223,80,0.3);
@@ -114,6 +172,15 @@
     min-height: max-content;
     text-align: left;
     white-space: pre-wrap;
+}
+@media(max-width:768px) and (max-height:800px){
+    .yellowTermWindow{
+        border-radius: 0.5vw;
+        padding: 0.2em;
+        min-width: 21em;
+        font-size: 0.6rem;
+
+    }
 }
 
 .columnSquare{

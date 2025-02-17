@@ -69,3 +69,27 @@
     }
     
 }
+@media(max-width:768px) and (max-height:800px){
+    .LogIn{
+        border-radius: 0.5vw;
+        box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
+        font-size: 1rem;
+    }
+    .LogIn input{
+        margin: 0.3em;
+        border-radius: 0.5vw;
+        font-size: 1rem;  
+        width: 15vh;
+    }
+    .LogIn button{
+        margin: 0.4em;
+        border-radius: 0.5vw;
+        box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
+        min-width: 17vw;
+        height: 3vh;
+        font-size: 1rem;
+    }
+    .LogIn th, .LogIn, tb{
+        padding: 0.1em;
+    }
+}

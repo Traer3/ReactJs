@@ -110,7 +110,6 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
             {items && (
                 <div className={`${style.listOfTopics} ${items ? style.listOfTopicsVisible : ""}`}>
 
-                    
                     <ShowPoster 
                         toggleTopic={()=>toggleTopic("twoAnswers")}
                         topicName="Tow Answers"
@@ -155,9 +154,6 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
                         <Position posterStates={getPosterState("Position")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
                     
-                    
-                    
-
                 </div>
             )}
    
@@ -166,9 +162,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
                 onClick={savePosterStates}
                 //Удалить потом Save , он нужен ток в <MenuScreen>
                 >Save
-            </SideButton>
-    
-            <h1 style={{backgroundColor:'red', width:'100px ' , height:'100px', color:'white'}  }>{userId}</h1>
+            </SideButton> 
     </div>
     );
 };

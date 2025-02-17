@@ -80,16 +80,18 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                             newStyle="logOutButton"
                             iconsName="logOut"
                             onClick={handleLogOut}
-                            />
+                        />
                         <SideButton 
                             buttonState={addUser} 
                             buttonStyle="addUserButton" 
                             newStyle="hideAddUserButton"
                             iconsName="addUser"
                             onClick={toggleRegistration}
-                            />
-                        
+                        />
+                            
                 </div>
+                
+                
                 
                 <Authorization setUserCheck={setUserCheck} addUser={addUser} setUserId={setUserId}/>
                  
