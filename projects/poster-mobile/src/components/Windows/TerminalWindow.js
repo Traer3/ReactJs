@@ -131,7 +131,7 @@ const TerminalWindow = ({
             onTouchMove={handleMove}
             onTouchEnd={handleEnd}
             >
-                {content} 
+                {content}    {console.log( "X", position.x, "Y" , position.y)}
             </div>
             )}
         </div>

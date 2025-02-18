@@ -16,15 +16,16 @@ const ternaryOperatorData = "/summary/TwoAnswers/TernaryOperator.txt"
 
 const TwoAnswers = ({posterStates, updatePosterState}) => {  
     
-const posterName = "TwoAnswers"
+    const posterName = "TwoAnswers"
+
 
     const handleStateChange = (key) =>{
        const updatedState = {...posterStates, [key]: !posterStates[key]};
        updatePosterState(posterName, updatedState)
     };
 
-  
     
+       
     
     return(
         <div>
