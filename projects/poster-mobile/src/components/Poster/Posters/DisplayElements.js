@@ -75,7 +75,7 @@ const posterName = "DisplayElements"
                     posterName={posterName}
                 />
                 <TerminalWindow 
-                    style={style.greenSummWindow}
+                    style={style.greenTermWindow}
                     filePath={AND} 
                     showTerminalWindow={posterStates.AND} 
                     setShowTerminalWindow={()=> handleStateChange("AND")}

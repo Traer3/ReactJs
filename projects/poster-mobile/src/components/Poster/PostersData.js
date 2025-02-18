@@ -45,7 +45,7 @@ const PostersData = ({userId })=> {
             },
             mobileState: {
                 logicAND: true,
-                positionLogicAND: { x:169, y: -85}, 
+                positionLogicAND: {x:169, y: -85}, 
     
                 logicANDExample: true,
                 positionLogicANDExample: {x:169, y:-26},
@@ -77,16 +77,16 @@ const PostersData = ({userId })=> {
             },
             mobileState: {
                 ternaryMethod: true,
-                positionTernaryMethod: {x: 159, y: -85},
+                positionTernaryMethod: {x:169, y: -85},
     
                 summaryTM: true,
-                positionSummaryTM: {x: 159, y: -58},
+                positionSummaryTM: {x: 169, y: -58},
     
                 AND: true,
-                positionAND: {x: 635, y: -85},
+                positionAND: {x: 311, y: -85},
     
                 logicANDSummary: true,
-                positionLogicANDSummary: {x: 635, y: -47},
+                positionLogicANDSummary: {x: 311, y: -67},
             },
         },
         {
@@ -112,22 +112,22 @@ const PostersData = ({userId })=> {
             },
             mobileState: {
                 summaryMDC: true,
-                positionSummaryMDC: {x: 156, y: -89},
+                positionSummaryMDC: {x: 169, y: -85},
     
                 mainDivContainer: true,
-                positionMainDivContainer: {x: 156, y: -42},
+                positionMainDivContainer: {x: 169, y: -42},
     
                 summaryDWB: true,
-                positionSummaryDWB: {x: 523, y: -88},
+                positionSummaryDWB: {x: 311, y: -85},
     
                 divWithBoxes: true,
-                positionDivWithBoxes: {x: 523, y: 123},
+                positionDivWithBoxes: {x: 311, y: 20},
     
                 summaryB: true,
-                positionSummaryB: {x: 476, y: -91},
+                positionSummaryB: {x: 476, y: -85},
     
                 boxes: true,
-                positionBoxes: {x: 476, y: -43},
+                positionBoxes: {x: 476, y: -60},
             },
         },
         {
@@ -165,34 +165,34 @@ const PostersData = ({userId })=> {
             },
             mobileState: {
                 summaryIS: true,
-                positionSummaryIS: {x: 156, y: -84},
+                positionSummaryIS: {x: 169, y: -85},
     
                 inlineStyles: true,
-                positionInlineStyles: {x: 156, y: -54},
+                positionInlineStyles: {x: 169, y: -54},
     
                 summaryCSSInJS: true,
-                positionSummaryCSSInJS: {x: 524, y: -85},
+                positionSummaryCSSInJS: {x: 311, y: -85},
     
                 cssInJS: true,
-                positionCSSInJS: {x: 524, y: 27},
+                positionCSSInJS: {x: 311, y: -20},
     
                 summaryCSSModules: true,
-                positionSummaryCSSModules: {x: 945, y: -83},
+                positionSummaryCSSModules: {x: 450, y: -85},
     
                 cssModules: true,
-                positionCSSModules: {x: 945, y: -50},
+                positionCSSModules: {x: 450, y: -60},
     
                 cssModulesUsage: true,
-                positionCSSModulesUsage: {x: 945, y: 96},
+                positionCSSModulesUsage: {x: 450, y: 1},
     
                 summarySF: true,
-                positionSummarySF: {x: 1324, y: -83},
+                positionSummarySF: {x: 450, y: 104},
     
                 separateFile: true,
-                positionSeparateFile: {x: 1324, y: -35},
+                positionSeparateFile: {x: 450, y: 132},
     
                 separateFileUsage: true,
-                positionSeparateFileUsage: {x: 1324, y: 197},
+                positionSeparateFileUsage: {x: 450, y: 226},
             },
         },
         {
@@ -209,13 +209,13 @@ const PostersData = ({userId })=> {
             },
             mobileState: {
                 summary: true,
-                positionSummary: {x: 156, y: -91},
+                positionSummary: {x: 169, y: -85},
     
                 menuPanel: true,
-                positionMenuPanel: {x: 156, y: 70},
+                positionMenuPanel: {x: 169, y: -10},
     
                 menuPanelStyles: true,
-                positionMenuPanelStyles: {x: 156, y: 298},
+                positionMenuPanelStyles: {x: 169, y: 100},
             },
         },
         {
@@ -241,22 +241,22 @@ const PostersData = ({userId })=> {
             },
             mobileState: {
                 summaryPositions: true,
-                positionSummaryPositions: {x: 156, y: -93},
+                positionSummaryPositions: {x: 169, y: -85},
     
                 positions: true,
-                positionPositions: {x: 156, y: 49},
+                positionPositions: {x: 169, y: -5},
     
                 summaryTextPositions: true,
-                positionSummaryTextPositions: {x: 526, y: -91},
+                positionSummaryTextPositions: {x: 311, y: -85},
     
                 textPositions: true,
-                positionTextPositions: {x: 526, y: -23},
+                positionTextPositions: {x: 311, y: -53},
     
                 summaryWH: true,
-                positionSummaryWH: {x: 890, y: -92},
+                positionSummaryWH: {x: 476, y: -85},
     
                 widthHeight: true,
-                positionWidthHeight: {x: 890, y: 37},
+                positionWidthHeight: {x: 476, y: -13},
             },
         },
     ]);

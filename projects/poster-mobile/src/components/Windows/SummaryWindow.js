@@ -45,7 +45,7 @@ const SummaryWindow  = ({
     },[getPosition]);
 
     const handleStart = (e) =>{
-        e.preventDefault();
+        //e.preventDefault(); there was  issue with scrolling =}
         e.stopPropagation();
         setIsDragging(true);
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -58,7 +58,7 @@ const SummaryWindow  = ({
     };
     const handleMove = (e) =>{
         if(!isDragging) return;
-        e.preventDefault();
+        //e.preventDefault(); there was  issue with scrolling =}
         e.stopPropagation();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
@@ -133,7 +133,7 @@ const SummaryWindow  = ({
             onTouchMove={handleMove}
             onTouchEnd={handleEnd}
             >
-                {content}    {console.log( "X", position.x, "Y" , position.y)}
+                {content}
             </div>
             )}
         </div>

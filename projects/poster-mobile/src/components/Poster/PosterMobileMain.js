@@ -66,6 +66,16 @@ const PosterMobileMain = ({posterStateArray, setPosterStateArray, userId,}) => {
 
 
     const updatePosterState = async (posterName, newState)=>{
+        if(!userId || userId === 0){
+            setPosterStateArray((prevArray) =>{
+                return prevArray.map((poster)=>
+                    poster.name === posterName 
+                    ? { ...poster, state: {...poster.state, ...newState}}
+                    : poster
+                ); 
+            });
+            return;
+        }
         setPosterStateArray((prevArray) =>{
             return prevArray.map((poster)=>
                 poster.name === posterName 
