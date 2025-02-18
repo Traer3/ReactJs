@@ -12,6 +12,7 @@ import Position from "./Posters/Postion";
 
 const PosterMobileMain = ({posterStateArray, setPosterStateArray, userId,}) => {
     const [items, setItems] = useState(false);
+    const [showSave, setShowSave] = useState(false);
 
     const showItemList = () => {
         setItems(!items);
@@ -36,8 +37,10 @@ const PosterMobileMain = ({posterStateArray, setPosterStateArray, userId,}) => {
 
     useEffect(()=>{
         if(!userId || userId === 0){
+            setShowSave(false);
             return;
         }
+        setShowSave(false);
         fetch(`http://localhost:3001/getPosterStates/${userId}`)
         .then((res)=>res.json())
         .then((data) => {
@@ -70,7 +73,7 @@ const PosterMobileMain = ({posterStateArray, setPosterStateArray, userId,}) => {
             setPosterStateArray((prevArray) =>{
                 return prevArray.map((poster)=>
                     poster.name === posterName 
-                    ? { ...poster, state: {...poster.state, ...newState}}
+                    ? { ...poster, mobileState: {...poster.state, ...newState}}
                     : poster
                 ); 
             });
@@ -167,12 +170,14 @@ const PosterMobileMain = ({posterStateArray, setPosterStateArray, userId,}) => {
                 </div>
             )}
    
-            <SideButton 
-                newStyle="buttonsOnPanels"
-                onClick={savePosterStates}
-                //Удалить потом Save , он нужен ток в <MenuScreen>
-                >Save
-            </SideButton> 
+            {showSave &&
+                <SideButton 
+                    newStyle="buttonsOnPanels"
+                    onClick={savePosterStates}
+                    
+                    >Save
+            </SideButton>
+            }
     </div>
     );
 };

@@ -14,9 +14,6 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
     const [userMenuOpen, setUserMenuOpen] = useState(false);
     const [addUser, setAddUser] = useState(true)
 
-   // const showWindowHeight = window.innerHeight 
-   // const showWindowWidth= window.innerWidth
-
     const toggelMenuPanel = ()=>{
         setMenuButton(!menuButton);
         setMenuOpen(!menuOpen)
@@ -60,9 +57,6 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                  </div>
             </SidePanel>
 
-            {
-            //<h1 style={{backgroundColor:"red", width:'200px', height:'200px'}}> height = {showWindowHeight}   width = {showWindowWidth}</h1>
-            }
             <SideButton 
                 buttonState={userButton} 
                 buttonStyle="profileButton" 

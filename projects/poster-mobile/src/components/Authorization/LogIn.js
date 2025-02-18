@@ -8,6 +8,7 @@ const LogIn = ({setUserCheck, setUserId}) =>{
 
     const handleLogIn = (event)=>{
         event.preventDefault();
+       
 
         if(!login || !password){
             alert('Please fill out all fields')

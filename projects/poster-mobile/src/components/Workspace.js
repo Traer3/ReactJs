@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import GuestMenu from "./Guest/GuestMenu";
-//import MenuScreen from "./User/MenuScreen";
+import MenuScreen from "./User/MenuScreen";
 
 
 
@@ -18,10 +18,12 @@ const Workspace = () => {
    
     return(
         <div>
-
-            <GuestMenu userId={userId} setUserId={setUserId} setUserCheck={setUserCheck}/> 
+             
+            
             {
-              //  userCheck ? <MenuScreen userId={userId} setUserId={setUserId}/> :  <GuestMenu userId={userId} setUserId={setUserId} setUserCheck={setUserCheck}/> //userId={userId} setUserId={setUserId} БУДЕТ ТОЛЬКО У <MenuScreen/> , а пока для тестов
+              userCheck ? 
+                <MenuScreen userId={userId} setUserId={setUserId} setUserCheck={setUserCheck}/> :  
+                <GuestMenu userId={userId} setUserId={setUserId} setUserCheck={setUserCheck}/>
             }
             
             

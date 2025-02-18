@@ -12,7 +12,7 @@ import Position from "./Posters/Postion";
 
 const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
     const [items, setItems] = useState(false);
-
+    const [showSave, setShowSave] = useState(false);
     const showItemList = () => {
         setItems(!items);
     }
@@ -36,8 +36,10 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
 
     useEffect(()=>{
         if(!userId || userId === 0){
+            setShowSave(false);
             return;
         }
+        setShowSave(true);
         fetch(`http://localhost:3001/getPosterStates/${userId}`)
         .then((res)=>res.json())
         .then((data) => {
@@ -48,7 +50,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
             }
         })
         .catch((err)=> console.error(err));
-    }, [userId ,setPosterStateArray]);
+    }, [userId ,setPosterStateArray, ]);
 
     const savePosterStates =()=>{ 
         fetch('http://localhost:3001/savePosterStates',{
@@ -166,13 +168,15 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
                     
                 </div>
             )}
-   
-            <SideButton 
-                newStyle="buttonsOnPanels"
-                onClick={savePosterStates}
-                //Удалить потом Save , он нужен ток в <MenuScreen>
-                >Save
-            </SideButton> 
+            <h1 style={{backgroundColor:'red', width:'100px ' , height:'100px', color:'white'}  }>{userId}</h1>
+
+            {showSave &&
+                <SideButton 
+                    newStyle="buttonsOnPanels"
+                    onClick={savePosterStates}
+                    >Save
+            </SideButton>
+            } 
     </div>
     );
 };

@@ -4,14 +4,13 @@ import PosterMobileMain from "./PosterMobileMain";
 
 const PostersData = ({userId })=> {
     
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [defineVersion, setDefineVersion] = useState(window.innerWidth > 768)
     
     useEffect(()=>{
 
         const handleResize = ()=>{
           const newWidth =  window.innerWidth;
-          setWindowWidth(newWidth);
+         
 
           setDefineVersion(newWidth > 768)
         };
@@ -279,7 +278,7 @@ const PostersData = ({userId })=> {
             /> 
             
             )}
-            <h1 style={{backgroundColor:'red', width:'100px',height:'100px'}}>{windowWidth}</h1>
+         
         </div>
     );
 };

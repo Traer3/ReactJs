@@ -4,7 +4,7 @@ import style from "./Authorization.module.css"
 const AuthorizationFrom = ({handleSubmit,handleFirstInput,handleSecondInput, firstInput, secondInput , type}) => {
     return(
         <div className={style.LogIn}>
-            <form  onSubmit={handleSubmit} >
+            <form  onSubmit={handleSubmit}>
                 <input 
                     type="text" 
                     value={firstInput} 
