@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 
 const SummaryWindow  = ({
@@ -18,21 +18,20 @@ const SummaryWindow  = ({
     const [position, setPosition] = useState(getPosition || {x:0, y:0});
     
     const [isDragging, setIsDragging] = useState(false);
-    const [offset, setOffset] = useState({x:0, y:0});
+    const [offset, setOffset] = useState({ x: 0, y: 0 });
     const [content, setContent] = useState("");
     const [zIndex, setZIndex] = useState(0);
     const [tapCount ,setTapCount] = useState(0);
-    const [elementSize, setElementSize] = useState({width:0, height:0})
 
-    const windowRef = useRef(null);
-   
+
     useEffect(()=>{
-        const fetchContent = async () =>{
+        const fetchContent = async ()=> {
             try{
                 const response = await fetch(filePath);
                 const text = await response.text();
                 setContent(text);
-            }catch (error){
+                
+            }catch(error){
                 console.log(error);
             }
         };
@@ -45,79 +44,28 @@ const SummaryWindow  = ({
         };
     },[getPosition]);
 
-    useEffect(() => {
-        const updateSize =()=> {
-        if(windowRef.current) {
-            const rect = windowRef.current.getBoundingClientRect();
-            setElementSize({width:rect.width, height:rect.height});
-        }
-    };
-        updateSize();
-        window.addEventListener("resize",updateSize);
-        return ()=> window.removeEventListener("resize",updateSize);
-    },[]);
-
-    useEffect(()=>{
-        const adjustPosition = () =>{
-            const screenWidth = window.innerWidth;
-            const screenHeight = window.innerHeight;
-
-            setPosition(prevPosition => {
-
-            let newX = prevPosition.x;
-            let newY = prevPosition.y;
-
-            if(prevPosition.x + elementSize.width > screenWidth){
-                newX = screenWidth - elementSize.width - 130;
-            }
-            if(prevPosition.y + elementSize.height > screenHeight){
-                newY = screenHeight - elementSize.height - 130;
-            }
-            if(prevPosition.x < 0){
-                newX = 1;
-            }
-            if(newX !== prevPosition.x || newY !== prevPosition.y){
-                return {x:newX, y:newY};
-            }
-            return prevPosition;
-            });
-
-        };
-
-        adjustPosition();
-        window.addEventListener("resize", adjustPosition);
-        return ()=> window.removeEventListener("resize", adjustPosition);
-    }, [elementSize]);
-
-
-    const handleStart = (e) => {
+    const handleStart = (e) =>{
         e.preventDefault();
         e.stopPropagation();
         setIsDragging(true);
-
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
         setOffset({
             x: clientX - position.x,
             y: clientY - position.y,
         });
-        setZIndex(100);
+        setZIndex(100)
     };
-
-
     const handleMove = (e) =>{
         if(!isDragging) return;
         e.preventDefault();
         e.stopPropagation();
-
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
-        setPosition( prev=>({
+        setPosition({
             x: clientX - offset.x,
             y: clientY - offset.y,
-        }));
+        });
         
     };
 
@@ -127,7 +75,6 @@ const SummaryWindow  = ({
         handlePositionChange(positionName, posterName, position);
     };
 
-  
     const handlePositionChange = async (key,posterName,newPosition) => {
         if(!updatePosterState){
             console.error("give me updatePosterState");
@@ -140,8 +87,16 @@ const SummaryWindow  = ({
         }; 
         updatePosterState(posterName, updatedPosition)
     }
+
+    const handleTripleTap =()=> {
+        setTapCount((prev)=> prev + 1);
+        setTimeout(()=> setTapCount(0), 500);
+
+        if(tapCount === 2){
+            setShowSummaryWindow(false);
+        }
+    };
     
-   
     const closeWindow = (event) =>{
         if(event.button === 1){
             setShowSummaryWindow((prevStates)=>({
@@ -152,24 +107,10 @@ const SummaryWindow  = ({
         
     }
 
-    const handleTripleTap =()=> {
-        setTapCount((prev)=> prev + 1);
-        setTimeout(()=> setTapCount(0), 500);
-
-        if(tapCount === 2){
-            setShowSummaryWindow(false);
-        }
-    };
-
     return(
         <div onMouseDown={closeWindow}>
-            
             {showSummaryWindow && (
-
-            <div 
-            ref={windowRef}
-            id={`window-${keyName}`}
-            className={style}
+            <div className={style}
             style={{
                 position:'absolute',
                 top:`${position.y}px`,
@@ -192,7 +133,7 @@ const SummaryWindow  = ({
             onTouchMove={handleMove}
             onTouchEnd={handleEnd}
             >
-                {content}
+                {content} 
             </div>
             )}
         </div>

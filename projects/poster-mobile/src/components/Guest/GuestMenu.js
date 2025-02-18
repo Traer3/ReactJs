@@ -14,8 +14,8 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
     const [userMenuOpen, setUserMenuOpen] = useState(false);
     const [addUser, setAddUser] = useState(true)
 
-    const showWindowHeight = window.innerHeight 
-    const showWindowWidth= window.innerWidth
+   // const showWindowHeight = window.innerHeight 
+   // const showWindowWidth= window.innerWidth
 
     const toggelMenuPanel = ()=>{
         setMenuButton(!menuButton);
