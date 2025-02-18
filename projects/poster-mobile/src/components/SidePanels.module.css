@@ -17,7 +17,7 @@
     box-sizing: border-box;
     max-width: 300px;
 }
-@media(max-width:768px) and (max-height:800px){
+@media(max-width:768px){
     .panelFlex{
         padding: 0.6em;
     }
@@ -41,7 +41,7 @@
     transition: all 0.3s ease-in-out;
     
 }
-@media(max-width:768px) and (max-height:800px){
+@media(max-width:768px){
     .menuPanel{
         border-radius: 0.5vw;
         box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
@@ -97,7 +97,7 @@
     transform: translateX(103%);
     transition: all 0.3s ease-in-out;
 }
-@media(max-width:768px) and (max-height:800px){
+@media(max-width:768px){
     .profilePanel{
         border-radius: 0.5vw;
         box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
@@ -181,7 +181,7 @@
     font-size: 16px;
     font-weight: bolder;
 }
-@media(max-width:768px) and (max-height:800px){
+@media(max-width:768px){
     .buttonsOnPanels{
         border-radius: 0.5vw;
         box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
@@ -207,7 +207,7 @@
     transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
-@media(max-width:768px) and (max-height:800px){
+@media(max-width:768px){
     .listOfTopics{
         border-radius: 0.5vw;
         box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
@@ -237,7 +237,7 @@
     font-size: 12px;
     font-weight: bolder;
 }
-@media(max-width:768px) and (max-height:800px){
+@media(max-width:768px){
     .buttonsOnList{
         border-radius: 0.5vw;
         box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
