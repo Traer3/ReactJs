@@ -6,34 +6,40 @@ const LogIn = ({setUserCheck, setUserId}) =>{
     const [login, setLogin] = useState('');
     const [password,setPassword] = useState('');
 
-    const handleLogIn = (event)=>{
-        event.preventDefault();
+    const handleLogIn = async (event)=>{
+        event.preventDefault()
        
-
         if(!login || !password){
             alert('Please fill out all fields')
             return;
         }
         
-        fetch('http://localhost:3001/logIn',{
-            method:'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({login, password}),
-        })
-            .then((res)=>res.json())
-            .then((data) => {
-                    alert(data.message);
-                    if(data.message === "Login successful"){
-                        localStorage.setItem("userCheck", "true");
-                        setUserCheck(true);
-                        setUserId(data.userId) 
-                    }
-            })                
-            .catch((err)=> console.error(err));
-    }
+        try {
+            
+            const response = await fetch('http://192.168.0.254:3001/logIn', { //поменяй ip 
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ login, password }),
+            }); 
+            
+            const data = await response.json();
+            alert(data.message);
+
+            if (data.message === "Login successful") {
+              localStorage.setItem("userCheck", JSON.stringify(true)); 
+              localStorage.setItem("userId", JSON.stringify(data.userId));
+                    setUserCheck(true); 
+                    setUserId(data.userId);   
+            }
+        } catch (error) {
+            console.error("Login error:", error);
+        }
+       
+       
+    };
 
 
-    return(
+    return(                    
                 <AuthorizationFrom
                     handleSubmit={handleLogIn}
                     handleFirstInput={(e) => setLogin(e.target.value)}
