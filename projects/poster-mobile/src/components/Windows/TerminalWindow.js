@@ -43,8 +43,6 @@ const TerminalWindow = ({
     },[getPosition]);
 
     const handleStart = (e) =>{
-        //e.preventDefault(); there was  issue with scrolling =}
-        e.stopPropagation();
         setIsDragging(true);
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
@@ -56,8 +54,6 @@ const TerminalWindow = ({
     };
     const handleMove = (e) =>{
         if(!isDragging) return;
-        //e.preventDefault(); there was  issue with scrolling =}
-        e.stopPropagation();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
         setPosition({

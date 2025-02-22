@@ -11,18 +11,17 @@
 .panelFlex{
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
     padding: 10px;
+    max-width: 300px;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
-    max-width: 300px;
 }
 @media(max-width:768px){
     .panelFlex{
         padding: 0.6em;
     }
 }
-
 
 .menuPanel{
     border: 1px rgba(95,145,255,0.3);
@@ -39,7 +38,6 @@
     text-align: center;   
     transform: translateX(-105%);
     transition: all 0.3s ease-in-out;
-    
 }
 @media(max-width:768px){
     .menuPanel{
@@ -49,7 +47,6 @@
         min-width: 20vw;
         font-size: 1rem;
     }
-    
 }
 
 .menuPanelOpen{
@@ -57,24 +54,23 @@
 }
 
 .menuButton{
-    position: fixed;
     border: none;
     border-radius: 8px;
+    position: fixed;
     background-color: transparent;
     cursor: pointer;
     height: 30px;
     width: 30px;      
 }
 
-
 .lonelyButton{
     border: 1px rgba(95,145,255,0.3);
     border-radius: 4px;
+    position: fixed;
     background: rgba(95,145,255,0.2);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 10px rgba(105,155,255,0.4);
     cursor: pointer;
-    position: fixed;
     height: 30px;
     width: 30px;   
 }
@@ -125,20 +121,20 @@
 .lonelyProfileButton{
     border: 1px rgba(95,145,255,0.3);
     border-radius: 4px;
+    position: fixed;
     background: rgba(95,145,255,0.2);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 10px rgba(105,155,255,0.4);
     cursor: pointer;
-    position: fixed;
     right: 0.4%;
     height: 30px;
     width: 30px;   
 }
 
 .addUserButton{
-    padding: 0;
     border: none;
     border-radius: 8px;
+    padding: 0;
     background-color: rgba(95, 255, 145, 0.2);
     box-shadow: 0 4px 10px rgba(95,255,145,0.2), 0 0 10px rgba(105,255,155,0.4);
     cursor: pointer;
@@ -146,9 +142,9 @@
     width: 30px;   
 }
 .hideAddUserButton{
-    padding: 0;
     border: none;
     border-radius: 8px;
+    padding: 0;
     background-color: rgba(95, 255, 145, 0.2);
     box-shadow: 0 4px 10px rgba(95,255,145,0.2), 0 0 10px rgba(105,255,155,0.4);
     cursor: pointer;
@@ -162,9 +158,9 @@
     border-radius: 8px;
     background-color: transparent;
     cursor: pointer;
+    margin-right: 8px;
     height: 30px;
     width: 30px; 
-    margin-right: 8px;
 }
 
 
@@ -199,11 +195,11 @@
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 10px rgba(95,145,255,0.2);
     cursor: pointer;
+    opacity: 0;
     min-width: max-content;
     font-family: Arial, sans-serif;
     font-size: 16px;
     font-weight: bolder;
-    opacity: 0;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -241,12 +237,11 @@
     .buttonsOnList{
         border-radius: 0.5vw;
         box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
+        cursor:default;
         margin-top: 0.3em;
         margin-bottom: 0.3em;
         height: 2.6em;
         width: 7em;
         font-size: 1rem;
-        cursor:default;
-        
     }
 }

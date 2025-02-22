@@ -1,23 +1,21 @@
 .LogIn{
-    
     border: 1px rgba(95,145,255,0.3);
     border-radius: 4px;
+    display: flex;
+    flex-direction: column;
     background: rgba(95,145,255,0.2);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 15px rgba(105,155,255,0.4);
     color: #ffffff;
-    
     height: min-content;
     width: min-content;
+    margin-top: 5px;
+    justify-content: center;
+    align-items: center;
     font-family: Arial, sans-serif;
     font-size: 16px;
     text-align: center;   
-    margin-top: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+    
     form{
         display: flex;
         flex-direction: column;
@@ -26,33 +24,33 @@
     }
 
     table{
-        margin-top: 20px;
         border-collapse: collapse;
+        margin-top: 20px;
         width: 300px;
         text-align: left;
     }
 
     input{
-        margin: 5px;
         border: 1px rgba(95,145,255,0.3);
         border-radius: 4px;
         background: rgba(95,145,255,0.2);
         backdrop-filter: blur(10px);
-       
         background-color: transparent;
+        margin: 5px;
+        width: 15vh;
         font-family: Arial, sans-serif;
         font-size: 16px;
         text-align: center;   
-        width: 15vh;
     }
+
     button{
-        margin: 8px;
         border: 1px rgba(95,145,255,0.3);
         border-radius: 4px;
         background: rgba(95,145,255,0.2);
         backdrop-filter: blur(10px);
         box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 15px rgba(105,155,255,0.4);
         background-color: rgb(93, 141, 247);
+        margin: 8px;
         min-width: 80px;
         height: 30px;
         font-family: Arial, sans-serif;
@@ -76,15 +74,15 @@
         font-size: 1rem;
     }
     .LogIn input{
-        margin: 0.3em;
         border-radius: 0.5vw;
-        font-size: 1rem;  
+        margin: 0.3em;
         width: 15vh;
+        font-size: 1rem;  
     }
     .LogIn button{
-        margin: 0.4em;
         border-radius: 0.5vw;
         box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
+        margin: 0.4em;
         min-width: 17vw;
         height: 3vh;
         font-size: 1rem;
