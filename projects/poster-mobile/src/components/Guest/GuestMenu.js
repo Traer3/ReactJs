@@ -4,8 +4,6 @@ import SideButton from "../SidePanelComponents/SideButton";
 import SidePanels from '../SidePanels.module.css'
 import Authorization from "../Authorization/Authorization";
 import PostersData from "../Poster/PostersData";
-//import TestField from "../../Dro4/TestField"; <TestField/>
-import '../../css/reGlitch.css' ;
 
 const GuestMenu = ({userId,setUserId,setUserCheck}) => {
 
@@ -36,7 +34,6 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
         alert("Bye-bye 👋")
     }
 
-   
 
     return(
        <div style={{padding:'5px' ,  width:'100%', height:'100vh'}}>
@@ -60,13 +57,7 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                     />
                  </div>
             </SidePanel>
-
-            
-
-            <div class="text-container" style={{marginLeft:'600px', marginTop:'200px'}}>
-                <div class="reTextShadow">not enough space</div>
-                <div class="reText">not enough space</div>
-            </div>
+       
 
             <SideButton 
                 buttonState={userButton} 
