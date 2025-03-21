@@ -245,3 +245,13 @@
         font-size: 1rem;
     }
 }
+
+.openProfile{
+    border: none;
+    border-radius: 8px;
+    background-color: red;
+    cursor: pointer;
+    margin-right: 8px;
+    height: 30px;
+    width: 30px; 
+}

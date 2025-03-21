@@ -14,6 +14,8 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
     const [userMenuOpen, setUserMenuOpen] = useState(false);
     const [addUser, setAddUser] = useState(true)
 
+    const [profileOpen, setPorofileOpen] = useState(false);
+
     const toggelMenuPanel = ()=>{
         setMenuButton(!menuButton);
         setMenuOpen(!menuOpen)
@@ -28,13 +30,17 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
         setAddUser(!addUser)
     }
 
+    const toggleOpenProfile = ()=>{
+        setPorofileOpen(!profileOpen)
+    }
+
     const handleLogOut = () =>{
         localStorage.removeItem("userCheck");
         setUserCheck(false);
         alert("Bye-bye 👋")
     }
 
-
+    //App zIndex 4 
     return(
        <div style={{padding:'5px' ,  width:'100%', height:'100vh'}}>
         
@@ -58,6 +64,18 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                  </div>
             </SidePanel>
        
+            {profileOpen &&
+                <div 
+                    style={{
+                        position:'absolute',
+                        border:'1px solid red',
+                        backgroundColor:'red',
+                        width:'1910px',
+                        height:'940px',
+                        zIndex:5,
+                    }}>
+                 </div>
+            }
 
             <SideButton 
                 buttonState={userButton} 
@@ -66,36 +84,43 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                 iconsName="user"
                 onClick={toggelUserPanel} 
                 />
-            <SidePanel 
-                panelStyle="profilePanel" 
-                panelState={userMenuOpen} 
-                newStyle="profilePanelOpen"
-                >
+            
+                <SidePanel 
+                    panelStyle="profilePanel" 
+                    panelState={userMenuOpen} 
+                    newStyle="profilePanelOpen"
+                    >
 
-                <div className={SidePanels.panelIconPlace}>
-                        <SideButton 
-                            buttonState={true} 
-                            buttonStyle="logOutButton" 
-                            newStyle="logOutButton"
-                            iconsName="logOut"
-                            onClick={handleLogOut}
-                        />
-                        <SideButton 
-                            buttonState={addUser} 
-                            buttonStyle="addUserButton" 
-                            newStyle="hideAddUserButton"
-                            iconsName="addUser"
-                            onClick={toggleRegistration}
-                        />
-                            
-                </div>
-                
-                
-                
-                <Authorization setUserCheck={setUserCheck} addUser={addUser} setUserId={setUserId}/>
-                 
-            </SidePanel>
-      
+                    <div className={SidePanels.panelIconPlace}>
+                            <SideButton 
+                                buttonState={true} 
+                                buttonStyle="logOutButton" 
+                                newStyle="logOutButton"
+                                iconsName="logOut"
+                                onClick={handleLogOut}
+                            />
+                            <SideButton 
+                                buttonState={addUser} 
+                                buttonStyle="addUserButton" 
+                                newStyle="hideAddUserButton"
+                                iconsName="addUser"
+                                onClick={toggleRegistration}
+                            />
+                            <SideButton 
+                                buttonState={profileOpen} 
+                                buttonStyle="openProfile" 
+                                newStyle="openProfile"
+                                iconsName="logOut"
+                                onClick={toggleOpenProfile}
+                            />
+                                
+                    </div>
+                    
+                    
+                    
+                    <Authorization setUserCheck={setUserCheck} addUser={addUser} setUserId={setUserId}/>
+                    
+                </SidePanel>
        </div>
     );
 };
