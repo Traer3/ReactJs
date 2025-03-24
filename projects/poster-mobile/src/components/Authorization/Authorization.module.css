@@ -1,19 +1,28 @@
+:root{
+    --textColor:#ffffff;
+    --fontFamily: Arial, sans-serif;
+    --fontSize: 16px;
+    --border: 1px rgba(95,145,255,0.3);
+    --backgroundColor: rgba(95,145,255,0.2);
+    --shadow: rgba(105,155,255,0.4);
+}
+
 .LogIn{
-    border: 1px rgba(95,145,255,0.3);
+    border: var(--border);
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-    background: rgba(95,145,255,0.2);
+    background: var(--backgroundColor);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 15px rgba(105,155,255,0.4);
-    color: #ffffff;
+    box-shadow: 0 4px 10px var(--backgroundColor), 0 0 15px var(--shadow);
+    color: var(--textColor);
     height: min-content;
     width: min-content;
     margin-top: 5px;
     justify-content: center;
     align-items: center;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
+    font-family: var(--fontFamily);
+    font-size: var(--fontSize);
     text-align: center;   
     
     form{
@@ -31,30 +40,30 @@
     }
 
     input{
-        border: 1px rgba(95,145,255,0.3);
+        border: var(--border);
         border-radius: 4px;
-        background: rgba(95,145,255,0.2);
+        background: var(--backgroundColor);
         backdrop-filter: blur(10px);
         background-color: transparent;
         margin: 5px;
         width: 15vh;
-        font-family: Arial, sans-serif;
-        font-size: 16px;
+        font-family: var(--fontFamily);
+        font-size: var(--fontSize);
         text-align: center;   
     }
 
     button{
-        border: 1px rgba(95,145,255,0.3);
+        border: var(--border);
         border-radius: 4px;
-        background: rgba(95,145,255,0.2);
+        background: var(--backgroundColor);
         backdrop-filter: blur(10px);
-        box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 15px rgba(105,155,255,0.4);
+        box-shadow: 0 4px 10px var(--backgroundColor), 0 0 15px var(--shadow);
         background-color: rgb(93, 141, 247);
         margin: 8px;
         min-width: 80px;
         height: 30px;
-        font-family: Arial, sans-serif;
-        font-size: 16px;
+        font-family: var(--fontFamily);
+        font-size: var(--fontSize);
         text-align: center;   
     }
     th{
@@ -70,7 +79,7 @@
 @media(max-width:768px){
     .LogIn{
         border-radius: 0.5vw;
-        box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
+        box-shadow: 0 0.5rem 1rem var(--backgroundColor), 0 0 0.5rem var(--shadow);
         font-size: 1rem;
     }
     .LogIn input{
@@ -81,7 +90,7 @@
     }
     .LogIn button{
         border-radius: 0.5vw;
-        box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
+        box-shadow: 0 0.5rem 1rem var(--backgroundColor), 0 0 0.5rem var(--shadow);
         margin: 0.4em;
         min-width: 17vw;
         height: 3vh;

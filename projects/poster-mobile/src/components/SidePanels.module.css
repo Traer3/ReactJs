@@ -1,3 +1,9 @@
+:root{
+    --panelBorde: 1px rgba(95,145,255,0.3);;
+    --panelBackground: rgba(95,145,255,0.2);
+    --panelShadow: rgba(105,155,255,0.4);
+}
+
 .panelIcon{
     width: 20px;
     height: 20px;
@@ -25,12 +31,12 @@
 
 
 .menuPanel{
-    border: 1px rgba(95,145,255,0.3);
+    border: var(--panelBorde);
     border-radius: 4px;
     position: fixed;
-    background: rgba(95,145,255,0.2);
+    background: var(--panelBackground);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 15px rgba(105,155,255,0.4);
+    box-shadow: 0 4px 10px var(--panelBackground), 0 0 15px var(--panelShadow);
     color: #ffffff;
     height: 98vh;
     width: max-content;
@@ -43,7 +49,7 @@
 @media(max-width:768px){
     .menuPanel{
         border-radius: 0.5vw;
-        box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
+        box-shadow: 0 0.5rem 1rem var(--panelBackground), 0 0 0.5rem var(--panelShadow);
         height: 98vh;
         min-width: 20vw;
         font-size: 1rem;
@@ -65,12 +71,12 @@
 }
 
 .lonelyButton{
-    border: 1px rgba(95,145,255,0.3);
+    border: var(--panelBorde);
     border-radius: 4px;
     position: fixed;
-    background: rgba(95,145,255,0.2);
+    background: var(--panelBackground);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 10px rgba(105,155,255,0.4);
+    box-shadow: 0 4px 10px var(--panelBackground), 0 0 10px var(--panelShadow);
     cursor: pointer;
     height: 30px;
     width: 30px;   
@@ -78,12 +84,12 @@
 
 
 .profilePanel{
-    border: 1px rgba(95,145,255,0.3);
+    border: var(--panelBorde);
     border-radius: 4px;
     position: fixed;
-    background: rgba(95,145,255,0.2);
+    background: var(--panelBackground);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 15px rgba(105,155,255,0.4);
+    box-shadow: 0 4px 10px var(--panelBackground), 0 0 15px var(--panelShadow);
     color: #ffffff;
     right: 0.3%;
     height: 98vh;
@@ -97,7 +103,7 @@
 @media(max-width:768px){
     .profilePanel{
         border-radius: 0.5vw;
-        box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
+        box-shadow: 0 0.5rem 1rem var(--panelBackground), 0 0 0.5rem var(--panelShadow);
         height: 98vh;
         min-width: 20vw;
         font-size: 1rem;
@@ -120,12 +126,12 @@
 }
 
 .lonelyProfileButton{
-    border: 1px rgba(95,145,255,0.3);
+    border: var(--panelBorde);
     border-radius: 4px;
     position: fixed;
-    background: rgba(95,145,255,0.2);
+    background: var(--panelBackground);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 10px rgba(95,145,255,0.2), 0 0 10px rgba(105,155,255,0.4);
+    box-shadow: 0 4px 10px var(--panelBackground), 0 0 10px var(--panelShadow);
     cursor: pointer;
     right: 0.4%;
     height: 30px;
@@ -166,11 +172,11 @@
 
 
 .buttonsOnPanels{
-    border: 1px rgba(95,145,255,0.3);
+    border: var(--panelBorde);
     border-radius: 4px;
-    background: rgba(95,145,255,0.2);
+    background: var(--panelBackground);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 10px rgba(95,145,255,0.2);
+    box-shadow: 0 4px 10px var(--panelBackground);
     height: 40px;
     max-width: 120px;
     margin: 5px;
@@ -181,7 +187,7 @@
 @media(max-width:768px){
     .buttonsOnPanels{
         border-radius: 0.5vw;
-        box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
+        box-shadow: 0 0.5rem 1rem var(--panelBackground), 0 0 0.5rem var(--panelShadow);
         height: 2.3em;
         max-width: 4.3em;
         margin: 0.3em;
@@ -190,11 +196,11 @@
 }
 
 .listOfTopics{
-    border: 1px rgba(95,145,255,0.3);
+    border: var(--panelBorde);
     border-radius: 4px;
     background: rgba(88, 139, 250, 0.2);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 10px rgba(95,145,255,0.2);
+    box-shadow: 0 4px 10px var(--panelBackground);
     cursor: pointer;
     opacity: 0;
     min-width: max-content;
@@ -207,7 +213,7 @@
 @media(max-width:768px){
     .listOfTopics{
         border-radius: 0.5vw;
-        box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
+        box-shadow: 0 0.5rem 1rem var(--panelBackground), 0 0 0.5rem var(--panelShadow);
         cursor: default;
         font-size: 1rem;
         font-weight: normal;
@@ -220,11 +226,11 @@
 }
 
 .buttonsOnList{
-    border: 1px rgba(95,145,255,0.3);
+    border: var(--panelBorde);
     border-radius: 4px;
-    background: rgba(95,145,255,0.2);
+    background: var(--panelBackground);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 10px rgba(95,145,255,0.2);
+    box-shadow: 0 4px 10px var(--panelBackground);
     cursor: pointer;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -237,7 +243,7 @@
 @media(max-width:768px){
     .buttonsOnList{
         border-radius: 0.5vw;
-        box-shadow: 0 0.5rem 1rem rgba(95,145,255,0.2), 0 0 0.5rem rgba(105,155,255,0.4);
+        box-shadow: 0 0.5rem 1rem var(--panelBackground), 0 0 0.5rem var(--panelShadow);
         cursor:default;
         margin-top: 0.3em;
         margin-bottom: 0.3em;
