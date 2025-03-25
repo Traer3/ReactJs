@@ -76,27 +76,3 @@
     }
     
 }
-@media(max-width:768px){
-    .LogIn{
-        border-radius: 0.5vw;
-        box-shadow: 0 0.5rem 1rem var(--backgroundColor), 0 0 0.5rem var(--shadow);
-        font-size: 1rem;
-    }
-    .LogIn input{
-        border-radius: 0.5vw;
-        margin: 0.3em;
-        width: 15vh;
-        font-size: 1rem;  
-    }
-    .LogIn button{
-        border-radius: 0.5vw;
-        box-shadow: 0 0.5rem 1rem var(--backgroundColor), 0 0 0.5rem var(--shadow);
-        margin: 0.4em;
-        min-width: 17vw;
-        height: 3vh;
-        font-size: 1rem;
-    }
-    .LogIn th, .LogIn, tb{
-        padding: 0.1em;
-    }
-}

@@ -1,7 +1,7 @@
 :root{
     --textColor:#ffffff;
     --fontFamily: Arial, sans-serif;
-    --fontSize: 14px;
+    --fontSize: clamp(0.1rem, 0.8vw, 3rem);
 
     --BW-background:rgba(95,145,255,0.2);
     --BW-shadow:rgba(105,155,255,0.4);
@@ -36,14 +36,7 @@
     font-weight: bold;
     white-space: pre-wrap;
 }
-@media(max-width:768px){
-    .summaryWindow{
-        border-radius: 0.5vw;
-        box-shadow: 0 0.5rem 1rem var(--BW-background), 0 0 0.5rem var(--BW-shadow);
-        min-width: 21em;
-        font-size: 0.4rem;
-    }
-}
+
 
 .terminalWindow{
     border: 2px solid white;
@@ -54,16 +47,12 @@
     min-width: max-content;
     min-height: max-content;
     text-align: left;
+    font-family: var(--fontFamily);
+    font-size: var(--fontSize);
+    font-weight: bold;
     white-space: pre-wrap;
 }
-@media(max-width:768px){
-    .terminalWindow{
-        border-radius: 0.5vw;
-        padding: 0.2em;
-        min-width: 21em;
-        font-size: 0.4rem;
-    }
-}
+
 
 .redSummWindow{ 
     border: 1px var(--RW-border);
@@ -82,14 +71,6 @@
     white-space: pre-wrap;
 }
 
-@media(max-width:768px){
-    .redSummWindow{
-        border-radius: 0.5vw;
-        box-shadow: 0 0.5rem 1rem var(--RW-background), 0 0 0.5rem var(--RW-shadow);
-        min-width: 21em;
-        font-size: 0.4rem;
-    }
-}
 
 .redTermWindow{
     border: 2px solid var(--RW-border);
@@ -100,16 +81,12 @@
     min-width: max-content;
     min-height: max-content;
     text-align: left;
+    font-family: var(--fontFamily);
+    font-size: var(--fontSize);
+    font-weight: bold;
     white-space: pre-wrap;
 }
-@media(max-width:768px){
-    .redTermWindow{
-        border-radius: 0.5vw;
-        padding: 0.2em;
-        min-width: 21em;
-        font-size: 0.4rem;
-    }
-}
+
 
 .greenSummWindow{
     border: 1px var(--GW-border);
@@ -127,14 +104,7 @@
     font-weight: bold;
     white-space: pre-wrap;
 }
-@media(max-width:768px){
-    .greenSummWindow{
-        border-radius: 0.5vw;
-        box-shadow: 0 0.5rem 1rem var(--GW-background), 0 0 0.5rem var(--GW-shadow);
-        min-width: 21em;
-        font-size: 0.4rem;
-    }
-}
+
 .greenTermWindow{
     border: 2px solid var(--GW-border);
     padding: 4px;
@@ -144,16 +114,12 @@
     min-width: max-content;
     min-height: max-content;
     text-align: left;
+    font-family: var(--fontFamily);
+    font-size: var(--fontSize);
+    font-weight: bold;
     white-space: pre-wrap;
 }
-@media(max-width:768px){
-    .greenTermWindow{
-        border-radius: 0.5vw;
-        padding: 0.2em;
-        min-width: 21em;
-        font-size: 0.4rem;
-    }
-}
+
 
 .yellowSummWindow{
     border: 1px var(--YW-border);
@@ -171,14 +137,7 @@
     font-weight: bold;
     white-space: pre-wrap;
 }
-@media(max-width:768px){
-    .yellowSummWindow{
-        border-radius: 0.5vw;
-        box-shadow: 0 0.5rem 1rem var(--YW-background), 0 0 0.5rem var(--YW-shadow);
-        min-width: 21em;
-        font-size: 0.4rem;
-    }
-}
+
 
 .yellowTermWindow{
     border: 2px solid var(--YW-border);
@@ -189,16 +148,12 @@
     min-width: max-content;
     min-height: max-content;
     text-align: left;
+    font-family: var(--fontFamily);
+    font-size: var(--fontSize);
+    font-weight: bold;
     white-space: pre-wrap;
 }
-@media(max-width:768px){
-    .yellowTermWindow{
-        border-radius: 0.5vw;
-        padding: 0.2em;
-        min-width: 21em;
-        font-size: 0.4rem;
-    }
-}
+
 
 .columnSquare{
     display: flex;

@@ -168,7 +168,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
                     
                 </div>
             )}
-            <h1 style={{backgroundColor:'red', width:'100px ' , height:'100px', color:'white'}  }>{userId}</h1>
+            <h1 style={{backgroundColor:'red', width:'clamp(40px, 2vw, 5vw)' , height:'clamp(32px, 2.5vh, 5vh)', color:'white', textAlign:'center'}  }>{userId}</h1>
 
             {showSave &&
                 <SideButton 
