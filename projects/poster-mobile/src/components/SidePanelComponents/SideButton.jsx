@@ -16,7 +16,6 @@ const SideButton = ({buttonState, buttonStyle , newStyle ,iconsName, onClick, ch
     return(
 
         <button 
-            style={{zIndex:7,}}
             className={buttonState ? SidePanels[buttonStyle] : SidePanels[newStyle]}
             onClick={onClick}
         >

@@ -77,13 +77,15 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                  </div>
             }
 
+           
             <SideButton 
-                buttonState={userButton} 
-                buttonStyle="profileButton" 
-                newStyle="lonelyProfileButton"
-                iconsName="user"
-                onClick={toggelUserPanel} 
+                    buttonState={userButton} 
+                    buttonStyle="lonelyProfileButton" 
+                    newStyle="lonelyProfileButton"
+                    iconsName="user"
+                    onClick={toggelUserPanel} 
                 />
+          
             
                 <SidePanel 
                     panelStyle="profilePanel" 
@@ -92,6 +94,13 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                     >
 
                     <div className={SidePanels.panelIconPlace}>
+                            <SideButton 
+                                buttonState={userButton} 
+                                buttonStyle="profileButton" 
+                                newStyle="profileButton"
+                                iconsName="user"
+                                onClick={toggelUserPanel} 
+                            />
                             <SideButton 
                                 buttonState={true} 
                                 buttonStyle="logOutButton" 
