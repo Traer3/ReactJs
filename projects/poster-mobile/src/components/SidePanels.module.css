@@ -1,16 +1,21 @@
 :root{
     --textColor:#ffffff;
     --fontFamily: Arial, sans-serif;
-    
-    --fontSize: clamp(12px, 2vw, 24px);
 
-    --panelBorde: 1px rgba(95,145,255,0.3);;
+    --minFontSize: 0.1rem;
+    --defaultFontSize: 0.8vw;
+    --maxFontSize: 3rem;
+
+    --panelBorde: 0.1em rgba(95,145,255,0.3);
+    --borderRadius: 0.2em;
     --panelBackground: rgba(95,145,255,0.2);
     --panelShadow: rgba(105,155,255,0.4);
-    --borderRadius: 0.4em;
+    
 }
 
 /*
+    0.1rem, 0.8vw, 3rem
+
     height: clamp(32px, 5vh, 100vh);
     width: clamp(40px, 12vw, 120px);
 
@@ -45,17 +50,21 @@
     box-shadow: 2px 10px 20px var(--borderColor);
 
     padding: 0.4em 0.2em;
+
+    height: clamp(10px, 2vh, 10vh);
+    width: clamp(10px, 2vh, 10vw);
     
 */
 
 .panelIcon{
-    width: 20px;
-    height: 20px;
+    height: clamp(10px, 2vh, 10vh);
+    width: clamp(10px, 2vh, 10vw);
 }
 .panelIconPlace{
     display: flex;
-    min-height: 30px;
-    min-width: 30px;
+    height: clamp(10px, 2vh, 10vh);
+    width: clamp(10px, 2vh, 10vw);
+    margin-bottom: 1em;
 }
 
 .panelFlex{
@@ -63,7 +72,6 @@
     flex-direction: column;
     box-sizing: border-box;
     padding: 0.4em;
-
     justify-content: center;
     align-items: center;
 }
@@ -79,9 +87,9 @@
     box-shadow: 0 var(--borderRadius) 10px var(--panelBackground), 0 0 15px var(--panelShadow);
     color: var(--textColor);
     height: 98vh;
-    width: clamp(max-content, 5vw, 10vw);
+    width: clamp(20px, max-content, 10vw);
     font-family: var(--fontFamily);
-    font-size: var(--fontSize);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
     transform: translateX(-105%);
     transition: all 0.3s ease-in-out;
 }
@@ -124,9 +132,9 @@
     color: var(--textColor);
     right: 0.3%;
     height: 98vh;
-    width: 17vh;
+    width: clamp(20px, max-content, 10vw);
     font-family: var(--fontFamily);
-    font-size: var(--fontSize);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
     text-align: center;   
     transform: translateX(103%);
     transition: all 0.3s ease-in-out;
@@ -201,19 +209,16 @@
     backdrop-filter: blur(10px);
     box-shadow: 0 var(--borderRadius) 10px var(--panelBackground);
 
-    height: clamp(40px, 6vh, 100px);
-    width: clamp(80px, 12vw, 120px);
+    padding: 0.7em;
+    height: clamp(10px, max-content, 10vh);
+    width: clamp(80px, max-content, 10vw);
+    margin: 0.3em;
 
-    margin: 5px;
     font-family: var(--fontFamily);
-    font-size: clamp(12px, 2vw, 24px);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
+
     font-weight: bolder;
 }
-
-/*
-    height: clamp(32px, 5vh, 100vh);
-    width: clamp(40px, 12vw, 120px);
-*/
 
 
 .listOfTopics{
@@ -222,11 +227,10 @@
     background: rgba(88, 139, 250, 0.2);
     backdrop-filter: blur(10px);
     box-shadow: 0 var(--borderRadius) 10px var(--panelBackground);
-    cursor: pointer;
     opacity: 0;
     min-width: max-content;
     font-family: var(--fontFamily);
-    font-size: var(--fontSize);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
     transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -244,16 +248,16 @@
     backdrop-filter: blur(10px);
     box-shadow: 0 var(--borderRadius) 10px var(--panelBackground);
     cursor: pointer;
-    margin: 0.5em;
-    height: clamp(32px, 5vh, 100vh);
-    width: clamp(40px, 12vw, 120px);
+
+    padding: 0.3em;
+    margin: 0.3em;
+    height: clamp(20px, max-content, 11vh);
+    width: clamp(20px, 5vw, 13vw);
+
     font-family: var(--fontFamily);
-    font-size: var(--fontSize);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
+    font-weight: 600;
 }
-/*
-    height: clamp(32px, 5vh, 100vh);
-    width: clamp(40px, 12vw, 120px);
-*/
 
 .openProfile{
     border: none;
