@@ -11,12 +11,12 @@
     --panelBackground: rgba(95,145,255,0.2);
     --panelShadow: rgba(105,155,255,0.4);
 
-    --SBminHeight: 10px;
-    --SBdefaultHeight: 2.4vh;
+    --SBminHeight: 0.2vw;
+    --SBdefaultHeight: 1.6vw;
     --SBmaxHeight: 10vh;
 
-    --SBminWidth: 10px;
-    --SBdefaultWidth: 2.4vh;
+    --SBminWidth: 0.2vw;
+    --SBdefaultWidth: 1.6vw;
     --SBmaxWidth: 10vh;
     
 
@@ -66,14 +66,17 @@
     
 */
 
+
 .panelIcon{
     height: clamp(var(--SBminHeight), var(--SBdefaultHeight), var(--SBmaxHeight));
     width: clamp(var(--SBminWidth), var(--SBdefaultWidth), var(--SBmaxWidth));
-    padding: 0.2em;
+    padding: 0em;
+    
 }
+
+
 .panelIconPlace{
     display: flex;
-    /*position: relative; */
     padding-top: 0.4em;
     height: clamp(10px, max-content, 10vh);
     width: clamp(10px, max-content, 100vw);
@@ -112,12 +115,13 @@
 .menuButton{
     border: none;
     border-radius: var(--borderRadius);
-    position: fixed;
     background-color: transparent;
     cursor: pointer;
+    padding: 0;
     height: clamp(var(--SBminHeight), var(--SBdefaultHeight), var(--SBmaxHeight));
     width: clamp(var(--SBminWidth), var(--SBdefaultWidth), var(--SBmaxWidth)); 
-    z-index: 7;      
+    z-index: 7;   
+    margin-left: 0.4em;   
 }
 
 .lonelyButton{
@@ -131,6 +135,8 @@
     cursor: pointer;
     height: clamp(var(--SBminHeight), var(--SBdefaultHeight), var(--SBmaxHeight));
     width: clamp(var(--SBminWidth), var(--SBdefaultWidth), var(--SBmaxWidth));  
+    
+    
 }
 
 

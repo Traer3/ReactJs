@@ -46,7 +46,7 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
         
             <SideButton 
                 buttonState={menuButton} 
-                buttonStyle="menuButton" 
+                buttonStyle="lonelyButton" 
                 newStyle="lonelyButton"
                 iconsName="menu"
                 onClick={toggelMenuPanel} 
@@ -56,7 +56,15 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                 panelState={menuOpen} 
                 newStyle="menuPanelOpen"
                 >
-                 <div className={SidePanels.panelIconPlace}/>
+                 <div className={SidePanels.panelIconPlace}>
+                 <SideButton 
+                    buttonState={menuButton} 
+                    buttonStyle="menuButton" 
+                    newStyle="menuButton"
+                    iconsName="menu"
+                    onClick={toggelMenuPanel} 
+                />
+                 </div>
                  <div>
                     <PostersData 
                         userId={userId} 

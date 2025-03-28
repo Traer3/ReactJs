@@ -9,11 +9,13 @@
     --borderRadius: 0.2em;
 
     --padding: 0.4em;
+    --backdropFilter: clamp(2px, 1vw, 20px);
 
     --BWS-border: rgba(95,145,255,0.3);
     --BWT-border: 0.2em solid #ffffff;
     --BW-background:rgba(95,145,255,0.2);
     --BW-shadow:rgba(105,155,255,0.4);
+
 
     --RWS-border: rgba(255,80,80,0.3);
     --RWT-border: 0.2em solid rgba(255,80,80,0.3);
@@ -39,8 +41,8 @@
     padding: var(--padding);
     overflow-y: auto;
     background: var(--BW-background);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 var(--borderRadius) 10px var(--BW-background), 0 0 clamp(2px, 1.3vw, 20px) var(--BW-shadow);
+    backdrop-filter: var(--backdropFilter);
+    box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--BW-background), 0 0 clamp(2px, 1.3vw, 20px) var(--BW-shadow);
     color: var(--textColor);
     min-width: 350px;
     text-align: left;
@@ -55,7 +57,6 @@
     border: var(--BWT-border);
     padding: var(--padding);
     background: rgba(0,0,0, 0.5);
-
     color: var(--textColor);
     min-width: max-content;
     min-height: max-content;
@@ -74,7 +75,7 @@
     border-radius: var(--borderRadius);
     padding: var(--padding);
     overflow-y: auto;
-    backdrop-filter: blur(10px);
+    backdrop-filter: var(--backdropFilter);
     color: var(--textColor);
     min-width: 350px;
     text-align: left;
@@ -106,7 +107,7 @@
     padding: var(--padding);
     overflow-y: auto;
     background: var(--GW-background);
-    backdrop-filter: blur(10px);
+    backdrop-filter: var(--backdropFilter);
     box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--GW-background), 0 0 clamp(2px, 1.3vw, 20px) var(--GW-shadow);
     color: var(--textColor);
     min-width: 350px;
@@ -138,7 +139,7 @@
     padding: var(--padding);
     overflow-y: auto;
     background: var(--YW-background);
-    backdrop-filter: blur(10px);
+    backdrop-filter: var(--backdropFilter);
     box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--YW-background), 0 0 clamp(2px, 1.3vw, 20px) var(--YW-shadow);
     color: var(--textColor);
     min-width: 350px;
@@ -169,5 +170,4 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2px;
 }

@@ -21,10 +21,11 @@ const SideButton = ({buttonState, buttonStyle , newStyle ,iconsName, onClick, ch
         >
             {iconsName &&
                 <img 
+                    style={{marginBottom:'10em'}}
                     className={SidePanels.panelIcon}
                     alt={iconsName}
                     src={icons[iconsName]} 
-                    />
+                />
             }
             {children}
         </button>

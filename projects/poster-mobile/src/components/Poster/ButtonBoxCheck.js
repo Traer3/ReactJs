@@ -8,18 +8,21 @@ const ButtonBoxCheck = ({color, state, setState, keyName}) =>{
             [keyName] : !prevStates[keyName],
         }));
     };
-
+        //width:'max(0.1vw, 1.2vh)',
+    //height:'max(0.1vw, 1.2vh)',
     return(
         <button 
                     onClick={inverState}
                     style={{
-                        border:`2px solid ${color}`,
+                        border:`0 solid ${color}`,
+                        padding:'0',
                         backgroundColor: state ?  `${color}` : 'transparent' ,
                         
-                        width:'15px',
-                        height:'15px',
+                        width:'max(0.1vw, 1vw)',
+                        height:'max(0.1vw, 1vw)',
+                       
                         cursor:'pointer',
-                        margin:'1px',
+                        margin:'0.1em',
                 }}/>
     );
 };
