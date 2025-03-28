@@ -1,155 +1,165 @@
 :root{
     --textColor:#ffffff;
     --fontFamily: Arial, sans-serif;
-    --fontSize: clamp(0.1rem, 0.8vw, 3rem);
+    --minFontSize: 0.1rem;
+    --defaultFontSize: 0.8vw;
+    --maxFontSize: 3rem;
 
+    --panelBorde: 0.1em rgba(95,145,255,0.3);
+    --borderRadius: 0.2em;
+
+    --padding: 0.4em;
+
+    --BWS-border: rgba(95,145,255,0.3);
+    --BWT-border: 0.2em solid #ffffff;
     --BW-background:rgba(95,145,255,0.2);
     --BW-shadow:rgba(105,155,255,0.4);
 
-    --RW-border:rgba(255,80,80,0.3);
+    --RWS-border: rgba(255,80,80,0.3);
+    --RWT-border: 0.2em solid rgba(255,80,80,0.3);
     --RW-background:rgba(255,80,80,0.2);
     --RW-shadow:rgba(255,60,60,0.4);
 
-    --GW-border:rgba(80,255,80,0.3);
+    --GWS-border:rgba(80,255,80,0.3);
+    --GWT-border:0.2em solid rgba(80,255,80,0.3);
     --GW-background:rgba(80,255,80,0.2);
     --GW-shadow:rgba(60,255,60,0.4);
 
-    --YW-border:rgba(255,223,80,0.3);
+    --YWS-border:rgba(255,223,80,0.3);
+    --YWT-border:0.2em solid rgba(255,223,80,0.3);
     --YW-background:rgba(255,223,80,0.2);
     --YW-shadow:rgba(255,213,60,0.4);
+
 }
 
 
 .summaryWindow{
-    border: 1px rgba(95,145,255,0.3);
-    border-radius: 4px;
-    padding: 4px;
+    border: var(--BWS-border);
+    border-radius: var(--borderRadius);
+    padding: var(--padding);
     overflow-y: auto;
     background: var(--BW-background);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 10px var(--BW-background), 0 0 15px var(--BW-shadow);
+    box-shadow: 0 var(--borderRadius) 10px var(--BW-background), 0 0 clamp(2px, 1.3vw, 20px) var(--BW-shadow);
     color: var(--textColor);
     min-width: 350px;
     text-align: left;
     font-family: var(--fontFamily);
-    font-size: var(--fontSize);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
     font-weight: bold;
     white-space: pre-wrap;
 }
 
 
 .terminalWindow{
-    border: 2px solid white;
-    padding: 4px;
+    border: var(--BWT-border);
+    padding: var(--padding);
     background: rgba(0,0,0, 0.5);
-    backdrop-filter: blur(5px);
+
     color: var(--textColor);
     min-width: max-content;
     min-height: max-content;
     text-align: left;
     font-family: var(--fontFamily);
-    font-size: var(--fontSize);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
     font-weight: bold;
     white-space: pre-wrap;
 }
 
 
 .redSummWindow{ 
-    border: 1px var(--RW-border);
+    border: var(--RWS-border);
     background: var(--RW-background);
-    box-shadow: 0 4px 10px var(--RW-background), 0 0 15px var(--RW-shadow);
-    border-radius: 4px;
-    padding: 4px;
+    box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--RW-background), 0 0 clamp(2px, 1.3vw, 20px) var(--RW-shadow);
+    border-radius: var(--borderRadius);
+    padding: var(--padding);
     overflow-y: auto;
     backdrop-filter: blur(10px);
     color: var(--textColor);
     min-width: 350px;
     text-align: left;
     font-family: var(--fontFamily);
-    font-size: var(--fontSize);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
     font-weight: bold;
     white-space: pre-wrap;
 }
 
 
 .redTermWindow{
-    border: 2px solid var(--RW-border);
-    padding: 4px;
+    border: var(--RWT-border);
+    padding: var(--padding);
     background: rgba(0,0,0, 0.5);
-    backdrop-filter: blur(5px);
     color: var(--textColor);
     min-width: max-content;
     min-height: max-content;
     text-align: left;
     font-family: var(--fontFamily);
-    font-size: var(--fontSize);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
     font-weight: bold;
     white-space: pre-wrap;
 }
 
 
 .greenSummWindow{
-    border: 1px var(--GW-border);
-    border-radius: 4px;
-    padding: 4px;
+    border: var(--GWS-border);
+    border-radius: var(--borderRadius);
+    padding: var(--padding);
     overflow-y: auto;
     background: var(--GW-background);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 10px var(--GW-background), 0 0 15px var(--GW-shadow);
+    box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--GW-background), 0 0 clamp(2px, 1.3vw, 20px) var(--GW-shadow);
     color: var(--textColor);
     min-width: 350px;
     text-align: left;
     font-family: var(--fontFamily);
-    font-size: var(--fontSize);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
     font-weight: bold;
     white-space: pre-wrap;
 }
 
 .greenTermWindow{
-    border: 2px solid var(--GW-border);
-    padding: 4px;
+    border: var(--GWT-border);
+    padding: var(--padding);
     background: rgba(0,0,0, 0.5);
-    backdrop-filter: blur(5px);
     color: var(--textColor);
     min-width: max-content;
     min-height: max-content;
     text-align: left;
     font-family: var(--fontFamily);
-    font-size: var(--fontSize);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
     font-weight: bold;
     white-space: pre-wrap;
 }
 
 
 .yellowSummWindow{
-    border: 1px var(--YW-border);
-    border-radius: 4px;
-    padding: 4px;
+    border: var(--YWS-border);
+    border-radius: var(--borderRadius);
+    padding: var(--padding);
     overflow-y: auto;
     background: var(--YW-background);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 10px var(--YW-background), 0 0 15px var(--YW-shadow);
+    box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--YW-background), 0 0 clamp(2px, 1.3vw, 20px) var(--YW-shadow);
     color: var(--textColor);
     min-width: 350px;
     text-align: left;
     font-family: var(--fontFamily);
-    font-size: var(--fontSize);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
     font-weight: bold;
     white-space: pre-wrap;
 }
 
 
 .yellowTermWindow{
-    border: 2px solid var(--YW-border);
-    padding: 4px;
+    border: var(--YWT-border);
+    padding: var(--padding);
     background: rgba(0,0,0, 0.5);
-    backdrop-filter: blur(5px);
     color: var(--textColor);
     min-width: max-content;
     min-height: max-content;
     text-align: left;
     font-family: var(--fontFamily);
-    font-size: var(--fontSize);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
     font-weight: bold;
     white-space: pre-wrap;
 }
