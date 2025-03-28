@@ -69,6 +69,7 @@
 .panelIcon{
     height: clamp(var(--SBminHeight), var(--SBdefaultHeight), var(--SBmaxHeight));
     width: clamp(var(--SBminWidth), var(--SBdefaultWidth), var(--SBmaxWidth));
+    padding: 0.2em;
 }
 .panelIconPlace{
     display: flex;
@@ -114,21 +115,22 @@
     position: fixed;
     background-color: transparent;
     cursor: pointer;
-    height: 30px;
-    width: 30px;
+    height: clamp(var(--SBminHeight), var(--SBdefaultHeight), var(--SBmaxHeight));
+    width: clamp(var(--SBminWidth), var(--SBdefaultWidth), var(--SBmaxWidth)); 
     z-index: 7;      
 }
 
 .lonelyButton{
     border: var(--panelBorde);
     border-radius: var(--borderRadius);
-    position: fixed;
+    position: absolute;
+    padding: 0;
     background: var(--panelBackground);
     backdrop-filter: blur(10px);
     box-shadow: 0 var(--borderRadius) 10px var(--panelBackground), 0 0 10px var(--panelShadow);
     cursor: pointer;
-    height: 30px;
-    width: 30px;   
+    height: clamp(var(--SBminHeight), var(--SBdefaultHeight), var(--SBmaxHeight));
+    width: clamp(var(--SBminWidth), var(--SBdefaultWidth), var(--SBmaxWidth));  
 }
 
 
@@ -168,8 +170,9 @@
 
 .lonelyProfileButton{
     border: var(--panelBorde);
-    border-radius: 0.2em;
+    border-radius: 0.3em;
     position: absolute;
+    padding: 0;
     background: var(--panelBackground);
     backdrop-filter: blur(10px);
     box-shadow: 0 var(--borderRadius) 10px var(--panelBackground), 0 0 10px var(--panelShadow);
