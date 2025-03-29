@@ -4,6 +4,7 @@ import SideButton from "../SidePanelComponents/SideButton";
 import SidePanels from '../SidePanels.module.css'
 import Authorization from "../Authorization/Authorization";
 import PostersData from "../Poster/PostersData";
+import UserProfile from "../Profile/UserProfile";
 
 const GuestMenu = ({userId,setUserId,setUserCheck}) => {
 
@@ -73,16 +74,9 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
             </SidePanel>
        
             {profileOpen &&
-                <div 
-                    style={{
-                        position:'absolute',
-                        border:'1px solid red',
-                        backgroundColor:'red',
-                        width:'1910px',
-                        height:'940px',
-                        zIndex:5,
-                    }}>
-                 </div>
+                
+                    <UserProfile/>
+                
             }
 
            

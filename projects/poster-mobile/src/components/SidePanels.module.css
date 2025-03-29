@@ -100,7 +100,7 @@
     backdrop-filter: blur(clamp(2px, 1vw, 20px));
     box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--panelBackground), 0 0 clamp(2px, 1.3vw, 20px) var(--panelShadow);
     color: var(--textColor);
-    height: 98vh;
+    height: 99vh;
     width: clamp(20px, max-content, 10vw);
     font-family: var(--fontFamily);
     font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
@@ -135,7 +135,9 @@
     cursor: pointer;
     height: clamp(var(--SBminHeight), var(--SBdefaultHeight), var(--SBmaxHeight));
     width: clamp(var(--SBminWidth), var(--SBdefaultWidth), var(--SBmaxWidth));  
-    
+    z-index: 6;
+    left: 0.5%;
+    top:1.1%
     
 }
 
@@ -170,6 +172,7 @@
     cursor: pointer;
     position: absolute;
     right: 5%;
+    z-index: 7;
     height: clamp(var(--SBminHeight), var(--SBdefaultHeight), var(--SBmaxHeight));
     width: clamp(var(--SBminWidth), var(--SBdefaultWidth), var(--SBmaxWidth)); 
 }
@@ -183,10 +186,12 @@
     backdrop-filter: blur(clamp(2px, 1vw, 20px));
     box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--panelBackground), 0 0 clamp(2px, 1vw, 20px) var(--panelShadow);
     cursor: pointer;
-    top: 1%;
+    top: 1.1%;
     right: 1.3%;
     height: clamp(var(--SBminHeight), var(--SBdefaultHeight), var(--SBmaxHeight));
     width: clamp(var(--SBminWidth), var(--SBdefaultWidth), var(--SBmaxWidth));   
+    z-index: 6;
+
 }
 
 .addUserButton{

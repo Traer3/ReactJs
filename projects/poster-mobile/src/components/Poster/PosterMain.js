@@ -174,7 +174,9 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
                     width:'clamp(40px, 2vw, 5vw)' , 
                     height:'clamp(32px, 2.5vh, 5vh)', 
                     color:'white', 
-                    textAlign:'center'}}
+                    textAlign:'center',
+                    fontSize:'1em'
+                }}
                 >id {userId} 
                     <br/>Width = {window.innerWidth}
                     <br/>Height = {window.innerHeight}
