@@ -33,6 +33,8 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
 
     const toggleOpenProfile = ()=>{
         setPorofileOpen(!profileOpen)
+        setUserButton(false);
+        setUserMenuOpen(false)
     }
 
     const handleLogOut = () =>{
