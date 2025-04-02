@@ -43,61 +43,41 @@ const UserProfile = () => {
 
                     <div className={style.panelFlex}>
                         <div >
-                            <button 
-                                style={{
-                                    border:'1px solid white',
-                                    borderRadius:'4px',
-                                    width:'100px',
-                                    height:'50px',
-                                    background:'red',
-                                    margin:'0.5em'
-                                }}
-                            onClick={toggelDesktopEdit}    
-                        >
-                            Desktop Edit
-                        </button>
+                            <SideButton
+                                buttonState={desktopEdit} 
+                                buttonStyle="menuButtons" 
+                                newStyle="menuButtons"
+                                onClick={toggelDesktopEdit} 
+                            >
+                                 Desktop Edit
+                            </SideButton>
 
-                        <button 
-                                style={{
-                                    border:'1px solid white',
-                                    borderRadius:'4px',
-                                    width:'100px',
-                                    height:'50px',
-                                    background:'red',
-                                    margin:'0.5em'
-                                }}
-                            onClick={toggelDesktopEdit}    
-                        >
-                            Poster Edit
-                        </button>
-                        
-                        <button 
-                                style={{
-                                    border:'1px solid white',
-                                    borderRadius:'4px',
-                                    width:'100px',
-                                    height:'50px',
-                                    background:'red',
-                                    margin:'0.5em'
-                                }}
-                            onClick={toggelDesktopEdit}    
-                        >
-                            Poster Redactor
-                        </button>
+                            <SideButton
+                                buttonState={desktopEdit} 
+                                buttonStyle="menuButtons" 
+                                newStyle="menuButtons"
+                                onClick={toggelDesktopEdit} 
+                            >
+                                 Poster Edit
+                            </SideButton>
 
-                        <button 
-                                style={{
-                                    border:'1px solid white',
-                                    borderRadius:'4px',
-                                    width:'100px',
-                                    height:'50px',
-                                    background:'red',
-                                    margin:'0.5em'
-                                }}
-                            onClick={toggelDesktopEdit}    
-                        >
-                            Create Poster
-                        </button>
+                            <SideButton
+                                buttonState={desktopEdit} 
+                                buttonStyle="menuButtons" 
+                                newStyle="menuButtons"
+                                onClick={toggelDesktopEdit} 
+                            >
+                                 Poster Redactor
+                            </SideButton>
+
+                            <SideButton
+                                buttonState={desktopEdit} 
+                                buttonStyle="menuButtons" 
+                                newStyle="menuButtons"
+                                onClick={toggelDesktopEdit} 
+                            >
+                                 Create Poster
+                            </SideButton>
                         </div>
                     </div>
                     

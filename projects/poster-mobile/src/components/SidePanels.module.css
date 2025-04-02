@@ -310,6 +310,7 @@
 }
 
 .menuProfilel{
+    position: fixed;
     border: var(--panelBorde);
     border-radius: var(--borderRadius);
     background: var(--panelBackground);
@@ -321,4 +322,13 @@
     font-family: var(--fontFamily);
     font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
 
+}
+
+.menuButtons{
+    border: 1px solid white;
+    border-radius: 4px;
+    width: 100px;
+    height: 50px;
+    background: red;
+    margin: 0.5em;
 }
