@@ -56,6 +56,21 @@ const UserProfile = () => {
                         >
                             Desktop Edit
                         </button>
+
+                        <button 
+                                style={{
+                                    border:'1px solid white',
+                                    borderRadius:'4px',
+                                    width:'100px',
+                                    height:'50px',
+                                    background:'red',
+                                    margin:'0.5em'
+                                }}
+                            onClick={toggelDesktopEdit}    
+                        >
+                            Poster Edit
+                        </button>
+                        
                         <button 
                                 style={{
                                     border:'1px solid white',
@@ -68,6 +83,20 @@ const UserProfile = () => {
                             onClick={toggelDesktopEdit}    
                         >
                             Poster Redactor
+                        </button>
+
+                        <button 
+                                style={{
+                                    border:'1px solid white',
+                                    borderRadius:'4px',
+                                    width:'100px',
+                                    height:'50px',
+                                    background:'red',
+                                    margin:'0.5em'
+                                }}
+                            onClick={toggelDesktopEdit}    
+                        >
+                            Create Poster
                         </button>
                         </div>
                     </div>
