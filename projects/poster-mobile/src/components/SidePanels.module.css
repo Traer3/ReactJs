@@ -2,15 +2,16 @@
     --textColor:#ffffff;
     --fontFamily: Arial, sans-serif;
 
-    --minFontSize: 0.1rem;
-    --defaultFontSize: 0.8vw;
-    --maxFontSize: 3rem;
-
     --panelBorde: 0.1em rgba(95,145,255,0.3);
     --borderRadius: 0.2em;
     --panelBackground: rgba(95,145,255,0.2);
     --panelShadow: rgba(105,155,255,0.4);
 
+    --minFontSize: 0.1rem;
+    --defaultFontSize: 0.8vw;
+    --maxFontSize: 3rem;
+    
+    /* SideButtons proportions */  
     --SBminHeight: 0.2vw;
     --SBdefaultHeight: 1.6vw;
     --SBmaxHeight: 10vh;
@@ -18,76 +19,28 @@
     --SBminWidth: 0.2vw;
     --SBdefaultWidth: 1.6vw;
     --SBmaxWidth: 10vh;
-    
-
-    
 }
 
-/*
-    0.1rem, 0.8vw, 3rem
-
-    height: clamp(32px, 5vh, 100vh);
-    width: clamp(40px, 12vw, 120px);
-
-    ///
-    height: 100.001vh;
-    font-size: 1.2rem;
-    line-height: 1.3;
-
-    width: calc(100vw+24px);
-
-    min-width: 16em;
-	max-width: 16em;
-
-    width: 3rem;
-	height: 3rem;
-
-    {
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        padding: 0.5rem 0.5rem;
-        font-size: 1rem;
-        flex-grow: 1;
-        align-items: center;
-        min-height: 3rem;
-        box-sizing: border-box;
-    }
-    
-    font-size: 1.2em;
-
-    --borderColor: rgba(0,0,0,0.7);
-    box-shadow: 2px 10px 20px var(--borderColor);
-
-    padding: 0.4em 0.2em;
-
-    height: clamp(10px, 2vh, 10vh);
-    width: clamp(10px, 2vh, 10vw);
-    
-*/
-
-
 .panelIcon{
+    padding: 0em;
     height: clamp(var(--SBminHeight), var(--SBdefaultHeight), var(--SBmaxHeight));
     width: clamp(var(--SBminWidth), var(--SBdefaultWidth), var(--SBmaxWidth));
-    padding: 0em;
-    
 }
 
 
 .panelIconPlace{
-    display: flex;
     padding-top: 0.4em;
+    display: flex;
     height: clamp(10px, max-content, 10vh);
     width: clamp(10px, max-content, 100vw);
     margin-bottom: 1em;
 }
 
 .panelFlex{
+    padding: 0.4em;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    padding: 0.4em;
     justify-content: center;
     align-items: center;
 }
@@ -119,16 +72,16 @@
     background-color: transparent;
     cursor: pointer;
     padding: 0;
+    margin-left: 0.4em;
     height: clamp(var(--SBminHeight), var(--SBdefaultHeight), var(--SBmaxHeight));
     width: clamp(var(--SBminWidth), var(--SBdefaultWidth), var(--SBmaxWidth)); 
-    z-index: 7;   
-    margin-left: 0.4em;   
+    z-index: 7;      
 }
 
 .lonelyButton{
+    position: absolute;
     border: var(--panelBorde);
     border-radius: var(--borderRadius);
-    position: absolute;
     padding: 0;
     background: var(--panelBackground);
     backdrop-filter: blur(clamp(2px, 1vw, 20px));
@@ -168,11 +121,11 @@
 }
 
 .profileButton{
+    position: absolute;
     border: none;
     border-radius: var(--borderRadius);
     background-color: transparent;
     cursor: pointer;
-    position: absolute;
     right: 5%;
     z-index: 7;
     height: clamp(var(--SBminHeight), var(--SBdefaultHeight), var(--SBmaxHeight));
@@ -180,9 +133,9 @@
 }
 
 .lonelyProfileButton{
+    position: absolute;
     border: var(--panelBorde);
     border-radius: var(--borderRadius);
-    position: absolute;
     padding: 0;
     background: var(--panelBackground);
     backdrop-filter: blur(clamp(2px, 1vw, 20px));
@@ -233,18 +186,15 @@
 .buttonsOnPanels{
     border: var(--panelBorde);
     border-radius: var(--borderRadius);
+    padding: 0.7em;
     background: var(--panelBackground);
     backdrop-filter: blur(clamp(2px, 1vw, 20px));
     box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--panelBackground);
-
-    padding: 0.7em;
     height: clamp(10px, max-content, 10vh);
     width: clamp(80px, max-content, 10vw);
     margin: 0.3em;
-
     font-family: var(--fontFamily);
     font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
-
     font-weight: bolder;
 }
 
@@ -272,16 +222,14 @@
 .buttonsOnList{
     border: var(--panelBorde);
     border-radius: var(--borderRadius);
+    padding: 0.3em;
     background: var(--panelBackground);
     backdrop-filter: blur(clamp(2px, 1vw, 20px));
     box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--panelBackground);
     cursor: pointer;
-
-    padding: 0.3em;
     margin: 0.3em;
     height: clamp(20px, max-content, 11vh);
     width: clamp(20px, 5vw, 13vw);
-
     font-family: var(--fontFamily);
     font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
     font-weight: 600;
@@ -290,7 +238,7 @@
 .openProfile{
     border: none;
     border-radius: var(--borderRadius);
-    background-color: red;
+    background-color: transparent;
     padding: 0;
     cursor: pointer;
     margin-left: 0.6em;
@@ -299,10 +247,10 @@
 }
 
 .menuProfilelButton{
-    border: var(--panelBorde);
-    border-radius: var(--borderRadius);
     position: absolute;
     padding: 0;
+    border: var(--panelBorde);
+    border-radius: var(--borderRadius);
     background: transparent;
     cursor: pointer;
     height: clamp(var(--SBminHeight), var(--SBdefaultHeight), var(--SBmaxHeight));
@@ -310,39 +258,31 @@
     left: 0.7%;
     top:1.1%;
     z-index: 5;
-
 }
 
 .menuProfilel{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 35vh;
-    width: clamp(20px, 7vw, 10vw);
-    
     border: var(--panelBorde);
     border-radius: var(--borderRadius);
     background: var(--panelBackground);
     backdrop-filter: blur(clamp(2px, 1vw, 20px));
     box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--panelBackground), 0 0 clamp(2px, 1.3vw, 20px) var(--panelShadow);
     color: var(--textColor);
-    
+    height: 35vh;
+    width: clamp(20px, 7vw, 10vw);
+    z-index: 4;
     font-family: var(--fontFamily);
     font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
-
-    z-index: 4;
 }
 
 .menuProfilelOpen{
-    
     transform: translateY(0);
 }
 
 .menuButtons{
     border: 1px solid white;
     border-radius: 4px;
+    background: red;
     width: 100px;
     height: 50px;
-    background: red;
     margin: 0.5em;
 }

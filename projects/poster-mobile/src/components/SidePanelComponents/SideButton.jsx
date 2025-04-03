@@ -4,12 +4,13 @@ import MenuIcon from "./icons/menuIcon.png"
 import UserIcon from "./icons/userIcon.png"
 import AddUserIcon from "./icons/addUserIcon.png"
 import LogOut from "./icons/logOut.png"
-
+import EditIcon from "./icons/editIcon.png"
 const icons = {
     menu: MenuIcon,
     user: UserIcon,
     addUser: AddUserIcon,
     logOut: LogOut,
+    editIcon: EditIcon,
 }
 
 const SideButton = ({buttonState, buttonStyle , newStyle ,iconsName, onClick, children,}) => {

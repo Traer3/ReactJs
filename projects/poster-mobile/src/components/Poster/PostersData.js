@@ -4,7 +4,7 @@ import PosterMobileMain from "./PosterMobileMain";
 
 const PostersData = ({userId })=> {
     
-    /**
+    
      const [defineVersion, setDefineVersion] = useState(window.innerWidth > 768)
     
         useEffect(()=>{
@@ -25,26 +25,8 @@ const PostersData = ({userId })=> {
         },[])
 
 
-        return(
-            <div>
-                {defineVersion ? (
-                    <PosterMain 
-                    posterStateArray={posterStateArray} 
-                    setPosterStateArray ={setPosterStateArray} 
-                    userId={userId} 
-                /> 
-                ) : (
-                    <PosterMobileMain 
-                    posterStateArray={posterStateArray} 
-                    setPosterStateArray ={setPosterStateArray} 
-                    userId={userId} 
-                /> 
-                
-                )}
-            
-            </div>
-        );
-     */
+        
+
 
     const [posterStateArray, setPosterStateArray] = useState([
         {
@@ -287,12 +269,21 @@ const PostersData = ({userId })=> {
 
     return(
         <div>
-              <PosterMain 
+            {defineVersion ? (
+                <PosterMain 
                 posterStateArray={posterStateArray} 
                 setPosterStateArray ={setPosterStateArray} 
                 userId={userId} 
             /> 
-         
+            ) : (
+                <PosterMobileMain 
+                posterStateArray={posterStateArray} 
+                setPosterStateArray ={setPosterStateArray} 
+                userId={userId} 
+            /> 
+            
+            )}
+        
         </div>
     );
 };

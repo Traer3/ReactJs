@@ -123,7 +123,7 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                                 buttonState={profileOpen} 
                                 buttonStyle="openProfile" 
                                 newStyle="openProfile"
-                                iconsName="logOut"
+                                iconsName="editIcon"
                                 onClick={toggleOpenProfile}
                             />
                                 
