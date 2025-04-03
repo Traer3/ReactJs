@@ -9,6 +9,7 @@ const UserProfile = () => {
     
     const togglMenuPanle = () =>{
         setShowMenu(!showMenu)
+        
     }
 
     const toggelDesktopEdit = () => {
@@ -37,10 +38,9 @@ const UserProfile = () => {
                 <SidePanel 
                     panelStyle="menuProfilel" 
                     panelState={showMenu} 
-                    newStyle="menuProfilel"
+                    newStyle="menuProfilelOpen"
                 >
                     <div style={{ height:'4vh'}}/>
-
                     <div className={style.panelFlex}>
                         <div >
                             <SideButton
