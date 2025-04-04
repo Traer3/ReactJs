@@ -25,7 +25,15 @@ db.schema.hasTable('users').then((exists)=>{
             table.timestamp('created_at').defaultTo(db.fn.now());
         });
     }
-});
+}).then(()=>{
+    return db.schema.hasColumn('users','desktop_edit');
+}).then((exists)=>{
+    if(!exists){
+        return db.schema.alterTable('users',(table)=>{
+            table.text('desktop_edit');
+        });
+    }
+}).catch((err)=> console.error('Error column',err))
 
 
 const app = express();
