@@ -26,7 +26,25 @@ const PostersData = ({userId })=> {
 
 
         
+    const [topicsState, setTopicsState] = useState([
+        {
+            name: "Posters",
+            state: {
+                twoAnswers: false,
+                displayElements: false,
+                flexBox:false,
+                styleUsage:false,
+                problemsWithStyles:false,
+                position:false,
+            }
+        },
+        {
+            name:"meme",
+            state:{
 
+            }
+        },
+    ]);
 
     const [posterStateArray, setPosterStateArray] = useState([
         {
@@ -274,6 +292,8 @@ const PostersData = ({userId })=> {
                 posterStateArray={posterStateArray} 
                 setPosterStateArray ={setPosterStateArray} 
                 userId={userId} 
+                topicsState={topicsState}
+                setTopicsState={setTopicsState}
             /> 
             ) : (
                 <PosterMobileMain 

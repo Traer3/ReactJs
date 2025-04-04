@@ -10,29 +10,32 @@ import ProblemsWithStyles from "./Posters/ProblemsWithStyles";
 import Position from "./Posters/Postion";
 
 
-const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
+const PosterMain = ({posterStateArray, setPosterStateArray, userId,topicsState,setTopicsState}) => {
     const [items, setItems] = useState(false);
     const [showSave, setShowSave] = useState(false);
     const showItemList = () => {
         setItems(!items);
     }
 
-    const [topicsState, setTopicsState] = useState({
-        
-        twoAnswers: false,
-        displayElements: false,
-        flexBox:false,
-        styleUsage:false,
-        problemsWithStyles:false,
-        position:false,
-    });
+
 
     const toggleTopic = (topic) => {
-        setTopicsState((prevState)=>({
-            ...prevState,
-            [topic]: !prevState[topic],
-        }));
+        setTopicsState((prevSate)=>
+            prevSate.map(obj =>
+                obj.name === "Posters"
+                    ? {
+                        ...obj,
+                        state:{
+                            ...obj.state,
+                            [topic]: !obj.state?.[topic]
+                        }
+                    }
+                    : obj
+            )
+        );
     };
+
+    
 
     useEffect(()=>{
         if(!userId || userId === 0){
@@ -125,7 +128,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
                     <ShowPoster 
                         toggleTopic={()=>toggleTopic("twoAnswers")}
                         topicName="Tow Answers"
-                        topicsState={topicsState.twoAnswers}
+                        topicsState={topicsState.find(obj => obj.name === "Posters")?.state.twoAnswers}
                         >
                         <TwoAnswers posterStates={getPosterState("TwoAnswers")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
@@ -133,35 +136,35 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,}) => {
                     <ShowPoster 
                         toggleTopic={()=>toggleTopic("displayElements")}
                         topicName="Display Elements"
-                        topicsState={topicsState.displayElements}
+                        topicsState={topicsState.find(obj => obj.name === "Posters")?.state.displayElements}
                         >
                         <DisplayElements posterStates={getPosterState("DisplayElements")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
                     <ShowPoster 
                         toggleTopic={()=>toggleTopic("flexBox")}
                         topicName="FLEXBox"
-                        topicsState={topicsState.flexBox}
+                        topicsState={topicsState.find(obj => obj.name === "Posters")?.state.flexBox}
                         >
                         <FLEXBox posterStates={getPosterState("FLEXBox")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
                     <ShowPoster 
                         toggleTopic={()=>toggleTopic("styleUsage")}
                         topicName="Style Usage"
-                        topicsState={topicsState.styleUsage}
+                        topicsState={topicsState.find(obj => obj.name === "Posters")?.state.styleUsage}
                         >
                         <StyleUsage posterStates={getPosterState("StyleUsage")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
                     <ShowPoster 
                         toggleTopic={()=>toggleTopic("problemsWithStyles")}
                         topicName="Problems with styles"
-                        topicsState={topicsState.problemsWithStyles}
+                        topicsState={topicsState.find(obj => obj.name === "Posters")?.state.problemsWithStyles}
                         >
                         <ProblemsWithStyles posterStates={getPosterState("ProblemsWithStyles")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
                     <ShowPoster 
                         toggleTopic={()=>toggleTopic("position")}
                         topicName="Position"
-                        topicsState={topicsState.position}
+                        topicsState={topicsState.find(obj => obj.name === "Posters")?.state.position}
                         >
                         <Position posterStates={getPosterState("Position")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
