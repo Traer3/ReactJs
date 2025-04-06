@@ -15,7 +15,7 @@ const UserProfile = () => {
     const toggelDesktopEdit = () => {
         setDesktopEdit(!desktopEdit);
     }
-    return(
+    return( //make new buttons 
         <div 
         style={{
             position:'fixed',
@@ -42,7 +42,7 @@ const UserProfile = () => {
                 >
                     <div style={{ height:'4vh'}}/>
                     <div className={style.panelFlex}>
-                        <div >
+                        <div > 
                             <SideButton
                                 buttonState={desktopEdit} 
                                 buttonStyle="menuButtons" 

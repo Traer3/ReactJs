@@ -18,8 +18,8 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,topicsState,s
     }
 
 
-
-    const toggleTopic = (topic) => {
+    
+    const toggleTopic = (topic) => { //fix it
         setTopicsState((prevSate)=>
             prevSate.map(obj =>
                 obj.name === "Posters"
@@ -35,7 +35,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,topicsState,s
         );
     };
 
-    
+    //call topicsState from db
 
     useEffect(()=>{
         if(!userId || userId === 0){
