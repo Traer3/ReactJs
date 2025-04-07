@@ -91,6 +91,8 @@ app.post('/savePosterStates', (req, res)=>{
     
 })
 
+//get TopicsState
+
 app.get('/getPosterStates/:userId', (req, res)=>{
     const {userId} = req.params;
     db('users')

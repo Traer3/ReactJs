@@ -21,6 +21,7 @@
     --SBmaxWidth: 10vh;
 }
 
+/* fix z-index  */ 
 .panelIcon{
     padding: 0em;
     height: clamp(var(--SBminHeight), var(--SBdefaultHeight), var(--SBmaxHeight));
