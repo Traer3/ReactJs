@@ -124,5 +124,23 @@ app.get('/getPosterStates/:userId', (req, res)=>{
         .catch((err)=> res.status(500).json({err: err.message})) 
 })
 
+app.get('/getTopicsState/:userId',(req, res)=>{
+    const {userId} = req.params;
+    db('users')
+        .where({id: userId})
+        .select('desktop_edit')
+        .first()
+        .then((data)=>{
+            if(data && data.desktop_edit){
+                const topicsStateArray = JSON.parse(data.desktop_edit);
+                res.status(200).json({topicsStateArray});
+            }else{
+                res.status(404).json({message: 'Topics state not found'});
+            }
+        })
+        .catch((err)=> res.status(500).json({err: err.message}))
+})
+
+
 const PORT  = 3001
 app.listen(PORT, '0.0.0.0', ()=> console.log(`database running on port ${PORT}`));

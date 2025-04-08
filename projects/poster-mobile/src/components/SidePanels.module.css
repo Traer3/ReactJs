@@ -262,6 +262,7 @@
 }
 
 .menuProfilel{
+    position: fixed;
     border: var(--panelBorde);
     border-radius: var(--borderRadius);
     background: var(--panelBackground);
@@ -270,6 +271,8 @@
     color: var(--textColor);
     height: 35vh;
     width: clamp(20px, 7vw, 10vw);
+    top: 0;
+    left: 0;
     z-index: 4;
     font-family: var(--fontFamily);
     font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));

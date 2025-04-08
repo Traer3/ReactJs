@@ -4,6 +4,7 @@ import SideButton from "../SidePanelComponents/SideButton";
 import SidePanels from '../SidePanels.module.css'
 import Authorization from "../Authorization/Authorization";
 import PostersData from "../Poster/PostersData";
+import UserProfile from "../Profile/UserProfile";
 
 const GuestMenu = ({userId,setUserId,setUserCheck}) => {
 
@@ -13,6 +14,8 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
     const [userButton, setUserButton] = useState(false);
     const [userMenuOpen, setUserMenuOpen] = useState(false);
     const [addUser, setAddUser] = useState(true)
+
+    const [profileOpen, setPorofileOpen] = useState(false);
 
     const toggelMenuPanel = ()=>{
         setMenuButton(!menuButton);
@@ -26,6 +29,12 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
     
     const toggleRegistration = ()=>{
         setAddUser(!addUser)
+    }
+
+    const toggleOpenProfile = ()=>{
+        setPorofileOpen(!profileOpen)
+        setUserButton(false);
+        setUserMenuOpen(false)
     }
 
     const handleLogOut = () =>{
@@ -57,6 +66,12 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                  </div>
             </SidePanel>
 
+            {profileOpen &&
+                
+                <UserProfile userId={userId}/>
+            
+            }
+
            
             <SideButton 
                 buttonState={userButton} 
@@ -86,6 +101,13 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                             iconsName="addUser"
                             onClick={toggleRegistration}
                         />
+                        <SideButton 
+                                buttonState={profileOpen} 
+                                buttonStyle="openProfile" 
+                                newStyle="openProfile"
+                                iconsName="editIcon"
+                                onClick={toggleOpenProfile}
+                            />
                             
                 </div>
                 

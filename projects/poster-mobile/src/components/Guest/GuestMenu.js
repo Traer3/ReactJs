@@ -77,7 +77,7 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
        
             {profileOpen &&
                 
-                    <UserProfile/>
+                    <UserProfile userId={userId}/>
                 
             }
 
