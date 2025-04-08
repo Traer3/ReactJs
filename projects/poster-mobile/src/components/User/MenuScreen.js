@@ -94,7 +94,6 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                 <Authorization setUserCheck={setUserCheck} addUser={addUser} setUserId={setUserId}/>
                  
             </SidePanel>
-        <h1 style={{backgroundColor:'red'}}>IN MENU SCREEN</h1>
        </div>
     );
 };

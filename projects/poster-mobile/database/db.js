@@ -23,6 +23,7 @@ db.schema.hasTable('users').then((exists)=>{
             table.string('password').notNullable();
             table.text('poster_states');
             table.timestamp('created_at').defaultTo(db.fn.now());
+            table.text('desktop_edit');
         });
     }
 });
@@ -86,9 +87,22 @@ app.post('/savePosterStates', (req, res)=>{
     db('users')
         .where({id: userId})
         .update({poster_states: posterStatesJSON})
-        .then(()=> res.status(200).json({message: 'Poster states saved successfully'}))
+        .then(()=> res.status(200).json({message:'Poster states saved successfully'}))
         .catch((err)=> res.status(500).json({message: err.message}))
     
+})
+
+app.post('/saveTopicsState', (req,res)=>{
+    const {userId, topicsState} = req.body;
+    if(!userId || !Array.isArray(topicsState)){
+        return res.status(400).json({message:'User ID or poster topics are required'});
+    }
+    const topicsStateJSON = JSON.stringify(topicsState);
+    db('users')
+        .where({id: userId})
+        .update({desktop_edit: topicsStateJSON})
+        .then(()=> res.status(200).json({message: 'Poster topics saved successfully', userId: user.id}))
+        .catch((err)=> res.status(500).json({message: err.message}))
 })
 
 //get TopicsState

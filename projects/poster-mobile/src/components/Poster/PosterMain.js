@@ -52,7 +52,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,topicsState,s
         .then((data) => {
             if(data.posterStateArray){
 
-                setPosterStateArray(data.posterStateArray);//Delete before updating array posterStateArray =)
+              //  setPosterStateArray(data.posterStateArray);//Delete before updating array posterStateArray =)
                 
             }
         })
@@ -72,6 +72,17 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,topicsState,s
         .then((data)=> alert(data.message))
         .catch((err)=> console.error(err));
     };
+
+    const saveTopicsState = () => {
+        fetch('http://localhost:3001/saveTopicsState',{
+            method: 'POST',
+            headers:{'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                userId:userId,
+                topicsState,
+            })
+        })
+    }
 
 
     const updatePosterState = async (posterName, newState)=>{
@@ -188,6 +199,12 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,topicsState,s
                     <br/>Width = {window.innerWidth}
                     <br/>Height = {window.innerHeight}
                 </h1>
+                <SideButton
+                     newStyle="buttonsOnPanels"
+                     onClick={saveTopicsState}
+                >
+                    Save topics
+                </SideButton>
 
             {showSave &&
                 <SideButton 
@@ -195,6 +212,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,topicsState,s
                     onClick={savePosterStates}
                     >Save
             </SideButton>
+                
             } 
     </div>
     );
