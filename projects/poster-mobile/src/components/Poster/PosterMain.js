@@ -19,23 +19,27 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,topicsState,s
 
 
     
-    const toggleTopic = (topic) => { //fix it
-        setTopicsState((prevSate)=>
-            prevSate.map(obj =>
-                obj.name === "Posters"
-                    ? {
-                        ...obj,
-                        state:{
-                            ...obj.state,
-                            [topic]: !obj.state?.[topic]
-                        }
-                    }
-                    : obj
-            )
-        );
+    const toggleTopic = (topic) => { 
+        setTopicsState((prevState)=>{
+            return prevState.map((obj)=>{
+                if (obj.name !== "Posters") return obj;
+                const updateState = {
+                    ...obj.state,
+                    [topic]: !obj.state?.[topic],
+                };
+
+                return {
+                    ...obj,
+                    state: updateState,
+                };
+            });
+        });
     };
 
     //call topicsState from db
+
+    
+ 
 
     useEffect(()=>{
         if(!userId || userId === 0){
