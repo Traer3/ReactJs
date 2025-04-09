@@ -8,8 +8,8 @@ const ButtonBoxCheck = ({color, state, setState, keyName}) =>{
             [keyName] : !prevStates[keyName],
         }));
     };
-        //width:'max(0.1vw, 1.2vh)',
-    //height:'max(0.1vw, 1.2vh)',
+  
+    //коробочки больше не полые 
     return(
         <button 
                     onClick={inverState}

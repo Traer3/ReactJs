@@ -60,7 +60,7 @@ const UserProfile = ({userId }) => {
         })
     }
 
-    return( //make new buttons 
+    return( //make new buttons //onClick={()=>toggleTopic("twoAnswers")} КНОПКА должна светится зеленым если включена и красны если нет 
         <div 
         style={{
             position:'fixed',
@@ -131,7 +131,7 @@ const UserProfile = ({userId }) => {
 
                 </SidePanel>
             }
-
+            
             {desktopEdit && 
                 
                     <div style={{width:'600px', height:'600px',background:'transparent', borderRadius:'4px', border:'4px solid blue'}}>
