@@ -92,20 +92,20 @@ app.post('/savePosterStates', (req, res)=>{
     
 })
 
-app.post('/saveTopicsState', (req,res)=>{
-    const {userId, topicsState} = req.body;
-    if(!userId || !Array.isArray(topicsState)){
+app.post('/saveEnabledPostersState', (req,res)=>{
+    const {userId, enablePosterState} = req.body;
+    if(!userId || !Array.isArray(enablePosterState)){
         return res.status(400).json({message:'User ID or poster topics are required'});
     }
-    const topicsStateJSON = JSON.stringify(topicsState);
+    const enablePosterStateJSON = JSON.stringify(enablePosterState);
     db('users')
         .where({id: userId})
-        .update({desktop_edit: topicsStateJSON})
-        .then(()=> res.status(200).json({message: 'Poster topics saved successfully', userId: user.id}))
+        .update({desktop_edit: enablePosterStateJSON})
+        .then(()=> res.status(200).json({message:'Poster topics saved successfully'}))
         .catch((err)=> res.status(500).json({message: err.message}))
 })
 
-//get TopicsState
+//get enablePosterState
 
 app.get('/getPosterStates/:userId', (req, res)=>{
     const {userId} = req.params;
@@ -124,7 +124,7 @@ app.get('/getPosterStates/:userId', (req, res)=>{
         .catch((err)=> res.status(500).json({err: err.message})) 
 })
 
-app.get('/getTopicsState/:userId',(req, res)=>{
+app.get('/getEnabledPostersState/:userId',(req, res)=>{
     const {userId} = req.params;
     db('users')
         .where({id: userId})
@@ -132,8 +132,8 @@ app.get('/getTopicsState/:userId',(req, res)=>{
         .first()
         .then((data)=>{
             if(data && data.desktop_edit){
-                const topicsStateArray = JSON.parse(data.desktop_edit);
-                res.status(200).json({topicsStateArray});
+                const enablePosterState = JSON.parse(data.desktop_edit);
+                res.status(200).json({enablePosterState});
             }else{
                 res.status(404).json({message: 'Topics state not found'});
             }

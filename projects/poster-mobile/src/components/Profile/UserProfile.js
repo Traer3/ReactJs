@@ -16,30 +16,31 @@ const UserProfile = ({userId }) => {
         setDesktopEdit(!desktopEdit);
     }
 
-    const [topicsStateArray, setTopicsStateArray] = useState(null);
+    const [enablePosterState, setEnablePosterState] = useState(null);
     useEffect(()=>{
        
         
-        fetch(`http://localhost:3001/getTopicsState/${userId}`)
+        fetch(`http://localhost:3001/getEnabledPostersState/${userId}`)
         .then((res)=>res.json())
         .then((data)=>{
-            if(data.topicsStateArray){
-                setTopicsStateArray(data.topicsStateArray)
+            if(data.enablePosterState){
+                setEnablePosterState(data.enablePosterState)
             }
         })
         .catch((err)=> console.error(err));
-    }, [userId ,setTopicsStateArray, ]);
+    }, [userId ,setEnablePosterState, ]);
    
 
     const toggleTopic = (topic) => { 
-        setTopicsStateArray((prevState)=>{
+        setEnablePosterState((prevState)=>{
             return prevState.map((obj)=>{
                 if (obj.name !== "Posters") return obj;
                 const updateState = {
                     ...obj.state,
                     [topic]: !obj.state?.[topic],
+                    
                 };
-
+                console.log(obj.state[topic])
                 return {
                     ...obj,
                     state: updateState,
@@ -47,6 +48,17 @@ const UserProfile = ({userId }) => {
             });
         });
     };
+
+    const saveEnabledPostersState = () => {
+        fetch('http://localhost:3001/saveEnabledPostersState',{
+            method: 'POST',
+            headers:{'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                userId:userId,
+                enablePosterState,
+            })
+        })
+    }
 
     return( //make new buttons 
         <div 
@@ -123,6 +135,12 @@ const UserProfile = ({userId }) => {
             {desktopEdit && 
                 
                     <div style={{width:'600px', height:'600px',background:'transparent', borderRadius:'4px', border:'4px solid blue'}}>
+                        <SideButton
+                        newStyle="buttonsOnPanels"
+                        onClick={saveEnabledPostersState}
+                        >
+                        Save topics
+                         </SideButton>
                         <SideButton
                                 buttonState={desktopEdit} 
                                 buttonStyle="menuButtons" 

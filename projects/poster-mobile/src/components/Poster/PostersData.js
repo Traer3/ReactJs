@@ -26,16 +26,17 @@ const PostersData = ({userId })=> {
 
 
         
-    const [topicsState, setTopicsState] = useState([
+    const [enablePosterState, setEnablePosterState] = useState([
         {
             name: "Posters",
+            //это не кнопки , создаем новые состояние которое будет убирать кнопки СОСТОЯНИЕ будет в SHOWPOSTER.JSX 
             state: {
-                twoAnswers: false,
-                displayElements: false,
-                flexBox:false,
-                styleUsage:false,
-                problemsWithStyles:false,
-                position:false,
+                twoAnswers: true,
+                displayElements: true,
+                flexBox:true,
+                styleUsage:true,
+                problemsWithStyles:true,
+                position:true,
             }
         },
         {
@@ -292,8 +293,8 @@ const PostersData = ({userId })=> {
                 posterStateArray={posterStateArray} 
                 setPosterStateArray ={setPosterStateArray} 
                 userId={userId} 
-                topicsState={topicsState}
-                setTopicsState={setTopicsState}
+                enablePosterState={enablePosterState}
+                setEnablePosterState={setEnablePosterState}
             /> 
             ) : (
                 <PosterMobileMain 

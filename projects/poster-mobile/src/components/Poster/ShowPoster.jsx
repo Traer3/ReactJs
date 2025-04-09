@@ -1,10 +1,11 @@
 import React from "react";
 import style from "../SidePanels.module.css"
 
-const ShowPoster = ({toggleTopic, topicName, topicsState,children}) => {
+const ShowPoster = ({toggleTopic, topicName, topicsState,children,togglePoster}) => {
+        //приходящий параметр , а не true
     return(
         <div> 
-            {true && 
+            {togglePoster && 
                 <button 
                     className={style.buttonsOnList} 
                     onClick={toggleTopic}

@@ -10,34 +10,35 @@ import ProblemsWithStyles from "./Posters/ProblemsWithStyles";
 import Position from "./Posters/Postion";
 
 
-const PosterMain = ({posterStateArray, setPosterStateArray, userId,topicsState,setTopicsState}) => {
+const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterState,setEnablePosterState}) => {
     const [items, setItems] = useState(false);
     const [showSave, setShowSave] = useState(false);
     const showItemList = () => {
         setItems(!items);
     }
 
+    const [topicsState, setTopicsState] = useState({
+         
+        twoAnswers: false,
+        displayElements: false,
+        flexBox:false,
+        styleUsage:false,
+        problemsWithStyles:false,
+        position:false,
+    });
 
-    
-    const toggleTopic = (topic) => { 
-        setTopicsState((prevState)=>{
-            return prevState.map((obj)=>{
-                if (obj.name !== "Posters") return obj;
-                const updateState = {
-                    ...obj.state,
-                    [topic]: !obj.state?.[topic],
-                };
-
-                return {
-                    ...obj,
-                    state: updateState,
-                };
-            });
-        });
+    const toggleTopic = (topic) => {
+        setTopicsState((prevState)=>({
+            ...prevState,
+            [topic]: !prevState[topic],
+        }));
     };
 
+    //возвращаем старый topics
    
 
+   
+    //получаем новый лист и теперь мы будем отключать КНОПКИ 
     
  
 
@@ -52,12 +53,19 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,topicsState,s
         .then((data) => {
             if(data.posterStateArray){
 
-              setPosterStateArray(data.posterStateArray); //Delete before updating array posterStateArray =)
+             // setPosterStateArray(data.posterStateArray); //Delete before updating array posterStateArray =)
                 
             }
         })
+        fetch(`http://localhost:3001/getEnabledPostersState/${userId}`)
+        .then((res)=>res.json())
+        .then((data)=>{
+            if(data.enablePosterState){
+                setEnablePosterState(data.enablePosterState)
+            }
+        })
         .catch((err)=> console.error(err));
-    }, [userId ,setPosterStateArray, ]);
+    }, [userId ,setPosterStateArray,setEnablePosterState ]);
 
     const getTopicsState = () => {
         fetch(`http://localhost:3001/getTopicsState/${userId}`)
@@ -83,16 +91,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,topicsState,s
         .catch((err)=> console.error(err));
     };
 
-    const saveTopicsState = () => {
-        fetch('http://localhost:3001/saveTopicsState',{
-            method: 'POST',
-            headers:{'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                userId:userId,
-                topicsState,
-            })
-        })
-    }
+    
 
     
 
@@ -138,6 +137,11 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,topicsState,s
         return poster ? poster.state : {};
     };
 
+    const isPosterEnabled = (topic) => {
+        const posters = enablePosterState.find(obj => obj.name === "Posters");
+        return posters?.state?.[topic]
+    }
+
   
     return(
         <div className={style.panelFlex}>
@@ -155,7 +159,8 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,topicsState,s
                     <ShowPoster 
                         toggleTopic={()=>toggleTopic("twoAnswers")}
                         topicName="Tow Answers"
-                        topicsState={topicsState.find(obj => obj.name === "Posters")?.state.twoAnswers}
+                        topicsState={topicsState.twoAnswers}
+                        togglePoster={isPosterEnabled("twoAnswers")}
                         >
                         <TwoAnswers posterStates={getPosterState("TwoAnswers")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
@@ -163,35 +168,40 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,topicsState,s
                     <ShowPoster 
                         toggleTopic={()=>toggleTopic("displayElements")}
                         topicName="Display Elements"
-                        topicsState={topicsState.find(obj => obj.name === "Posters")?.state.displayElements}
+                        topicsState={topicsState.displayElements}
+                        togglePoster={isPosterEnabled("displayElements")}
                         >
                         <DisplayElements posterStates={getPosterState("DisplayElements")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
                     <ShowPoster 
                         toggleTopic={()=>toggleTopic("flexBox")}
                         topicName="FLEXBox"
-                        topicsState={topicsState.find(obj => obj.name === "Posters")?.state.flexBox}
+                        topicsState={topicsState.flexBox}
+                        togglePoster={isPosterEnabled("flexBox")}
                         >
                         <FLEXBox posterStates={getPosterState("FLEXBox")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
                     <ShowPoster 
                         toggleTopic={()=>toggleTopic("styleUsage")}
                         topicName="Style Usage"
-                        topicsState={topicsState.find(obj => obj.name === "Posters")?.state.styleUsage}
+                        topicsState={topicsState.styleUsage}
+                        togglePoster={isPosterEnabled("styleUsage")}
                         >
                         <StyleUsage posterStates={getPosterState("StyleUsage")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
                     <ShowPoster 
                         toggleTopic={()=>toggleTopic("problemsWithStyles")}
                         topicName="Problems with styles"
-                        topicsState={topicsState.find(obj => obj.name === "Posters")?.state.problemsWithStyles}
+                        topicsState={topicsState.problemsWithStyles}
+                        togglePoster={isPosterEnabled("problemsWithStyles")}
                         >
                         <ProblemsWithStyles posterStates={getPosterState("ProblemsWithStyles")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
                     <ShowPoster 
                         toggleTopic={()=>toggleTopic("position")}
                         topicName="Position"
-                        topicsState={topicsState.find(obj => obj.name === "Posters")?.state.position}
+                        topicsState={topicsState.position}
+                        togglePoster={isPosterEnabled("position")}
                         >
                         <Position posterStates={getPosterState("Position")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
@@ -211,12 +221,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,topicsState,s
                     <br/>Width = {window.innerWidth}
                     <br/>Height = {window.innerHeight}
                 </h1>
-                <SideButton
-                     newStyle="buttonsOnPanels"
-                     onClick={saveTopicsState}
-                >
-                    Save topics
-                </SideButton>
+                
 
                 <SideButton
                      newStyle="buttonsOnPanels"
