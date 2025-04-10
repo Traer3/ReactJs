@@ -55,7 +55,7 @@
     box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--panelBackground), 0 0 clamp(2px, 1.3vw, 20px) var(--panelShadow);
     color: var(--textColor);
     height: 99vh;
-    width: clamp(20px, max-content, 10vw);
+    width: clamp(20px, 8vw, 10vw);
     font-family: var(--fontFamily);
     font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
     transform: translateX(-105%);
@@ -107,7 +107,7 @@
     color: var(--textColor);
     right: 0.3%;
     height: 98vh;
-    width: clamp(20px, max-content, 10vw);
+    width: clamp(20px, 8vw, 10vw);
     font-family: var(--fontFamily);
     font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
     text-align: center;   

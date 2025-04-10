@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import SidePanel from "../SidePanelComponents/SidePanel";
 import SideButton from "../SidePanelComponents/SideButton";
 import SidePanels from '../SidePanels.module.css'
@@ -6,7 +6,7 @@ import Authorization from "../Authorization/Authorization";
 import PostersData from "../Poster/PostersData";
 import UserProfile from "../Profile/UserProfile";
 
-const GuestMenu = ({userId,setUserId,setUserCheck}) => {
+const MenuScreen = ({userId,setUserId,setUserCheck}) => {
 
     const [menuButton,setMenuButton] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -16,6 +16,12 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
     const [addUser, setAddUser] = useState(true)
 
     const [profileOpen, setPorofileOpen] = useState(false);
+    
+    const isLoged = userId > 0;
+    useEffect(()=>{
+    },[userId,isLoged,])
+    console.log(isLoged)
+
 
     const toggelMenuPanel = ()=>{
         setMenuButton(!menuButton);
@@ -40,6 +46,7 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
     const handleLogOut = () =>{
         localStorage.removeItem("userCheck");
         setUserCheck(false);
+        setUserId(0);
         alert("Bye-bye 👋")
     }
 
@@ -48,7 +55,7 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
         
             <SideButton 
                 buttonState={menuButton} 
-                buttonStyle="menuButton" 
+                buttonStyle="lonelyButton" 
                 newStyle="lonelyButton"
                 iconsName="menu"
                 onClick={toggelMenuPanel} 
@@ -58,7 +65,16 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                 panelState={menuOpen} 
                 newStyle="menuPanelOpen"
                 >
-                 <div className={SidePanels.panelIconPlace}/>
+                 <div className={SidePanels.panelIconPlace}>
+                 <SideButton 
+                    buttonState={menuButton} 
+                    buttonStyle="menuButton" 
+                    newStyle="menuButton"
+                    iconsName="menu"
+                    onClick={toggelMenuPanel} 
+                />
+                 </div>
+                 <p>MENU SCREEN</p>
                  <div>
                     <PostersData 
                         userId={userId} 
@@ -67,15 +83,13 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
             </SidePanel>
 
             {profileOpen &&
-                
                 <UserProfile userId={userId}/>
-            
             }
 
            
             <SideButton 
                 buttonState={userButton} 
-                buttonStyle="profileButton" 
+                buttonStyle="lonelyProfileButton" 
                 newStyle="lonelyProfileButton"
                 iconsName="user"
                 onClick={toggelUserPanel} 
@@ -87,37 +101,49 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                 >
 
                 <div className={SidePanels.panelIconPlace}>
-                        <SideButton 
-                            buttonState={true} 
-                            buttonStyle="logOutButton" 
-                            newStyle="logOutButton"
-                            iconsName="logOut"
-                            onClick={handleLogOut}
-                        />
-                        <SideButton 
-                            buttonState={addUser} 
-                            buttonStyle="addUserButton" 
-                            newStyle="hideAddUserButton"
-                            iconsName="addUser"
-                            onClick={toggleRegistration}
-                        />
-                        <SideButton 
-                                buttonState={profileOpen} 
-                                buttonStyle="openProfile" 
-                                newStyle="openProfile"
-                                iconsName="editIcon"
-                                onClick={toggleOpenProfile}
+                            <SideButton 
+                                buttonState={userButton} 
+                                buttonStyle="profileButton" 
+                                newStyle="profileButton"
+                                iconsName="user"
+                                onClick={toggelUserPanel} 
                             />
-                            
+                            {isLoged ?(
+                                <>
+                                    <SideButton 
+                                        /* эта кнопна должна появлятся , только если пользователь авторизирован*/
+                                        buttonState={true} 
+                                        buttonStyle="logOutButton" 
+                                        newStyle="logOutButton"
+                                        iconsName="logOut"
+                                        onClick={handleLogOut}
+                                    />
+                                    <SideButton 
+                                        /* эта кнопна должна появлятся , только если пользователь авторизирован*/
+                                        buttonState={profileOpen} 
+                                        buttonStyle="openProfile" 
+                                        newStyle="openProfile"
+                                        iconsName="editIcon"
+                                        onClick={toggleOpenProfile}
+                                    /> 
+                            </> 
+                            ):(   
+                                <SideButton 
+                                    /* эта кнопна должна проподать, если пользователь авторизирован*/
+                                    buttonState={addUser} 
+                                    buttonStyle="addUserButton" 
+                                    newStyle="hideAddUserButton"
+                                    iconsName="addUser"
+                                    onClick={toggleRegistration}
+                                />
+                            )}
                 </div>
                 
-                
-                
-                <Authorization setUserCheck={setUserCheck} addUser={addUser} setUserId={setUserId}/>
+                {isLoged ? <></> : <Authorization setUserCheck={setUserCheck} addUser={addUser} setUserId={setUserId}/>}
                  
             </SidePanel>
        </div>
     );
 };
 
-export default GuestMenu;
+export default MenuScreen;

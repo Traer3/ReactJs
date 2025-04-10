@@ -67,6 +67,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         .catch((err)=> console.error(err));
     }, [userId ,setPosterStateArray,setEnablePosterState ]);
 
+
     const getTopicsState = () => {
         fetch(`http://localhost:3001/getTopicsState/${userId}`)
         .then((res)=>res.json())
@@ -90,10 +91,6 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         .then((data)=> alert(data.message))
         .catch((err)=> console.error(err));
     };
-
-    
-
-    
 
 
     const updatePosterState = async (posterName, newState)=>{
@@ -211,15 +208,15 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
             <h1 
                 style={{
                     backgroundColor:'red', 
-                    width:'clamp(40px, 2vw, 5vw)' , 
-                    height:'clamp(32px, 2.5vh, 5vh)', 
+                    width:'clamp(40px, 3vw, 5vw)' , 
+                    height:'clamp(45px, 4vh, 5vh)', 
                     color:'white', 
                     textAlign:'center',
-                    fontSize:'1em'
+                    fontSize:'0.8em'
                 }}
-                >id {userId} 
-                    <br/>Width = {window.innerWidth}
-                    <br/>Height = {window.innerHeight}
+                >iD {userId} 
+                    <br/>W = {window.innerWidth}
+                    <br/>H = {window.innerHeight}
                 </h1>
                 
 
@@ -227,7 +224,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                      newStyle="buttonsOnPanels"
                      onClick={getTopicsState}
                 >
-                    get topics states
+                    GetTopicsStates
                 </SideButton>
 
             {showSave &&
