@@ -2,7 +2,7 @@
     --textColor:#ffffff;
     --fontFamily: Arial, sans-serif;
 
-    --panelBorde: 0.1em rgba(95,145,255,0.3);
+    --panelBorder: 0.1em solid rgba(95,145,255,0.2);
     --borderRadius: 0.2em;
     --panelBackground: rgba(95,145,255,0.2);
     --panelShadow: rgba(105,155,255,0.4);
@@ -13,11 +13,11 @@
     
     /* SideButtons proportions */  
     --SBminHeight: 0.2vw;
-    --SBdefaultHeight: 1.6vw;
+    --SBdefaultHeight: 1.2vw;
     --SBmaxHeight: 10vh;
 
     --SBminWidth: 0.2vw;
-    --SBdefaultWidth: 1.6vw;
+    --SBdefaultWidth: 1.2vw;
     --SBmaxWidth: 10vh;
 }
 
@@ -31,6 +31,10 @@
 
 .panelIconPlace{
     padding-top: 0.4em;
+    padding-bottom: 0.4em;
+    border-radius: var(--borderRadius);
+    backdrop-filter: blur(clamp(2px, 1vw, 20px));
+    box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--panelBackground), 0 0 clamp(2px, 1.3vw, 20px) var(--panelShadow);
     display: flex;
     height: clamp(10px, max-content, 10vh);
     width: clamp(10px, max-content, 100vw);
@@ -47,7 +51,7 @@
 }
 
 .menuPanel{
-    border: var(--panelBorde);
+    border: none;
     border-radius: var(--borderRadius);
     position: fixed;
     background: var(--panelBackground);
@@ -81,7 +85,7 @@
 
 .lonelyButton{
     position: absolute;
-    border: var(--panelBorde);
+    border: none;
     border-radius: var(--borderRadius);
     padding: 0;
     background: var(--panelBackground);
@@ -98,7 +102,7 @@
 
 
 .profilePanel{
-    border: var(--panelBorde);
+    border: none;
     border-radius: var(--borderRadius);
     position: fixed;
     background: var(--panelBackground);
@@ -127,7 +131,7 @@
     border-radius: var(--borderRadius);
     background-color: transparent;
     cursor: pointer;
-    right: 5%;
+    right: 6%;
     z-index: 7;
     height: clamp(var(--SBminHeight), var(--SBdefaultHeight), var(--SBmaxHeight));
     width: clamp(var(--SBminWidth), var(--SBdefaultWidth), var(--SBmaxWidth)); 
@@ -135,7 +139,7 @@
 
 .lonelyProfileButton{
     position: absolute;
-    border: var(--panelBorde);
+    border: none;
     border-radius: var(--borderRadius);
     padding: 0;
     background: var(--panelBackground);
@@ -185,7 +189,7 @@
 
 
 .buttonsOnPanels{
-    border: var(--panelBorde);
+    border: var(--panelBorder);
     border-radius: var(--borderRadius);
     padding: 0.7em;
     background: var(--panelBackground);
@@ -201,7 +205,7 @@
 
 
 .listOfTopics{
-    border: var(--panelBorde);
+    border: var(--panelBorder);
     border-radius: var(--borderRadius);
     background: rgba(88, 139, 250, 0.2);
     backdrop-filter: blur(clamp(2px, 1vw, 20px));
@@ -221,7 +225,7 @@
 }
 
 .buttonsOnList{
-    border: var(--panelBorde);
+    border: var(--panelBorder);
     border-radius: var(--borderRadius);
     padding: 0.3em;
     background: var(--panelBackground);
@@ -250,7 +254,7 @@
 .menuProfilelButton{
     position: absolute;
     padding: 0;
-    border: var(--panelBorde);
+    border: none;
     border-radius: var(--borderRadius);
     background: transparent;
     cursor: pointer;
@@ -263,7 +267,7 @@
 
 .menuProfilel{
     position: fixed;
-    border: var(--panelBorde);
+    border: none;
     border-radius: var(--borderRadius);
     background: var(--panelBackground);
     backdrop-filter: blur(clamp(2px, 1vw, 20px));
@@ -282,11 +286,31 @@
     transform: translateY(0);
 }
 
-.menuButtons{
-    border: 1px solid white;
-    border-radius: 4px;
-    background: red;
-    width: 100px;
-    height: 50px;
-    margin: 0.5em;
+.menuButtonsGreen{
+    border: 0.1em solid rgba(95, 255, 145, 0.3);
+    border-radius: var(--borderRadius);
+    padding: 0.7em;
+    background: rgba(95, 255, 145, 0.2);
+    backdrop-filter: blur(clamp(2px, 1vw, 20px));
+    box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) rgba(95, 255, 145, 0.2);
+    height: clamp(10px, max-content, 10vh);
+    width: clamp(80px, max-content, 10vw);
+    margin: 0.3em;
+    font-family: var(--fontFamily);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
+    font-weight: bolder;
+}
+.menuButtonsRed{
+    border: 0.1em solid rgba(255, 95, 95, 0.3);
+    border-radius: var(--borderRadius);
+    padding: 0.7em;
+    background: rgba(255, 95, 95, 0.2);
+    backdrop-filter: blur(clamp(2px, 1vw, 20px));
+    box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) rgba(255, 95, 95, 0.2);
+    height: clamp(10px, max-content, 10vh);
+    width: clamp(80px, max-content, 10vw);
+    margin: 0.3em;
+    font-family: var(--fontFamily);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
+    font-weight: bolder;
 }

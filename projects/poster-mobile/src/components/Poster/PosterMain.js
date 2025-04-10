@@ -34,14 +34,6 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         }));
     };
 
-    //возвращаем старый topics
-   
-
-   
-    //получаем новый лист и теперь мы будем отключать КНОПКИ 
-    
- 
-
     useEffect(()=>{
         if(!userId || userId === 0){
             setShowSave(false);
@@ -67,16 +59,6 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         .catch((err)=> console.error(err));
     }, [userId ,setPosterStateArray,setEnablePosterState ]);
 
-
-    const getTopicsState = () => {
-        fetch(`http://localhost:3001/getTopicsState/${userId}`)
-        .then((res)=>res.json())
-        .then((data)=>{
-            if(data.topicsStateArray){
-                console.log(data.topicsStateArray)
-            }
-        })
-    }
 
     const savePosterStates =()=>{ 
         fetch('http://localhost:3001/savePosterStates',{
@@ -142,7 +124,6 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
   
     return(
         <div className={style.panelFlex}>
-        
             <SideButton 
                 newStyle="buttonsOnPanels"
                 onClick={showItemList}
@@ -219,13 +200,6 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                     <br/>H = {window.innerHeight}
                 </h1>
                 
-
-                <SideButton
-                     newStyle="buttonsOnPanels"
-                     onClick={getTopicsState}
-                >
-                    GetTopicsStates
-                </SideButton>
 
             {showSave &&
                 <SideButton 

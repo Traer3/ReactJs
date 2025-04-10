@@ -3,9 +3,10 @@ import SideButton from "../SidePanelComponents/SideButton";
 import SidePanel from "../SidePanelComponents/SidePanel";
 import style from "../SidePanels.module.css"
 
-const UserProfile = ({userId }) => {
+const UserProfile = ({userId, SBmenuPanel}) => {
     const [showMenu, setShowMenu] = useState(false);
     const [desktopEdit,setDesktopEdit] = useState(false);
+    const [enablePosterState, setEnablePosterState] = useState([]);
     
     const togglMenuPanle = () =>{
         setShowMenu(!showMenu)
@@ -14,12 +15,11 @@ const UserProfile = ({userId }) => {
 
     const toggelDesktopEdit = () => {
         setDesktopEdit(!desktopEdit);
+        SBmenuPanel(!desktopEdit);
     }
 
-    const [enablePosterState, setEnablePosterState] = useState(null);
+
     useEffect(()=>{
-       
-        
         fetch(`http://localhost:3001/getEnabledPostersState/${userId}`)
         .then((res)=>res.json())
         .then((data)=>{
@@ -28,7 +28,7 @@ const UserProfile = ({userId }) => {
             }
         })
         .catch((err)=> console.error(err));
-    }, [userId ,setEnablePosterState, ]);
+    }, [userId]);
    
 
     const toggleTopic = (topic) => { 
@@ -40,7 +40,6 @@ const UserProfile = ({userId }) => {
                     [topic]: !obj.state?.[topic],
                     
                 };
-                console.log(obj.state[topic])
                 return {
                     ...obj,
                     state: updateState,
@@ -60,6 +59,11 @@ const UserProfile = ({userId }) => {
         })
     }
 
+    const getTopicsState = (topic) => {
+        const posterObj = enablePosterState.find((obj)=> obj.name === "Posters");
+        return posterObj?.state?.[topic] ?? false
+    }
+    
     return( //make new buttons //onClick={()=>toggleTopic("twoAnswers")} КНОПКА должна светится зеленым если включена и красны если нет 
         <div 
         style={{
@@ -72,7 +76,9 @@ const UserProfile = ({userId }) => {
             height:'99vh',
             display:'flex', justifyContent:'center',alignItems:'center',
             zIndex:4,
-        }}>
+        }}
+        
+        >
             <SideButton
                 buttonState={showMenu} 
                 buttonStyle="menuProfilelButton" 
@@ -91,8 +97,8 @@ const UserProfile = ({userId }) => {
                         <div > 
                             <SideButton
                                 buttonState={desktopEdit} 
-                                buttonStyle="menuButtons" 
-                                newStyle="menuButtons"
+                                buttonStyle="buttonsOnPanels" 
+                                newStyle="buttonsOnPanels"
                                 onClick={toggelDesktopEdit} 
                             >
                                  Desktop Edit
@@ -100,8 +106,8 @@ const UserProfile = ({userId }) => {
 
                             <SideButton
                                 buttonState={desktopEdit} 
-                                buttonStyle="menuButtons" 
-                                newStyle="menuButtons"
+                                buttonStyle="buttonsOnPanels" 
+                                newStyle="buttonsOnPanels"
                                 onClick={toggelDesktopEdit} 
                             >
                                  Poster Edit
@@ -109,8 +115,8 @@ const UserProfile = ({userId }) => {
 
                             <SideButton
                                 buttonState={desktopEdit} 
-                                buttonStyle="menuButtons" 
-                                newStyle="menuButtons"
+                                buttonStyle="buttonsOnPanels" 
+                                newStyle="buttonsOnPanels"
                                 onClick={toggelDesktopEdit} 
                             >
                                  Poster Redactor
@@ -118,8 +124,8 @@ const UserProfile = ({userId }) => {
 
                             <SideButton
                                 buttonState={desktopEdit} 
-                                buttonStyle="menuButtons" 
-                                newStyle="menuButtons"
+                                buttonStyle="buttonsOnPanels" 
+                                newStyle="buttonsOnPanels"
                                 onClick={toggelDesktopEdit} 
                             >
                                  Create Poster
@@ -134,7 +140,7 @@ const UserProfile = ({userId }) => {
             
             {desktopEdit && 
                 
-                    <div style={{width:'600px', height:'600px',background:'transparent', borderRadius:'4px', border:'4px solid blue'}}>
+                    <div style={{width:'600px', height:'600px',background:'transparent', borderRadius:'4px', border:'1px solid blue'}}>
                         <SideButton
                         newStyle="buttonsOnPanels"
                         onClick={saveEnabledPostersState}
@@ -142,26 +148,26 @@ const UserProfile = ({userId }) => {
                         Save topics
                          </SideButton>
                         <SideButton
-                                buttonState={desktopEdit} 
-                                buttonStyle="menuButtons" 
-                                newStyle="menuButtons"
+                                buttonState={getTopicsState("twoAnswers")} 
+                                buttonStyle="menuButtonsGreen" 
+                                newStyle="menuButtonsRed"
                                 onClick={()=>toggleTopic("twoAnswers")} 
                             >
                                  show two answers 
                         </SideButton>
                         <SideButton
-                                buttonState={desktopEdit} 
-                                buttonStyle="menuButtons" 
-                                newStyle="menuButtons"
+                                buttonState={getTopicsState("problemsWithStyles")} 
+                                buttonStyle="menuButtonsGreen" 
+                                newStyle="menuButtonsRed"
                                 onClick={()=>toggleTopic("problemsWithStyles")} 
                             >
                                  show problemsWithStyles 
                         </SideButton>
                         <SideButton
-                                buttonState={desktopEdit} 
-                                buttonStyle="menuButtons" 
-                                newStyle="menuButtons"
-                                onClick={()=>toggleTopic("FLEXBox")} 
+                                buttonState={getTopicsState("FLEXBox")} 
+                                buttonStyle="menuButtonsGreen" 
+                                newStyle="menuButtonsRed"
+                                onClick={()=>toggleTopic("flexBox")} 
                             >
                                  show FLEXBox
                         </SideButton>

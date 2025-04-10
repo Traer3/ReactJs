@@ -20,7 +20,7 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
     const isLoged = userId > 0;
     useEffect(()=>{
     },[userId,isLoged,])
-    console.log(isLoged)
+
 
 
     const toggelMenuPanel = ()=>{
@@ -74,7 +74,7 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
                     onClick={toggelMenuPanel} 
                 />
                  </div>
-                 <p>MENU SCREEN</p>
+                
                  <div>
                     <PostersData 
                         userId={userId} 
@@ -83,7 +83,7 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
             </SidePanel>
 
             {profileOpen &&
-                <UserProfile userId={userId}/>
+                <UserProfile userId={userId} SBmenuPanel={setMenuOpen}/>
             }
 
            

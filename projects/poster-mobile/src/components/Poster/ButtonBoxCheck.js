@@ -9,12 +9,11 @@ const ButtonBoxCheck = ({color, state, setState, keyName}) =>{
         }));
     };
   
-    //коробочки больше не полые 
     return(
         <button 
                     onClick={inverState}
                     style={{
-                        border:`0 solid ${color}`,
+                        border:`0.2em solid ${color}`,
                         padding:'0',
                         backgroundColor: state ?  `${color}` : 'transparent' ,
                         
