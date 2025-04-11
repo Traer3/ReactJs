@@ -32,9 +32,8 @@ const UserProfile = ({userId, SBmenuPanel}) => {
    
 
     const toggleTopic = (topic) => { 
-        setEnablePosterState((prevState)=>{
-            return prevState.map((obj)=>{
-                if (obj.name !== "Posters") return obj;
+        const newState = enablePosterState.map((obj)=>{
+            if (obj.name !== "Posters") return obj;
                 const updateState = {
                     ...obj.state,
                     [topic]: !obj.state?.[topic],
@@ -44,35 +43,37 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                     ...obj,
                     state: updateState,
                 };
-            });
         });
+            setEnablePosterState(newState);
+            saveEnabledPostersState(newState);
     };
 
-    const saveEnabledPostersState = () => {
+    const saveEnabledPostersState = (updatedState) => {
         fetch('http://localhost:3001/saveEnabledPostersState',{
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({
-                userId:1,
-                enablePosterState,
+                userId: userId,
+                enablePosterState: updatedState,
             })
         })
         .then(res => res.json())
         .then(data => {
-            console.log("Message from db ", data);
-            alert(data.message);
+            console.log("Message from db ", data.message);
         })
         .catch(err=>{
-            console.error("Error" , err)
+            console.error("Error saving updated topics" , err)
         })
     }
 
     const getTopicsState = (topic) => {
+
+
         const posterObj = enablePosterState.find((obj)=> obj.name === "Posters");
         return posterObj?.state?.[topic] ?? false
     }
     
-    return( //make new buttons //onClick={()=>toggleTopic("twoAnswers")} КНОПКА должна светится зеленым если включена и красны если нет 
+    return(
         <div 
         style={{
             position:'fixed',
@@ -149,38 +150,66 @@ const UserProfile = ({userId, SBmenuPanel}) => {
             {desktopEdit && 
                 
                     <div style={{width:'600px', height:'600px',background:'transparent', borderRadius:'4px', border:'1px solid blue'}}>
-                        <SideButton
-                        newStyle="buttonsOnPanels"
-                        onClick={saveEnabledPostersState}
-                        >
-                        Save topics
-                         </SideButton>
-                        <SideButton
-                                buttonState={getTopicsState("TwoAnswers")} 
-                                buttonStyle="menuButtonsGreen" 
-                                newStyle="menuButtonsRed"
-                                onClick={()=>toggleTopic("TwoAnswers")} 
+                        <div style={{display:'flex',flexDirection:'column', height:'max-content',width:'max-content',justifyContent:'center'}}>
+                            <SideButton
+                                buttonState={desktopEdit} 
+                                buttonStyle="buttonsOnPanels" 
+                                newStyle="buttonsOnPanels"
                             >
-                                 show two answers 
-                        </SideButton>
-                        <SideButton
-                            /* кнопка не выключает состояния */
-                                buttonState={getTopicsState("ProblemsWithStyles")} 
-                                buttonStyle="menuButtonsGreen" 
-                                newStyle="menuButtonsRed"
-                                onClick={()=>toggleTopic("ProblemsWithStyles")} 
-                            >
-                                 show problemsWithStyles 
-                        </SideButton>
-                        <SideButton
-                                /* кнопка не реагирует на перемену состояния и не меняет цвет */
-                                buttonState={getTopicsState("FLEXBox")} 
-                                buttonStyle="menuButtonsGreen" 
-                                newStyle="menuButtonsRed"
-                                onClick={()=>toggleTopic("FLEXBox")} 
-                            >
-                                 show FLEXBox
-                        </SideButton>
+                                 Posters
+                            </SideButton>
+                            <div style={{display:'flex',flexDirection:'column', height:'max-content',width:'max-content',justifyContent:'center'}}>
+                            <SideButton
+                                    buttonState={getTopicsState("TwoAnswers")} 
+                                    buttonStyle="menuButtonsGreen" 
+                                    newStyle="menuButtonsRed"
+                                    onClick={()=>toggleTopic("TwoAnswers")} 
+                                >
+                                    show two answers 
+                            </SideButton>
+                            <SideButton
+                                    buttonState={getTopicsState("DisplayElements")} 
+                                    buttonStyle="menuButtonsGreen" 
+                                    newStyle="menuButtonsRed"
+                                    onClick={()=>toggleTopic("DisplayElements")} 
+                                >
+                                    show Display Elements
+                            </SideButton>
+                            <SideButton
+                                    buttonState={getTopicsState("FLEXBox")} 
+                                    buttonStyle="menuButtonsGreen" 
+                                    newStyle="menuButtonsRed"
+                                    onClick={()=>toggleTopic("FLEXBox")} 
+                                >
+                                    show FLEXBox
+                            </SideButton>
+                            <SideButton
+                                    buttonState={getTopicsState("StyleUsage")} 
+                                    buttonStyle="menuButtonsGreen" 
+                                    newStyle="menuButtonsRed"
+                                    onClick={()=>toggleTopic("StyleUsage")} 
+                                >
+                                    show Style Usage
+                            </SideButton>
+                            <SideButton
+                                    buttonState={getTopicsState("ProblemsWithStyles")} 
+                                    buttonStyle="menuButtonsGreen" 
+                                    newStyle="menuButtonsRed"
+                                    onClick={()=>toggleTopic("ProblemsWithStyles")} 
+                                >
+                                    show problemsWithStyles 
+                            </SideButton>
+                            <SideButton
+                                    buttonState={getTopicsState("Position")} 
+                                    buttonStyle="menuButtonsGreen" 
+                                    newStyle="menuButtonsRed"
+                                    onClick={()=>toggleTopic("Position")} 
+                                >
+                                    show Position
+                            </SideButton>
+                        </div>
+                        </div>
+                        
                     </div>
                 
             }

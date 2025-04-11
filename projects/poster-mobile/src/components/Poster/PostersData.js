@@ -7,22 +7,15 @@ const PostersData = ({userId })=> {
     
     
      const [defineVersion, setDefineVersion] = useState(window.innerWidth > 768)
-    
         useEffect(()=>{
-
             const handleResize = ()=>{
             const newWidth =  window.innerWidth;
-            
-
             setDefineVersion(newWidth > 768)
             };
-
             window.addEventListener("resize", handleResize);
-
             return ()=>{
                 window.removeEventListener("resize", handleResize);
             };
-
         },[])
 
 
@@ -303,11 +296,7 @@ const PostersData = ({userId })=> {
                 setPosterStateArray ={setPosterStateArray} 
                 userId={userId} 
             /> 
-            
             )}
-            
-            
-        
         </div>
     );
 };

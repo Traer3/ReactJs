@@ -17,8 +17,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         setItems(!items);
     }
 
-    const [topicsState, setTopicsState] = useState({
-         
+    const [topicsState, setTopicsState] = useState({ 
         twoAnswers: false,
         displayElements: false,
         flexBox:false,
@@ -44,20 +43,26 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         .then((res)=>res.json())
         .then((data) => {
             if(data.posterStateArray){
-
-             // setPosterStateArray(data.posterStateArray); //Delete before updating array posterStateArray =)
-                
+             setPosterStateArray(data.posterStateArray); //Delete before updating array posterStateArray =)
             }
         })
-        fetch(`http://localhost:3001/getEnabledPostersState/${userId}`)
-        .then((res)=>res.json())
-        .then((data)=>{
+
+        
+    }, [userId ,setPosterStateArray]);
+
+    useEffect(()=>{
+        const interval = setInterval(()=>{
+            fetch(`http://localhost:3001/getEnabledPostersState/${userId}`)
+            .then((res)=>res.json())
+            .then((data)=>{
             if(data.enablePosterState){
                 setEnablePosterState(data.enablePosterState)
             }
         })
         .catch((err)=> console.error(err));
-    }, [userId ,setPosterStateArray,setEnablePosterState ]);
+        },100); //DB delay is HUGE , нужно будет переделать, будем получать togglePoster={isPosterEnabled("TwoAnswers")} из enablePosterState который будет сохранен в переменной  
+        return()=> clearInterval(interval);
+    },[userId, setEnablePosterState])
 
 
     const savePosterStates =()=>{ 
@@ -121,6 +126,8 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         return posters?.state?.[topic]
     }
 
+
+
   
     return(
         <div className={style.panelFlex}>
@@ -130,11 +137,9 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                 >Posters
             </SideButton>
 
-           
             {items && (
                 <div className={`${style.listOfTopics} ${items ? style.listOfTopicsVisible : ""}`}>
-
-                    <ShowPoster 
+                    <ShowPoster
                         toggleTopic={()=>toggleTopic("twoAnswers")}
                         topicName="Tow Answers"
                         topicsState={topicsState.twoAnswers}

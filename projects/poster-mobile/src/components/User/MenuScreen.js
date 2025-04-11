@@ -112,7 +112,6 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
                             {isLoged ?(
                                 <>
                                     <SideButton 
-                                        /* эта кнопна должна появлятся , только если пользователь авторизирован*/
                                         buttonState={true} 
                                         buttonStyle="logOutButton" 
                                         newStyle="logOutButton"
@@ -120,7 +119,6 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
                                         onClick={handleLogOut}
                                     />
                                     <SideButton 
-                                        /* эта кнопна должна появлятся , только если пользователь авторизирован*/
                                         buttonState={profileOpen} 
                                         buttonStyle="openProfile" 
                                         newStyle="openProfile"
@@ -130,7 +128,6 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
                             </> 
                             ):(   
                                 <SideButton 
-                                    /* эта кнопна должна проподать, если пользователь авторизирован*/
                                     buttonState={addUser} 
                                     buttonStyle="addUserButton" 
                                     newStyle="hideAddUserButton"
