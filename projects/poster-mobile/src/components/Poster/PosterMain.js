@@ -138,7 +138,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                         toggleTopic={()=>toggleTopic("twoAnswers")}
                         topicName="Tow Answers"
                         topicsState={topicsState.twoAnswers}
-                        togglePoster={isPosterEnabled("twoAnswers")}
+                        togglePoster={isPosterEnabled("TwoAnswers")}
                         >
                         <TwoAnswers posterStates={getPosterState("TwoAnswers")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
@@ -147,7 +147,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                         toggleTopic={()=>toggleTopic("displayElements")}
                         topicName="Display Elements"
                         topicsState={topicsState.displayElements}
-                        togglePoster={isPosterEnabled("displayElements")}
+                        togglePoster={isPosterEnabled("DisplayElements")}
                         >
                         <DisplayElements posterStates={getPosterState("DisplayElements")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
@@ -155,7 +155,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                         toggleTopic={()=>toggleTopic("flexBox")}
                         topicName="FLEXBox"
                         topicsState={topicsState.flexBox}
-                        togglePoster={isPosterEnabled("flexBox")}
+                        togglePoster={isPosterEnabled("FLEXBox")}
                         >
                         <FLEXBox posterStates={getPosterState("FLEXBox")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
@@ -163,7 +163,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                         toggleTopic={()=>toggleTopic("styleUsage")}
                         topicName="Style Usage"
                         topicsState={topicsState.styleUsage}
-                        togglePoster={isPosterEnabled("styleUsage")}
+                        togglePoster={isPosterEnabled("StyleUsage")}
                         >
                         <StyleUsage posterStates={getPosterState("StyleUsage")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
@@ -171,7 +171,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                         toggleTopic={()=>toggleTopic("problemsWithStyles")}
                         topicName="Problems with styles"
                         topicsState={topicsState.problemsWithStyles}
-                        togglePoster={isPosterEnabled("problemsWithStyles")}
+                        togglePoster={isPosterEnabled("ProblemsWithStyles")}
                         >
                         <ProblemsWithStyles posterStates={getPosterState("ProblemsWithStyles")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>
@@ -179,7 +179,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                         toggleTopic={()=>toggleTopic("position")}
                         topicName="Position"
                         topicsState={topicsState.position}
-                        togglePoster={isPosterEnabled("position")}
+                        togglePoster={isPosterEnabled("Position")}
                         >
                         <Position posterStates={getPosterState("Position")} updatePosterState={updatePosterState}/>  
                     </ShowPoster>

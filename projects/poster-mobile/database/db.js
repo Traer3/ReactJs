@@ -94,10 +94,12 @@ app.post('/savePosterStates', (req, res)=>{
 
 app.post('/saveEnabledPostersState', (req,res)=>{
     const {userId, enablePosterState} = req.body;
+    
     if(!userId || !Array.isArray(enablePosterState)){
         return res.status(400).json({message:'User ID or poster topics are required'});
     }
     const enablePosterStateJSON = JSON.stringify(enablePosterState);
+    
     db('users')
         .where({id: userId})
         .update({desktop_edit: enablePosterStateJSON})

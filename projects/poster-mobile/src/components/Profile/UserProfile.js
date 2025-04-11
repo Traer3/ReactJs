@@ -53,9 +53,17 @@ const UserProfile = ({userId, SBmenuPanel}) => {
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({
-                userId:userId,
+                userId:1,
                 enablePosterState,
             })
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log("Message from db ", data);
+            alert(data.message);
+        })
+        .catch(err=>{
+            console.error("Error" , err)
         })
     }
 
@@ -148,26 +156,28 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                         Save topics
                          </SideButton>
                         <SideButton
-                                buttonState={getTopicsState("twoAnswers")} 
+                                buttonState={getTopicsState("TwoAnswers")} 
                                 buttonStyle="menuButtonsGreen" 
                                 newStyle="menuButtonsRed"
-                                onClick={()=>toggleTopic("twoAnswers")} 
+                                onClick={()=>toggleTopic("TwoAnswers")} 
                             >
                                  show two answers 
                         </SideButton>
                         <SideButton
-                                buttonState={getTopicsState("problemsWithStyles")} 
+                            /* кнопка не выключает состояния */
+                                buttonState={getTopicsState("ProblemsWithStyles")} 
                                 buttonStyle="menuButtonsGreen" 
                                 newStyle="menuButtonsRed"
-                                onClick={()=>toggleTopic("problemsWithStyles")} 
+                                onClick={()=>toggleTopic("ProblemsWithStyles")} 
                             >
                                  show problemsWithStyles 
                         </SideButton>
                         <SideButton
+                                /* кнопка не реагирует на перемену состояния и не меняет цвет */
                                 buttonState={getTopicsState("FLEXBox")} 
                                 buttonStyle="menuButtonsGreen" 
                                 newStyle="menuButtonsRed"
-                                onClick={()=>toggleTopic("flexBox")} 
+                                onClick={()=>toggleTopic("FLEXBox")} 
                             >
                                  show FLEXBox
                         </SideButton>

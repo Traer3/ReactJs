@@ -82,8 +82,9 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
                  </div>
             </SidePanel>
 
-            {profileOpen &&
+            {profileOpen  &&
                 <UserProfile userId={userId} SBmenuPanel={setMenuOpen}/>
+                
             }
 
            

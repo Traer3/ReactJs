@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PosterMain from "./PosterMain";
 import PosterMobileMain from "./PosterMobileMain";
 
+
 const PostersData = ({userId })=> {
     
     
@@ -29,14 +30,13 @@ const PostersData = ({userId })=> {
     const [enablePosterState, setEnablePosterState] = useState([
         {
             name: "Posters",
-            //это не кнопки , создаем новые состояние которое будет убирать кнопки СОСТОЯНИЕ будет в SHOWPOSTER.JSX 
             state: {
-                twoAnswers: true,
-                displayElements: true,
-                flexBox:true,
-                styleUsage:true,
-                problemsWithStyles:true,
-                position:true,
+                TwoAnswers: true,
+                DisplayElements: true,
+                FLEXBox:true,
+                StyleUsage:true,
+                ProblemsWithStyles:true,
+                Position:true,
             }
         },
         {
@@ -46,6 +46,7 @@ const PostersData = ({userId })=> {
             }
         },
     ]);
+    
 
     const [posterStateArray, setPosterStateArray] = useState([
         {
@@ -304,6 +305,8 @@ const PostersData = ({userId })=> {
             /> 
             
             )}
+            
+            
         
         </div>
     );
