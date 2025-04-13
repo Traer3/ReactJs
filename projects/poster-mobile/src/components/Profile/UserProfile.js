@@ -7,6 +7,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     const [showMenu, setShowMenu] = useState(false);
     const [desktopEdit,setDesktopEdit] = useState(false);
     const [enablePosterState, setEnablePosterState] = useState([]);
+    const [creatPoste, setCreatPoster] = useState(false);
     
     const togglMenuPanle = () =>{
         setShowMenu(!showMenu)
@@ -16,6 +17,9 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     const toggelDesktopEdit = () => {
         setDesktopEdit(!desktopEdit);
         SBmenuPanel(!desktopEdit);
+    }
+    const toggleCreatPoster = () => {
+        setCreatPoster(!creatPoste);
     }
 
 
@@ -70,6 +74,15 @@ const UserProfile = ({userId, SBmenuPanel}) => {
         const posterObj = enablePosterState.find((obj)=> obj.name === "Posters");
         return posterObj?.state?.[topic] ?? false
     }
+
+    const [userPostersData, setUserPostersData] = useState([
+        {
+            posterName:"Variables in CSS",
+            state:{
+                
+            }
+        },
+    ])
     
     return(
         <div className={style.menuProfilelWorkSpace}>
@@ -104,26 +117,19 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                                 newStyle="buttonsOnPanels"
                                 onClick={toggelDesktopEdit} 
                             >
-                                 Poster Edit
+                                Edit Posters
                             </SideButton>
 
-                            <SideButton
+                            <SideButton 
                                 buttonState={desktopEdit} 
                                 buttonStyle="buttonsOnPanels" 
                                 newStyle="buttonsOnPanels"
-                                onClick={toggelDesktopEdit} 
+                                onClick={toggleCreatPoster} 
                             >
-                                 Poster Redactor
+                                Create Poster
                             </SideButton>
 
-                            <SideButton
-                                buttonState={desktopEdit} 
-                                buttonStyle="buttonsOnPanels" 
-                                newStyle="buttonsOnPanels"
-                                onClick={toggelDesktopEdit} 
-                            >
-                                 Create Poster
-                            </SideButton>
+                            
                         </div>
                     </div>
                 </SidePanel>
@@ -248,6 +254,14 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                         
                     </div>
                 
+            }
+            {creatPoste && 
+               <>
+                <div className={style.menuProfileCreatPosterBackground}/>
+                <div className={style.menuProfileCreatPoster}>
+
+                </div>
+               </>
             }
         </div>
     );

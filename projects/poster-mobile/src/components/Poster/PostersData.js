@@ -32,13 +32,10 @@ const PostersData = ({userId })=> {
                 Position:true,
             }
         },
-        {
-            name:"meme",
-            state:{
-
-            }
-        },
+        
     ]);
+
+   
     
 
     const [posterStateArray, setPosterStateArray] = useState([

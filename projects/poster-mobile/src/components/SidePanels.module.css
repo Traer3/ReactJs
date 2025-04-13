@@ -348,3 +348,48 @@
     font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
     font-weight: bolder;
 }
+
+
+.menuProfileCreatPosterBackground::before{
+    z-index: 4;
+    content:
+        "CREATING POSTER • CREATING POSTER • CREATING POSTER "
+        "• CREATING POSTER • CREATING POSTER • CREATING POSTER • "
+        "CREATING POSTER • CREATING POSTER • CREATING POSTER"
+        "• CREATING POSTER • CREATING POSTER • CREATING POSTER • " 
+        "CREATING POSTER • CREATING POSTER • CREATING POSTER •" ;
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200vw;
+    height: 200vh;
+    font-size: 2rem;
+    word-spacing: 75rem;
+    letter-spacing: 0.2rem;
+    font-weight: bold;
+    color: black;
+    white-space: pre-wrap;
+    transform: rotate(-30deg);
+    pointer-events: none;
+    user-select: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    line-height: 3rem;
+    text-align: center;
+}
+
+.menuProfileCreatPoster{
+    position: absolute;
+    border: 0.1em solid rgba(95,145,255,0.3);
+    border-radius: var(--borderRadius);
+    backdrop-filter: blur(clamp(2px, 1vw, 20px));
+    background-color: rgba(95,145,255,0.2);
+    width: 99vw;
+    height: 99vh;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
