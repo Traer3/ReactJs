@@ -4,6 +4,7 @@ import SidePanel from "../SidePanelComponents/SidePanel";
 import style from "../SidePanels.module.css"
 import ButtonBoxCheck from "../Poster/ButtonBoxCheck";
 import windowStyle from "../Windows/WindowStyle.module.css"
+import SummaryWindow from "../Windows/SummaryWindow";
 
 const UserProfile = ({userId, SBmenuPanel}) => {
     const [showMenu, setShowMenu] = useState(false);
@@ -11,6 +12,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     const [enablePosterState, setEnablePosterState] = useState([]);
     const [creatPoste, setCreatPoster] = useState(false);
     const [chooseStyle, setChooseStyle] = useState(false);
+    const [chooseSummaryStyle, setChooseSummaryStyle] = useState(null);
     const togglMenuPanle = () =>{
         setShowMenu(!showMenu)
         
@@ -94,12 +96,30 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     const CreatingPosterBackground = Array(1000).fill(null).map((_, index)=>(
         <div key={index} className={style.menuProfTest}></div>
       ))
-    
-    const summaryWindow = (
-        <div className={windowStyle.redSummWindow}>
-            TEST 
-        </div>
-    )
+      
+   
+    const summaryWindow = (expr) =>{
+        switch (expr) {
+            case "red":
+                return <div className={windowStyle.redSummWindow}>
+                            Hello fag
+                       </div>
+            case "blue":
+                return <div className={windowStyle.summaryWindow}>
+                             Hello fag
+                        </div>
+            case "green":
+                return <div className={windowStyle.greenSummWindow}>
+                             Hello fag
+                        </div>
+            case "yellow":
+                return <div className={windowStyle.yellowSummWindow}>
+                             Hello fag
+                        </div>
+            default: return null;
+        }
+    };
+
     
     return(
         <div className={style.menuProfilelWorkSpace}>
@@ -297,10 +317,51 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                                     alignItems:'center',
                                     marginTop:'0.2em'
                                     }}>
-                                        <ButtonBoxCheck color={'red'}/>
-                                        <ButtonBoxCheck color={'blue'}/>
-                                        <ButtonBoxCheck color={'green'}/>
-                                        <ButtonBoxCheck color={'yellow'}/>
+                                         <button 
+                                            onClick={()=> setChooseSummaryStyle("red")}
+                                            style={{
+                                                border:`0.2em solid red`,
+                                                padding:'0',
+                                                backgroundColor: 'red' ,
+                                                width:'max(0.1vw, 1vw)',
+                                                height:'max(0.1vw, 1vw)',
+                                                cursor:'pointer',
+                                                margin:'0.1em',
+                                        }}/>
+                                        <button 
+                                            onClick={()=> setChooseSummaryStyle("blue")}
+                                            style={{
+                                                border:`0.2em solid blue`,
+                                                padding:'0',
+                                                backgroundColor: 'blue' ,
+                                                width:'max(0.1vw, 1vw)',
+                                                height:'max(0.1vw, 1vw)',
+                                                cursor:'pointer',
+                                                margin:'0.1em',
+                                        }}/>
+                                        <button 
+                                            onClick={()=> setChooseSummaryStyle("green")}
+                                            style={{
+                                                border:`0.2em solid green`,
+                                                padding:'0',
+                                                backgroundColor: 'green' ,
+                                                width:'max(0.1vw, 1vw)',
+                                                height:'max(0.1vw, 1vw)',
+                                                cursor:'pointer',
+                                                margin:'0.1em',
+                                        }}/>
+                                        <button 
+                                            onClick={()=> setChooseSummaryStyle("yellow")}
+                                            style={{
+                                                border:`0.2em solid yellow`,
+                                                padding:'0',
+                                                backgroundColor: 'yellow' ,
+                                                width:'max(0.1vw, 1vw)',
+                                                height:'max(0.1vw, 1vw)',
+                                                cursor:'pointer',
+                                                margin:'0.1em',
+                                        }}/>
+                                        
                                </div>
                             }
                             <SideButton
@@ -313,7 +374,10 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                         </nav>
                     </div>
                 
-                    {summaryWindow}
+                    { 
+                        summaryWindow(chooseSummaryStyle)
+
+                    }
 
                 </div>
                </>
