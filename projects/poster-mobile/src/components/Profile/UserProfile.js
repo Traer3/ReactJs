@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import SideButton from "../SidePanelComponents/SideButton";
 import SidePanel from "../SidePanelComponents/SidePanel";
 import style from "../SidePanels.module.css"
+import ButtonBoxCheck from "../Poster/ButtonBoxCheck";
+import windowStyle from "../Windows/WindowStyle.module.css"
 
 const UserProfile = ({userId, SBmenuPanel}) => {
     const [showMenu, setShowMenu] = useState(false);
     const [desktopEdit,setDesktopEdit] = useState(false);
     const [enablePosterState, setEnablePosterState] = useState([]);
     const [creatPoste, setCreatPoster] = useState(false);
-    
+    const [chooseStyle, setChooseStyle] = useState(false);
     const togglMenuPanle = () =>{
         setShowMenu(!showMenu)
         
@@ -17,11 +19,16 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     const toggelDesktopEdit = () => {
         setDesktopEdit(!desktopEdit);
         SBmenuPanel(!desktopEdit);
+        setCreatPoster(false)
     }
     const toggleCreatPoster = () => {
         setCreatPoster(!creatPoste);
+        setDesktopEdit(false)
+        setShowMenu(false)
     }
-
+    const toogleBoxes = ()=>{
+        setChooseStyle(!chooseStyle)
+    }
 
     useEffect(()=>{
         fetch(`http://localhost:3001/getEnabledPostersState/${userId}`)
@@ -83,6 +90,16 @@ const UserProfile = ({userId, SBmenuPanel}) => {
             }
         },
     ])
+
+    const CreatingPosterBackground = Array(1000).fill(null).map((_, index)=>(
+        <div key={index} className={style.menuProfTest}></div>
+      ))
+    
+    const summaryWindow = (
+        <div className={windowStyle.redSummWindow}>
+            TEST 
+        </div>
+    )
     
     return(
         <div className={style.menuProfilelWorkSpace}>
@@ -257,8 +274,46 @@ const UserProfile = ({userId, SBmenuPanel}) => {
             }
             {creatPoste && 
                <>
-                <div className={style.menuProfileCreatPosterBackground}/>
+                <div className={style.menuProfileCreatPosterBackground}>
+                        {CreatingPosterBackground}
+                </div>
                 <div className={style.menuProfileCreatPoster}>
+                    <div style={{position:'absolute',left:'0.2%',top:'3%'}}>
+                        <nav className={style.panelFlex}>
+                            <SideButton
+                                buttonState={showMenu} 
+                                buttonStyle="menuProfileSummary" 
+                                newStyle="menuProfileSummary"
+                                iconsName="summaryIcon"
+                                onClick={toogleBoxes}
+                            />
+                            {chooseStyle && 
+                               <div 
+                                style={{
+                                    display:'flex',
+                                    flexDirection:'column',
+                                    boxSizing:'border-box',
+                                    justifyContent:'center',
+                                    alignItems:'center',
+                                    marginTop:'0.2em'
+                                    }}>
+                                        <ButtonBoxCheck color={'red'}/>
+                                        <ButtonBoxCheck color={'blue'}/>
+                                        <ButtonBoxCheck color={'green'}/>
+                                        <ButtonBoxCheck color={'yellow'}/>
+                               </div>
+                            }
+                            <SideButton
+                                buttonState={showMenu} 
+                                buttonStyle="menuProfileSummary" 
+                                newStyle="menuProfileSummary"
+                                iconsName="terminalIcon"
+                                
+                            />
+                        </nav>
+                    </div>
+                
+                    {summaryWindow}
 
                 </div>
                </>
