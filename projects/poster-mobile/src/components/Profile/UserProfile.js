@@ -96,12 +96,58 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     const CreatingPosterBackground = Array(1000).fill(null).map((_, index)=>(
         <div key={index} className={style.menuProfTest}></div>
       ))
-      
+    
+    //move window 
+    const [position, setPosition] = useState({x:0, y:0});
+    const [isDragging, setIsDragging] = useState(false);
+    const [offset, setOffset] = useState({ x: 0, y: 0 });
+    const [zIndex, setZIndex] = useState(0);
+
+    const handleStart = (e) => {
+        setIsDragging(true);
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        setOffset({
+            x: clientX - position.x,
+            y: clientY - position.y
+        });
+        setZIndex(100);
+    };
+
+    const handleMove = (e) => {
+        if(!isDragging) return;
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        setPosition({
+            x: clientX - offset.x,
+            y: clientY - offset.y,
+        });
+    } 
+
+    const handleEnd = () => {
+        setIsDragging(false);
+        setZIndex(0);
+        //пока без заноса информации в базу данных
+    }
    
     const summaryWindow = (expr) =>{
         switch (expr) {
             case "red":
-                return <div className={windowStyle.redSummWindow}>
+                return <div 
+                    className={windowStyle.redSummWindow}
+                    style={{
+                            position:'absolute',
+                            top:`${position.y}px`,
+                            left:`${position.x}px`,
+                            cursor: isDragging ? 'grabbing' : 'grab',
+                            zIndex: zIndex,
+                            touchAction:'none'
+                    }}
+                    onMouseDown={handleStart}
+                    onMouseMove={handleMove}
+                    onMouseUp={handleEnd}
+                    onMouseLeave={handleEnd}
+                >
                             Hello fag
                        </div>
             case "blue":
