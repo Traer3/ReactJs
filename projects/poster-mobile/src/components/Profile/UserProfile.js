@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import SideButton from "../SidePanelComponents/SideButton";
 import SidePanel from "../SidePanelComponents/SidePanel";
 import style from "../SidePanels.module.css"
-import ButtonBoxCheck from "../Poster/ButtonBoxCheck";
 import windowStyle from "../Windows/WindowStyle.module.css"
-import SummaryWindow from "../Windows/SummaryWindow";
 
 const UserProfile = ({userId, SBmenuPanel}) => {
     const [showMenu, setShowMenu] = useState(false);
@@ -95,7 +93,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
 
     const CreatingPosterBackground = Array(1000).fill(null).map((_, index)=>(
         <div key={index} className={style.menuProfTest}></div>
-      ))
+    ))
     
     //move window 
     const [position, setPosition] = useState({x:0, y:0});
@@ -114,59 +112,67 @@ const UserProfile = ({userId, SBmenuPanel}) => {
         setZIndex(100);
     };
 
-    const handleMove = (e) => {
-        if(!isDragging) return;
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        setPosition({
-            x: clientX - offset.x,
-            y: clientY - offset.y,
-        });
-    } 
+    useEffect(()=>{
+        const handleMove = (e) => {
+            if(!isDragging) return;
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            setPosition({
+                x: clientX - offset.x,
+                y: clientY - offset.y,
+            });
+        } 
+        const handleEnd = () => {
+            setIsDragging(false);
+            setZIndex(0);
+            //пока без заноса информации в базу данных
+        }
+        if(isDragging){
+            window.addEventListener("mousemove",handleMove);
+            window.addEventListener("mouseup",handleEnd);
+            window.addEventListener("touchmove",handleMove);
+            window.addEventListener("touchend",handleEnd);
+        }
+        return ()=>{
+            window.removeEventListener("mousemove",handleMove);
+            window.removeEventListener("mouseup",handleEnd);
+            window.removeEventListener("touchmove",handleMove);
+            window.removeEventListener("touchend",handleEnd);
+        }
+    },[isDragging,offset])
 
-    const handleEnd = () => {
-        setIsDragging(false);
-        setZIndex(0);
-        //пока без заноса информации в базу данных
-    }
+    const creatWindow = (winStyleName) =>(
+        <div 
+            className={windowStyle[winStyleName]}
+            style={{
+                    position:'absolute',
+                    top:`${position.y}px`,
+                    left:`${position.x}px`,
+                    cursor: isDragging ? 'grabbing' : 'grab',
+                    zIndex,
+                    touchAction:'none'
+                   }}
+                    onMouseDown={handleStart}
+                    onTouchStart={handleStart}
+                >
+            Hello fag
+        </div>
+    )
    
     const summaryWindow = (expr) =>{
         switch (expr) {
             case "red":
-                return <div 
-                    className={windowStyle.redSummWindow}
-                    style={{
-                            position:'absolute',
-                            top:`${position.y}px`,
-                            left:`${position.x}px`,
-                            cursor: isDragging ? 'grabbing' : 'grab',
-                            zIndex: zIndex,
-                            touchAction:'none'
-                    }}
-                    onMouseDown={handleStart}
-                    onMouseMove={handleMove}
-                    onMouseUp={handleEnd}
-                    onMouseLeave={handleEnd}
-                >
-                            Hello fag
-                       </div>
+                return creatWindow("redSummWindow")
             case "blue":
-                return <div className={windowStyle.summaryWindow}>
-                             Hello fag
-                        </div>
+                return creatWindow("summaryWindow");
             case "green":
-                return <div className={windowStyle.greenSummWindow}>
-                             Hello fag
-                        </div>
+                return creatWindow("greenSummWindow");
             case "yellow":
-                return <div className={windowStyle.yellowSummWindow}>
-                             Hello fag
-                        </div>
+                return creatWindow("yellowSummWindow");
             default: return null;
         }
     };
 
-    
     return(
         <div className={style.menuProfilelWorkSpace}>
             <SideButton
@@ -422,7 +428,6 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                 
                     { 
                         summaryWindow(chooseSummaryStyle)
-
                     }
 
                 </div>
