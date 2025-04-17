@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const DraggableWindow = ({styleClass, initialX, initialY, children}) =>{
+const DraggableWindow = ({styleClass, initialX, initialY, children,id,onClose}) =>{
     const [position, setPosition] = useState({x: initialX, y: initialY});
     const [isDragging, setIsDragging] = useState(false);
     const [offset, setOffset] = useState({x: 0, y:0});
@@ -43,8 +43,16 @@ const DraggableWindow = ({styleClass, initialX, initialY, children}) =>{
         };
     },[isDragging, offset]);
 
+    const closeWindow = (event, id) =>{
+        if(event.button === 1 && onClose){
+            event.preventDefault();
+            onClose(id);
+        }
+    };
+
     return(
-        <div
+        <div onMouseDown={(e)=> closeWindow(e,id)}>
+            <div 
             className={styleClass}
             onMouseDown={handleStart}
             onTouchStart={handleStart}
@@ -59,6 +67,7 @@ const DraggableWindow = ({styleClass, initialX, initialY, children}) =>{
             }}
         >
             {children}
+         </div>
         </div>
     );
 };
