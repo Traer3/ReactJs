@@ -5,6 +5,13 @@ import style from "../SidePanels.module.css"
 import windowStyle from "../Windows/WindowStyle.module.css"
 import DraggableWindow from "../Windows/DraggableWindow.js";
 import ColoredBox from "../Windows/ColoredBox.jsx";
+import Textarea from "../Windows/Textarea.jsx"; //
+
+//Изменять размер окна , отягивая за край , сохранить размер окна в базу 
+//Заносить информацию в виде текста , сохранить в базе 
+//Сохранять позицию для Юзера в базе 
+//Создать кнопку Постеры юзера 
+//Загрузить с базы постеры от юзера 
 
 const UserProfile = ({userId, SBmenuPanel}) => {
     const [showMenu, setShowMenu] = useState(false);
@@ -107,6 +114,8 @@ const UserProfile = ({userId, SBmenuPanel}) => {
         setWindows((prev)=> prev.filter(win => win.id !== idToRemove));
     }
 
+   
+
     return(
         <div className={style.menuProfilelWorkSpace}>
             <SideButton
@@ -158,8 +167,9 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                 </SidePanel>
             }
             
-            {desktopEdit && 
-                    <div className={style.menuProfilelDesktopEdit}>
+            {desktopEdit &&  
+            /*Создать метод который будет загружать постеры как кнопки и выводить те которые включены и выключены НУ и подргужать новые для их выключения и выключения */
+                    <div className={style.menuProfilelDesktopEdit} >
                         <div className={style.panelFlexAndBorder}>
                             <SideButton
                                 buttonState={desktopEdit} 
@@ -329,7 +339,8 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                                 id={win.id}
                                 onClose={handleCloseWindow}
                             >
-                                HELP
+                                <Textarea/> 
+                                
                             </DraggableWindow>
                     ))}
                 </div>
