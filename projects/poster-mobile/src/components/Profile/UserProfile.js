@@ -5,10 +5,9 @@ import style from "../SidePanels.module.css"
 import windowStyle from "../Windows/WindowStyle.module.css"
 import DraggableWindow from "../Windows/DraggableWindow.js";
 import ColoredBox from "../Windows/ColoredBox.jsx";
-import Textarea from "../Windows/Textarea.jsx"; //
+import Textarea from "../Windows/Textarea.jsx"; // Мы будем задавать базе данных запрос на то что бы сохранить информацию с этого текстового поля в таблицу , для каждого поля свой запрос 
 
 //Изменять размер окна , отягивая за край , сохранить размер окна в базу 
-//Заносить информацию в виде текста , сохранить в базе 
 //Сохранять позицию для Юзера в базе 
 //Создать кнопку Постеры юзера 
 //Загрузить с базы постеры от юзера 
@@ -114,7 +113,9 @@ const UserProfile = ({userId, SBmenuPanel}) => {
         setWindows((prev)=> prev.filter(win => win.id !== idToRemove));
     }
 
-   
+   //unfreez element 
+   const [unfreez, setUnfreez] = useState(false);
+
 
     return(
         <div className={style.menuProfilelWorkSpace}>
@@ -338,8 +339,9 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                                 initialY={win.y}
                                 id={win.id}
                                 onClose={handleCloseWindow}
+                                unFreez={()=>{setUnfreez(!unfreez)}}
                             >
-                                <Textarea/> 
+                                <Textarea unFrezz={unfreez}/> 
                                 
                             </DraggableWindow>
                     ))}

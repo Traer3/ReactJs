@@ -78,7 +78,6 @@
     backdrop-filter: var(--backdropFilter);
     color: var(--textColor);
     
-    min-width: 350px;
     text-align: left;
     font-family: var(--fontFamily);
     font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));

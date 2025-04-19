@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-const DraggableWindow = ({styleClass, initialX, initialY, children,id,onClose}) =>{
+const DraggableWindow = ({styleClass, initialX, initialY, children,id,onClose,unFreez}) =>{
     const [position, setPosition] = useState({x: initialX, y: initialY});
     const [isDragging, setIsDragging] = useState(false);
     const [offset, setOffset] = useState({x: 0, y:0});
 
     const handleStart = (e) => {
+        const tag =  e.target.tagName.toLowerCase();
+        if(tag === 'textarea' || tag === 'input' || tag === 'select') return;
+
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
         setOffset({
@@ -65,6 +68,7 @@ const DraggableWindow = ({styleClass, initialX, initialY, children,id,onClose}) 
                 zIndex: isDragging ? 100 : 0,
                 userSelect: isDragging ? 'none' : 'all',
             }}
+            onDoubleClick={unFreez}
         >
             {children}
          </div>
