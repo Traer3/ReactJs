@@ -114,6 +114,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     }
 
    //unfreez element 
+   //fig anim
    const [unfreez, setUnfreez] = useState(false);
 
 
