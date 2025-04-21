@@ -14,6 +14,9 @@ const Textarea = ({unFrezz}) => {
 
     //  onMouseEnter={() => setHovered(true)}
     // onMouseLeave={() => setHovered(false)}
+
+    //включить редакцию по двойному нажатию 
+    //выключить редакцию когда отводишь 
     return(
         <textarea 
                 ref={textareaRef}
