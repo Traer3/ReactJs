@@ -113,10 +113,6 @@ const UserProfile = ({userId, SBmenuPanel}) => {
         setWindows((prev)=> prev.filter(win => win.id !== idToRemove));
     }
 
-   //unfreez element 
-   //fig anim
-   const [unfreez, setUnfreez] = useState(false);
-
 
     return(
         <div className={style.menuProfilelWorkSpace}>
@@ -340,9 +336,8 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                                 initialY={win.y}
                                 id={win.id}
                                 onClose={handleCloseWindow}
-                                unFreez={()=>{setUnfreez(!unfreez)}}
                             >
-                                <Textarea unFrezz={unfreez}/> 
+                                <Textarea /> 
                                 
                             </DraggableWindow>
                     ))}

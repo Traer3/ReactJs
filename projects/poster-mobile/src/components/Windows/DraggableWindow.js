@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const DraggableWindow = ({styleClass, initialX, initialY, children,id,onClose,unFreez}) =>{
+const DraggableWindow = ({styleClass, initialX, initialY, children,id,onClose}) =>{
     const [position, setPosition] = useState({x: initialX, y: initialY});
     const [isDragging, setIsDragging] = useState(false);
     const [offset, setOffset] = useState({x: 0, y:0});
@@ -52,6 +52,7 @@ const DraggableWindow = ({styleClass, initialX, initialY, children,id,onClose,un
             onClose(id);
         }
     };
+    
 
     return(
         <div onMouseDown={(e)=> closeWindow(e,id)}>
@@ -66,9 +67,8 @@ const DraggableWindow = ({styleClass, initialX, initialY, children,id,onClose,un
                 cursor:isDragging ? 'grabbing' : 'grab',
                 touchAction:'none',
                 zIndex: isDragging ? 100 : 0,
-                userSelect: isDragging ? 'none' : 'all',
+                
             }}
-            onDoubleClick={unFreez}
         >
             {children}
          </div>
