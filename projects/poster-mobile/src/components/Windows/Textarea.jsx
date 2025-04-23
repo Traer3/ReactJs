@@ -14,7 +14,7 @@ const Textarea = () => {
         }
     },[inputData]);
     
-    //некорректная работа элемента  
+    //некорректная   работа элемента  
     useEffect(()=>{
         const handleMouseMove = (e) =>{
             if(!isResizingRef.current || !textareaRef.current) return;
