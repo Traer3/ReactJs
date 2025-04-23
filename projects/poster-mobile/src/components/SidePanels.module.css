@@ -401,3 +401,16 @@
     width: clamp(var(--SBminWidth), var(--SBdefaultWidth), var(--SBmaxWidth));   
 }
 
+.menuProfileCreatPosterName{
+    position: absolute;
+    left: 45%;
+    top: 40%;
+    height:  max-content;
+    width: clamp(20px, 10vw, 10vw);
+    border: 0.1em solid rgba(95,145,255,0.3);
+    border-radius: var(--borderRadius);
+    backdrop-filter: blur(clamp(2px, 1vw, 20px));
+    background-color: rgba(95,145,255,0.2);
+    
+}
+

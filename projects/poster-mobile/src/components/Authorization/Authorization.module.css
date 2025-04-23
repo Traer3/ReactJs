@@ -6,7 +6,7 @@
     --defaultFontSize: 0.8vw;
     --maxFontSize: 3rem;
 
-    --border: 1px rgba(95,145,255,0.3);
+    --border: 1px solid rgba(95,145,255,0.3);
     --borderRadius: 0.2em;
     --backgroundColor: rgba(95,145,255,0.2);
     --shadow: rgba(105,155,255,0.4);

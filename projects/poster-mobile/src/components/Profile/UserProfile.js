@@ -16,9 +16,13 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     const [showMenu, setShowMenu] = useState(false);
     const [desktopEdit,setDesktopEdit] = useState(false);
     const [enablePosterState, setEnablePosterState] = useState([]);
+   
     const [creatPoster, setCreatPoster] = useState(false);
+    const [creatPosteName, setCreatPosterName] = useState(false);
     const [chooseStyle, setChooseStyle] = useState(false);
     const [creatPosterButtons, setCreatPoserButtons] = useState(false);
+
+    const [posterName, setPosterName] = useState("")    
 
     const [windows, setWindows] = useState([]);
     const togglMenuPanle = () =>{
@@ -32,10 +36,12 @@ const UserProfile = ({userId, SBmenuPanel}) => {
         setCreatPoster(false)
     }
     const toggleCreatPoster = () => {
+        setCreatPosterName(!creatPosteName)
         setCreatPoster(!creatPoster);
         setCreatPoserButtons(true)
         setDesktopEdit(false)
         setShowMenu(false)
+        console.log(posterName) //
     }
     const toogleBoxes = ()=>{
         setChooseStyle(!chooseStyle)
@@ -154,7 +160,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                                 buttonState={desktopEdit} 
                                 buttonStyle="buttonsOnPanels" 
                                 newStyle="buttonsOnPanels"
-                                onClick={toggleCreatPoster} 
+                                onClick={()=>setCreatPosterName(!creatPosteName)} 
                             >
                                 Create Poster
                             </SideButton>
@@ -285,6 +291,41 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                         
                     </div>
             }
+            {creatPosteName && 
+                <div className={style.menuProfileCreatPosterName}>
+                    <div className={style.panelFlex}>
+                        <input 
+                            type="text"
+                            placeholder="Poster name" 
+                            value={posterName}
+                            onChange={(e) => setPosterName(e.target.value)}
+                            style={{
+                                border:'1px solid rgba(95,145,255,0.3)',
+                                borderRadius:'0.2em',
+                                background:'rgba(95,145,255,0.2)',
+                                backdropFilter:'blur(10px)',
+                                backgroundColor:'transparent',
+                                width:'clamp(20px, 7.5vw, 10vw)',
+                                fontFamily:'Arial, sans-serif',
+                                fontSize:'clamp(0.1rem,0.8vw,3rem)',
+                                textAlign:'center',
+                                marginBottom:'0.5em'
+                        }}/>
+                        <button 
+                            onClick={toggleCreatPoster}
+                            style={{
+                                border:'1px solid rgba(95,145,255,0.3)',
+                                borderRadius:'0.2em',
+                                background:'rgba(95,145,255,0.2)',
+                                width:'clamp(20px, max-content, 10vw)',
+                                height:'height: clamp(30px, max-content, 10vh)',
+                                fontSize:'clamp(0.1rem,0.8vw,3rem)',
+                        }}>
+                            begin
+                        </button>
+                    </div>
+                </div>
+            }
             {creatPoster && 
                <>
                 <div className={style.menuProfileCreatPosterBackground}>{CreatingPosterBackground}</div>
@@ -325,6 +366,27 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                                     newStyle="menuProfileSummary"
                                     iconsName="terminalIcon"
                                 />
+                                {chooseStyle && 
+                                <nav className={style.panelFlex} style={{padding:0,marginTop:'0.2em'}}>
+                                        <ColoredBox
+                                            onClick={()=> createWindows("redTermWindow")}
+                                            color={"red"}
+                                            />
+                                        <ColoredBox
+                                            onClick={()=> createWindows("terminalWindow")}
+                                            color={"blue"}
+                                        />
+                                        <ColoredBox
+                                            onClick={()=> createWindows("greenTermWindow")}
+                                            color={"green"}
+                                        />
+                                        <ColoredBox
+                                            onClick={()=> createWindows("yellowTermWindow")}
+                                            color={"yellow"}
+                                        />
+                                </nav>
+                                }
+                                
                             </nav>
                         }
                     </div>
