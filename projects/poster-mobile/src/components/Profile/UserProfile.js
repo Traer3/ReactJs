@@ -22,12 +22,11 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     const [chooseStyle, setChooseStyle] = useState(false);
     const [creatPosterButtons, setCreatPoserButtons] = useState(false);
 
-    const [posterName, setPosterName] = useState("")    
+    
 
     const [windows, setWindows] = useState([]);
 
-    const [posterData, setPosterData] = useState("")
-    console.log(posterData)
+    
     const togglMenuPanle = () =>{
         setShowMenu(!showMenu)
         setCreatPoserButtons(!creatPosterButtons)
@@ -38,14 +37,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
         SBmenuPanel(!desktopEdit);
         setCreatPoster(false)
     }
-    const toggleCreatPoster = () => {
-        setCreatPosterName(!creatPosteName)
-        setCreatPoster(!creatPoster);
-        setCreatPoserButtons(true)
-        setDesktopEdit(false)
-        setShowMenu(false)
-        console.log(posterName) //
-    }
+
     const toogleBoxes = ()=>{
         setChooseStyle(!chooseStyle)
     }
@@ -62,17 +54,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     }, [userId]);
     
 
-    useEffect(()=>{
-        fetch(`http://localhost:3001/getPosterData/${userId}`)
-        .then((res)=>res.json())
-        .then((data)=>{
-            if(data.posterData){
-                setPosterData(data.posterData)
-                console.log(data.posterData)
-            }
-        })
-        .catch((err)=> console.error(err))
-    },[userId])
+   
 
     const toggleTopic = (topic) => { 
         const newState = enablePosterState.map((obj)=>{
@@ -109,48 +91,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
         })
     }
 
-    const savePosterData = () => {
-        const dataTest = [{
-            name: "PosterName",
-            windows: [
-              {
-                type: "summary",
-                id: "sw-1",
-                position: { x: 156, y: -88 },
-                content: "Это текст для summary window",
-              },
-              {
-                type: "summary",
-                id: "sw-2",
-                position: { x: 200, y: 50 },
-                content: "Второе окно summary",
-              },
-              {
-                type: "terminal",
-                id: "tw-1",
-                position: { x: 300, y: 100 },
-                command: "npm start",
-                output: "Starting development server...",
-              }
-            ]
-          }]
-        fetch('http://localhost:3001/savePosterData',{
-            method: 'POST',
-            headers:{'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                userId: userId,
-                posterData: dataTest,
-            })
-        })
-        .then(res => res.json())
-        .then(data=>{
-            console.log("Message from db", data.message);
-        })
-        .catch(err=>{
-            console.error("Error saving updated topics" , err)
-        })
-    }
-
+    
     
 
     const getTopicsState = (topic) => {
@@ -166,7 +107,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
 
     const createWindows = (winStyleName) =>{
         const newWindow = {
-            id:Date.now(), //ЗАМЕНИТЬ 
+            id:Date.now(), //без этого я не смогу создавать много новых окон 
             style: winStyleName,
             x: Math.floor(Math.random()*500),
             y: Math.floor(Math.random()*300),
@@ -177,6 +118,115 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     const handleCloseWindow = (idToRemove) =>{
         setWindows((prev)=> prev.filter(win => win.id !== idToRemove));
     }
+
+    const createPoster = (winStyleName,posterName,) =>{
+         newPoster = {
+            id:userId,
+            name: posterName,
+            style: winStyleName,
+            x: Math.floor(Math.random()*500),
+            y: Math.floor(Math.random()*300),
+        };
+        newPoster.name = posterName
+        newPoster.windows.push({
+            type: "summary",
+            id: "sw-" + Date.now(),
+            position: { x: 100, y: 200 },
+            content: "Описание окна"
+            });
+        
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    const [posterName, setPosterName] = useState("") 
+       
+
+    const [posterData, setPosterData] = useState([]);
+
+    const newPoster = {
+        name: posterName,
+        windows: []
+      };
+
+    useEffect(()=>{
+        fetch(`http://localhost:3001/getPosterData/${userId}`)
+        .then((res)=>res.json())
+        .then((data)=>{
+            if(data.posterData){
+                setPosterData(data.posterData)
+                console.log(data.posterData)
+            }
+        })
+        .catch((err)=> console.error(err))
+    },[userId])
+
+    const savePosterData = () => {
+        fetch('http://localhost:3001/savePosterData',{
+            method: 'POST',
+            headers:{'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                userId: userId,
+                posterData: posterData,
+            })
+        })
+        .then(res => res.json())
+        .then(data=>{
+            console.log("Message from db", data.message);
+        })
+        .catch(err=>{
+            console.error("Error saving updated topics" , err)
+        })
+    }
+
+    const [textareaData, setTextareaData,] = useState([]);
+    
+    const handleTextareaChange = (id, value) =>{
+        setTextareaData(prev => ({...prev, [id]: value}));
+    }
+
+    const handleCreatePoster = () => {
+        if(!posterName) return
+
+        const newPoster = {
+            name: posterName,
+            windows: []
+        };
+        setPosterData(prev => [...prev, newPoster]);
+
+        setPosterName("");    //очистить поле 
+        setCreatPoster(!creatPoster); //показачать редактор
+        setCreatPosterName(!creatPosteName)
+        setCreatPoserButtons(true)
+        setDesktopEdit(false)
+        setShowMenu(false)
+    }
+
+
+    const addWindowToPoster = (style) =>{ 
+        const updated = [...posterData];
+        const lastPoster = updated[updated.length -1];
+        if(!lastPoster) return;
+
+        const isTerminal = style.toLowerCase().includes("Term") //сделать игнор кейс
+        const id = `${isTerminal ? 'tw' : 'sw'}-${Date.now()}`;
+
+        const newWindow = {
+            type: isTerminal ? "terminal" : "summary",
+            id,
+            position:{
+                x: Math.floor(Math.random()*500),
+                y: Math.floor(Math.random()*300),
+            },
+            style,
+            ...(isTerminal
+                ? {command: "", output: ""}
+                : {content: ""}
+            ),
+        };
+        lastPoster.windows.push(newWindow);
+        setPosterData(updated);
+    };
 
 
     return(
@@ -223,16 +273,6 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                             >
                                 Create Poster
                             </SideButton>
-                            
-                            <SideButton 
-                               
-                                buttonStyle="buttonsOnPanels" 
-                                newStyle="buttonsOnPanels"
-                                onClick={()=>savePosterData()} 
-                            >
-                                TEST
-                            </SideButton>
-                            
                         </div>
                     </div>
                 </SidePanel>
@@ -379,7 +419,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                                 marginBottom:'0.5em'
                         }}/>
                         <button 
-                            onClick={toggleCreatPoster}
+                            onClick={handleCreatePoster}
                             style={{
                                 border:'1px solid rgba(95,145,255,0.3)',
                                 borderRadius:'0.2em',
@@ -410,19 +450,19 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                                 {chooseStyle && 
                                 <nav className={style.panelFlex} style={{padding:0,marginTop:'0.2em'}}>
                                         <ColoredBox
-                                            onClick={()=> createWindows("redSummWindow")}
+                                            onClick={()=> addWindowToPoster("redSummWindow")}
                                             color={"red"}
                                             />
                                         <ColoredBox
-                                            onClick={()=> createWindows("summaryWindow")}
+                                            onClick={()=> addWindowToPoster("summaryWindow")}
                                             color={"blue"}
                                         />
                                         <ColoredBox
-                                            onClick={()=> createWindows("greenSummWindow")}
+                                            onClick={()=> addWindowToPoster("greenSummWindow")}
                                             color={"green"}
                                         />
                                         <ColoredBox
-                                            onClick={()=> createWindows("yellowSummWindow")}
+                                            onClick={()=> addWindowToPoster("yellowSummWindow")}
                                             color={"yellow"}
                                         />
                                 </nav>
@@ -436,39 +476,54 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                                 {chooseStyle && 
                                 <nav className={style.panelFlex} style={{padding:0,marginTop:'0.2em'}}>
                                         <ColoredBox
-                                            onClick={()=> createWindows("redTermWindow")}
+                                            onClick={()=> addWindowToPoster("redTermWindow")}
                                             color={"red"}
                                             />
                                         <ColoredBox
-                                            onClick={()=> createWindows("terminalWindow")}
+                                            onClick={()=> addWindowToPoster("terminalWindow")}
                                             color={"blue"}
                                         />
                                         <ColoredBox
-                                            onClick={()=> createWindows("greenTermWindow")}
+                                            onClick={()=> addWindowToPoster("greenTermWindow")}
                                             color={"green"}
                                         />
                                         <ColoredBox
-                                            onClick={()=> createWindows("yellowTermWindow")}
+                                            onClick={()=> addWindowToPoster("yellowTermWindow")}
                                             color={"yellow"}
                                         />
                                 </nav>
                                 }
+                                <SideButton
+                                    buttonStyle="menuProfileSummary" 
+                                    newStyle="menuProfileSummary"
+                                    onClick={()=>savePosterData()}
+                                >Test save</SideButton>
                                 
                             </nav>
                         }
                     </div>
-                    {windows.map(win=>(
+                    
+                    {posterData.map((poster, posterIndex)=>(
+                        <div key={posterIndex}>
+                            <h2>{poster.name}</h2>
+                            {poster.windows.map(win=>(
                             <DraggableWindow 
                                 key={win.id}
                                 styleClass={windowStyle[win.style]}
-                                initialX={win.x}
-                                initialY={win.y}
+                                initialX={win.position.x}
+                                initialY={win.position.y}
                                 id={win.id}
-                                onClose={handleCloseWindow}
+                                onClose={()=> handleCloseWindow(posterIndex,win.id)}
                             >
-                                <Textarea /> 
+                                <Textarea 
+                                    id={win.id} 
+                                    value={textareaData[win.id] || ""}
+                                    onChange={handleTextareaChange} 
+                                /> 
                                 
                             </DraggableWindow>
+                    ))}
+                        </div>
                     ))}
                 </div>
                </>

@@ -44,7 +44,6 @@
     backdrop-filter: var(--backdropFilter);
     box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--BW-background), 0 0 clamp(2px, 1.3vw, 20px) var(--BW-shadow);
     color: var(--textColor);
-    min-width: 350px;
     text-align: left;
     font-family: var(--fontFamily);
     font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
