@@ -25,6 +25,9 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     const [posterName, setPosterName] = useState("")    
 
     const [windows, setWindows] = useState([]);
+
+    const [posterData, setPosterData] = useState("")
+    console.log(posterData)
     const togglMenuPanle = () =>{
         setShowMenu(!showMenu)
         setCreatPoserButtons(!creatPosterButtons)
@@ -57,7 +60,19 @@ const UserProfile = ({userId, SBmenuPanel}) => {
         })
         .catch((err)=> console.error(err));
     }, [userId]);
-   
+    
+
+    useEffect(()=>{
+        fetch(`http://localhost:3001/getPosterData/${userId}`)
+        .then((res)=>res.json())
+        .then((data)=>{
+            if(data.posterData){
+                setPosterData(data.posterData)
+                console.log(data.posterData)
+            }
+        })
+        .catch((err)=> console.error(err))
+    },[userId])
 
     const toggleTopic = (topic) => { 
         const newState = enablePosterState.map((obj)=>{
@@ -93,6 +108,50 @@ const UserProfile = ({userId, SBmenuPanel}) => {
             console.error("Error saving updated topics" , err)
         })
     }
+
+    const savePosterData = () => {
+        const dataTest = [{
+            name: "PosterName",
+            windows: [
+              {
+                type: "summary",
+                id: "sw-1",
+                position: { x: 156, y: -88 },
+                content: "Это текст для summary window",
+              },
+              {
+                type: "summary",
+                id: "sw-2",
+                position: { x: 200, y: 50 },
+                content: "Второе окно summary",
+              },
+              {
+                type: "terminal",
+                id: "tw-1",
+                position: { x: 300, y: 100 },
+                command: "npm start",
+                output: "Starting development server...",
+              }
+            ]
+          }]
+        fetch('http://localhost:3001/savePosterData',{
+            method: 'POST',
+            headers:{'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                userId: userId,
+                posterData: dataTest,
+            })
+        })
+        .then(res => res.json())
+        .then(data=>{
+            console.log("Message from db", data.message);
+        })
+        .catch(err=>{
+            console.error("Error saving updated topics" , err)
+        })
+    }
+
+    
 
     const getTopicsState = (topic) => {
         const posterObj = enablePosterState.find((obj)=> obj.name === "Posters");
@@ -164,7 +223,15 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                             >
                                 Create Poster
                             </SideButton>
-
+                            
+                            <SideButton 
+                               
+                                buttonStyle="buttonsOnPanels" 
+                                newStyle="buttonsOnPanels"
+                                onClick={()=>savePosterData()} 
+                            >
+                                TEST
+                            </SideButton>
                             
                         </div>
                     </div>

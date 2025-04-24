@@ -24,6 +24,7 @@ db.schema.hasTable('users').then((exists)=>{
             table.text('poster_states');
             table.timestamp('created_at').defaultTo(db.fn.now());
             table.text('desktop_edit');
+            table.text('poster_data');
         });
     }
 });
@@ -106,6 +107,20 @@ app.post('/saveEnabledPostersState', (req,res)=>{
         .catch((err)=> res.status(500).json({message: err.message}))
 })
 
+app.post('/savePosterData',(req,res)=>{
+    const {userId, posterData} = req.body;
+
+    if(!userId || !Array.isArray(posterData)){
+        return res.status(400).json({message:'User ID or poster data are required'});
+    }
+    const posterDataJSON = JSON.stringify(posterData);
+    db('users')
+        .where({id: userId})
+        .update({poster_data: posterDataJSON})
+        .then(()=> res.status(200).json({message:'Poster data saved successfully'}))
+        .catch((err)=> res.status(500).json({message: err.message}))
+})
+
 
 app.get('/getPosterStates/:userId', (req, res)=>{
     const {userId} = req.params;
@@ -136,6 +151,23 @@ app.get('/getEnabledPostersState/:userId',(req, res)=>{
                 res.status(200).json({enablePosterState});
             }else{
                 res.status(404).json({message: 'Topics state not found'});
+            }
+        })
+        .catch((err)=> res.status(500).json({err: err.message}))
+})
+
+app.get('/getPosterData/:userId',(req, res)=>{
+    const {userId} = req.params;
+    db('users')
+        .where({id: userId})
+        .select('poster_data')
+        .first()
+        .then((data)=>{
+            if(data && data.poster_data){
+                const posterData = JSON.parse(data.poster_data);
+                res.status(200).json({posterData});
+            }else{
+                res.status(404).json({message:'Poster Data not found'});
             }
         })
         .catch((err)=> res.status(500).json({err: err.message}))
