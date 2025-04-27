@@ -141,6 +141,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
 // редактировать постеры 
 // разбить код 
 
+
     const [posterName, setPosterName] = useState("") 
        
 
