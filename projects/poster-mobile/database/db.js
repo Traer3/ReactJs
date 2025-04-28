@@ -114,6 +114,7 @@ app.post('/savePosterData',(req,res)=>{
         return res.status(400).json({message:'User ID or poster data are required'});
     }
     const posterDataJSON = JSON.stringify(posterData);
+    console.log(posterData)
     db('users')
         .where({id: userId})
         .update({poster_data: posterDataJSON})

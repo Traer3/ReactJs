@@ -9,7 +9,6 @@ import StyleUsage from "./Posters/StyleUsage";
 import ProblemsWithStyles from "./Posters/ProblemsWithStyles";
 import Position from "./Posters/Postion";
 
-
 const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterState,setEnablePosterState}) => {
     const [items, setItems] = useState(false);
     const [showSave, setShowSave] = useState(false);
@@ -126,9 +125,6 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         return posters?.state?.[topic]
     }
 
-
-
-  
     return(
         <div className={style.panelFlex}>
             <SideButton 
@@ -203,8 +199,9 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                 >iD {userId} 
                     <br/>W = {window.innerWidth}
                     <br/>H = {window.innerHeight}
-                </h1>
-                
+            </h1>
+              
+            
 
             {showSave &&
                 <SideButton 
