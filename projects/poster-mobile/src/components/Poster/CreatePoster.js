@@ -31,10 +31,9 @@ const CreatePoster = ({creatPosterButtons}) => {
     ))
 
 
-    
+    const [showPosters, setShowPosters] = useState([]);
     const userId = 1; //потом будем получать через пропсы 
     const [posterData, setPosterData] = useState([]);
-    const [windows, setWindows] = useState([]);
     const [textareaData, setTextareaData,] = useState([]);
     const [posterName, setPosterName] = useState("") 
     const [creatPosteName, setCreatPosterName] = useState(true);
@@ -48,7 +47,6 @@ const CreatePoster = ({creatPosterButtons}) => {
         };
 
         setPosterData(prev => [...prev, newPoster]);
-        setPosterName("");   
         setCreatPoster(!creatPoster); 
         setCreatPosterName(!creatPosteName)
         setShowMenu(false)
@@ -59,20 +57,21 @@ const CreatePoster = ({creatPosterButtons}) => {
         .then((res)=>res.json())
         .then((data)=>{
             if(data.posterData){
-                setPosterData(data.posterData)
-                console.log(data.posterData)
+                setShowPosters(data.posterData)
             }
         })
         .catch((err)=> console.error(err))
     },[userId])
 
     const savePosterData = () => {
+        const mergedPosters = [...showPosters, ...posterData];
+
         fetch('http://localhost:3001/savePosterData',{
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({
                 userId: userId,
-                posterData: posterData,
+                posterData: mergedPosters,
             })
         })
         .then(res => res.json())
@@ -91,7 +90,7 @@ const CreatePoster = ({creatPosterButtons}) => {
         const lastPoster = updated[updated.length -1];
         if(!lastPoster) return;
 
-        const isTerminal = style.toLowerCase().includes("Term") //сделать игнор кейс
+        const isTerminal = style.toLowerCase().includes("term") //сделать игнор кейс
         const id = `${isTerminal ? 'tw' : 'sw'}-${Date.now()}`;
 
         const newWindow = {
@@ -113,10 +112,36 @@ const CreatePoster = ({creatPosterButtons}) => {
 
     const handleTextareaChange = (id, value) =>{
         setTextareaData(prev => ({...prev, [id]: value}));
+
+        setPosterData(prev => {
+            const updated = [...prev];
+
+            updated.forEach(poster => {
+                poster.windows.forEach(window=> {
+                    if(window.id === id && window.type === "summary"){
+                        window.content = value;
+                    }
+                    if(window.id === id && window.type === "terminal"){
+                        window.content = value;
+                    }
+                });
+            });
+            return updated;
+        })
     }
 
-    const handleCloseWindow = (idToRemove) =>{
-        setWindows((prev)=> prev.filter(win => win.id !== idToRemove));
+    const handleCloseWindow = (posterIndex,idToRemove) =>{
+        const updatedPosters = [...posterData];
+        const targetPoster = updatedPosters[posterIndex];
+
+        if(!targetPoster) return;
+
+        targetPoster.windows = targetPoster.windows.filter(win => win.id !== idToRemove)
+        setPosterData(updatedPosters);
+    }
+
+    const showUrPoster = () => {
+        console.log(showPosters);
     }
     
     return(
@@ -221,7 +246,13 @@ const CreatePoster = ({creatPosterButtons}) => {
                                     buttonStyle="menuProfileSummary" 
                                     newStyle="menuProfileSummary"
                                     onClick={()=>savePosterData()}
-                                >Test save</SideButton>
+                                >save</SideButton>
+
+                                <SideButton
+                                    buttonStyle="menuProfileSummary" 
+                                    newStyle="menuProfileSummary"
+                                    onClick={()=>showUrPoster()}
+                                >posters</SideButton>
                                 
                             </nav>
                         }
@@ -229,7 +260,6 @@ const CreatePoster = ({creatPosterButtons}) => {
                     
                     {posterData.map((poster, posterIndex)=>(
                         <div key={posterIndex}>
-                            <h2>{poster.name}</h2>
                             {poster.windows.map(win=>(
                             <DraggableWindow 
                                 key={win.id}
@@ -249,6 +279,8 @@ const CreatePoster = ({creatPosterButtons}) => {
                     ))}
                         </div>
                     ))}
+
+
                 </div>
                </>
             }
