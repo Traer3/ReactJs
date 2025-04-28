@@ -90,7 +90,7 @@ const CreatePoster = ({creatPosterButtons}) => {
         const lastPoster = updated[updated.length -1];
         if(!lastPoster) return;
 
-        const isTerminal = style.toLowerCase().includes("term") //сделать игнор кейс
+        const isTerminal = style.toLowerCase().includes("term") 
         const id = `${isTerminal ? 'tw' : 'sw'}-${Date.now()}`;
 
         const newWindow = {
@@ -102,8 +102,8 @@ const CreatePoster = ({creatPosterButtons}) => {
             },
             style,
             ...(isTerminal
-                ? {command: "", output: ""}
-                : {content: ""}
+                ? {command: "", output: ""} //новые строки , еще не используем
+                : {content: ""}            //то что и в summary
             ),
         };
         lastPoster.windows.push(newWindow);
