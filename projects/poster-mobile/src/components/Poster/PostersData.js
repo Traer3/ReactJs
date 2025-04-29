@@ -35,33 +35,6 @@ const PostersData = ({userId })=> {
         
     ]);
     
-    const [posterData, setPosterData] = useState([
-        {
-            name: "PosterName",
-            windows: [
-              {
-                type: "summary",
-                id: "sw-1",
-                position: { x: 156, y: -88 },
-                content: "Это текст для summary window",
-              },
-              {
-                type: "summary",
-                id: "sw-2",
-                position: { x: 200, y: 50 },
-                content: "Второе окно summary",
-              },
-              {
-                type: "terminal",
-                id: "tw-1",
-                position: { x: 300, y: 100 },
-                command: "npm start",
-                output: "Starting development server...",
-              }
-            ]
-          }
-    ])
-   
     
 
     const [posterStateArray, setPosterStateArray] = useState([

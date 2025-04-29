@@ -80,9 +80,33 @@ const UserProfile = ({userId, SBmenuPanel}) => {
         const posterObj = enablePosterState.find((obj)=> obj.name === "Posters");
         return posterObj?.state?.[topic] ?? false
     }
+    const togglePoster = (posterId) => {
+        const updatedPosters = showPosters.map(poster=>{
+            if(poster.id === posterId){
+                return{
+                    ...poster,
+                    state: !poster.state
+                };
+            }
+            return poster;
+        })
+        setShowPosters(updatedPosters)
+        
+    }
 
-
-
+    
+// отображение постеров из базы
+const [showPosters, setShowPosters] = useState([]);
+useEffect(()=>{
+    fetch(`http://localhost:3001/getPosterData/${userId}`)
+    .then((res)=>res.json())
+    .then((data)=>{
+        if(data.posterData){
+            setShowPosters(data.posterData)
+        }
+    })
+    .catch((err)=> console.error(err))
+},[userId])
 
     return(
         <div className={style.menuProfilelWorkSpace}>
@@ -136,6 +160,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
             {desktopEdit &&  
             /*Создать метод который будет загружать постеры как кнопки и выводить те которые включены и выключены НУ и подргужать новые для их выключения и выключения */
                     <div className={style.menuProfilelDesktopEdit} >
+
                         <div className={style.panelFlexAndBorder}>
                             <SideButton
                                 buttonState={desktopEdit} 
@@ -193,6 +218,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                                     Position
                             </SideButton>
                         </div>
+
                         <div className={style.panelFlexAndBorder}>
                             <SideButton
                                 buttonState={desktopEdit} 
@@ -251,6 +277,25 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                             </SideButton>
                         </div>
                         
+                        <div className={style.panelFlexAndBorder}>
+                            <SideButton
+                                buttonStyle="buttonsOnPanels" 
+                                newStyle="buttonsOnPanels"
+                            >Yours posters
+                            </SideButton>
+                            {showPosters.map((poster, posterIndex)=>(
+                                <div key={posterIndex}>
+                                    <SideButton
+                                            buttonState={poster.state}
+                                            buttonStyle="menuButtonsGreen" 
+                                            newStyle="menuButtonsRed"
+                                            onClick={()=>togglePoster(poster.id)}
+                                        >
+                                        {poster.name}
+                                        </SideButton>
+                                </div>
+                            ))}
+                        </div>
                     </div>
             }
             

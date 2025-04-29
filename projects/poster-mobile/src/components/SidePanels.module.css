@@ -376,6 +376,26 @@
 }
 
 
+.menuProfilelCreatPosterNameInput{
+    border: 1px  solid rgba(95,145,255,0.3);
+    border-radius: 0.2em;
+    background: rgba(95,145,255,0.2);
+    backdrop-filter: blur(10px);
+    background-color: transparent;
+    width: clamp(20px, 7.5vw, 10vw);
+    font-family: var(--fontFamily);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+.menuProfilelCreatPosterNameButton{
+    border: 1px  solid rgba(95,145,255,0.3);
+    border-radius: 0.2em;
+    background: rgba(95,145,255,0.2);
+    width: clamp(20px, max-content, 10vw);
+    height: clamp(30px, max-content, 10vh);
+    font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
+}
 .menuProfileCreatPoster{
     position: absolute;
     border: 0.1em solid rgba(95,145,255,0.3);
@@ -411,6 +431,5 @@
     border-radius: var(--borderRadius);
     backdrop-filter: blur(clamp(2px, 1vw, 20px));
     background-color: rgba(95,145,255,0.2);
-    
 }
 

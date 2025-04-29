@@ -2,18 +2,17 @@ import React, { useEffect, useState } from "react";
 import style from "../SidePanels.module.css"
 import windowStyle from "../Windows/WindowStyle.module.css"
 import DraggableWindow from "../Windows/DraggableWindow";
-import Textarea from "../Windows/Textarea"; // Мы будем задавать базе данных запрос на то что бы сохранить информацию с этого текстового поля в таблицу , для каждого поля свой запрос 
+import Textarea from "../Windows/Textarea";
 import SideButton from "../SidePanelComponents/SideButton";
 import ColoredBox from "../Windows/ColoredBox";
 
 //Изменять размер окна , отягивая за край , сохранить размер окна в базу 
-//Сохранять позицию для Юзера в базе 
 //Создать кнопку Постеры юзера 
 //Загрузить с базы постеры от юзера 
 
 // показать постеры из базы 
 // редактировать постеры 
-// разбить код 
+
 
 
 const CreatePoster = ({creatPosterButtons}) => {
@@ -43,6 +42,8 @@ const CreatePoster = ({creatPosterButtons}) => {
 
         const newPoster = {
             name: posterName,
+            state: true,
+            id:Date.now(),
             windows: []
         };
 
@@ -65,7 +66,7 @@ const CreatePoster = ({creatPosterButtons}) => {
 
     const savePosterData = () => {
         const mergedPosters = [...showPosters, ...posterData];
-
+        console.log(showPosters);
         fetch('http://localhost:3001/savePosterData',{
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
@@ -140,42 +141,22 @@ const CreatePoster = ({creatPosterButtons}) => {
         setPosterData(updatedPosters);
     }
 
-    const showUrPoster = () => {
-        console.log(showPosters);
-    }
-    
     return(
         <>
             {creatPosteName && 
                 <div className={style.menuProfileCreatPosterName}>
                     <div className={style.panelFlex}>
                         <input 
+                            className={style.menuProfilelCreatPosterNameInput}
                             type="text"
                             placeholder="Poster name" 
                             value={posterName}
                             onChange={(e) => setPosterName(e.target.value)}
-                            style={{
-                                border:'1px solid rgba(95,145,255,0.3)',
-                                borderRadius:'0.2em',
-                                background:'rgba(95,145,255,0.2)',
-                                backdropFilter:'blur(10px)',
-                                backgroundColor:'transparent',
-                                width:'clamp(20px, 7.5vw, 10vw)',
-                                fontFamily:'Arial, sans-serif',
-                                fontSize:'clamp(0.1rem,0.8vw,3rem)',
-                                textAlign:'center',
-                                marginBottom:'0.5em'
-                        }}/>
+                            />
                         <button 
+                            className={style.menuProfilelCreatPosterNameButton}
                             onClick={handleCreatePoster}
-                            style={{
-                                border:'1px solid rgba(95,145,255,0.3)',
-                                borderRadius:'0.2em',
-                                background:'rgba(95,145,255,0.2)',
-                                width:'clamp(20px, max-content, 10vw)',
-                                height:'height: clamp(30px, max-content, 10vh)',
-                                fontSize:'clamp(0.1rem,0.8vw,3rem)',
-                        }}>
+                            >
                             begin
                         </button>
                     </div>
@@ -246,14 +227,7 @@ const CreatePoster = ({creatPosterButtons}) => {
                                     buttonStyle="menuProfileSummary" 
                                     newStyle="menuProfileSummary"
                                     onClick={()=>savePosterData()}
-                                >save</SideButton>
-
-                                <SideButton
-                                    buttonStyle="menuProfileSummary" 
-                                    newStyle="menuProfileSummary"
-                                    onClick={()=>showUrPoster()}
-                                >posters</SideButton>
-                                
+                                >save</SideButton>      
                             </nav>
                         }
                     </div>
