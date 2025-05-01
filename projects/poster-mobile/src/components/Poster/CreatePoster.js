@@ -91,6 +91,7 @@ const CreatePoster = ({creatPosterButtons}) => {
         const id = `${isTerminal ? 'tw' : 'sw'}-${Date.now()}`;
 
         const newWindow = {
+            state: true,
             type: isTerminal ? "terminal" : "summary",
             id,
             position:{
@@ -233,6 +234,7 @@ const CreatePoster = ({creatPosterButtons}) => {
                             {poster.windows.map(win=>(
                             <DraggableWindow 
                                 key={win.id}
+                                state={win.state}
                                 styleClass={windowStyle[win.style]}
                                 initialX={win.position.x}
                                 initialY={win.position.y}

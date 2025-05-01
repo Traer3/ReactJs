@@ -149,6 +149,19 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         setPostersData(updatedPosters);
     }
 
+    const togglePoster = (posterId) => {
+        const updatedPosters = showPosters.map(poster=>{
+            if(poster.id === posterId){
+                return{
+                    ...poster,
+                    state: !poster.state
+                };
+            }
+            return poster;
+        })
+        setShowPosters(updatedPosters)
+    }
+
     return(
         <div className={style.panelFlex}>
             <SideButton 
@@ -235,10 +248,14 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
             {userPosters && 
                 <div className={`${style.listOfTopics} ${userPosters ? style.listOfTopicsVisible : ""}`}>
                     {showPosters.map((poster, posterIndex)=>(
-                            <SideButton 
-                                newStyle="buttonsOnPanels"
-                                >{poster.name}
-                            </SideButton>
+                            <div key={posterIndex}>
+                                <SideButton 
+                                    newStyle="buttonsOnList"
+                                    onClick={()=>togglePoster(poster.id)}
+                                >
+                                    {poster.name}
+                                </SideButton>
+                            </div>
                     ))}
                 </div>
             }
@@ -247,24 +264,28 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                 <div>
                     {showPosters.map((poster, posterIndex)=>(
                             <div key={posterIndex}>
-                            {poster.windows.map(win =>(
-                                <DraggableWindow
-                                    key={win.id}
-                                    styleClass={windowStyle[win.style]}
-                                    initialX={win.position.x}
-                                    initialY={win.position.y}
-                                    id={win.id}
-                                    onClose={()=> handleCloseWindow(posterIndex,win.id)}
-                                >
-                                    <Textarea
-                                        id={win.id}
-                                        value={win.content}
-                                        readOnly={true}
-                                    >
-
-                                    </Textarea>
-                                </DraggableWindow>
-                            ))}
+                                {poster.state && 
+                                    <>
+                                        {poster.windows.map(win =>(
+                                            <DraggableWindow
+                                                key={win.id}
+                                                styleClass={windowStyle[win.style]}
+                                                initialX={win.position.x}
+                                                initialY={win.position.y}
+                                                id={win.id}
+                                                onClose={()=> handleCloseWindow(posterIndex,win.id)}
+                                                state={win.state}
+                                            >
+                                                <Textarea
+                                                    id={win.id}
+                                                    value={win.content}
+                                                    readOnly={true}
+                                                >
+                                                </Textarea>
+                                            </DraggableWindow>
+                                        ))}
+                                    </>
+                                }
                             </div>
                     ))}
                 </div>

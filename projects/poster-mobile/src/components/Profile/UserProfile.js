@@ -91,7 +91,6 @@ const UserProfile = ({userId, SBmenuPanel}) => {
             return poster;
         })
         setShowPosters(updatedPosters)
-        
     }
 
     
