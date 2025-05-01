@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import PosterMain from "./PosterMain";
 import PosterMobileMain from "./PosterMobileMain";
 
-
 const PostersData = ({userId })=> {
     
     
@@ -17,8 +16,20 @@ const PostersData = ({userId })=> {
                 window.removeEventListener("resize", handleResize);
             };
         },[])
+    
+    const [postersData, setPostersData] = useState([]);
+    useEffect(()=>{
+        fetch(`http://localhost:3001/getPosterData/${userId}`)
+        .then((res)=>res.json())
+        .then((data)=>{
+            if(data.posterData){
+                setPostersData(data.posterData)
+            }
+        })
+        .catch((err)=> console.error(err))
+    },[userId])
 
-
+    
         
     const [enablePosterState, setEnablePosterState] = useState([
         {
@@ -35,8 +46,6 @@ const PostersData = ({userId })=> {
         
     ]);
     
-    
-
     const [posterStateArray, setPosterStateArray] = useState([
         {
             name: "TwoAnswers",
@@ -274,24 +283,24 @@ const PostersData = ({userId })=> {
         },
     ]);
 
-    
-
     return(
         <div>
             {defineVersion ? (
                 <PosterMain 
-                posterStateArray={posterStateArray} 
-                setPosterStateArray ={setPosterStateArray} 
-                userId={userId} 
-                enablePosterState={enablePosterState}
-                setEnablePosterState={setEnablePosterState}
-            /> 
+                    posterStateArray={posterStateArray} 
+                    setPosterStateArray ={setPosterStateArray} 
+                    userId={userId} 
+                    enablePosterState={enablePosterState}
+                    setEnablePosterState={setEnablePosterState}
+                    postersData={postersData}
+                    setPostersData={setPostersData}
+                /> 
             ) : (
                 <PosterMobileMain 
-                posterStateArray={posterStateArray} 
-                setPosterStateArray ={setPosterStateArray} 
-                userId={userId} 
-            /> 
+                    posterStateArray={posterStateArray} 
+                    setPosterStateArray ={setPosterStateArray} 
+                    userId={userId} 
+                /> 
             )}
         </div>
     );

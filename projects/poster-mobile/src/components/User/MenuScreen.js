@@ -50,6 +50,9 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
         alert("Bye-bye 👋")
     }
 
+    const [showPosters, setShowPosters] = useState(false);
+    //setShowPosters(false);
+
     return(
        <div style={{padding:'5px' ,  width:'100%', height:'100vh'}}>
         
@@ -84,9 +87,41 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
 
             {profileOpen  &&
                 <UserProfile userId={userId} SBmenuPanel={setMenuOpen}/>
-                
             }
+            {showPosters && 
+                <>{
+                    /* 
+                     Я хочу так отображать постера , это позволит им не быть зависимым от боковой панели
+                     Через localStorage я буду получать постера 
 
+                    */
+                    /* 
+                    {showPosters.map((poster, posterIndex)=>(
+                            <div key={posterIndex}>
+                            {poster.windows.map(win =>(
+                                <DraggableWindow
+                                    key={win.id}
+                                    styleClass={windowStyle[win.style]}
+                                    initialX={win.position.x}
+                                    initialY={win.position.y}
+                                    id={win.id}
+                                    onClose={()=> handleCloseWindow(posterIndex,win.id)}
+                                >
+                                    <Textarea
+                                        id={win.id}
+                                        value={win.content}
+                                        readOnly={true}
+                                    >
+
+                                    </Textarea>
+                                </DraggableWindow>
+                            ))}
+                            </div>
+                    ))}
+                    */
+                }
+                </>
+            }
            
             <SideButton 
                 buttonState={userButton} 

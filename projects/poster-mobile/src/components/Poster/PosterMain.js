@@ -12,7 +12,7 @@ import DraggableWindow from "../Windows/DraggableWindow";
 import Textarea from "../Windows/Textarea";
 import windowStyle from "../Windows/WindowStyle.module.css"
 
-const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterState,setEnablePosterState}) => {
+const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterState,setEnablePosterState,postersData, setPostersData}) => {
     const [items, setItems] = useState(false);
     const [showSave, setShowSave] = useState(false);
     const showItemList = (state, setState) => {
@@ -128,19 +128,17 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         return posters?.state?.[topic]
     }
 
+
+    //////////////////////////////////////////////////////
+    //database posters 
     const [userPosters, setUserPosters] = useState(false);
     const [showPosters, setShowPosters] = useState([]);
+    
     useEffect(()=>{
-        fetch(`http://localhost:3001/getPosterData/${userId}`)
-        .then((res)=>res.json())
-        .then((data)=>{
-            if(data.posterData){
-                setShowPosters(data.posterData)
-            }
-        })
-        .catch((err)=> console.error(err))
-    },[userId])
+        setShowPosters(postersData);
+    },[userId,postersData])
 
+    
     const handleCloseWindow = (posterIndex,idToRemove) =>{
         const updatedPosters = [...showPosters];
         const targetPoster = updatedPosters[posterIndex];
@@ -148,7 +146,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         if(!targetPoster) return;
 
         targetPoster.windows = targetPoster.windows.filter(win => win.id !== idToRemove)
-        setShowPosters(updatedPosters);
+        setPostersData(updatedPosters);
     }
 
     return(
@@ -234,17 +232,20 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                 >User Posters
             </SideButton>
 
-            
-            
             {userPosters && 
                 <div className={`${style.listOfTopics} ${userPosters ? style.listOfTopicsVisible : ""}`}>
                     {showPosters.map((poster, posterIndex)=>(
-                        <>
                             <SideButton 
                                 newStyle="buttonsOnPanels"
                                 >{poster.name}
                             </SideButton>
-            
+                    ))}
+                </div>
+            }
+
+            {userPosters && 
+                <div>
+                    {showPosters.map((poster, posterIndex)=>(
                             <div key={posterIndex}>
                             {poster.windows.map(win =>(
                                 <DraggableWindow
@@ -265,7 +266,6 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                                 </DraggableWindow>
                             ))}
                             </div>
-                        </>
                     ))}
                 </div>
             }
