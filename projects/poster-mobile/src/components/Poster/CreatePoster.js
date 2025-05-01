@@ -7,10 +7,7 @@ import SideButton from "../SidePanelComponents/SideButton";
 import ColoredBox from "../Windows/ColoredBox";
 
 //Изменять размер окна , отягивая за край , сохранить размер окна в базу 
-//Создать кнопку Постеры юзера 
-//Загрузить с базы постеры от юзера 
 
-// показать постеры из базы 
 // редактировать постеры 
 
 

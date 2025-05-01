@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import style from "./Textarea.module.css"
 
-const Textarea = ({id, value, onChange}) => {
+const Textarea = ({id, value, onChange, readOnly = false}) => {
     const [editTable, setEditTable] = useState(false);
     const textareaRef = useRef(null);
     
@@ -17,9 +17,10 @@ const Textarea = ({id, value, onChange}) => {
     return(
         <textarea 
             ref={textareaRef}
+            value={value}
             onChange={(e)=> onChange(id, e.target.value)}
             onDoubleClick={()=> setEditTable(true)}
-            readOnly={!editTable}
+            readOnly={readOnly || !editTable}
             onBlur={()=>setEditTable(false)}
             className={style.myTextarea}
             rows={1}

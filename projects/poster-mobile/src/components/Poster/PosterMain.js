@@ -8,12 +8,15 @@ import FLEXBox from "./Posters/FLEXBox";
 import StyleUsage from "./Posters/StyleUsage";
 import ProblemsWithStyles from "./Posters/ProblemsWithStyles";
 import Position from "./Posters/Postion";
+import DraggableWindow from "../Windows/DraggableWindow";
+import Textarea from "../Windows/Textarea";
+import windowStyle from "../Windows/WindowStyle.module.css"
 
 const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterState,setEnablePosterState}) => {
     const [items, setItems] = useState(false);
     const [showSave, setShowSave] = useState(false);
-    const showItemList = () => {
-        setItems(!items);
+    const showItemList = (state, setState) => {
+        setState(!state);
     }
 
     const [topicsState, setTopicsState] = useState({ 
@@ -125,11 +128,34 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         return posters?.state?.[topic]
     }
 
+    const [userPosters, setUserPosters] = useState(false);
+    const [showPosters, setShowPosters] = useState([]);
+    useEffect(()=>{
+        fetch(`http://localhost:3001/getPosterData/${userId}`)
+        .then((res)=>res.json())
+        .then((data)=>{
+            if(data.posterData){
+                setShowPosters(data.posterData)
+            }
+        })
+        .catch((err)=> console.error(err))
+    },[userId])
+
+    const handleCloseWindow = (posterIndex,idToRemove) =>{
+        const updatedPosters = [...showPosters];
+        const targetPoster = updatedPosters[posterIndex];
+
+        if(!targetPoster) return;
+
+        targetPoster.windows = targetPoster.windows.filter(win => win.id !== idToRemove)
+        setShowPosters(updatedPosters);
+    }
+
     return(
         <div className={style.panelFlex}>
             <SideButton 
                 newStyle="buttonsOnPanels"
-                onClick={showItemList}
+                onClick={()=>showItemList(items,setItems)}
                 >Posters
             </SideButton>
 
@@ -187,6 +213,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                     
                 </div>
             )}
+
             <h1 
                 style={{
                     backgroundColor:'red', 
@@ -200,8 +227,48 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                     <br/>W = {window.innerWidth}
                     <br/>H = {window.innerHeight}
             </h1>
-              
+
+            <SideButton 
+                newStyle="buttonsOnPanels"
+                onClick={()=>showItemList(userPosters,setUserPosters)}
+                >User Posters
+            </SideButton>
+
             
+            
+            {userPosters && 
+                <div className={`${style.listOfTopics} ${userPosters ? style.listOfTopicsVisible : ""}`}>
+                    {showPosters.map((poster, posterIndex)=>(
+                        <>
+                            <SideButton 
+                                newStyle="buttonsOnPanels"
+                                >{poster.name}
+                            </SideButton>
+            
+                            <div key={posterIndex}>
+                            {poster.windows.map(win =>(
+                                <DraggableWindow
+                                    key={win.id}
+                                    styleClass={windowStyle[win.style]}
+                                    initialX={win.position.x}
+                                    initialY={win.position.y}
+                                    id={win.id}
+                                    onClose={()=> handleCloseWindow(posterIndex,win.id)}
+                                >
+                                    <Textarea
+                                        id={win.id}
+                                        value={win.content}
+                                        readOnly={true}
+                                    >
+
+                                    </Textarea>
+                                </DraggableWindow>
+                            ))}
+                            </div>
+                        </>
+                    ))}
+                </div>
+            }
 
             {showSave &&
                 <SideButton 
