@@ -97,14 +97,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
 // отображение постеров из базы
 const [showPosters, setShowPosters] = useState([]);
 useEffect(()=>{
-    fetch(`http://localhost:3001/getPosterData/${userId}`)
-    .then((res)=>res.json())
-    .then((data)=>{
-        if(data.posterData){
-            setShowPosters(data.posterData)
-        }
-    })
-    .catch((err)=> console.error(err))
+    setShowPosters(JSON.parse(localStorage.getItem("postersData")))
 },[userId])
 
     return(
@@ -298,7 +291,7 @@ useEffect(()=>{
                     </div>
             }
             
-            {creatPoster && <CreatePoster creatPosterButtons={creatPosterButtons}/>}
+            {creatPoster && <CreatePoster creatPosterButtons={creatPosterButtons} showPoster={showPosters} userId={userId}/>}
             
         </div>
     );

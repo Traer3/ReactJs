@@ -29,6 +29,10 @@ const PostersData = ({userId })=> {
         .catch((err)=> console.error(err))
     },[userId])
 
+    useEffect(()=>{
+        localStorage.setItem("postersData",JSON.stringify(postersData))
+    },[userId,postersData])
+
     
         
     const [enablePosterState, setEnablePosterState] = useState([

@@ -11,7 +11,11 @@ import ColoredBox from "../Windows/ColoredBox";
 
 
 
-const CreatePoster = ({creatPosterButtons}) => {
+const CreatePoster = ({creatPosterButtons,showPoster,userId}) => {
+
+    useEffect(()=>{
+        setShowPosters(showPoster);
+    },[userId])
 
     const [chooseStyle, setChooseStyle] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
@@ -27,7 +31,6 @@ const CreatePoster = ({creatPosterButtons}) => {
 
 
     const [showPosters, setShowPosters] = useState([]);
-    const userId = 1; //потом будем получать через пропсы 
     const [posterData, setPosterData] = useState([]);
     const [textareaData, setTextareaData,] = useState([]);
     const [posterName, setPosterName] = useState("") 
@@ -49,16 +52,7 @@ const CreatePoster = ({creatPosterButtons}) => {
         setShowMenu(false)
     }
 
-    useEffect(()=>{
-        fetch(`http://localhost:3001/getPosterData/${userId}`)
-        .then((res)=>res.json())
-        .then((data)=>{
-            if(data.posterData){
-                setShowPosters(data.posterData)
-            }
-        })
-        .catch((err)=> console.error(err))
-    },[userId])
+    
 
     const savePosterData = () => {
         const mergedPosters = [...showPosters, ...posterData];
