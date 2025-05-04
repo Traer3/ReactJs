@@ -131,7 +131,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
 
     //////////////////////////////////////////////////////
     //database posters 
-    //test 
+    //test 2
     const [userPosters, setUserPosters] = useState(false);
     const [showPosters, setShowPosters] = useState([]);
     
