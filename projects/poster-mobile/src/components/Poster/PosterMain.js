@@ -131,7 +131,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
 
     //////////////////////////////////////////////////////
     //database posters 
-    // i hate win 11 update KYS
+ 
     const [userPosters, setUserPosters] = useState(false);
     const [showPosters, setShowPosters] = useState([]);
     
