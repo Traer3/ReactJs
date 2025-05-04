@@ -16,7 +16,7 @@ const LogIn = ({setUserCheck, setUserId}) =>{
         
         try {
             
-            const response = await fetch('http://192.168.0.254:3001/logIn', { //поменяй ip 
+            const response = await fetch('http://localhost:3001/logIn', { //поменяй ip 
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ login, password }),

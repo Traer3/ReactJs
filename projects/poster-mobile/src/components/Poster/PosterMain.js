@@ -11,6 +11,7 @@ import Position from "./Posters/Postion";
 import DraggableWindow from "../Windows/DraggableWindow";
 import Textarea from "../Windows/Textarea";
 import windowStyle from "../Windows/WindowStyle.module.css"
+import BoxCheck from "./Posters/BoxCheck";
 
 const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterState,setEnablePosterState,postersData, setPostersData}) => {
     const [items, setItems] = useState(false);
@@ -53,6 +54,9 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
     }, [userId ,setPosterStateArray]);
 
     useEffect(()=>{
+
+        if(userId === 0) return
+
         const interval = setInterval(()=>{
             fetch(`http://localhost:3001/getEnabledPostersState/${userId}`)
             .then((res)=>res.json())
@@ -131,7 +135,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
 
     //////////////////////////////////////////////////////
     //database posters 
-    //test 2
+
     const [userPosters, setUserPosters] = useState(false);
     const [showPosters, setShowPosters] = useState([]);
     
@@ -140,13 +144,16 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
     },[userId,postersData])
 
     
-    const handleCloseWindow = (posterIndex,idToRemove) =>{
+    const handleCloseWindow = (posterIndex,idToToggle) =>{
         const updatedPosters = [...showPosters];
         const targetPoster = updatedPosters[posterIndex];
 
         if(!targetPoster) return;
 
-        targetPoster.windows = targetPoster.windows.filter(win => win.id !== idToRemove)
+        targetPoster.windows = targetPoster.windows.map(win => 
+            win.id === idToToggle ? {...win, state: !win.state} : win
+        );
+
         setPostersData(updatedPosters);
     }
 
@@ -248,14 +255,32 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
 
             {userPosters && 
                 <div className={`${style.listOfTopics} ${userPosters ? style.listOfTopicsVisible : ""}`}>
-                    {showPosters.map((poster, posterIndex)=>(
+                    { //нужно настроить квадратики которые буду с постерами 
+                    /* 
+                    
+                    Нужно что бы квадраты становились в колоники , колонка желтых , красны , синих и зеленных 
+                    -- для колонок я использую columnSquare из WindowStyle.module.css
+                    -- можно создать логику которая будет отслеживать квадраты определенных цветов и ставить их вместе . 
+                    -- Отрисовать все квадраты разных цветов и потом повтороно отрисовать их но уже в колонках со своими 
+                    */ 
+                    showPosters.map((poster, posterIndex)=>( 
                             <div key={posterIndex}>
-                                <SideButton 
-                                    newStyle="buttonsOnList"
-                                    onClick={()=>togglePoster(poster.id)}
-                                >
-                                    {poster.name}
-                                </SideButton>
+                                <>
+                                    <SideButton 
+                                        newStyle="buttonsOnList"
+                                        onClick={()=>togglePoster(poster.id)}
+                                    >
+                                        {poster.name}
+                                    </SideButton>
+                                    
+                                    {poster.windows.map(win =>(
+                                        <BoxCheck 
+                                            color={win.style} 
+                                            state={win.state}
+                                            toggleWindow={()=> handleCloseWindow(posterIndex,win.id)}
+                                            />))
+                                    }
+                                </>
                             </div>
                     ))}
                 </div>

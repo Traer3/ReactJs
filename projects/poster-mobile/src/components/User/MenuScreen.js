@@ -93,7 +93,7 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
                     /* 
                      Я хочу так отображать постера , это позволит им не быть зависимым от боковой панели
                      Через localStorage я буду получать постера 
-
+                     а из Poster Main я буду получать указания какой включить и выключить 
                     */
                     /* 
                     {showPosters.map((poster, posterIndex)=>(

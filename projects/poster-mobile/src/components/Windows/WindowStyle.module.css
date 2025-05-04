@@ -44,6 +44,8 @@
     backdrop-filter: var(--backdropFilter);
     box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--BW-background), 0 0 clamp(2px, 1.3vw, 20px) var(--BW-shadow);
     color: var(--textColor);
+    min-width: max-content;
+    min-height: max-content;
     text-align: left;
     font-family: var(--fontFamily);
     font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
@@ -69,14 +71,15 @@
 
 .redSummWindow{ 
     border: var(--RWS-border);
-    background: var(--RW-background);
-    box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--RW-background), 0 0 clamp(2px, 1.3vw, 20px) var(--RW-shadow);
     border-radius: var(--borderRadius);
     padding: var(--padding);
     overflow-y: auto;
+    background: var(--RW-background);
+    box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--RW-background), 0 0 clamp(2px, 1.3vw, 20px) var(--RW-shadow);
     backdrop-filter: var(--backdropFilter);
     color: var(--textColor);
-    
+    min-width: max-content;
+    min-height: max-content;
     text-align: left;
     font-family: var(--fontFamily);
     font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
@@ -109,7 +112,8 @@
     backdrop-filter: var(--backdropFilter);
     box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--GW-background), 0 0 clamp(2px, 1.3vw, 20px) var(--GW-shadow);
     color: var(--textColor);
-    min-width: 350px;
+    min-width: max-content;
+    min-height: max-content;
     text-align: left;
     font-family: var(--fontFamily);
     font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
@@ -141,7 +145,8 @@
     backdrop-filter: var(--backdropFilter);
     box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--YW-background), 0 0 clamp(2px, 1.3vw, 20px) var(--YW-shadow);
     color: var(--textColor);
-    min-width: 350px;
+    min-width: max-content;
+    min-height: max-content;
     text-align: left;
     font-family: var(--fontFamily);
     font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));

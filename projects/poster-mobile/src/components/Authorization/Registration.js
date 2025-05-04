@@ -14,7 +14,7 @@ const Registration = () =>{
             return;
         }
 
-        fetch('http://192.168.0.254:3001/registration',{ //поменяй ip 
+        fetch('http://localhost:3001/registration',{ //поменяй ip 
             method:'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({login, password}),
