@@ -170,6 +170,27 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         setShowPosters(updatedPosters)
     }
 
+    const groupBoxes = (windows) =>{
+        const groups = {
+            red: [],
+            green: [],
+            yellow: [],
+            default: [],
+        };
+
+        windows.forEach(win => {
+            if(win.style === "redSummWindow" || win.style === "redTermWindow"){
+                groups.red.push(win);
+            }else if(win.style === "greenSummWindow" || win.style === "greenTermWindow"){
+                groups.green.push(win);
+            }else if(win.style === "yellowSummWindow" || win.style === "yellowTermWindow"){
+                groups.yellow.push(win);
+            }else{
+                groups.default.push(win);
+            }
+        });
+        return groups;
+    }
     return(
         <div className={style.panelFlex}>
             <SideButton 
@@ -255,34 +276,51 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
 
             {userPosters && 
                 <div className={`${style.listOfTopics} ${userPosters ? style.listOfTopicsVisible : ""}`}>
-                    { //нужно настроить квадратики которые буду с постерами 
-                    /* 
-                    
-                    Нужно что бы квадраты становились в колоники , колонка желтых , красны , синих и зеленных 
-                    -- для колонок я использую columnSquare из WindowStyle.module.css
-                    -- можно создать логику которая будет отслеживать квадраты определенных цветов и ставить их вместе . 
-                    -- Отрисовать все квадраты разных цветов и потом повтороно отрисовать их но уже в колонках со своими 
-                    */ 
-                    showPosters.map((poster, posterIndex)=>( 
-                            <div key={posterIndex}>
-                                <>
-                                    <SideButton 
-                                        newStyle="buttonsOnList"
-                                        onClick={()=>togglePoster(poster.id)}
-                                    >
-                                        {poster.name}
-                                    </SideButton>
+
+                   {showPosters.map((poster,posterIndex)=>{
+                    const  grouped = groupBoxes(poster.windows);
+                    return(
+                        <>
+                            <div 
+                                key={posterIndex}
+                                style={{
+                                    display:'flex',
+                                    justifyContent:'center',
                                     
-                                    {poster.windows.map(win =>(
-                                        <BoxCheck 
-                                            color={win.style} 
-                                            state={win.state}
-                                            toggleWindow={()=> handleCloseWindow(posterIndex,win.id)}
-                                            />))
-                                    }
-                                </>
+                                }}
+                            >
+                                <SideButton
+                                    newStyle="buttonsOnList"
+                                    onClick={()=> togglePoster(poster.id)}
+                                >
+                                    {poster.name}
+                                </SideButton>
+                             </div>
+                             <div 
+                                style={{
+                                    display:'flex',
+                                    justifyContent:'center',
+                                }}
+                            >
+                            {["red","green","yellow","default"].map(groupKey =>(
+                                grouped[groupKey].length > 0 && (
+                                    <div key={groupKey} className={windowStyle.columnSquare}> 
+                                        {grouped[groupKey].map(win=>(
+                                            <BoxCheck
+                                                key={win.id}
+                                                color={win.style}
+                                                state={win.state}
+                                                toggleWindow={()=> handleCloseWindow(posterIndex,win.id)}
+                                            />
+                                        ))}
+                                    </div>
+                                )
+                            ))}
                             </div>
-                    ))}
+                        </>
+                    )
+                   })}
+
                 </div>
             }
 
