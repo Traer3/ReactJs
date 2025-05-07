@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PosterMain from "./PosterMain";
 import PosterMobileMain from "./PosterMobileMain";
 
-const PostersData = ({userId })=> {
+const PostersData = ({userId})=> {
     
     
      const [defineVersion, setDefineVersion] = useState(window.innerWidth > 768)
@@ -298,6 +298,7 @@ const PostersData = ({userId })=> {
                     setEnablePosterState={setEnablePosterState}
                     postersData={postersData}
                     setPostersData={setPostersData}
+                    
                 /> 
             ) : (
                 <PosterMobileMain 

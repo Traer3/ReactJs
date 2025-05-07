@@ -8,12 +8,10 @@ import FLEXBox from "./Posters/FLEXBox";
 import StyleUsage from "./Posters/StyleUsage";
 import ProblemsWithStyles from "./Posters/ProblemsWithStyles";
 import Position from "./Posters/Postion";
-import DraggableWindow from "../Windows/DraggableWindow";
-import Textarea from "../Windows/Textarea";
 import windowStyle from "../Windows/WindowStyle.module.css"
-import BoxCheck from "./Posters/BoxCheck";
+import BoxCheck from "./BoxCheck";
 
-const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterState,setEnablePosterState,postersData, setPostersData}) => {
+const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterState,setEnablePosterState,postersData, setPostersData,}) => {
     const [items, setItems] = useState(false);
     const [showSave, setShowSave] = useState(false);
     const showItemList = (state, setState) => {
@@ -137,6 +135,8 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
     //database posters 
 
     const [userPosters, setUserPosters] = useState(false);
+    
+
     const [showPosters, setShowPosters] = useState([]);
     
     useEffect(()=>{
@@ -170,6 +170,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         setShowPosters(updatedPosters)
     }
 
+    
     const groupBoxes = (windows) =>{
         const groups = {
             red: [],
@@ -191,6 +192,13 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         });
         return groups;
     }
+    
+    useEffect(()=>{
+        
+        localStorage.setItem("userPosters",JSON.stringify(userPosters))
+       // console.log(userPosters)
+    },[userId,userPosters])
+
     return(
         <div className={style.panelFlex}>
             <SideButton 
@@ -278,7 +286,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                 <div className={`${style.listOfTopics} ${userPosters ? style.listOfTopicsVisible : ""}`}>
 
                    {showPosters.map((poster,posterIndex)=>{
-                    const  grouped = groupBoxes(poster.windows);
+                   const  grouped = groupBoxes(poster.windows);
                     return(
                         <>
                             <div 
@@ -286,7 +294,6 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                                 style={{
                                     display:'flex',
                                     justifyContent:'center',
-                                    
                                 }}
                             >
                                 <SideButton
@@ -296,6 +303,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                                     {poster.name}
                                 </SideButton>
                              </div>
+                        
                              <div 
                                 style={{
                                     display:'flex',
@@ -321,37 +329,6 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                     )
                    })}
 
-                </div>
-            }
-
-            {userPosters && 
-                <div>
-                    {showPosters.map((poster, posterIndex)=>(
-                            <div key={posterIndex}>
-                                {poster.state && 
-                                    <>
-                                        {poster.windows.map(win =>(
-                                            <DraggableWindow
-                                                key={win.id}
-                                                styleClass={windowStyle[win.style]}
-                                                initialX={win.position.x}
-                                                initialY={win.position.y}
-                                                id={win.id}
-                                                onClose={()=> handleCloseWindow(posterIndex,win.id)}
-                                                state={win.state}
-                                            >
-                                                <Textarea
-                                                    id={win.id}
-                                                    value={win.content}
-                                                    readOnly={true}
-                                                >
-                                                </Textarea>
-                                            </DraggableWindow>
-                                        ))}
-                                    </>
-                                }
-                            </div>
-                    ))}
                 </div>
             }
 

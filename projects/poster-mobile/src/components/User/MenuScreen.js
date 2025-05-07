@@ -5,6 +5,9 @@ import SidePanels from '../SidePanels.module.css'
 import Authorization from "../Authorization/Authorization";
 import PostersData from "../Poster/PostersData";
 import UserProfile from "../Profile/UserProfile";
+import PosterScreen from "../Poster/PosterScreen";
+
+
 
 const MenuScreen = ({userId,setUserId,setUserCheck}) => {
 
@@ -50,8 +53,8 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
         alert("Bye-bye 👋")
     }
 
-    const [showPosters, setShowPosters] = useState(false);
-    //setShowPosters(false);
+    const [userPosters, setUserPosters] = useState(true);
+    
 
     return(
        <div style={{padding:'5px' ,  width:'100%', height:'100vh'}}>
@@ -81,6 +84,7 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
                  <div>
                     <PostersData 
                         userId={userId} 
+                        
                     />
                  </div>
             </SidePanel>
@@ -88,40 +92,14 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
             {profileOpen  &&
                 <UserProfile userId={userId} SBmenuPanel={setMenuOpen}/>
             }
-            {showPosters && 
-                <>{
-                    /* 
-                     Я хочу так отображать постера , это позволит им не быть зависимым от боковой панели
-                     Через localStorage я буду получать постера 
-                     а из Poster Main я буду получать указания какой включить и выключить 
-                    */
-                    /* 
-                    {showPosters.map((poster, posterIndex)=>(
-                            <div key={posterIndex}>
-                            {poster.windows.map(win =>(
-                                <DraggableWindow
-                                    key={win.id}
-                                    styleClass={windowStyle[win.style]}
-                                    initialX={win.position.x}
-                                    initialY={win.position.y}
-                                    id={win.id}
-                                    onClose={()=> handleCloseWindow(posterIndex,win.id)}
-                                >
-                                    <Textarea
-                                        id={win.id}
-                                        value={win.content}
-                                        readOnly={true}
-                                    >
 
-                                    </Textarea>
-                                </DraggableWindow>
-                            ))}
-                            </div>
-                    ))}
-                    */
-                }
-                </>
+            
+            {userPosters && 
+                <PosterScreen />
             }
+            
+
+           
            
             <SideButton 
                 buttonState={userButton} 
