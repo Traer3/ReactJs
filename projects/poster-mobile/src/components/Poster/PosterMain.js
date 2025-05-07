@@ -11,7 +11,7 @@ import Position from "./Posters/Postion";
 import windowStyle from "../Windows/WindowStyle.module.css"
 import BoxCheck from "./BoxCheck";
 
-const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterState,setEnablePosterState,postersData, setPostersData,}) => {
+const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterState,setEnablePosterState,postersData, setPostersData,setCheckState,checkState}) => {
     const [items, setItems] = useState(false);
     const [showSave, setShowSave] = useState(false);
     const showItemList = (state, setState) => {
@@ -141,7 +141,8 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
     
     useEffect(()=>{
         setShowPosters(postersData);
-    },[userId,postersData])
+        console.log("checkState UPDATED")
+    },[userId,postersData,checkState])
 
     
     const handleCloseWindow = (posterIndex,idToToggle) =>{
@@ -155,6 +156,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         );
 
         setPostersData(updatedPosters);
+        updatePostersData()
     }
 
     const togglePoster = (posterId) => {
@@ -168,6 +170,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
             return poster;
         })
         setShowPosters(updatedPosters)
+        updatePostersData();
     }
 
     
@@ -193,11 +196,26 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         return groups;
     }
     
-    useEffect(()=>{
-        
-        localStorage.setItem("userPosters",JSON.stringify(userPosters))
-       // console.log(userPosters)
-    },[userId,userPosters])
+     const updatePostersData = () => {
+            console.log(postersData);
+            fetch('http://localhost:3001/savePosterData',{
+                method: 'POST',
+                headers:{'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    userId: userId,
+                    posterData: postersData,
+                })
+            })
+            .then(res => res.json())
+            .then(data=>{
+                console.log("Message from db", data.message);
+                setCheckState(Date.now()); //это часть костыля
+            })
+            .catch(err=>{
+                console.error("Error saving updated topics" , err)
+            })
+        }
+    
 
     return(
         <div className={style.panelFlex}>

@@ -6,46 +6,25 @@ import DraggableWindow from "../Windows/DraggableWindow";
 
 
 
-const PosterScreen = () => {
+const PosterScreen = ({userId, checkState,setCheckState}) => {
 
-
-    /*
-    const [userPosters, setUserPosters] = useState(false);
     
+    const [postersData, setPostersData] = useState([]);
+        useEffect(()=>{
+            fetch(`http://localhost:3001/getPosterData/${userId}`)
+            .then((res)=>res.json())
+            .then((data)=>{
+                if(data.posterData){
+                    setPostersData(data.posterData)
+                }
+            })
+            .catch((err)=> console.error(err))
+            console.log(checkState)
+        },[userId,checkState])
 
-    useEffect(()=>{
-        const syncState = () => {
-            const stored = localStorage.getItem("userPosters");
-            if(stored !== null){
-                setUserPosters(JSON.parse(stored));
-            }
-        };
-        window.addEventListener("storage",syncState);
-        return () => window.removeEventListener("storage",syncState);
-    },[userId])
-    */
-
-
-    const [posterData, setPostersData] = useState(()=>{
-        return JSON.parse(localStorage.getItem("postersData")) || [];
-    });
-
-
-    useEffect(()=>{
-        const syncState = () => {
-            const stored = localStorage.getItem("postersData");
-            if(stored !== null){
-                setPostersData(JSON.parse(stored));
-            }
-            console.log(stored)
-        };
-        
-        window.addEventListener("storage",syncState);
-        return ()=> window.removeEventListener("storage",syncState);
-    },[])
 
     const handleCloseWindow = (posterIndex,idToToggle) =>{
-        const updatedPosters = [...posterData];
+        const updatedPosters = [...postersData];
         const targetPoster = updatedPosters[posterIndex];
 
         if(!targetPoster) return;
@@ -53,13 +32,42 @@ const PosterScreen = () => {
         targetPoster.windows = targetPoster.windows.map(win => 
             win.id === idToToggle ? {...win, state: !win.state} : win
         );
-
+        setCheckState(Date.now()); //это часть костыля
         setPostersData(updatedPosters);
+        updatePostersData();
     }
 
+    const updatePostersData = () => {
+        console.log(postersData);
+        fetch('http://localhost:3001/savePosterData',{
+            method: 'POST',
+            headers:{'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                userId: userId,
+                posterData: postersData,
+            })
+        })
+        .then(res => res.json())
+        .then(data=>{
+            setCheckState(Date.now()); //это часть костыля
+            console.log("Message from db", data.message);
+        })
+        .catch(err=>{
+            console.error("Error saving updated topics" , err)
+        })
+    }
+
+
     return(
-        <div>
-            {posterData.map((poster, posterIndex)=>(
+        <div style={{
+            position:'absolute',
+            border:'1px solid red',
+            top:'0',
+            left:'0',
+            height:'100%',
+            width:'100%',
+        }}>
+            {postersData.map((poster, posterIndex)=>(
                 <div key={posterIndex}>
                     {poster.state && 
                         <>

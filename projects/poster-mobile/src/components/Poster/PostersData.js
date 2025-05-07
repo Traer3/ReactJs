@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PosterMain from "./PosterMain";
 import PosterMobileMain from "./PosterMobileMain";
 
-const PostersData = ({userId})=> {
+const PostersData = ({userId,setCheckState,checkState})=> {
     
     
      const [defineVersion, setDefineVersion] = useState(window.innerWidth > 768)
@@ -27,14 +27,9 @@ const PostersData = ({userId})=> {
             }
         })
         .catch((err)=> console.error(err))
-    },[userId])
-
-    useEffect(()=>{
-        localStorage.setItem("postersData",JSON.stringify(postersData))
-    },[userId,postersData])
+    },[userId,checkState])
 
     
-        
     const [enablePosterState, setEnablePosterState] = useState([
         {
             name: "Posters",
@@ -298,7 +293,8 @@ const PostersData = ({userId})=> {
                     setEnablePosterState={setEnablePosterState}
                     postersData={postersData}
                     setPostersData={setPostersData}
-                    
+                    setCheckState={setCheckState}
+                    checkState={checkState}
                 /> 
             ) : (
                 <PosterMobileMain 

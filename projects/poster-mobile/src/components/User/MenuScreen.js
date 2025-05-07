@@ -55,6 +55,8 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
 
     const [userPosters, setUserPosters] = useState(true);
     
+    //костыль ^_^
+    const [checkState, setCheckState] = useState(0);
 
     return(
        <div style={{padding:'5px' ,  width:'100%', height:'100vh'}}>
@@ -84,7 +86,8 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
                  <div>
                     <PostersData 
                         userId={userId} 
-                        
+                        setCheckState={setCheckState}
+                        checkState={checkState}
                     />
                  </div>
             </SidePanel>
@@ -95,7 +98,7 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
 
             
             {userPosters && 
-                <PosterScreen />
+                <PosterScreen userId={userId} checkState={checkState} setCheckState={setCheckState}/>
             }
             
 
