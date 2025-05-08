@@ -328,7 +328,8 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                                     justifyContent:'center',
                                 }}
                             >
-                            {["red","green","yellow","default"].map(groupKey =>(
+                            {//не работает 
+                            ["red","green","yellow","default"].map(groupKey =>(
                                 grouped[groupKey].length > 0 && (
                                     <div key={groupKey} className={windowStyle.columnSquare}> 
                                         {grouped[groupKey].map(win=>(
