@@ -61,7 +61,6 @@ const PosterScreen = ({userId, checkState,setCheckState}) => {
     return(
         <div style={{
             position:'absolute',
-            border:'1px solid red',
             top:'0',
             left:'0',
             height:'100%',
