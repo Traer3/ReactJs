@@ -56,7 +56,7 @@ const CreatePoster = ({creatPosterButtons,showPoster,userId}) => {
 
     const savePosterData = () => {
         const mergedPosters = [...showPosters, ...posterData];
-        console.log(showPosters);
+        //console.log(showPosters);
         fetch('http://localhost:3001/savePosterData',{
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
@@ -85,6 +85,7 @@ const CreatePoster = ({creatPosterButtons,showPoster,userId}) => {
         const id = `${isTerminal ? 'tw' : 'sw'}-${Date.now()}`;
 
         const newWindow = {
+            boxState:true,
             state: true,
             type: isTerminal ? "terminal" : "summary",
             id,

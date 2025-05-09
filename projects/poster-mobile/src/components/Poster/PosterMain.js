@@ -156,7 +156,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         );
 
         setPostersData(updatedPosters);
-        updatePostersData()
+        updatePostersData(updatedPosters)
     }
 
     const togglePoster = (posterId) => {
@@ -164,14 +164,21 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
             if(poster.id === posterId){
                 return{
                     ...poster,
-                    state: !poster.state
+                    state: !poster.state,
+                    windows: poster.windows.map(win=>({
+                        ...win,
+                        boxState: !win.boxState
+                    }))
                 };
             }
             return poster;
         })
-        setShowPosters(updatedPosters)
-        updatePostersData();
+        setShowPosters(updatedPosters);
+        setPostersData(updatedPosters);
+        setCheckState(Date.now()); //это часть костыля
+        updatePostersData(updatedPosters); 
     }
+
 
     
     const groupBoxes = (windows) =>{
@@ -196,14 +203,13 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         return groups;
     }
     
-     const updatePostersData = () => {
-            console.log(postersData);
+     const updatePostersData = (dataToSave) => {
             fetch('http://localhost:3001/savePosterData',{
                 method: 'POST',
                 headers:{'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     userId: userId,
-                    posterData: postersData,
+                    posterData: dataToSave,
                 })
             })
             .then(res => res.json())
@@ -320,30 +326,32 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                                 >
                                     {poster.name}
                                 </SideButton>
-                             </div>
+                            </div>
                         
-                             <div 
+                            {true && 
+                            <div 
                                 style={{
                                     display:'flex',
                                     justifyContent:'center',
                                 }}
                             >
-                            {//не работает 
-                            ["red","green","yellow","default"].map(groupKey =>(
+                            {["red","green","yellow","default"].map(groupKey =>(
                                 grouped[groupKey].length > 0 && (
                                     <div key={groupKey} className={windowStyle.columnSquare}> 
-                                        {grouped[groupKey].map(win=>(
-                                            <BoxCheck
-                                                key={win.id}
-                                                color={win.style}
-                                                state={win.state}
-                                                toggleWindow={()=> handleCloseWindow(posterIndex,win.id)}
-                                            />
+                                        {grouped[groupKey].map(win=>
+                                            win.boxState && (
+                                                <BoxCheck
+                                                    key={win.id}
+                                                    color={win.style}
+                                                    state={win.state}
+                                                    toggleWindow={()=> handleCloseWindow(posterIndex,win.id)}
+                                                />
                                         ))}
                                     </div>
                                 )
                             ))}
                             </div>
+                            }
                         </>
                     )
                    })}

@@ -34,17 +34,17 @@ const PosterScreen = ({userId, checkState,setCheckState}) => {
         );
         setCheckState(Date.now()); //это часть костыля
         setPostersData(updatedPosters);
-        updatePostersData();
+        updatePostersData(updatedPosters);
     }
 
-    const updatePostersData = () => {
+    const updatePostersData = (dataToSave) => {
         console.log(postersData);
         fetch('http://localhost:3001/savePosterData',{
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({
                 userId: userId,
-                posterData: postersData,
+                posterData: dataToSave,
             })
         })
         .then(res => res.json())

@@ -32,7 +32,7 @@ const BoxCheck = ({state, color, toggleWindow}) => {
                 height:'max(0.1vw, 1vw)',
                 cursor:'pointer',
                 margin:'0.1em',
-        }}/>
+        }}/>          
     );
 };
 
