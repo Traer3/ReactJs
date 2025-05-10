@@ -179,7 +179,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         updatePostersData(updatedPosters); 
     }
 
-
+    
     
     const groupBoxes = (windows) =>{
         const groups = {
@@ -222,7 +222,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
             })
         }
     
-
+    //fix poster position from DB
     return(
         <div className={style.panelFlex}>
             <SideButton 
