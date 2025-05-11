@@ -15,6 +15,7 @@ const CreatePoster = ({creatPosterButtons,showPoster,userId}) => {
 
     useEffect(()=>{
         setShowPosters(showPoster);
+        console.log(showPoster)
     },[userId])
 
     const [chooseStyle, setChooseStyle] = useState(false);
@@ -133,6 +134,26 @@ const CreatePoster = ({creatPosterButtons,showPoster,userId}) => {
         setPosterData(updatedPosters);
     }
 
+    const handleWindowPositionChange = (id, newPosition) => {
+       setPosterData(prev =>
+        prev.map(poster =>({
+            ...poster,
+            windows: poster.windows.map(window =>
+                window.id === id
+                ? {
+                    ...window,
+                    position:{
+                        x: newPosition.x,
+                        y: newPosition.y,
+                    },
+                }
+                : window
+            ),
+        }))
+       );
+    };
+
+
     return(
         <>
             {creatPosteName && 
@@ -235,7 +256,9 @@ const CreatePoster = ({creatPosterButtons,showPoster,userId}) => {
                                 initialY={win.position.y}
                                 id={win.id}
                                 onClose={()=> handleCloseWindow(posterIndex,win.id)}
-                            >
+                                onPositionChange={handleWindowPositionChange}
+                            >   
+                                <p style={{padding:'0px',margin:'0px'}}>X: {win.position.x}</p>  <p style={{padding:'0px',margin:'0px'}}>Y: {win.position.y}</p>
                                 <Textarea 
                                     id={win.id} 
                                     value={textareaData[win.id] || ""}

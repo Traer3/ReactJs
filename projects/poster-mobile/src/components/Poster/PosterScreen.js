@@ -79,7 +79,8 @@ const PosterScreen = ({userId, checkState,setCheckState}) => {
                                     id={win.id}
                                     onClose={()=> handleCloseWindow(posterIndex,win.id)}
                                     state={win.state}
-                                >
+                                >   
+                                    <p style={{padding:'0px',margin:'0px'}}>X: {win.position.x}</p>  <p style={{padding:'0px',margin:'0px'}}>Y: {win.position.y}</p>
                                     <Textarea
                                         id={win.id}
                                         value={win.content}

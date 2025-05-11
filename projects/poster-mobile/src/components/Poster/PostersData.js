@@ -16,6 +16,8 @@ const PostersData = ({userId,setCheckState,checkState})=> {
                 window.removeEventListener("resize", handleResize);
             };
         },[])
+
+    
     
     const [postersData, setPostersData] = useState([]);
     useEffect(()=>{
@@ -24,10 +26,13 @@ const PostersData = ({userId,setCheckState,checkState})=> {
         .then((data)=>{
             if(data.posterData){
                 setPostersData(data.posterData)
+                localStorage.setItem("postersData",JSON.stringify(data.posterData))
             }
         })
         .catch((err)=> console.error(err))
     },[userId,checkState])
+
+
 
     
     const [enablePosterState, setEnablePosterState] = useState([

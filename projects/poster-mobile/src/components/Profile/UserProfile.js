@@ -98,6 +98,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
 const [showPosters, setShowPosters] = useState([]);
 useEffect(()=>{
     setShowPosters(JSON.parse(localStorage.getItem("postersData")))
+    console.log(showPosters)
 },[userId])
 
     return(
