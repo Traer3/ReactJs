@@ -311,6 +311,9 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
 
                    {showPosters.map((poster,posterIndex)=>{
                    const  grouped = groupBoxes(poster.windows);
+                   //у меня есть список UsersPosters он находится в базе getEnabledPostersState 
+                   //Мы получаем данные showPosters , затем фильтруем их через UsersPosters и те которые остались мы показываем 
+                   
                     return(
                         <>
                             <div 

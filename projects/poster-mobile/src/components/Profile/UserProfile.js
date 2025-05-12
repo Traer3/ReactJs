@@ -54,8 +54,9 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                     state: updateState,
                 };
         });
+            const mergedPosters = [...newState, ...posterFilterList]
             setEnablePosterState(newState);
-            saveEnabledPostersState(newState);
+            saveEnabledPostersState(mergedPosters);
     };
 
     const saveEnabledPostersState = (updatedState) => {
@@ -80,6 +81,14 @@ const UserProfile = ({userId, SBmenuPanel}) => {
         const posterObj = enablePosterState.find((obj)=> obj.name === "Posters");
         return posterObj?.state?.[topic] ?? false
     }
+
+    const [posterFilterList, setPosterFilterList] = useState([
+        {
+            name : "UsersPosters",
+            state:{},
+        },
+    ]);
+   
     const togglePoster = (posterId) => {
         const updatedPosters = showPosters.map(poster=>{
             if(poster.id === posterId){
@@ -89,9 +98,25 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                 };
             }
             return poster;
-        })
+        });
         setShowPosters(updatedPosters)
+
+        const newStateObject = {};
+        updatedPosters.forEach((poster)=>{
+            newStateObject[poster.name] = poster.state;
+        });
+        
+        setPosterFilterList([
+            {
+                name:"UsersPosters",
+                state: newStateObject,
+            },
+        ])
+
+        const mergedPosters = [...enablePosterState, ...posterFilterList]
+        saveEnabledPostersState(mergedPosters);
     }
+
 
     
 // отображение постеров из базы
@@ -201,64 +226,6 @@ useEffect(()=>{
                                     onClick={()=>toggleTopic("ProblemsWithStyles")} 
                                 >
                                     ProblemsWithStyles 
-                            </SideButton>
-                            <SideButton
-                                    buttonState={getTopicsState("Position")} 
-                                    buttonStyle="menuButtonsGreen" 
-                                    newStyle="menuButtonsRed"
-                                    onClick={()=>toggleTopic("Position")} 
-                                >
-                                    Position
-                            </SideButton>
-                        </div>
-
-                        <div className={style.panelFlexAndBorder}>
-                            <SideButton
-                                buttonState={desktopEdit} 
-                                buttonStyle="buttonsOnPanels" 
-                                newStyle="buttonsOnPanels"
-                            >
-                                 TestButton
-                            </SideButton>
-                            <SideButton
-                                    buttonState={getTopicsState("TwoAnswers")} 
-                                    buttonStyle="menuButtonsGreen" 
-                                    newStyle="menuButtonsRed"
-                                    onClick={()=>toggleTopic("TwoAnswers")} 
-                                >
-                                    Two 
-                            </SideButton>
-                            <SideButton
-                                    buttonState={getTopicsState("DisplayElements")} 
-                                    buttonStyle="menuButtonsGreen" 
-                                    newStyle="menuButtonsRed"
-                                    onClick={()=>toggleTopic("DisplayElements")} 
-                                >
-                                     Elements
-                            </SideButton>
-                            <SideButton
-                                    buttonState={getTopicsState("FLEXBox")} 
-                                    buttonStyle="menuButtonsGreen" 
-                                    newStyle="menuButtonsRed"
-                                    onClick={()=>toggleTopic("FLEXBox")} 
-                                >
-                                    FLEX
-                            </SideButton>
-                            <SideButton
-                                    buttonState={getTopicsState("StyleUsage")} 
-                                    buttonStyle="menuButtonsRed" 
-                                    newStyle="menuButtonsRed"
-                                    onClick={()=>toggleTopic("StyleUsage")} 
-                                >
-                                    Smokin' Sexy Style
-                            </SideButton>
-                            <SideButton
-                                    buttonState={getTopicsState("ProblemsWithStyles")} 
-                                    buttonStyle="menuButtonsGreen" 
-                                    newStyle="menuButtonsRed"
-                                    onClick={()=>toggleTopic("ProblemsWithStyles")} 
-                                >
-                                    NO Problems
                             </SideButton>
                             <SideButton
                                     buttonState={getTopicsState("Position")} 

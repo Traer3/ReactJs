@@ -49,7 +49,7 @@ const DraggableWindow = ({styleClass, initialX, initialY, children,id,onClose,st
             window.removeEventListener("touchmove",handleMove);
             window.removeEventListener("touchend",handleEnd);
         };
-    },[isDragging, offset , initialX,onPositionChange]);
+    },[isDragging, offset ,id,position,onPositionChange ]);
 
     const closeWindow = (event, id) =>{
         if(event.button === 1 && onClose){
@@ -61,8 +61,9 @@ const DraggableWindow = ({styleClass, initialX, initialY, children,id,onClose,st
     
 
     return(
-        <div onMouseDown={(e)=> closeWindow(e,id)}>
+        <div>
             {state && 
+                <div onMouseDown={(e)=> closeWindow(e,id)}>
                 <div 
                     className={styleClass}
                     onMouseDown={handleStart}
@@ -74,12 +75,14 @@ const DraggableWindow = ({styleClass, initialX, initialY, children,id,onClose,st
                         cursor:isDragging ? 'grabbing' : 'grab',
                         touchAction:'none',
                         zIndex: isDragging ? 100 : 0,
-                
                 }}>
                     {children}
                 </div>
+            
+        </div>
             }
         </div>
+        
     );
 };
 
