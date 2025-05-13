@@ -29,7 +29,7 @@ const DraggableWindow = ({styleClass, initialX, initialY, children,id,onClose,st
                 y: clientY - offset.y,
             });
         };
-
+        //исправить позицию , он не сразу все меняет , нужно по два раза нажимать и перетаскивать 
         const handleEnd = () => {
             setIsDragging(false)
             if(onPositionChange){
