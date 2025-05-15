@@ -12,8 +12,6 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     const [creatPoster, setCreatPoster] = useState(false);
     const [creatPosterButtons, setCreatPoserButtons] = useState(false);
 
-
-
     const togglMenuPanle = () =>{
         setShowMenu(!showMenu)
         setCreatPoserButtons(!creatPosterButtons)
@@ -22,6 +20,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     const toggelDesktopEdit = () => {
         setDesktopEdit(!desktopEdit);
         SBmenuPanel(!desktopEdit);
+        
     }
 
     const toggelPosterCreation = () =>{
@@ -40,10 +39,11 @@ const UserProfile = ({userId, SBmenuPanel}) => {
         .catch((err)=> console.error(err));
     }, [userId]);
     
+    console.log(enablePosterState)
 
     const toggleTopic = (topic) => { 
         const newState = enablePosterState.map((obj)=>{
-            if (obj.name !== "Posters") return obj;
+            if (obj.name !== "UsersPosters") return obj;
                 const updateState = {
                     ...obj.state,
                     [topic]: !obj.state?.[topic],
@@ -54,7 +54,8 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                     state: updateState,
                 };
         });
-            const mergedPosters = [...newState, ...posterFilterList]
+        const filteredState = newState.filter(obj => obj.name !== "UsersPosters");
+        const mergedPosters = [...filteredState, ...posterFilterList]
             setEnablePosterState(newState);
             saveEnabledPostersState(mergedPosters);
     };
@@ -99,6 +100,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
             }
             return poster;
         });
+
         setShowPosters(updatedPosters)
 
         const newStateObject = {};
@@ -106,14 +108,15 @@ const UserProfile = ({userId, SBmenuPanel}) => {
             newStateObject[poster.name] = poster.state;
         });
         
-        setPosterFilterList([
-            {
-                name:"UsersPosters",
-                state: newStateObject,
-            },
-        ])
-
-        const mergedPosters = [...enablePosterState, ...posterFilterList]
+        const newPosterState = {
+            name:"UsersPosters",
+            state: newStateObject, 
+        }
+        
+        
+        const filteredState = enablePosterState.filter(obj => obj.name !== "UsersPosters");
+        const mergedPosters = [...filteredState, newPosterState]
+        setPosterFilterList([newPosterState])
         saveEnabledPostersState(mergedPosters);
     }
 
@@ -122,9 +125,16 @@ const UserProfile = ({userId, SBmenuPanel}) => {
 // отображение постеров из базы
 const [showPosters, setShowPosters] = useState([]);
 useEffect(()=>{
-    setShowPosters(JSON.parse(localStorage.getItem("postersData")))
-    console.log(showPosters)
-},[userId])
+        fetch(`http://localhost:3001/getPosterData/${userId}`)
+        .then((res)=>res.json())
+        .then((data)=>{
+            if(data.posterData){
+                setShowPosters(data.posterData)
+            }
+        })
+        .catch((err)=> console.error(err))
+    },[userId])
+
 
     return(
         <div className={style.menuProfilelWorkSpace}>
@@ -243,10 +253,12 @@ useEffect(()=>{
                                 newStyle="buttonsOnPanels"
                             >Yours posters
                             </SideButton>
+                            
                             {showPosters.map((poster, posterIndex)=>(
                                 <div key={posterIndex}>
                                     <SideButton
-                                            buttonState={poster.state}
+                                            buttonState={poster.state // менять цвет кнопки , мы получаем состояние из enablePosterState в списке UsersPosters 
+                                                } 
                                             buttonStyle="menuButtonsGreen" 
                                             newStyle="menuButtonsRed"
                                             onClick={()=>togglePoster(poster.id)}

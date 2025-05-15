@@ -144,7 +144,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
 
     const [usersPostersState, setUsersPosters] = useState([]);
     
-    //console.log(usersPostersState.state)
+
     
 
     useEffect(()=>{
@@ -231,8 +231,8 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
 
     const filterPosters = ()=>{
        let posters = usersPostersState.state;
-       let filterPosters = posters.filter(poster => poster === true)
-       return filterPosters
+       let whiteList = Object.keys(posters).filter(poster => posters[poster])
+       return showPosters.filter(poster => whiteList.includes(poster.name))
     }
     
     //fix poster position from DB
@@ -322,10 +322,8 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
             {userPosters && 
                 <div className={`${style.listOfTopics} ${userPosters ? style.listOfTopicsVisible : ""}`}>
 
-                   {showPosters.map((poster,posterIndex)=>{
+                   {filterPosters().map((poster,posterIndex)=>{
                    const  grouped = groupBoxes(poster.windows);
-                  
-                   //Мы получаем данные showPosters , затем фильтруем их через UsersPosters и те которые остались мы показываем 
                     return(
                         <div key={poster.id}>
                             <div 
