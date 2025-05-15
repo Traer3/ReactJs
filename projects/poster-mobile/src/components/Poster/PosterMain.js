@@ -16,6 +16,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
     const [showSave, setShowSave] = useState(false);
     const showItemList = (state, setState) => {
         setState(!state);
+        console.log(filterPosters())
     }
 
     const [topicsState, setTopicsState] = useState({ 
@@ -60,7 +61,9 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
             .then((res)=>res.json())
             .then((data)=>{
             if(data.enablePosterState){
-                setEnablePosterState(data.enablePosterState)
+                setEnablePosterState(data.enablePosterState);
+                setUsersPosters(data.enablePosterState.find(obj => obj.name === "UsersPosters") || [])
+                
             }
         })
         .catch((err)=> console.error(err));
@@ -138,10 +141,14 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
     
 
     const [showPosters, setShowPosters] = useState([]);
+
+    const [usersPostersState, setUsersPosters] = useState([]);
     
+    //console.log(usersPostersState.state)
+    
+
     useEffect(()=>{
         setShowPosters(postersData);
-        console.log("checkState UPDATED")
     },[userId,postersData,checkState])
 
     
@@ -221,6 +228,12 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                 console.error("Error saving updated topics" , err)
             })
         }
+
+    const filterPosters = ()=>{
+       let posters = usersPostersState.state;
+       let filterPosters = posters.filter(poster => poster === true)
+       return filterPosters
+    }
     
     //fix poster position from DB
     return(
@@ -311,13 +324,11 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
 
                    {showPosters.map((poster,posterIndex)=>{
                    const  grouped = groupBoxes(poster.windows);
-                   //у меня есть список UsersPosters он находится в базе getEnabledPostersState 
+                  
                    //Мы получаем данные showPosters , затем фильтруем их через UsersPosters и те которые остались мы показываем 
-                    // kys 
                     return(
-                        <>
+                        <div key={poster.id}>
                             <div 
-                                key={posterIndex}
                                 style={{
                                     display:'flex',
                                     justifyContent:'center',
@@ -355,7 +366,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                             ))}
                             </div>
                             }
-                        </>
+                        </div>
                     )
                    })}
 

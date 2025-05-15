@@ -19,7 +19,6 @@ const PosterScreen = ({userId, checkState,setCheckState}) => {
                 }
             })
             .catch((err)=> console.error(err))
-            console.log(checkState)
         },[userId,checkState])
 
 
