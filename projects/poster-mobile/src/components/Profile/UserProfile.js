@@ -257,7 +257,8 @@ useEffect(()=>{
                             {showPosters.map((poster, posterIndex)=>(
                                 <div key={posterIndex}>
                                     <SideButton
-                                            buttonState={poster.state // менять цвет кнопки , мы получаем состояние из enablePosterState в списке UsersPosters 
+                                            buttonState={poster.state // менять цвет кнопки , мы получаем состояние из enablePosterState в списке UsersPosters ^_^
+                                                
                                                 } 
                                             buttonStyle="menuButtonsGreen" 
                                             newStyle="menuButtonsRed"
