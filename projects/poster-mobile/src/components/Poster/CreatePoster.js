@@ -153,23 +153,6 @@ const CreatePoster = ({creatPosterButtons,showPoster,userId}) => {
        );
     };
 
-    let counter = 0;
-    function increment(){
-        counter++;
-    }
-
-    function greet(name) {
-        return `KYS, ${name}`;
-    }
-
-    function processUserInput(callback){
-        const name = "Cunt";
-        return callback(name);
-    }
-
-    console.log(processUserInput(greet)); // "KYS, CUNT"
-
-
 
     return(
         <>
