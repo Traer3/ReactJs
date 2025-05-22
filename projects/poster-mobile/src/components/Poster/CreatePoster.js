@@ -152,7 +152,7 @@ const CreatePoster = ({creatPosterButtons,showPoster,userId}) => {
         }))
        );
     };
-//KYS
+
 
     return(
         <>
