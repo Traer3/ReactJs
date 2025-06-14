@@ -6,6 +6,7 @@ import Authorization from "../Authorization/Authorization";
 import PostersData from "../Poster/PostersData";
 import UserProfile from "../Profile/UserProfile";
 import PosterScreen from "../Poster/PosterScreen";
+import TestField from "../../Dro4/TestField";
 
 
 
@@ -100,6 +101,8 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
             {userPosters && 
                 <PosterScreen userId={userId} checkState={checkState} setCheckState={setCheckState}/>
             }
+            
+            <TestField/>
             
 
            
