@@ -101,13 +101,7 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
             {userPosters && 
                 <PosterScreen userId={userId} checkState={checkState} setCheckState={setCheckState}/>
             }
-            
-            
-            <TestField/>
-            
-
-           
-           
+             
             <SideButton 
                 buttonState={userButton} 
                 buttonStyle="lonelyProfileButton" 
