@@ -5,6 +5,8 @@ import style from "../SidePanels.module.css"
 import CreatePoster from "../Poster/CreatePoster";
 
 
+// reforme  
+// отдельно edit desktop , create poster , edit poster  
 const UserProfile = ({userId, SBmenuPanel}) => {
     const [showMenu, setShowMenu] = useState(false);
     const [desktopEdit,setDesktopEdit] = useState(false);

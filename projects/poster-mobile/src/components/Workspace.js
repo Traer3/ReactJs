@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import GuestMenu from "./Guest/GuestMenu";
 import MenuScreen from "./User/MenuScreen";
 
-//поменяй ip в login и registration
+
 const Workspace = () => {
     
     const [userId, setUserId] = useState(()=>{
         return JSON.parse(localStorage.getItem("userId")) || 0;
     });
+    // delete 
     const [userCheck,setUserCheck] = useState(()=>{
         return JSON.parse(localStorage.getItem("userCheck")) || false;
     });
