@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import SideButton from "../../SidePanelComponents/SideButton";
 import style from "../../SidePanels.module.css"
 
-const DesktopEdit = ({userId}) =>{
+const DesktopEdit = () =>{
 
-    const [desktopEdit,setDesktopEdit] = useState(false);
+    
+    const userId = JSON.parse(localStorage.getItem("userId"))
+    console.log(userId)
+    
+
     const [enablePosterState, setEnablePosterState] = useState([]);
-
+    
     const [showPosters, setShowPosters] = useState([]);
     useEffect(()=>{
             fetch(`http://localhost:3001/getPosterData/${userId}`)
@@ -113,7 +117,6 @@ const DesktopEdit = ({userId}) =>{
         <div className={style.menuProfilelDesktopEdit} >
             <div className={style.panelFlexAndBorder}>
                 <SideButton
-                    buttonState={desktopEdit} 
                     buttonStyle="buttonsOnPanels" 
                     newStyle="buttonsOnPanels"
                 >

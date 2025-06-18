@@ -42,7 +42,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
         .catch((err)=> console.error(err));
     }, [userId]);
     
-    console.log(enablePosterState)
+    //console.log(enablePosterState)
 
     
 // отображение постеров из базы
