@@ -2,11 +2,11 @@ import React from "react";
 import LogIn from "./LogIn";
 import Registration from "./Registration";
 
-const Authorization = ({setUserCheck, addUser, setUserId,}) =>{
+const Authorization = ({addUser,}) =>{
     return(
         <div>
             {addUser ?( 
-                <LogIn setUserCheck={setUserCheck} setUserId={setUserId}/>
+                <LogIn />
                 ):(
                 <Registration/>
             )}

@@ -11,7 +11,7 @@ import DesktopEdit from "./Desktop/DesktopEdit";
 const UserProfile = ({userId, SBmenuPanel}) => {
     const [showMenu, setShowMenu] = useState(false);
     const [desktopEdit,setDesktopEdit] = useState(false);
-    const [enablePosterState, setEnablePosterState] = useState([]);
+    
     const [creatPoster, setCreatPoster] = useState(false);
     const [creatPosterButtons, setCreatPoserButtons] = useState(false);
 
@@ -31,20 +31,6 @@ const UserProfile = ({userId, SBmenuPanel}) => {
         setCreatPoster(!creatPoster)
     }
 
-    useEffect(()=>{
-        fetch(`http://localhost:3001/getEnabledPostersState/${userId}`)
-        .then((res)=>res.json())
-        .then((data)=>{
-            if(data.enablePosterState){
-                setEnablePosterState(data.enablePosterState)
-            }
-        })
-        .catch((err)=> console.error(err));
-    }, [userId]);
-    
-    //console.log(enablePosterState)
-
-    
 // отображение постеров из базы
 const [showPosters, setShowPosters] = useState([]);
 useEffect(()=>{

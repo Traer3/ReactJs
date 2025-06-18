@@ -4,10 +4,12 @@ import SideButton from "../SidePanelComponents/SideButton";
 import SidePanels from '../SidePanels.module.css'
 import Authorization from "../Authorization/Authorization";
 import PostersData from "../Poster/PostersData";
+import { useUser } from "../../PostersContext";
 
 
-const GuestMenu = ({userId,setUserId,setUserCheck}) => {
-
+const GuestMenu = () => {
+    const {userId} = useUser();
+    
     const [menuButton,setMenuButton] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -97,7 +99,7 @@ const GuestMenu = ({userId,setUserId,setUserCheck}) => {
                     </div>
                     
 
-                    <Authorization setUserCheck={setUserCheck} addUser={addUser} setUserId={setUserId}/>
+                    <Authorization addUser={addUser} />
                 </SidePanel>
        </div>
     );

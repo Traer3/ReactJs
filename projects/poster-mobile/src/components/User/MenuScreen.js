@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import SidePanel from "../SidePanelComponents/SidePanel";
 import SideButton from "../SidePanelComponents/SideButton";
 import SidePanels from '../SidePanels.module.css'
@@ -6,10 +6,13 @@ import Authorization from "../Authorization/Authorization";
 import PostersData from "../Poster/PostersData";
 import UserProfile from "../Profile/UserProfile";
 import PosterScreen from "../Poster/PosterScreen";
+import { useUser } from "../../PostersContext";
 
 
 
-const MenuScreen = ({userId,setUserId,setUserCheck}) => {
+const MenuScreen = () => {
+    const {userId} = useUser();
+    const {setUserId} = useUser();
 
     const [menuButton,setMenuButton] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -20,12 +23,6 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
 
     const [profileOpen, setPorofileOpen] = useState(false);
     
-    const isLoged = userId > 0;
-    useEffect(()=>{
-    },[userId,isLoged,])
-
-
-
     const toggelMenuPanel = ()=>{
         setMenuButton(!menuButton);
         setMenuOpen(!menuOpen)
@@ -47,13 +44,10 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
     }
 
     const handleLogOut = () =>{
-        localStorage.removeItem("userCheck");
-        setUserCheck(false);
+        localStorage.setItem("userId", JSON.stringify(0));
         setUserId(0);
         alert("Bye-bye 👋")
     }
-
-    const [userPosters, setUserPosters] = useState(true);
     
     //костыль ^_^
     const [checkState, setCheckState] = useState(0);
@@ -97,7 +91,7 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
             }
 
             
-            {userPosters && 
+            {true && 
                 <PosterScreen userId={userId} checkState={checkState} setCheckState={setCheckState}/>
             }
              
@@ -122,7 +116,7 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
                                 iconsName="user"
                                 onClick={toggelUserPanel} 
                             />
-                            {isLoged ?(
+                            {userId > 0 ?(
                                 <>
                                     <SideButton 
                                         buttonState={true} 
@@ -150,7 +144,7 @@ const MenuScreen = ({userId,setUserId,setUserCheck}) => {
                             )}
                 </div>
                 
-                {isLoged ? <></> : <Authorization setUserCheck={setUserCheck} addUser={addUser} setUserId={setUserId}/>}
+                {userId > 0  ? <></> : <Authorization addUser={addUser}/>}
                  
             </SidePanel>
        </div>

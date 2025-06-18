@@ -4,12 +4,23 @@ import style from "../../SidePanels.module.css"
 
 const DesktopEdit = () =>{
 
-    
+
     const userId = JSON.parse(localStorage.getItem("userId"))
     console.log(userId)
     
 
     const [enablePosterState, setEnablePosterState] = useState([]);
+    useEffect(()=>{
+            fetch(`http://localhost:3001/getEnabledPostersState/${userId}`)
+            .then((res)=>res.json())
+            .then((data)=>{
+                if(data.enablePosterState){
+                    setEnablePosterState(data.enablePosterState)
+                }
+            })
+            .catch((err)=> console.error(err));
+        }, [userId]);
+    //console.log(enablePosterState)
     
     const [showPosters, setShowPosters] = useState([]);
     useEffect(()=>{

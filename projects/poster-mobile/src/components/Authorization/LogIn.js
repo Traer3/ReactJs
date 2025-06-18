@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import AuthorizationFrom from "./AuthorizationFrom";
+import { useUser } from "../../PostersContext";
 
-const LogIn = ({setUserCheck, setUserId}) =>{
+const LogIn = () =>{
+    const {setUserId} = useUser();
 
     const [login, setLogin] = useState('');
     const [password,setPassword] = useState('');
@@ -26,10 +28,9 @@ const LogIn = ({setUserCheck, setUserId}) =>{
             alert(data.message);
 
             if (data.message === "Login successful") {
-              localStorage.setItem("userCheck", JSON.stringify(true)); 
-              localStorage.setItem("userId", JSON.stringify(data.userId));
-                    setUserCheck(true); 
-                    setUserId(data.userId);   
+                localStorage.setItem("userId", JSON.stringify(data.userId));
+                setUserId(data.userId);
+                console.log("user id is set", data.userId)   
             }
         } catch (error) {
             console.error("Login error:", error);
