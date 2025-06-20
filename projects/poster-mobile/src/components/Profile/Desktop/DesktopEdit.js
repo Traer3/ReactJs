@@ -193,8 +193,11 @@ const DesktopEdit = () =>{
                 {showPosters.map((poster, posterIndex)=>(
                     <div key={posterIndex}>
                         <SideButton
+
                                 buttonState={poster.state // менять цвет кнопки , мы получаем состояние из enablePosterState в списке UsersPosters 
                                     } 
+
+                                    
                                 buttonStyle="menuButtonsGreen" 
                                 newStyle="menuButtonsRed"
                                 onClick={()=>togglePoster(poster.id)}
