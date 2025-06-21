@@ -11,7 +11,7 @@ const DesktopEdit = () =>{
 
     const [enablePosterState, setEnablePosterState] = useState([]);
     useEffect(()=>{
-            fetch(`http://localhost:3001/getEnabledPostersState/${userId}`)
+            fetch(`http://localhost:3001/getEnabledPostersState/${userId}`) //desktop_edit
             .then((res)=>res.json())
             .then((data)=>{
                 if(data.enablePosterState){
@@ -63,6 +63,7 @@ const DesktopEdit = () =>{
         const filteredState = enablePosterState.filter(obj => obj.name !== "UsersPosters");
         const mergedPosters = [...filteredState, newPosterState]
         setPosterFilterList([newPosterState])
+        setEnablePosterState(mergedPosters)
         saveEnabledPostersState(mergedPosters);
     }
     /////////////////////////////////////////////////
@@ -87,8 +88,8 @@ const DesktopEdit = () =>{
     };
     //////////////////////////////////////////////////////////////////////////////
 
-    const saveEnabledPostersState = (updatedState) => {
-        fetch('http://localhost:3001/saveEnabledPostersState',{
+    const saveEnabledPostersState = (updatedState) => { //desktop_edit
+        fetch('http://localhost:3001/saveEnabledPostersState',{ 
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -120,7 +121,11 @@ const DesktopEdit = () =>{
     ]);
     //////////////////////////////////////////////////////////////////////////////////
     
-    
+    const getUserPosterState = (posterName) =>{
+        const posterObj = enablePosterState.find(obj => obj.name === "UsersPosters");
+        return posterObj?.state?.[posterName] ?? false;
+    };
+
 
 
     return(
@@ -193,11 +198,7 @@ const DesktopEdit = () =>{
                 {showPosters.map((poster, posterIndex)=>(
                     <div key={posterIndex}>
                         <SideButton
-
-                                buttonState={poster.state // менять цвет кнопки , мы получаем состояние из enablePosterState в списке UsersPosters 
-                                    } 
-
-                                    
+                                buttonState={getUserPosterState(poster.name)} 
                                 buttonStyle="menuButtonsGreen" 
                                 newStyle="menuButtonsRed"
                                 onClick={()=>togglePoster(poster.id)}

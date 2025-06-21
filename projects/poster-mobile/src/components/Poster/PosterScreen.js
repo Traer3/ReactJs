@@ -67,7 +67,7 @@ const PosterScreen = ({userId, checkState,setCheckState}) => {
         }}>
             {postersData.map((poster, posterIndex)=>(
                 <div key={posterIndex}>
-                    {poster.state && 
+                    {poster.state && //
                         <>
                             {poster.windows.map(win =>(
                                 <DraggableWindow
