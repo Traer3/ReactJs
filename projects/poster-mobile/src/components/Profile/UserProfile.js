@@ -5,9 +5,6 @@ import style from "../SidePanels.module.css"
 import CreatePoster from "../Poster/CreatePoster";
 import DesktopEdit from "./Desktop/DesktopEdit";
 
-
-// reforme  
-// отдельно edit desktop , create poster , edit poster  
 const UserProfile = ({userId, SBmenuPanel}) => {
     const [showMenu, setShowMenu] = useState(false);
     const [desktopEdit,setDesktopEdit] = useState(false);
@@ -31,18 +28,18 @@ const UserProfile = ({userId, SBmenuPanel}) => {
         setCreatPoster(!creatPoster)
     }
 
-// отображение постеров из базы
-const [showPosters, setShowPosters] = useState([]);
-useEffect(()=>{
-        fetch(`http://localhost:3001/getPosterData/${userId}`)
-        .then((res)=>res.json())
-        .then((data)=>{
-            if(data.posterData){
-                setShowPosters(data.posterData)
-            }
-        })
-        .catch((err)=> console.error(err))
-    },[userId])
+    // отображение постеров из базы
+    const [showPosters, setShowPosters] = useState([]);
+    useEffect(()=>{
+            fetch(`http://localhost:3001/getPosterData/${userId}`)
+            .then((res)=>res.json())
+            .then((data)=>{
+                if(data.posterData){
+                    setShowPosters(data.posterData)
+                }
+            })
+            .catch((err)=> console.error(err))
+        },[userId])
 
 
     return(
