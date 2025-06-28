@@ -95,6 +95,8 @@ const MenuScreen = () => {
                 <PosterScreen userId={userId} checkState={checkState} setCheckState={setCheckState}/>
             }
              
+
+            
             <SideButton 
                 buttonState={userButton} 
                 buttonStyle="lonelyProfileButton" 
@@ -102,13 +104,15 @@ const MenuScreen = () => {
                 iconsName="user"
                 onClick={toggelUserPanel} 
                 />
+                
             <SidePanel 
                 panelStyle="profilePanel" 
                 panelState={userMenuOpen} 
                 newStyle="profilePanelOpen"
                 >
-
-                <div className={SidePanels.panelIconPlace}>
+                {userId > 0 ? 
+                    <>
+                        <div className={SidePanels.panelIconPlace}>
                             <SideButton 
                                 buttonState={userButton} 
                                 buttonStyle="profileButton" 
@@ -116,37 +120,46 @@ const MenuScreen = () => {
                                 iconsName="user"
                                 onClick={toggelUserPanel} 
                             />
-                            {userId > 0 ?(
-                                <>
-                                    <SideButton 
-                                        buttonState={true} 
-                                        buttonStyle="logOutButton" 
-                                        newStyle="logOutButton"
-                                        iconsName="logOut"
-                                        onClick={handleLogOut}
-                                    />
-                                    <SideButton 
-                                        buttonState={profileOpen} 
-                                        buttonStyle="openProfile" 
-                                        newStyle="openProfile"
-                                        iconsName="editIcon"
-                                        onClick={toggleOpenProfile}
-                                    /> 
-                            </> 
-                            ):(   
+                                <SideButton 
+                                    buttonState={true} 
+                                    buttonStyle="logOutButton" 
+                                    newStyle="logOutButton"
+                                    iconsName="logOut"
+                                    onClick={handleLogOut}
+                                />
+                                <SideButton 
+                                    buttonState={profileOpen} 
+                                    buttonStyle="openProfile" 
+                                    newStyle="openProfile"
+                                    iconsName="editIcon"
+                                    onClick={toggleOpenProfile}
+                                />        
+                        </div>
+                    </> 
+                    : 
+                    <>
+                        <div className={SidePanels.panelIconPlace}>
+                                <SideButton 
+                                    buttonState={userButton} 
+                                    buttonStyle="profileButton" 
+                                    newStyle="profileButton"
+                                    iconsName="user"
+                                    onClick={toggelUserPanel} 
+                                />
+                                
                                 <SideButton 
                                     buttonState={addUser} 
                                     buttonStyle="addUserButton" 
                                     newStyle="hideAddUserButton"
                                     iconsName="addUser"
                                     onClick={toggleRegistration}
-                                />
-                            )}
-                </div>
-                
-                {userId > 0  ? <></> : <Authorization addUser={addUser}/>}
-                 
+                                />     
+                        </div>
+                        <Authorization addUser={addUser} />
+                    </>}
             </SidePanel>
+
+
        </div>
     );
 };
