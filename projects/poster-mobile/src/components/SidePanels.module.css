@@ -220,18 +220,11 @@
     background: rgba(88, 139, 250, 0.2);
     backdrop-filter: blur(clamp(2px, 1vw, 20px));
     box-shadow: 0 var(--borderRadius) clamp(2px, 1vw, 20px) var(--panelBackground);
-    opacity: 0;
     min-width: max-content;
+    margin-top: 0.8em;
     font-family: var(--fontFamily);
     font-size: clamp(var(--minFontSize), var(--defaultFontSize), var(--maxFontSize));
     transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-
-.listOfTopicsVisible{
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .buttonsOnList{
