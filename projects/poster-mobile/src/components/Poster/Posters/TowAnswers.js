@@ -4,9 +4,6 @@ import SummaryWindow from "../../Windows/SummaryWindow";
 import style from "../../Windows/WindowStyle.module.css"
 import ButtonBoxCheck from "../ButtonBoxCheck";
 
-
-
-
 const logicAND = "/summary/TwoAnswers/LogicAND.txt"
 const logicANDExample = "/summary/TwoAnswers/LogicANDExample.txt"
 
@@ -17,7 +14,6 @@ const ternaryOperatorData = "/summary/TwoAnswers/TernaryOperator.txt"
 const TwoAnswers = ({posterStates, updatePosterState}) => {  
     
     const posterName = "TwoAnswers"
-
 
     const handleStateChange = (key) =>{
        const updatedState = {...posterStates, [key]: !posterStates[key]};

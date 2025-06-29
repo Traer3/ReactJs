@@ -11,6 +11,8 @@ const PosterScreen = ({userId, checkState,setCheckState}) => {
     
     const [postersData, setPostersData] = useState([]);
         useEffect(()=>{
+            if(userId === 0) return
+
             fetch(`http://localhost:3001/getPosterData/${userId}`)
             .then((res)=>res.json())
             .then((data)=>{

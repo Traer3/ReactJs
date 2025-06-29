@@ -1,26 +1,14 @@
 import React, { useEffect, useState } from "react";
 import PosterMain from "./PosterMain";
-import PosterMobileMain from "./PosterMobileMain";
 
 const PostersData = ({userId,setCheckState,checkState})=> {
     
-    
-     const [defineVersion, setDefineVersion] = useState(window.innerWidth > 768)
-        useEffect(()=>{
-            const handleResize = ()=>{
-            const newWidth =  window.innerWidth;
-            setDefineVersion(newWidth > 768)
-            };
-            window.addEventListener("resize", handleResize);
-            return ()=>{
-                window.removeEventListener("resize", handleResize);
-            };
-        },[])
 
-    
-    
     const [postersData, setPostersData] = useState([]);
     useEffect(()=>{
+
+        if(userId === 0) return
+        
         fetch(`http://localhost:3001/getPosterData/${userId}`)
         .then((res)=>res.json())
         .then((data)=>{
@@ -30,6 +18,7 @@ const PostersData = ({userId,setCheckState,checkState})=> {
             }
         })
         .catch((err)=> console.error(err))
+        
     },[userId,checkState])
 
 
@@ -289,25 +278,17 @@ const PostersData = ({userId,setCheckState,checkState})=> {
 
     return(
         <div>
-            {defineVersion ? (
-                <PosterMain 
-                    posterStateArray={posterStateArray} 
-                    setPosterStateArray ={setPosterStateArray} 
-                    userId={userId} 
-                    enablePosterState={enablePosterState}
-                    setEnablePosterState={setEnablePosterState}
-                    postersData={postersData}
-                    setPostersData={setPostersData}
-                    setCheckState={setCheckState}
-                    checkState={checkState}
-                /> 
-            ) : (
-                <PosterMobileMain 
-                    posterStateArray={posterStateArray} 
-                    setPosterStateArray ={setPosterStateArray} 
-                    userId={userId} 
-                /> 
-            )}
+            <PosterMain 
+                posterStateArray={posterStateArray} 
+                setPosterStateArray ={setPosterStateArray} 
+                userId={userId} 
+                enablePosterState={enablePosterState}
+                setEnablePosterState={setEnablePosterState}
+                postersData={postersData}
+                setPostersData={setPostersData}
+                setCheckState={setCheckState}
+                checkState={checkState}
+            /> 
         </div>
     );
 };

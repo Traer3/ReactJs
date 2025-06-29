@@ -6,7 +6,6 @@ import BoxCheck from "./BoxCheck";
 import StockPosters from "./StockPosters";
 
 const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterState,setEnablePosterState,postersData, setPostersData,setCheckState,checkState}) => {
-    const [showSave, setShowSave] = useState(false);
     const showItemList = (state, setState) => {
         setState(!state);
         console.log(filterPosters())
@@ -14,11 +13,8 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
 
 
     useEffect(()=>{
-        if(!userId || userId === 0){
-            setShowSave(false);
-            return;
-        }
-        setShowSave(true);
+        if(userId === 0) return
+
         fetch(`http://localhost:3001/getPosterStates/${userId}`)
         .then((res)=>res.json())
         .then((data) => {
@@ -189,72 +185,71 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                     <br/>H = {window.innerHeight}
             </h1>
 
-            <SideButton 
-                newStyle="buttonsOnPanels"
-                onClick={()=>showItemList(userPosters,setUserPosters)}
-                >User Posters
-            </SideButton>
+            {userId > 0 ? 
+                <>
+                    <SideButton 
+                        newStyle="buttonsOnPanels"
+                        onClick={()=>showItemList(userPosters,setUserPosters)}
+                    >User Posters
+                    </SideButton>
 
-            {userPosters && 
-                <div className={style.listOfTopics}>
+                    {userPosters && 
+                        <div className={style.listOfTopics}>
 
-                   {filterPosters().map((poster,posterIndex)=>{
-                   const  grouped = groupBoxes(poster.windows);
-                    return(
-                        <div key={poster.id}>
-                            <div 
-                                style={{
-                                    display:'flex',
-                                    justifyContent:'center',
-                                }}
-                            >
-                                <SideButton
-                                    newStyle="buttonsOnList"
-                                    onClick={()=> togglePoster(poster.id)}
-                                >
-                                    {poster.name}
-                                </SideButton>
-                            </div>
-                        
-                            {true && 
-                            <div 
-                                style={{
-                                    display:'flex',
-                                    justifyContent:'center',
-                                }}
-                            >
-                            {["red","green","yellow","default"].map(groupKey =>(
-                                grouped[groupKey].length > 0 && (
-                                    <div key={groupKey} className={windowStyle.columnSquare}> 
-                                        {grouped[groupKey].map(win=>
-                                            win.boxState && (
-                                                <BoxCheck
-                                                    key={win.id}
-                                                    color={win.style}
-                                                    state={win.state}
-                                                    toggleWindow={()=> handleCloseWindow(posterIndex,win.id)}
-                                                />
-                                        ))}
+                        {filterPosters().map((poster,posterIndex)=>{
+                        const  grouped = groupBoxes(poster.windows);
+                            return(
+                                <div key={poster.id}>
+                                    <div 
+                                        style={{
+                                            display:'flex',
+                                            justifyContent:'center',
+                                        }}
+                                    >
+                                        <SideButton
+                                            newStyle="buttonsOnList"
+                                            onClick={()=> togglePoster(poster.id)}
+                                        >
+                                            {poster.name}
+                                        </SideButton>
                                     </div>
-                                )
-                            ))}
-                            </div>
-                            }
+                                
+                                    {true && 
+                                    <div 
+                                        style={{
+                                            display:'flex',
+                                            justifyContent:'center',
+                                        }}
+                                    >
+                                    {["red","green","yellow","default"].map(groupKey =>(
+                                        grouped[groupKey].length > 0 && (
+                                            <div key={groupKey} className={windowStyle.columnSquare}> 
+                                                {grouped[groupKey].map(win=>
+                                                    win.boxState && (
+                                                        <BoxCheck
+                                                            key={win.id}
+                                                            color={win.style}
+                                                            state={win.state}
+                                                            toggleWindow={()=> handleCloseWindow(posterIndex,win.id)}
+                                                        />
+                                                ))}
+                                            </div>
+                                        )
+                                    ))}
+                                    </div>
+                                    }
+                                </div>
+                            )
+                        })}
                         </div>
-                    )
-                   })}
-
-                </div>
-            }
-
-            {showSave &&
-                <SideButton 
-                    newStyle="buttonsOnPanels"
-                    onClick={savePosterStates}
-                    >Save
-            </SideButton>
+                    }
+                    <SideButton 
+                            newStyle="buttonsOnPanels"
+                            onClick={savePosterStates}
+                            >Save
+                    </SideButton>                
+                </> : <></>}
                 
-            } 
     </div>
     );
 };
