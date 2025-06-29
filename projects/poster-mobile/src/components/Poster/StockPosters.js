@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import style from "../SidePanels.module.css"
 import ShowPoster from "./ShowPoster";
 import TwoAnswers from "./Posters/TowAnswers";
@@ -10,50 +10,14 @@ import Position from "./Posters/Postion";
 import { useUser } from "../../PostersContext";
 import SideButton from "../SidePanelComponents/SideButton";
 
-const StockPosters = ({enablePosterState, setEnablePosterState,posterStateArray, setPosterStateArray, postersData, checkState}) => {
+const StockPosters = ({enablePosterState,posterStateArray, setPosterStateArray}) => {
 
     const {userId} = useUser();
     const [items, setItems] = useState(false);
 
-    const [usersPostersState, setUsersPosters] = useState([]);
-
-    useEffect(()=>{
-    
-            if(userId === 0) return
-    
-            const interval = setInterval(()=>{
-                fetch(`http://localhost:3001/getEnabledPostersState/${userId}`)
-                .then((res)=>res.json())
-                .then((data)=>{
-                if(data.enablePosterState){
-                    setEnablePosterState(data.enablePosterState);
-                    // "UsersPosters" не могу найти в descktopedit
-                    setUsersPosters(data.enablePosterState.find(obj => obj.name === "UsersPosters") || [])
-                    
-                }
-            })
-            .catch((err)=> console.error(err));
-            },100); //DB delay is HUGE , нужно будет переделать, будем получать togglePoster={isPosterEnabled("TwoAnswers")} из enablePosterState который будет сохранен в переменной  
-            return()=> clearInterval(interval);
-    },[userId, setEnablePosterState])
-
-    const [showPosters, setShowPosters] = useState([]);
-    useEffect(()=>{
-             setShowPosters(postersData);
-    },[userId,postersData,checkState])
-
-
     const showItemList = (state, setState) => {
         setState(!state);
-        console.log(filterPosters())
     }
-
-    const filterPosters = ()=>{
-        let posters = usersPostersState.state;
-        console.log(usersPostersState.state)
-        let whiteList = Object.keys(posters).filter(poster => posters[poster])
-        return showPosters.filter(poster => whiteList.includes(poster.name))
-     }
 
     const [topicsState, setTopicsState] = useState({ 
         twoAnswers: false,

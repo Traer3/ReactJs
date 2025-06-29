@@ -171,11 +171,8 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         <div className={style.panelFlex}>
             <StockPosters 
                 enablePosterState={enablePosterState} 
-                setEnablePosterState={setEnablePosterState} 
                 posterStateArray={posterStateArray} 
                 setPosterStateArray={setPosterStateArray}
-                postersData={postersData}
-                checkState={checkState}
             />
 
             <h1 
