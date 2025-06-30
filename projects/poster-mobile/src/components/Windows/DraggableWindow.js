@@ -5,6 +5,10 @@ const DraggableWindow = ({styleClass, initialX, initialY, children,id,onClose,st
     const [isDragging, setIsDragging] = useState(false);
     const [offset, setOffset] = useState({x: 0, y:0});
 
+    useEffect(()=>{
+        setPosition({x: initialX, y: initialY});
+    },[initialX, initialY])
+
     const handleStart = (e) => {
         const tag =  e.target.tagName.toLowerCase();
         if(tag === 'textarea' || tag === 'input' || tag === 'select') return;

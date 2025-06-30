@@ -75,6 +75,9 @@ const CreatePoster = ({creatPosterButtons,showPoster,userId}) => {
         .catch(err=>{
             console.error("Error saving updated topics" , err)
         })
+
+        setCreatPosterName(false)
+        setCreatPoster(false)
     }
 
     const addWindowToPoster = (style) =>{ 

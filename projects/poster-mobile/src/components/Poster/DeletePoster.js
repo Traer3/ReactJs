@@ -37,8 +37,6 @@ const DeletePoster = () =>{
         return posterObj?.state?.[posterName] ?? false;
     };
 
-    console.log(posterData)
-
     const deletePoster = (posterId) => {
         const updatePosters = posterData.filter(poster => poster.id !== posterId)
         saveEnabledPostersState(updatePosters)
@@ -63,12 +61,8 @@ const DeletePoster = () =>{
         })
     }
     
-
-
     return(
         <div className={style.menuProfilelDesktopEdit} >
-            
-        
             <div className={style.panelFlexAndBorder}>
                 <SideButton
                     buttonStyle="buttonsOnPanels" 

@@ -5,6 +5,7 @@ import style from "../SidePanels.module.css"
 import CreatePoster from "../Poster/CreatePoster";
 import DesktopEdit from "./Desktop/DesktopEdit";
 import DeletePoster from "../Poster/DeletePoster";
+import EditPoster from "../Poster/EditPoster";
 
 const UserProfile = ({userId, SBmenuPanel}) => {
     const [showMenu, setShowMenu] = useState(false);
@@ -14,6 +15,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     const [creatPosterButtons, setCreatPoserButtons] = useState(false);
 
     const [deletePosterButton, setDeletePosterButton] = useState(false);
+    const [editPosterButton, setEditPosterButton] = useState(false);
 
     const togglMenuPanle = () =>{
         setShowMenu(!showMenu)
@@ -34,6 +36,11 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     const toggleDeletePoster = () => {
         setShowMenu(false)
         setDeletePosterButton(!deletePosterButton);
+    }
+
+    const toggleEditPoster = () => {
+        setShowMenu(false);
+        setEditPosterButton(!editPosterButton);
     }
 
     // отображение постеров из базы
@@ -81,7 +88,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                                 buttonState={desktopEdit} 
                                 buttonStyle="buttonsOnPanels" 
                                 newStyle="buttonsOnPanels"
-                                onClick={toggelDesktopEdit} 
+                                onClick={toggleEditPoster} 
                             >
                                 Edit Posters
                             </SideButton>
@@ -115,6 +122,8 @@ const UserProfile = ({userId, SBmenuPanel}) => {
             {creatPoster && <CreatePoster creatPosterButtons={creatPosterButtons} showPoster={showPosters} userId={userId}/>}
 
             {deletePosterButton && <DeletePoster/>}
+
+            {editPosterButton && <EditPoster/>}
             
         </div>
     );
