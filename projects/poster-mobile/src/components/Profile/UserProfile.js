@@ -4,6 +4,7 @@ import SidePanel from "../SidePanelComponents/SidePanel";
 import style from "../SidePanels.module.css"
 import CreatePoster from "../Poster/CreatePoster";
 import DesktopEdit from "./Desktop/DesktopEdit";
+import DeletePoster from "../Poster/DeletePoster";
 
 const UserProfile = ({userId, SBmenuPanel}) => {
     const [showMenu, setShowMenu] = useState(false);
@@ -11,6 +12,8 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     
     const [creatPoster, setCreatPoster] = useState(false);
     const [creatPosterButtons, setCreatPoserButtons] = useState(false);
+
+    const [deletePosterButton, setDeletePosterButton] = useState(false);
 
     const togglMenuPanle = () =>{
         setShowMenu(!showMenu)
@@ -26,6 +29,11 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     const toggelPosterCreation = () =>{
         setShowMenu(false)
         setCreatPoster(!creatPoster)
+    }
+
+    const toggleDeletePoster = () => {
+        setShowMenu(false)
+        setDeletePosterButton(!deletePosterButton);
     }
 
     // отображение постеров из базы
@@ -79,12 +87,21 @@ const UserProfile = ({userId, SBmenuPanel}) => {
                             </SideButton>
 
                             <SideButton 
-                                buttonState={desktopEdit} 
+                                buttonState={creatPoster} 
                                 buttonStyle="buttonsOnPanels" 
                                 newStyle="buttonsOnPanels"
                                 onClick={toggelPosterCreation} 
                             >
                                 Create Poster
+                            </SideButton>
+
+                            <SideButton 
+                                buttonState={deletePosterButton} 
+                                buttonStyle="buttonsOnPanels" 
+                                newStyle="buttonsOnPanels"
+                                onClick={toggleDeletePoster} 
+                            >
+                                Delete Poster
                             </SideButton>
                         </div>
                     </div>
@@ -96,6 +113,8 @@ const UserProfile = ({userId, SBmenuPanel}) => {
             }
             
             {creatPoster && <CreatePoster creatPosterButtons={creatPosterButtons} showPoster={showPosters} userId={userId}/>}
+
+            {deletePosterButton && <DeletePoster/>}
             
         </div>
     );

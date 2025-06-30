@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import SideButton from "../../SidePanelComponents/SideButton";
 import style from "../../SidePanels.module.css"
+import { useUser } from "../../../PostersContext";
 
 const DesktopEdit = () =>{
 
+    const {userId} = useUser();
 
-    const userId = JSON.parse(localStorage.getItem("userId"))
-    console.log(userId)
+
     
 
     const [enablePosterState, setEnablePosterState] = useState([]);
