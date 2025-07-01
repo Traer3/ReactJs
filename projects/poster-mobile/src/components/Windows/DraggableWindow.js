@@ -65,27 +65,27 @@ const DraggableWindow = ({styleClass, initialX, initialY, children,id,onClose,st
     
 
     return(
-        <div>
-            {state && 
-                <div onMouseDown={(e)=> closeWindow(e,id)}>
-                <div 
-                    className={styleClass}
-                    onMouseDown={handleStart}
-                    onTouchStart={handleStart}
-                    style={{
-                        position:'absolute',
-                        top:`${position.y}px`,
-                        left:`${position.x}px`,
-                        cursor:isDragging ? 'grabbing' : 'grab',
-                        touchAction:'none',
-                        zIndex: isDragging ? 100 : 0,
-                }}>
-                    {children}
-                </div>
-            
-        </div>
-            }
-        </div>
+        <>
+            {state && (
+                    <div 
+                        className={styleClass}
+                        onMouseDown={handleStart}
+                        onTouchStart={handleStart}
+                        onMouseUp={(e)=> closeWindow(e,id)}
+                        style={{
+                            position:'absolute',
+                            top:`${position.y}px`,
+                            left:`${position.x}px`,
+                            cursor:isDragging ? 'grabbing' : 'grab',
+                            touchAction:'none',
+                            zIndex: isDragging ? 100 : 0,
+                    }}>
+                        {children}
+                    </div>
+        
+                
+            )}
+        </>
         
     );
 };
