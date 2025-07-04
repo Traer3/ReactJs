@@ -175,20 +175,6 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
                 setPosterStateArray={setPosterStateArray}
             />
 
-            <h1 
-                style={{
-                    backgroundColor:'red', 
-                    width:'clamp(40px, 3vw, 5vw)' , 
-                    height:'clamp(45px, 4vh, 5vh)', 
-                    color:'white', 
-                    textAlign:'center',
-                    fontSize:'0.8em'
-                }}
-                >iD {userId} 
-                    <br/>W = {window.innerWidth}
-                    <br/>H = {window.innerHeight}
-            </h1>
-
             {userId > 0 ? 
                 <>
                     <SideButton 

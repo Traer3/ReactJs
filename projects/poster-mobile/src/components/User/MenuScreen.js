@@ -7,7 +7,7 @@ import PostersData from "../Poster/PostersData";
 import UserProfile from "../Profile/UserProfile";
 import PosterScreen from "../Poster/PosterScreen";
 import { useUser } from "../../PostersContext";
-
+import Creatura from "../../abominations/Creatura"
 
 
 const MenuScreen = () => {
@@ -83,7 +83,11 @@ const MenuScreen = () => {
                         setCheckState={setCheckState}
                         checkState={checkState}
                     />
+                    <Creatura customStyle={{ transform: "translateX(500%) translateY(0%)", }}/>
                  </div>
+                 
+                 
+
             </SidePanel>
 
             {profileOpen  &&
