@@ -294,7 +294,7 @@ const EditPoster = () => {
                             </nav>
                         }
                     </div>
-                    //push
+                    
                     {selectedPoster.map((poster, posterIndex)=>(
                         <div key={posterIndex}>
                             {poster.windows.map(win=>(
