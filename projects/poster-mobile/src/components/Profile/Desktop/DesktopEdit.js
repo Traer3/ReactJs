@@ -5,14 +5,14 @@ import { useUser } from "../../../PostersContext";
 
 const DesktopEdit = () =>{
 
-    const {userId} = useUser();
+    const {userId,BASE_URL} = useUser();
 
 
     
 
     const [enablePosterState, setEnablePosterState] = useState([]);
     useEffect(()=>{
-            fetch(`http://localhost:3001/getEnabledPostersState/${userId}`) //desktop_edit
+            fetch(`${BASE_URL}/getEnabledPostersState/${userId}`) //desktop_edit
             .then((res)=>res.json())
             .then((data)=>{
                 if(data.enablePosterState){
@@ -25,7 +25,7 @@ const DesktopEdit = () =>{
     
     const [showPosters, setShowPosters] = useState([]);
     useEffect(()=>{
-            fetch(`http://localhost:3001/getPosterData/${userId}`)
+            fetch(`${BASE_URL}/getPosterData/${userId}`)
             .then((res)=>res.json())
             .then((data)=>{
                 if(data.posterData){
@@ -90,7 +90,7 @@ const DesktopEdit = () =>{
     //////////////////////////////////////////////////////////////////////////////
 
     const saveEnabledPostersState = (updatedState) => { //desktop_edit
-        fetch('http://localhost:3001/saveEnabledPostersState',{ 
+        fetch(`${BASE_URL}/saveEnabledPostersState`,{ 
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({

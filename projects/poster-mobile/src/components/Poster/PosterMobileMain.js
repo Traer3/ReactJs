@@ -8,9 +8,13 @@ import FLEXBox from "./Posters/FLEXBox";
 import StyleUsage from "./Posters/StyleUsage";
 import ProblemsWithStyles from "./Posters/ProblemsWithStyles";
 import Position from "./Posters/Postion";
+import { useUser } from "../../PostersContext";
 
 
 const PosterMobileMain = ({posterStateArray, setPosterStateArray, userId,}) => {
+
+    const {BASE_URL} = useUser();
+
     const [items, setItems] = useState(false);
     const [showSave, setShowSave] = useState(false);
 
@@ -41,7 +45,7 @@ const PosterMobileMain = ({posterStateArray, setPosterStateArray, userId,}) => {
             return;
         }
         setShowSave(false);
-        fetch(`http://localhost:3001/getPosterStates/${userId}`)
+        fetch(`${BASE_URL}/getPosterStates/${userId}`)
         .then((res)=>res.json())
         .then((data) => {
             if(data.posterStateArray){
@@ -54,7 +58,7 @@ const PosterMobileMain = ({posterStateArray, setPosterStateArray, userId,}) => {
     }, [userId ,setPosterStateArray]);
 
     const savePosterStates =()=>{ 
-        fetch('http://localhost:3001/savePosterStates',{
+        fetch(`${BASE_URL}/savePosterStates`,{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -87,7 +91,7 @@ const PosterMobileMain = ({posterStateArray, setPosterStateArray, userId,}) => {
             ); 
         });
         try{
-            const response = await fetch('http://localhost:3001/savePosterStates',{
+            const response = await fetch(`${BASE_URL}/savePosterStates`,{
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({

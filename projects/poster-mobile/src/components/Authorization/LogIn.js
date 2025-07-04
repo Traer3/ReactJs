@@ -3,7 +3,7 @@ import AuthorizationFrom from "./AuthorizationFrom";
 import { useUser } from "../../PostersContext";
 
 const LogIn = () =>{
-    const {setUserId} = useUser();
+    const {setUserId, BASE_URL} = useUser();
 
     const [login, setLogin] = useState('');
     const [password,setPassword] = useState('');
@@ -18,7 +18,7 @@ const LogIn = () =>{
         
         try {
             
-            const response = await fetch('http://localhost:3001/logIn', { //поменяй ip 
+            const response = await fetch(`${BASE_URL}/logIn`, { //поменяй ip 
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ login, password }),

@@ -5,11 +5,11 @@ import { useUser } from "../../PostersContext";
 
 const DeletePoster = () =>{
     
-    const {userId} = useUser();
+    const {userId, BASE_URL} = useUser();
 
     const [enablePosterState, setEnablePosterState] = useState([]);
     useEffect(()=>{
-            fetch(`http://localhost:3001/getEnabledPostersState/${userId}`) //desktop_edit
+            fetch(`${BASE_URL}/getEnabledPostersState/${userId}`) //desktop_edit
             .then((res)=>res.json())
             .then((data)=>{
                 if(data.enablePosterState){
@@ -22,7 +22,7 @@ const DeletePoster = () =>{
 
     const [posterData, setPosterData] = useState([]);
     useEffect(()=>{
-        fetch(`http://localhost:3001/getPosterData/${userId}`)
+        fetch(`${BASE_URL}/getPosterData/${userId}`)
         .then((res)=>res.json())
         .then((data)=>{
             if(data.posterData){
@@ -44,7 +44,7 @@ const DeletePoster = () =>{
     }
 
     const saveEnabledPostersState = (updatedPosters) => { 
-        fetch('http://localhost:3001/savePosterData',{ 
+        fetch(`${BASE_URL}/savePosterData`,{ 
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({

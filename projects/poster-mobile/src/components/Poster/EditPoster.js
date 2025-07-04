@@ -9,7 +9,7 @@ import ColoredBox from "../Windows/ColoredBox";
 
 const EditPoster = () => {
 
-    const {userId} = useUser();
+    const {userId,BASE_URL} = useUser();
 
     const [choosePoster, setChoosePoster] = useState(true);
     const [editPoster,setEditPoster] = useState(false);
@@ -38,7 +38,7 @@ const EditPoster = () => {
 
     const [posterData, setPosterData] = useState([]);
     useEffect(()=>{
-        fetch(`http://localhost:3001/getPosterData/${userId}`)
+        fetch(`${BASE_URL}/getPosterData/${userId}`)
         .then((res)=>res.json())
         .then((data)=>{
             if(data.posterData){
@@ -134,7 +134,7 @@ const EditPoster = () => {
         const eraseOldVersion = posterData.filter(poster => poster.id !== selectedPosterId)
         const mergedPosters = [...editedPoster, ...eraseOldVersion]
 
-        fetch('http://localhost:3001/savePosterData',{
+        fetch(`${BASE_URL}/savePosterData`,{
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -155,7 +155,7 @@ const EditPoster = () => {
     
     const [enablePosterState, setEnablePosterState] = useState([]);
         useEffect(()=>{
-                fetch(`http://localhost:3001/getEnabledPostersState/${userId}`) 
+                fetch(`${BASE_URL}/getEnabledPostersState/${userId}`) 
                 .then((res)=>res.json())
                 .then((data)=>{
                     if(data.enablePosterState){

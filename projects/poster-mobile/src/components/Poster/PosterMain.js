@@ -4,8 +4,12 @@ import SideButton from "../SidePanelComponents/SideButton";
 import windowStyle from "../Windows/WindowStyle.module.css"
 import BoxCheck from "./BoxCheck";
 import StockPosters from "./StockPosters";
+import { useUser } from "../../PostersContext";
 
 const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterState,setEnablePosterState,postersData, setPostersData,setCheckState,checkState}) => {
+
+    const {BASE_URL} = useUser();
+
     const showItemList = (state, setState) => {
         setState(!state);
         console.log(filterPosters())
@@ -15,7 +19,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
     useEffect(()=>{
         if(userId === 0) return
 
-        fetch(`http://localhost:3001/getPosterStates/${userId}`)
+        fetch(`${BASE_URL}/getPosterStates/${userId}`)
         .then((res)=>res.json())
         .then((data) => {
             if(data.posterStateArray){
@@ -31,7 +35,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
         if(userId === 0) return
 
         const interval = setInterval(()=>{
-            fetch(`http://localhost:3001/getEnabledPostersState/${userId}`)
+            fetch(`${BASE_URL}/getEnabledPostersState/${userId}`)
             .then((res)=>res.json())
             .then((data)=>{
             if(data.enablePosterState){
@@ -47,7 +51,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
 
 
     const savePosterStates =()=>{ 
-        fetch('http://localhost:3001/savePosterStates',{
+        fetch(`${BASE_URL}/savePosterStates`,{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -138,7 +142,7 @@ const PosterMain = ({posterStateArray, setPosterStateArray, userId,enablePosterS
     }
     
      const updatePostersData = (dataToSave) => {
-            fetch('http://localhost:3001/savePosterData',{
+            fetch(`${BASE_URL}/savePosterData`,{
                 method: 'POST',
                 headers:{'Content-Type': 'application/json'},
                 body: JSON.stringify({

@@ -3,17 +3,19 @@ import windowStyle from "../Windows/WindowStyle.module.css"
 
 import Textarea from "../Windows/Textarea";
 import DraggableWindow from "../Windows/DraggableWindow";
+import { useUser } from "../../PostersContext";
 
 
 
-const PosterScreen = ({userId, checkState,setCheckState}) => {
+const PosterScreen = ({checkState,setCheckState}) => {
 
+    const {userId, BASE_URL} = useUser();
     
     const [postersData, setPostersData] = useState([]);
         useEffect(()=>{
             if(userId === 0) return
 
-            fetch(`http://localhost:3001/getPosterData/${userId}`)
+            fetch(`${BASE_URL}/getPosterData/${userId}`)
             .then((res)=>res.json())
             .then((data)=>{
                 if(data.posterData){
@@ -39,8 +41,8 @@ const PosterScreen = ({userId, checkState,setCheckState}) => {
     }
 
     const updatePostersData = (dataToSave) => {
-        console.log(postersData);
-        fetch('http://localhost:3001/savePosterData',{
+
+        fetch(`${BASE_URL}/savePosterData`,{
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -81,7 +83,6 @@ const PosterScreen = ({userId, checkState,setCheckState}) => {
                                     onClose={()=> handleCloseWindow(posterIndex,win.id)}
                                     state={win.state}
                                 >   
-                                    <p style={{padding:'0px',margin:'0px'}}>X: {win.position.x}</p>  <p style={{padding:'0px',margin:'0px'}}>Y: {win.position.y}</p>
                                     <Textarea
                                         id={win.id}
                                         value={win.content}

@@ -5,13 +5,11 @@ import DraggableWindow from "../Windows/DraggableWindow";
 import Textarea from "../Windows/Textarea";
 import SideButton from "../SidePanelComponents/SideButton";
 import ColoredBox from "../Windows/ColoredBox";
-
-//Изменять размер окна , отягивая за край , сохранить размер окна в базу 
-// редактировать постеры 
-
-
+import { useUser } from "../../PostersContext";
 
 const CreatePoster = ({creatPosterButtons,showPoster,userId}) => {
+
+    const {BASE_URL} = useUser();
 
     useEffect(()=>{
         setShowPosters(showPoster);
@@ -57,8 +55,7 @@ const CreatePoster = ({creatPosterButtons,showPoster,userId}) => {
 
     const savePosterData = () => {
         const mergedPosters = [...showPosters, ...posterData];
-        //console.log(showPosters);
-        fetch('http://localhost:3001/savePosterData',{
+        fetch(`${BASE_URL}/savePosterData`,{
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({

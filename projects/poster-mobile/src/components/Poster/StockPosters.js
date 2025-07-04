@@ -12,7 +12,7 @@ import SideButton from "../SidePanelComponents/SideButton";
 
 const StockPosters = ({enablePosterState,posterStateArray, setPosterStateArray}) => {
 
-    const {userId} = useUser();
+    const {userId,BASE_URL} = useUser();
     const [items, setItems] = useState(false);
 
     const showItemList = (state, setState) => {
@@ -54,7 +54,7 @@ const StockPosters = ({enablePosterState,posterStateArray, setPosterStateArray})
             ); 
         });
         try{
-            const response = await fetch('http://localhost:3001/savePosterStates',{
+            const response = await fetch(`${BASE_URL}/savePosterStates`,{
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({

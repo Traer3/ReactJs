@@ -6,8 +6,12 @@ import CreatePoster from "../Poster/CreatePoster";
 import DesktopEdit from "./Desktop/DesktopEdit";
 import DeletePoster from "../Poster/DeletePoster";
 import EditPoster from "../Poster/EditPoster";
+import { useUser } from "../../PostersContext";
 
-const UserProfile = ({userId, SBmenuPanel}) => {
+const UserProfile = ({SBmenuPanel}) => {
+
+    const {userId,BASE_URL} = useUser();
+
     const [showMenu, setShowMenu] = useState(false);
     const [desktopEdit,setDesktopEdit] = useState(false);
     
@@ -46,7 +50,7 @@ const UserProfile = ({userId, SBmenuPanel}) => {
     // отображение постеров из базы
     const [showPosters, setShowPosters] = useState([]);
     useEffect(()=>{
-            fetch(`http://localhost:3001/getPosterData/${userId}`)
+            fetch(`${BASE_URL}/getPosterData/${userId}`)
             .then((res)=>res.json())
             .then((data)=>{
                 if(data.posterData){

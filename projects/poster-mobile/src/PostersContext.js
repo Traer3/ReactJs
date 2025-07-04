@@ -7,8 +7,10 @@ export const UserProvider = ({children}) =>{
         return JSON.parse(localStorage.getItem("userId")) || 0;
     });
 
+    const BASE_URL = "http://localhost:3001";
+
     return(
-        <PostersContext.Provider value={{userId, setUserId}}>
+        <PostersContext.Provider value={{userId, setUserId, BASE_URL}}>
             {children}
         </PostersContext.Provider>
     );

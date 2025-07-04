@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import PosterMain from "./PosterMain";
+import { useUser } from "../../PostersContext";
 
-const PostersData = ({userId,setCheckState,checkState})=> {
+const PostersData = ({setCheckState,checkState})=> {
     
+    const {userId,BASE_URL} = useUser();
 
     const [postersData, setPostersData] = useState([]);
     useEffect(()=>{
 
         if(userId === 0) return
         
-        fetch(`http://localhost:3001/getPosterData/${userId}`)
+        fetch(`${BASE_URL}/getPosterData/${userId}`)
         .then((res)=>res.json())
         .then((data)=>{
             if(data.posterData){
